@@ -6,10 +6,15 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXFileReference section */
+		184EF45319087F3A0058EB0A /* sonita */ = {isa = PBXFileReference; lastKnownFileType = text; path = sonita; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
 /* Begin PBXGroup section */
 		1856AD4919087CD100AE7515 = {
 			isa = PBXGroup;
 			children = (
+				184EF45319087F3A0058EB0A /* sonita */,
 			);
 			sourceTree = "<group>";
 		};
