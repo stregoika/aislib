@@ -1,0 +1,80 @@
+<html>
+<title>AIS Message Definition - Human Readable Form</title>
+<body>
+<h1>AIS Message Definitions</h1>
+<ul><li>
+<a href="#sls_lockschedule">sls_lockschedule</a>
+	      (366 316:1:1): 
+	      St Lawrance Seaway wind information</li></ul>
+<a name="sls_lockschedule"><h2>AIS Message: sls_lockschedule
+	    (366 316:1:1)
+	  </h2></a><h3>Description:</h3>
+<p>St Lawrance Seaway wind information</p>
+<table border="1">
+<tr bgcolor="#9acd32">
+<th align="left">Name</th>
+<th align="left">NumberOfBits</th>
+<th align="left">ArrayLength</th>
+<th align="left">Type</th>
+<th align="left">Units</th>
+<th align="left">Description</th>
+</tr>
+<tr>
+<td>vessel</td>
+<td>6</td>
+<td>15</td>
+<td>aisstr6</td>
+<td></td>
+<td>Vessel Name</td>
+</tr>
+<tr>
+<td>direction</td>
+<td>1</td>
+<td></td>
+<td>bool</td>
+<td></td>
+<td>Up bound/Down bound<br><b>0</b>: Down bound<br><b>1</b>: Up bound</td>
+</tr>
+<tr>
+<td>ETA_month</td>
+<td>4</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Estimated time of arrival  month 1..12</td>
+</tr>
+<tr>
+<td>ETA_day</td>
+<td>5</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Estimated time of arrival  day of the month 1..31</td>
+</tr>
+<tr>
+<td>ETA_hour</td>
+<td>5</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Estimated time of arrival  UTC hours 0..23</td>
+</tr>
+<tr>
+<td>ETA_min</td>
+<td>6</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Estimated time of arrival  minutes</td>
+</tr>
+<tr>
+<td>reserved</td>
+<td>19</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Reserved bits for future use</td>
+</tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,193 @@
+<html>
+<title>AIS Message Definition - Human Readable Form</title>
+<body>
+<h1>AIS Message Definitions</h1>
+<ul><li>
+<a href="#positionb">positionb</a>
+	      (::): 
+	      Standard Class B equipment position report</li></ul>
+<a name="positionb"><h2>AIS Message: positionb
+	    (::)
+	  </h2></a><h3>Description:</h3>
+<p>Standard Class B equipment position report</p>
+<p><b>See Also:</b></p>
+<table border="1">
+<tr bgcolor="#9acd32">
+<th align="left">Name</th>
+<th align="left">NumberOfBits</th>
+<th align="left">ArrayLength</th>
+<th align="left">Type</th>
+<th align="left">Units</th>
+<th align="left">Description</th>
+</tr>
+<tr>
+<td>MessageID</td>
+<td>6</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>AIS message number.  Must be 18</td>
+</tr>
+<tr>
+<td>RepeatIndicator</td>
+<td>2</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Indicated how many times a message has been repeated<br><b>0</b>: default<br><b>3</b>: do not repeat any more</td>
+</tr>
+<tr>
+<td>UserID</td>
+<td>30</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Unique ship identification number (MMSI)</td>
+</tr>
+<tr>
+<td>Reserved1</td>
+<td>8</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Reseverd for definition by a compentent regional or local authority.  Should be set to zero.</td>
+</tr>
+<tr>
+<td>SOG</td>
+<td>10</td>
+<td></td>
+<td>udecimal</td>
+<td>knots</td>
+<td>Speed over ground<br><b>102.2</b>: 102.2 knots or higher</td>
+</tr>
+<tr>
+<td>PositionAccuracy</td>
+<td>1</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Accuracy of positioning fixes<br><b>0</b>: low (greater than 10 m)<br><b>1</b>: high (less than 10 m)</td>
+</tr>
+<tr>
+<td>longitude</td>
+<td>28</td>
+<td></td>
+<td>decimal</td>
+<td>degrees</td>
+<td>Location of the vessel  East West location</td>
+</tr>
+<tr>
+<td>latitude</td>
+<td>27</td>
+<td></td>
+<td>decimal</td>
+<td>degrees</td>
+<td>Location of the vessel  North South location</td>
+</tr>
+<tr>
+<td>COG</td>
+<td>12</td>
+<td></td>
+<td>udecimal</td>
+<td>degrees</td>
+<td>Course over ground</td>
+</tr>
+<tr>
+<td>TrueHeading</td>
+<td>9</td>
+<td></td>
+<td>uint</td>
+<td>degrees</td>
+<td>True heading (relative to true North)</td>
+</tr>
+<tr>
+<td>TimeStamp</td>
+<td>6</td>
+<td></td>
+<td>uint</td>
+<td>seconds</td>
+<td>UTC second when the report was generated<br><b>60</b>: not available/default<br><b>61</b>: manual input<br><b>62</b>: dead reckoning<br><b>63</b>: inoperative</td>
+</tr>
+<tr>
+<td>Spare</td>
+<td>2</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Not used.  Should be set to zero.</td>
+</tr>
+<tr>
+<td>cs_unit</td>
+<td>1</td>
+<td></td>
+<td>bool</td>
+<td></td>
+<td>Does this unit do Carrier Sense?<br><b>False</b>: Class B SOTDMA unit<br><b>True</b>: Class B CS unit</td>
+</tr>
+<tr>
+<td>display_flag</td>
+<td>1</td>
+<td></td>
+<td>bool</td>
+<td></td>
+<td>Does this class B unit have an integrated display?<br><b>False</b>: No display<br><b>True</b>: Integrated Display</td>
+</tr>
+<tr>
+<td>dsc_flag</td>
+<td>1</td>
+<td></td>
+<td>bool</td>
+<td></td>
+<td>Does it have dedicated or time-shared DSC radio function?<br><b>False</b>: No DSC function<br><b>True</b>: Has DSC</td>
+</tr>
+<tr>
+<td>band_flag</td>
+<td>1</td>
+<td></td>
+<td>bool</td>
+<td></td>
+<td>How flexible is the freq handling of the unit?<br><b>False</b>: Upper 525 kHz band<br><b>True</b>: Whole marine band</td>
+</tr>
+<tr>
+<td>msg22_flag</td>
+<td>1</td>
+<td></td>
+<td>bool</td>
+<td></td>
+<td>Can the unit handle msg 22?<br><b>False</b>: No freq management<br><b>True</b>: Freq management with msg 22</td>
+</tr>
+<tr>
+<td>mode_flag</td>
+<td>1</td>
+<td></td>
+<td>bool</td>
+<td></td>
+<td>Assigned mode wrt to VDL slots<br><b>False</b>: Autonomous and continuous mode<br><b>True</b>: Assigned mode</td>
+</tr>
+<tr>
+<td>RAIM</td>
+<td>1</td>
+<td></td>
+<td>bool</td>
+<td></td>
+<td>Receiver autonomous integrity monitoring flag<br><b>False</b>: not in use<br><b>True</b>: in use</td>
+</tr>
+<tr>
+<td>CommStateSelector</td>
+<td>1</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>SOTDMA or ITDMA<br><b>0</b>: SOTDMA<br><b>1</b>: ITDMA</td>
+</tr>
+<tr>
+<td>CommState</td>
+<td>19</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Not decoded by this software yet</td>
+</tr>
+</table>
+</body>
+</html>

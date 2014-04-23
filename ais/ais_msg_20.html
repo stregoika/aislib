@@ -1,0 +1,198 @@
+<html>
+<title>AIS Message Definition - Human Readable Form</title>
+<body>
+<h1>AIS Message Definitions</h1>
+<ul><li>
+<a href="#datalinkmng">datalinkmng</a>
+	      (::): 
+	      Data Link Management - D.  This message uses an
+    optional tag that should not be reused.  The spare at the end
+    is used to byte align the message.
+    </li></ul>
+<a name="datalinkmng"><h2>AIS Message: datalinkmng
+	    (::)
+	  </h2></a><h3>Description:</h3>
+<p>Data Link Management - D.  This message uses an
+    optional tag that should not be reused.  The spare at the end
+    is used to byte align the message.
+    </p>
+<table border="1">
+<tr bgcolor="#9acd32">
+<th align="left">Name</th>
+<th align="left">NumberOfBits</th>
+<th align="left">ArrayLength</th>
+<th align="left">Type</th>
+<th align="left">Units</th>
+<th align="left">Description</th>
+</tr>
+<tr>
+<td>MessageID</td>
+<td>6</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>AIS message number.  Must be 20</td>
+</tr>
+<tr>
+<td>RepeatIndicator</td>
+<td>2</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Indicated how many times a message has been repeated<br><b>0</b>: default<br><b>3</b>: do not repeat any more</td>
+</tr>
+<tr>
+<td>UserID</td>
+<td>30</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Unique ship identification number (MMSI)</td>
+</tr>
+<tr>
+<td>Spare</td>
+<td>2</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Not used.  Should be set to zero.</td>
+</tr>
+<tr>
+<td>offset1</td>
+<td>12</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Reserved offset number</td>
+</tr>
+<tr>
+<td>numslots1</td>
+<td>4</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Number of reserved consecutive slots</td>
+</tr>
+<tr>
+<td>timeout1</td>
+<td>3</td>
+<td></td>
+<td>uint</td>
+<td>min</td>
+<td>Time-out value in minutes</td>
+</tr>
+<tr>
+<td>increment1</td>
+<td>11</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Increment to repeast reservation of this block</td>
+</tr>
+<tr>
+<td>offset2</td>
+<td>12</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Reserved offset number (optional)</td>
+</tr>
+<tr>
+<td>numslots2</td>
+<td>4</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Number of reserved consecutive slots (optional)</td>
+</tr>
+<tr>
+<td>timeout2</td>
+<td>3</td>
+<td></td>
+<td>uint</td>
+<td>min</td>
+<td>Time-out value in minutes (optional)</td>
+</tr>
+<tr>
+<td>increment2</td>
+<td>11</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Increment to repeast reservation of this block (optional)</td>
+</tr>
+<tr>
+<td>offset3</td>
+<td>12</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Reserved offset number (optional)</td>
+</tr>
+<tr>
+<td>numslots3</td>
+<td>4</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Number of reserved consecutive slots (optional)</td>
+</tr>
+<tr>
+<td>timeout3</td>
+<td>3</td>
+<td></td>
+<td>uint</td>
+<td>min</td>
+<td>Time-out value in minutes (optional)</td>
+</tr>
+<tr>
+<td>increment3</td>
+<td>11</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Increment to repeast reservation of this block (optional)</td>
+</tr>
+<tr>
+<td>offset4</td>
+<td>12</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Reserved offset number (optional)</td>
+</tr>
+<tr>
+<td>numslots4</td>
+<td>4</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Number of reserved consecutive slots (optional)</td>
+</tr>
+<tr>
+<td>timeout4</td>
+<td>3</td>
+<td></td>
+<td>uint</td>
+<td>min</td>
+<td>Time-out value in minutes (optional)</td>
+</tr>
+<tr>
+<td>increment4</td>
+<td>11</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Increment to repeast reservation of this block (optional)</td>
+</tr>
+<tr>
+<td>variablespare</td>
+<td>6</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>This field is a serious pain.  This padding makes the message byte aligned</td>
+</tr>
+</table>
+</body>
+</html>

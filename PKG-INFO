@@ -1,0 +1,35 @@
+Metadata-Version: 1.1
+Name: noaadata-py
+Version: 0.45
+Summary: Encode/decode NOAA co-ops marine data and marine AIS
+Home-page: https://github.com/schwehr/noaadata
+Author: Kurt Schwehr
+Author-email: schwehr@gmail.comx
+License: BSD
+Description: Library for handling marine Automatic Identification System (AIS)
+        messages and NOAA marine data messages from http://opendap.co-ops.nos.noaa.gov/axis/. 
+        Has extensions to handle the USCG N-AIS receive fields.  The SOAP code is a bit rusty and now
+        uses pydap.
+        
+        For AIS ship traffic, noaadata provides bridges to sqlite3 and
+        postgresql/postgis databases.  Is able to generate Google Earth KML
+        files for AIS.
+        
+        Part of the UNH/NOAA Chart of the Future project.
+        
+        Still in development.  Some rough edges.
+                  
+Keywords: axis,soap,marine,NOAA,AIS,N-AIS,binary messages,NMEA
+Platform: All platforms
+Classifier: Topic :: System :: Networking
+Classifier: Development Status :: 4 - Beta
+Classifier: Environment :: Console
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: GNU General Public License (GPL)
+Classifier: Topic :: Communications
+Classifier: Topic :: Database
+Classifier: Topic :: Scientific/Engineering :: Information Analysis
+Classifier: Topic :: Scientific/Engineering :: Interface Engine/Protocol Translator
+Classifier: Topic :: Scientific/Engineering :: Visualization
+Classifier: Topic :: Software Development :: Code Generators
+Classifier: Topic :: Scientific/Engineering :: GIS

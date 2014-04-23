@@ -1,0 +1,208 @@
+<html>
+<title>AIS Message Definition - Human Readable Form</title>
+<body>
+<h1>AIS Message Definitions</h1>
+<ul><li>
+<a href="#ris_waterlevel">ris_waterlevel</a>
+	      (000:24:): 
+	      RIS ECE/TRANS/SC.3/2006/10 Table 2.15: Water level report</li></ul>
+<a name="ris_waterlevel"><h2>AIS Message: ris_waterlevel
+	    (000:24:)
+	  </h2></a><h3>Description:</h3>
+<p>RIS ECE/TRANS/SC.3/2006/10 Table 2.15: Water level report</p>
+<table border="1">
+<tr bgcolor="#9acd32">
+<th align="left">Name</th>
+<th align="left">NumberOfBits</th>
+<th align="left">ArrayLength</th>
+<th align="left">Type</th>
+<th align="left">Units</th>
+<th align="left">Description</th>
+</tr>
+<tr>
+<td>MessageID</td>
+<td>6</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>AIS message number.  Must be 8</td>
+</tr>
+<tr>
+<td>RepeatIndicator</td>
+<td>2</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Indicated how many times a message has been repeated<br><b>0</b>: default<br><b>3</b>: do not repeat any more</td>
+</tr>
+<tr>
+<td>UserID</td>
+<td>30</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Unique ship identification number (MMSI)</td>
+</tr>
+<tr>
+<td>Spare</td>
+<td>2</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Reserved for definition by a regional authority.</td>
+</tr>
+<tr>
+<td>dac</td>
+<td>10</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Designated Area Code</td>
+</tr>
+<tr>
+<td>fid</td>
+<td>6</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Functional Identifier</td>
+</tr>
+<tr>
+<td>country</td>
+<td>6</td>
+<td>2</td>
+<td>aisstr6</td>
+<td></td>
+<td>UN country code using 2*6-Bit ASCII characters according to ERI specification</td>
+</tr>
+<tr>
+<td>id1_id</td>
+<td>11</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>One tide gauge measurement.  Station ID defined by ERI for each country</td>
+</tr>
+<tr>
+<td>id1_sign</td>
+<td>1</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>One tide gauge measurement.  sign of the number in the waterlevel<br><b>0</b>: -1<br><b>1</b>: 1</td>
+</tr>
+<tr>
+<td>id1_waterlevel</td>
+<td>11</td>
+<td></td>
+<td>decimal</td>
+<td>m</td>
+<td>One tide gauge measurement.  Water level at the sensor</td>
+</tr>
+<tr>
+<td>id1_i_have_no_idea</td>
+<td>2</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>One tide gauge measurement.  What are these bits for?  They do not seem to be specified</td>
+</tr>
+<tr>
+<td>id2_id</td>
+<td>11</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>One tide gauge measurement.  Station ID defined by ERI for each country</td>
+</tr>
+<tr>
+<td>id2_sign</td>
+<td>1</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>One tide gauge measurement.  sign of the number in the waterlevel<br><b>0</b>: -1<br><b>1</b>: 1</td>
+</tr>
+<tr>
+<td>id2_waterlevel</td>
+<td>11</td>
+<td></td>
+<td>decimal</td>
+<td>m</td>
+<td>One tide gauge measurement.  Water level at the sensor</td>
+</tr>
+<tr>
+<td>id2_i_have_no_idea</td>
+<td>2</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>One tide gauge measurement.  What are these bits for?  They do not seem to be specified</td>
+</tr>
+<tr>
+<td>id3_id</td>
+<td>11</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>One tide gauge measurement.  Station ID defined by ERI for each country</td>
+</tr>
+<tr>
+<td>id3_sign</td>
+<td>1</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>One tide gauge measurement.  sign of the number in the waterlevel<br><b>0</b>: -1<br><b>1</b>: 1</td>
+</tr>
+<tr>
+<td>id3_waterlevel</td>
+<td>11</td>
+<td></td>
+<td>decimal</td>
+<td>m</td>
+<td>One tide gauge measurement.  Water level at the sensor</td>
+</tr>
+<tr>
+<td>id3_i_have_no_idea</td>
+<td>2</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>One tide gauge measurement.  What are these bits for?  They do not seem to be specified</td>
+</tr>
+<tr>
+<td>id4_id</td>
+<td>11</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>One tide gauge measurement.  Station ID defined by ERI for each country</td>
+</tr>
+<tr>
+<td>id4_sign</td>
+<td>1</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>One tide gauge measurement.  sign of the number in the waterlevel<br><b>0</b>: -1<br><b>1</b>: 1</td>
+</tr>
+<tr>
+<td>id4_waterlevel</td>
+<td>11</td>
+<td></td>
+<td>decimal</td>
+<td>m</td>
+<td>One tide gauge measurement.  Water level at the sensor</td>
+</tr>
+<tr>
+<td>id4_i_have_no_idea</td>
+<td>2</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>One tide gauge measurement.  What are these bits for?  They do not seem to be specified</td>
+</tr>
+</table>
+</body>
+</html>

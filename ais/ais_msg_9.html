@@ -1,0 +1,176 @@
+<html>
+<title>AIS Message Definition - Human Readable Form</title>
+<body>
+<h1>AIS Message Definitions</h1>
+<ul><li>
+<a href="#SARposition">SARposition</a>
+	      (::): 
+	      Search and rescue position report.  Changed in 1371-4</li></ul>
+<a name="SARposition"><h2>AIS Message: SARposition
+	    (::)
+	  </h2></a><h3>Description:</h3>
+<p>Search and rescue position report.  Changed in 1371-4</p>
+<table border="1">
+<tr bgcolor="#9acd32">
+<th align="left">Name</th>
+<th align="left">NumberOfBits</th>
+<th align="left">ArrayLength</th>
+<th align="left">Type</th>
+<th align="left">Units</th>
+<th align="left">Description</th>
+</tr>
+<tr>
+<td>MessageID</td>
+<td>6</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>AIS message number.  Must be 9</td>
+</tr>
+<tr>
+<td>RepeatIndicator</td>
+<td>2</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Indicated how many times a message has been repeated<br><b>0</b>: default<br><b>3</b>: do not repeat any more</td>
+</tr>
+<tr>
+<td>UserID</td>
+<td>30</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Unique ship identification number (MMSI)</td>
+</tr>
+<tr>
+<td>Altitude</td>
+<td>12</td>
+<td></td>
+<td>uint</td>
+<td>meters</td>
+<td>Altitude (GNSS)<br><b>4095</b>: 4095 or higher</td>
+</tr>
+<tr>
+<td>SOG</td>
+<td>10</td>
+<td></td>
+<td>uint</td>
+<td>knots</td>
+<td>Speed over ground<br><b>1022</b>: 1022 knots or higher</td>
+</tr>
+<tr>
+<td>PositionAccuracy</td>
+<td>1</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Accuracy of positioning fixes<br><b>0</b>: low (greater than 10 m)<br><b>1</b>: high (less than 10 m)</td>
+</tr>
+<tr>
+<td>Position_longitude</td>
+<td>28</td>
+<td></td>
+<td>decimal</td>
+<td>degrees</td>
+<td>Location of the vessel  East West location</td>
+</tr>
+<tr>
+<td>Position_latitude</td>
+<td>27</td>
+<td></td>
+<td>decimal</td>
+<td>degrees</td>
+<td>Location of the vessel  North South location</td>
+</tr>
+<tr>
+<td>COG</td>
+<td>12</td>
+<td></td>
+<td>udecimal</td>
+<td>degrees</td>
+<td>Course over ground</td>
+</tr>
+<tr>
+<td>TimeStamp</td>
+<td>6</td>
+<td></td>
+<td>uint</td>
+<td>seconds</td>
+<td>UTC second when the report was generated<br><b>60</b>: not available/default<br><b>61</b>: manual input<br><b>62</b>: dead reckoning<br><b>63</b>: inoperative</td>
+</tr>
+<tr>
+<td>Reserved</td>
+<td>8</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Reserved for regional applications.  Should be set to zero.</td>
+</tr>
+<tr>
+<td>DTE</td>
+<td>1</td>
+<td></td>
+<td>bool</td>
+<td></td>
+<td>Dtta terminal ready</td>
+</tr>
+<tr>
+<td>Spare</td>
+<td>3</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Not used.  Should be set to zero.</td>
+</tr>
+<tr>
+<td>assigned_mode</td>
+<td>1</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>autonomous or assigned mode<br><b>0</b>: autonomous and continuous mode<br><b>1</b>: assigned mode</td>
+</tr>
+<tr>
+<td>RAIM</td>
+<td>1</td>
+<td></td>
+<td>bool</td>
+<td></td>
+<td>Receiver autonomous integrity monitoring flag<br><b>False</b>: not in use<br><b>True</b>: in use</td>
+</tr>
+<tr>
+<td>comm_state</td>
+<td>1</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>SOTDMA or ITDMA<br><b>0</b>: SOTDMA<br><b>1</b>: ITDMA</td>
+</tr>
+<tr>
+<td>state_syncstate</td>
+<td>2</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Communications State - SOTDMA  Sycronization state<br><b>0</b>: UTC direct<br><b>1</b>: UTC indirect<br><b>2</b>: synchronized to a base station<br><b>3</b>: synchronized to another station</td>
+</tr>
+<tr>
+<td>state_slottimeout</td>
+<td>3</td>
+<td></td>
+<td>uint</td>
+<td>frames</td>
+<td>Communications State - SOTDMA  Frames remaining until a new slot is selected<br><b>0</b>: Last frame in this slot<br><b>1</b>: 1 frames left<br><b>2</b>: 2 frames left<br><b>3</b>: 3 frames left<br><b>4</b>: 4 frames left<br><b>5</b>: 5 frames left<br><b>6</b>: 6 frames left<br><b>7</b>: 7 frames left</td>
+</tr>
+<tr>
+<td>state_slotoffset</td>
+<td>14</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Communications State - SOTDMA  In what slot will the next transmission occur. BROKEN</td>
+</tr>
+</table>
+</body>
+</html>

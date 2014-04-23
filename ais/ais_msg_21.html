@@ -1,0 +1,187 @@
+<html>
+<title>AIS Message Definition - Human Readable Form</title>
+<body>
+<h1>AIS Message Definitions</h1>
+<ul><li>
+<a href="#AidsToNavReport">AidsToNavReport</a>
+	      (::): 
+	      Used by a station mounted on an aid-to-navigation.  Note IALA A-124 P.19 for more bits than are here.  Also covered in A-126 in ANNEX 1 - MESSAGE 21 in IALA Recommendation A-126 on the use of AIS in Marine Aids to Navigation Serves Ed 1.1.  This has optional extensions.  What is the IALA Page 7 that Mueller refered to for the RegioanlApp field?</li></ul>
+<a name="AidsToNavReport"><h2>AIS Message: AidsToNavReport
+	    (::)
+	  </h2></a><h3>Description:</h3>
+<p>Used by a station mounted on an aid-to-navigation.  Note IALA A-124 P.19 for more bits than are here.  Also covered in A-126 in ANNEX 1 - MESSAGE 21 in IALA Recommendation A-126 on the use of AIS in Marine Aids to Navigation Serves Ed 1.1.  This has optional extensions.  What is the IALA Page 7 that Mueller refered to for the RegioanlApp field?</p>
+<p><b>Note:</b>aka AtoN</p>
+<p><b>Note:</b>Not tested</p>
+<p><b>See Also:</b></p>
+<table border="1">
+<tr bgcolor="#9acd32">
+<th align="left">Name</th>
+<th align="left">NumberOfBits</th>
+<th align="left">ArrayLength</th>
+<th align="left">Type</th>
+<th align="left">Units</th>
+<th align="left">Description</th>
+</tr>
+<tr>
+<td>MessageID</td>
+<td>6</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>AIS message number.  Must be 21 aka 'F'</td>
+</tr>
+<tr>
+<td>RepeatIndicator</td>
+<td>2</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Indicated how many times a message has been repeated<br><b>0</b>: default<br><b>3</b>: do not repeat any more</td>
+</tr>
+<tr>
+<td>UserID</td>
+<td>30</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Unique ship identification number (MMSI)</td>
+</tr>
+<tr>
+<td>type</td>
+<td>5</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>IALA type of aid-to-navigation<br><b>0</b>: Default, Type of A to N not specified<br><b>1</b>: Reference point<br><b>2</b>: RACON<br><b>3</b>: Off Shore Structure<br><b>4</b>: Spare<br><b>5</b>: Light, without sectors<br><b>6</b>: Light, with sectors<br><b>7</b>: Leading Light Front<br><b>8</b>: Leading Light Rear<br><b>9</b>: Beacon, Cardinal N<br><b>10</b>: Beacon, Cardinal E<br><b>11</b>: Beacon, Cardinal S<br><b>12</b>: Beacon, Cardinal W<br><b>13</b>: Beacon, Port hand<br><b>14</b>: Beacon, Starbord hand<br><b>15</b>: Beacon, Preferred channel port hand<br><b>16</b>: Beacon, Preferred channel starboard hand<br><b>17</b>: Beacon, Isolated danger<br><b>18</b>: Beacon, Safe water<br><b>19</b>: Beacon, Special mark<br><b>20</b>: Cardinal Mark N<br><b>21</b>: Cardinal Mark E<br><b>22</b>: Cardinal Mark S<br><b>23</b>: Cardinal Mark W<br><b>24</b>: Port hand Mark<br><b>25</b>: Starbord hand Mark<br><b>26</b>: Preferred Channel Port hand<br><b>27</b>: Preferred Channel Starboard hand<br><b>28</b>: Isolated danger<br><b>29</b>: Safe water<br><b>30</b>: Special Mark<br><b>31</b>: Light Vessel/LANBY</td>
+</tr>
+<tr>
+<td>name</td>
+<td>6</td>
+<td>20</td>
+<td>aisstr6</td>
+<td></td>
+<td>Name of the aid-to-navigation</td>
+</tr>
+<tr>
+<td>PositionAccuracy</td>
+<td>1</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Accuracy of positioning fixes<br><b>0</b>: low (greater than 10 m)<br><b>1</b>: high (less than 10 m)</td>
+</tr>
+<tr>
+<td>longitude</td>
+<td>28</td>
+<td></td>
+<td>decimal</td>
+<td>degrees</td>
+<td>Location of the AtoN  East West location</td>
+</tr>
+<tr>
+<td>latitude</td>
+<td>27</td>
+<td></td>
+<td>decimal</td>
+<td>degrees</td>
+<td>Location of the AtoN  North South location</td>
+</tr>
+<tr>
+<td>dimA</td>
+<td>9</td>
+<td></td>
+<td>uint</td>
+<td>m</td>
+<td>Distance from bow to reference position</td>
+</tr>
+<tr>
+<td>dimB</td>
+<td>9</td>
+<td></td>
+<td>uint</td>
+<td>m</td>
+<td>Distance from reference position to stern</td>
+</tr>
+<tr>
+<td>dimC</td>
+<td>6</td>
+<td></td>
+<td>uint</td>
+<td>m</td>
+<td>Distance from port side to reference position<br><b>63</b>: 63 m or greater</td>
+</tr>
+<tr>
+<td>dimD</td>
+<td>6</td>
+<td></td>
+<td>uint</td>
+<td>m</td>
+<td>Distance from reference position to starboard side<br><b>63</b>: 63 m or greater</td>
+</tr>
+<tr>
+<td>FixType</td>
+<td>4</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Type of electronic position fixing device<br><b>0</b>: Undefined (default)<br><b>1</b>: GPS<br><b>2</b>: GLONASS<br><b>3</b>: Combined GPS/GLONASS<br><b>4</b>: Loran-C<br><b>5</b>: Chayka<br><b>6</b>: Integrated Navigation System<br><b>7</b>: surveyed<br><b>8</b>: not used - 8<br><b>9</b>: not used - 9<br><b>10</b>: not used - 10<br><b>11</b>: not used - 11<br><b>12</b>: not used - 12<br><b>13</b>: not used - 13<br><b>14</b>: not used - 14<br><b>15</b>: not used - 15</td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>6</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>UTC second when report was generated<br><b>61</b>: Positioning system is in manual mode<br><b>62</b>: Electronic position fixing system operates in estimated mode<br><b>63</b>: Positioning system is inoperative</td>
+</tr>
+<tr>
+<td>OffPosition</td>
+<td>1</td>
+<td></td>
+<td>bool</td>
+<td></td>
+<td>True when the AtoN is off station<br><b>False</b>: On position<br><b>True</b>: Off position</td>
+</tr>
+<tr>
+<td>status</td>
+<td>8</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Unknown</td>
+</tr>
+<tr>
+<td>RAIM</td>
+<td>1</td>
+<td></td>
+<td>bool</td>
+<td></td>
+<td>Receiver autonomous integrity monitoring flag<br><b>False</b>: not in use<br><b>True</b>: in use</td>
+</tr>
+<tr>
+<td>virtual_aton_flag</td>
+<td>1</td>
+<td></td>
+<td>bool</td>
+<td></td>
+<td>Does the unit physically exist?<br><b>False</b>: Unit physically exists<br><b>True</b>: Virtual AtoN</td>
+</tr>
+<tr>
+<td>assigned_mode_flag</td>
+<td>1</td>
+<td></td>
+<td>bool</td>
+<td></td>
+<td>autonomous or controlled<br><b>False</b>: autonomous and continuous mode<br><b>True</b>: in assigned mode</td>
+</tr>
+<tr>
+<td>spare</td>
+<td>1</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Not Used</td>
+</tr>
+</table>
+</body>
+</html>
