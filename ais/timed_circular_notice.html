@@ -1,0 +1,165 @@
+<html>
+<title>AIS Message Definition - Human Readable Form</title>
+<body>
+<h1>AIS Message Definitions</h1>
+<ul><li>
+<a href="#timed_circular_notice">timed_circular_notice</a>
+	      (366:63:1): 
+	      Timed circular notice</li></ul>
+<a name="timed_circular_notice"><h2>AIS Message: timed_circular_notice
+	    (366:63:1)
+	  </h2></a><h3>Description:</h3>
+<p>Timed circular notice</p>
+<p><b>Note:</b>
+      This message can be broadcast with a timetoexpire of 0 to
+      indicate that a region is known to not have a currently active
+      notice.
+    </p>
+<p><b>Note:</b> 
+      Proposed transmission scheme for areatype=0 (right whale
+      acoustic): A notice will be sent every 3 minutes for each buoy.
+      Messages will be sent with timetoexpire of 0 when no acoustic
+      detection has occured in the last 24 hours.  When an acoustic
+      detection, the system will send an separate broadcast for that
+      buoy as soon as possible in addition to the normal 3 minute
+      schedule.  
+    </p>
+<p><b>Note:</b>
+      The (lat,lon,areatype) provide the key/id for each message.  Any
+      system is expected to overwrite any prior message message with 
+      a new message when it is received.  This provide the mechanism 
+      to cancel out of date messages before they expire or extend the 
+      messages further into the future.
+    </p>
+<table border="1">
+<tr bgcolor="#9acd32">
+<th align="left">Name</th>
+<th align="left">NumberOfBits</th>
+<th align="left">ArrayLength</th>
+<th align="left">Type</th>
+<th align="left">Units</th>
+<th align="left">Description</th>
+</tr>
+<tr>
+<td>MessageID</td>
+<td>6</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>AIS message number.  Must be 8</td>
+</tr>
+<tr>
+<td>RepeatIndicator</td>
+<td>2</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Indicated how many times a message has been repeated<br><b>0</b>: default<br><b>3</b>: do not repeat any more</td>
+</tr>
+<tr>
+<td>UserID</td>
+<td>30</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Unique ship identification number (MMSI)</td>
+</tr>
+<tr>
+<td>Spare</td>
+<td>2</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Reserved for definition by a regional authority.</td>
+</tr>
+<tr>
+<td>dac</td>
+<td>10</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Designated Area Code - 366 for the United States</td>
+</tr>
+<tr>
+<td>fid</td>
+<td>6</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Functional IDentifier - 63</td>
+</tr>
+<tr>
+<td>month</td>
+<td>4</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Start time of most recent notice  UTC month</td>
+</tr>
+<tr>
+<td>day</td>
+<td>5</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Start time of most recent notice  UTC day of the month 1..31</td>
+</tr>
+<tr>
+<td>hour</td>
+<td>5</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Start time of most recent notice  UTC hours 0..23</td>
+</tr>
+<tr>
+<td>min</td>
+<td>6</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Start time of most recent notice  UTC minutes</td>
+</tr>
+<tr>
+<td>longitude</td>
+<td>28</td>
+<td></td>
+<td>decimal</td>
+<td>degrees</td>
+<td>Center of the area/zone  East West location</td>
+</tr>
+<tr>
+<td>latitude</td>
+<td>27</td>
+<td></td>
+<td>decimal</td>
+<td>degrees</td>
+<td>Center of the area/zone  North South location</td>
+</tr>
+<tr>
+<td>timetoexpire</td>
+<td>15</td>
+<td></td>
+<td>uint</td>
+<td>Minutes</td>
+<td>Minutes from the start time until the notice expires.  Max is aprox 23 days<br><b>0</b>: No detection or notice not active in region</td>
+</tr>
+<tr>
+<td>radius</td>
+<td>14</td>
+<td></td>
+<td>udecimal</td>
+<td>m</td>
+<td>Distance from center of detection zone (lat/lon above).  Distance in increments of 10 meters</td>
+</tr>
+<tr>
+<td>areatype</td>
+<td>8</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>What does this circular area represent<br><b>0</b>: Right whale detection<br><b>1</b>: Restricted Area<br><b>2</b>: Prohibited Area (no unauthorized entry)<br><b>4</b>: Diving operations<br><b>5</b>: Underwater obstruction<br><b>6</b>: Fishing nets<br><b>7</b>: Oil in water<br><b>9</b>: Towing prohibited<br><b>10</b>: Anchorage area (large vessels)<br><b>11</b>: Anchorage area (small vessels)<br><b>12</b>: Anchorage area (general)<br><b>13</b>: Anchorage area (deep water)<br><b>14</b>: Anchorage area (tanker)<br><b>15</b>: Anchorage area (24h max)<br><b>16</b>: Anchorage area (explosives)<br><b>17</b>: Sea-plane landing area<br><b>18</b>: Anchorage area (sea planes)<br><b>20</b>: Anchoring prohibited<br><b>21</b>: Fishing prohibited<br><b>23</b>: Actively dumping explosives<br><b>24</b>: Actively dumping<br><b>30</b>: Firing danger area<br><b>31</b>: Military area, entry prohibited<br><b>32</b>: Mine-laying practice area<br><b>33</b>: Submarine transit and exercise area<br><b>34</b>: Mine field<br><b>61</b>: Fast ice<br><b>62</b>: Sea ice<br><b>63</b>: Logs<br><b>65</b>: Dredging area<br><b>66</b>: Cargo transhipment area<br><b>67</b>: Incineration area<br><b>70</b>: SAR - Region of search (what SAR keys should there be?)<br><b>71</b>: SAR - Man Overboard<br><b>80</b>: Debris, Generic<br><b>90</b>: Restricted visibility<br><b>91</b>: Restricted visibility, fog<br><b>92</b>: Restricted visibility, smoke<br><b>100</b>: Autonmous Underwater Vehicle (AUV) operations<br><b>101</b>: Remotely Operated Vehicle (ROV) operations - teather in water<br><b>102</b>: Diving operations<br><b>103</b>: Swimmers in water<br><b>111</b>: LNG security zone</td>
+</tr>
+</table>
+</body>
+</html>

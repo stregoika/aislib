@@ -1,0 +1,140 @@
+<html>
+<title>AIS Message Definition - Human Readable Form</title>
+<body>
+<h1>AIS Message Definitions</h1>
+<ul><li>
+<a href="#interrogation">interrogation</a>
+	      (::): 
+	      FIX: need a description</li></ul>
+<a name="interrogation"><h2>AIS Message: interrogation
+	    (::)
+	  </h2></a><h3>Description:</h3>
+<p>FIX: need a description</p>
+<p><b>Note:</b>other than requests for UTC and date</p>
+<p><b>Note:</b>FIX: make the decode okay with multiple lengths. HOW??</p>
+<p><b>See Also:</b>FIX: link to UTC and date get messages</p>
+<p><b>See Also:</b>ITU-R M.1371-3, p. 110-110, Table 63</p>
+<table border="1">
+<tr bgcolor="#9acd32">
+<th align="left">Name</th>
+<th align="left">NumberOfBits</th>
+<th align="left">ArrayLength</th>
+<th align="left">Type</th>
+<th align="left">Units</th>
+<th align="left">Description</th>
+</tr>
+<tr>
+<td>MessageID</td>
+<td>6</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>AIS message number.  Must be 15</td>
+</tr>
+<tr>
+<td>RepeatIndicator</td>
+<td>2</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Indicated how many times a message has been repeated<br><b>0</b>: default<br><b>3</b>: do not repeat any more</td>
+</tr>
+<tr>
+<td>UserID</td>
+<td>30</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>MMSI number of interrogating station</td>
+</tr>
+<tr>
+<td>DestID</td>
+<td>30</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>MMSI number of interrogated station</td>
+</tr>
+<tr>
+<td>MessageID1</td>
+<td>6</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>requested message type from interrogated station</td>
+</tr>
+<tr>
+<td>SlotOffset</td>
+<td>6</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>requested message type from interrogated station</td>
+</tr>
+<tr>
+<td>Spare</td>
+<td>2</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Not used.  Should be set to zero. Researved for future use.</td>
+</tr>
+<tr>
+<td>MessageID12</td>
+<td>6</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>requested message type from interrogated station</td>
+</tr>
+<tr>
+<td>SlotOffset12</td>
+<td>6</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>requested message type from interrogated station</td>
+</tr>
+<tr>
+<td>Spare2</td>
+<td>2</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Not used.  Should be set to zero. Researved for future use.</td>
+</tr>
+<tr>
+<td>DestID2</td>
+<td>30</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>MMSI number of interrogated station</td>
+</tr>
+<tr>
+<td>MessageID2</td>
+<td>6</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>requested message type from interrogated station</td>
+</tr>
+<tr>
+<td>SlotOffset2</td>
+<td>6</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>requested message type from interrogated station</td>
+</tr>
+<tr>
+<td>Spare3</td>
+<td>2</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Not used.  Should be set to zero. Researved for future use.</td>
+</tr>
+</table>
+</body>
+</html>

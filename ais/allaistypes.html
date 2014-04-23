@@ -1,0 +1,104 @@
+<html>
+<title>AIS Message Definition - Human Readable Form</title>
+<body>
+<h1>AIS Message Definitions</h1>
+<ul><li>
+<a href="#alltypesmsg">alltypesmsg</a>
+	      (366:63:1): 
+	      Message to demonstrate all the ais types.  Good for testing</li></ul>
+<a name="alltypesmsg"><h2>AIS Message: alltypesmsg
+	    (366:63:1)
+	  </h2></a><h3>Description:</h3>
+<p>Message to demonstrate all the ais types.  Good for testing</p>
+<table border="1">
+<tr bgcolor="#9acd32">
+<th align="left">Name</th>
+<th align="left">NumberOfBits</th>
+<th align="left">ArrayLength</th>
+<th align="left">Type</th>
+<th align="left">Units</th>
+<th align="left">Description</th>
+</tr>
+<tr>
+<td>dac</td>
+<td>16</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Designated Area Code</td>
+</tr>
+<tr>
+<td>reqDecimal</td>
+<td>8</td>
+<td></td>
+<td>decimal</td>
+<td></td>
+<td>required decimal value... FIX: scale or no?</td>
+</tr>
+<tr>
+<td>unavail_uint</td>
+<td>2</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Unavailable unsigned integer</td>
+</tr>
+<tr>
+<td>anUInt</td>
+<td>2</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>NO unavailable unsigned integer</td>
+</tr>
+<tr>
+<td>anInt</td>
+<td>3</td>
+<td></td>
+<td>int</td>
+<td></td>
+<td>NO unavailable signed integer</td>
+</tr>
+<tr>
+<td>aBool</td>
+<td>1</td>
+<td></td>
+<td>bool</td>
+<td></td>
+<td>Simple bool</td>
+</tr>
+<tr>
+<td>aStr</td>
+<td>6</td>
+<td>5</td>
+<td>aisstr6</td>
+<td></td>
+<td>An ais string of 5 characters</td>
+</tr>
+<tr>
+<td>anUDecimal</td>
+<td>16</td>
+<td></td>
+<td>udecimal</td>
+<td></td>
+<td>An unsigned decimal.  Allow smaller numbers</td>
+</tr>
+<tr>
+<td>aDecimal</td>
+<td>16</td>
+<td></td>
+<td>decimal</td>
+<td></td>
+<td>A decimal</td>
+</tr>
+<tr>
+<td>aFloat</td>
+<td>32</td>
+<td></td>
+<td>float</td>
+<td></td>
+<td>An IEEE floating point number</td>
+</tr>
+</table>
+</body>
+</html>

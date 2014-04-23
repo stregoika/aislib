@@ -1,0 +1,145 @@
+<html>
+<title>AIS Message Definition - Human Readable Form</title>
+<body>
+<h1>AIS Message Definitions</h1>
+<ul><li>
+<a href="#ChanMngmt">ChanMngmt</a>
+	      (::): 
+	      Group Assignment Command</li></ul>
+<a name="ChanMngmt"><h2>AIS Message: ChanMngmt
+	    (::)
+	  </h2></a><h3>Description:</h3>
+<p>Group Assignment Command</p>
+<p><b>Note:</b>Defined in 62287 CDV IEC:2005 80/405/CDV</p>
+<table border="1">
+<tr bgcolor="#9acd32">
+<th align="left">Name</th>
+<th align="left">NumberOfBits</th>
+<th align="left">ArrayLength</th>
+<th align="left">Type</th>
+<th align="left">Units</th>
+<th align="left">Description</th>
+</tr>
+<tr>
+<td>MessageID</td>
+<td>6</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>AIS message number.  Must be 23</td>
+</tr>
+<tr>
+<td>RepeatIndicator</td>
+<td>2</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Indicated how many times a message has been repeated<br><b>0</b>: default<br><b>3</b>: do not repeat any more</td>
+</tr>
+<tr>
+<td>UserID</td>
+<td>30</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Unique ship identification number (MMSI)</td>
+</tr>
+<tr>
+<td>Spare</td>
+<td>2</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Not used.  Should be set to zero.</td>
+</tr>
+<tr>
+<td>corner1_lon</td>
+<td>18</td>
+<td></td>
+<td>decimal</td>
+<td>degrees</td>
+<td>north-east corner of area for assignment  longitude of corner</td>
+</tr>
+<tr>
+<td>corner1_lat</td>
+<td>17</td>
+<td></td>
+<td>decimal</td>
+<td>degrees</td>
+<td>north-east corner of area for assignment  latitude of corner</td>
+</tr>
+<tr>
+<td>corner2_lon</td>
+<td>18</td>
+<td></td>
+<td>decimal</td>
+<td>degrees</td>
+<td>south-west corner of area for assignment  longitude of corner</td>
+</tr>
+<tr>
+<td>corner2_lat</td>
+<td>17</td>
+<td></td>
+<td>decimal</td>
+<td>degrees</td>
+<td>south-west corner of area for assignment  latitude of corner</td>
+</tr>
+<tr>
+<td>StationType</td>
+<td>4</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>TODO<br><b>0</b>: all types of mobiles<br><b>1</b>: reserved for future use<br><b>2</b>: all types of Class B mobile stations<br><b>3</b>: SAR airborne mobile stations<br><b>4</b>: AtoN station<br><b>5</b>: Class B "CS" shipborne mobile stations (IEC62287 only)<br><b>6</b>: regional use and inland waterways<br><b>7</b>: regional use and inland waterways<br><b>8</b>: regional use and inland waterways<br><b>9</b>: regional use and inland waterways<br><b>10</b>: reserved for future use<br><b>11</b>: reserved for future use<br><b>12</b>: reserved for future use<br><b>13</b>: reserved for future use<br><b>14</b>: reserved for future use<br><b>15</b>: reserved for future use</td>
+</tr>
+<tr>
+<td>shipandcargo</td>
+<td>8</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Type of ship and cargo type.  FIX: need to verify that I got this lookup table right.  Also need to handle entryranges in the lookup table<br><b>20</b>: Wing in ground (WIG), all ships of this type<br><b>21</b>: Wing in ground (WIG), Hazardous catagory A<br><b>22</b>: Wing in ground (WIG), Hazardous catagory B<br><b>23</b>: Wing in ground (WIG), Hazardous catagory C<br><b>24</b>: Wing in ground (WIG), Hazardous catagory D<br><b>25</b>: Wing in ground (WIG), Reserved for future use<br><b>26</b>: Wing in ground (WIG), Reserved for future use<br><b>27</b>: Wing in ground (WIG), Reserved for future use<br><b>28</b>: Wing in ground (WIG), Reserved for future use<br><b>29</b>: Wing in ground (WIG), No additional information<br><b>30</b>: fishing<br><b>31</b>: towing<br><b>32</b>: towing length exceeds 200m or breadth exceeds 25m<br><b>33</b>: dredging or underwater ops<br><b>34</b>: diving ops<br><b>35</b>: military ops<br><b>36</b>: sailing<br><b>37</b>: pleasure craft<br><b>38</b>: reserved<br><b>39</b>: reserved<br><b>40</b>: High speed craft (HSC), all ships of this type<br><b>41</b>: High speed craft (HSC), Hazardous catagory A<br><b>42</b>: High speed craft (HSC), Hazardous catagory B<br><b>43</b>: High speed craft (HSC), Hazardous catagory C<br><b>44</b>: High speed craft (HSC), Hazardous catagory D<br><b>45</b>: High speed craft (HSC), Reserved for future use<br><b>46</b>: High speed craft (HSC), Reserved for future use<br><b>47</b>: High speed craft (HSC), Reserved for future use<br><b>48</b>: High speed craft (HSC), Reserved for future use<br><b>49</b>: High speed craft (HSC), No additional information<br><b>50</b>: pilot vessel<br><b>51</b>: search and rescue vessel<br><b>52</b>: tug<br><b>53</b>: port tender<br><b>54</b>: anti-polution equipment<br><b>55</b>: law enforcement<br><b>56</b>: spare - local vessel<br><b>57</b>: spare - local vessel<br><b>58</b>: medical transport<br><b>59</b>: ship according to RR Resolution No. 18<br><b>60</b>: passenger, all ships of this type<br><b>61</b>: passenger, Hazardous catagory A<br><b>62</b>: passenger, Hazardous catagory B<br><b>63</b>: passenger, Hazardous catagory C<br><b>64</b>: passenger, Hazardous catagory D<br><b>65</b>: passenger, Reserved for future use<br><b>66</b>: passenger, Reserved for future use<br><b>67</b>: passenger, Reserved for future use<br><b>68</b>: passenger, Reserved for future use<br><b>69</b>: passenger, No additional information<br><b>70</b>: cargo, all ships of this type<br><b>71</b>: cargo, Hazardous catagory A<br><b>72</b>: cargo, Hazardous catagory B<br><b>73</b>: cargo, Hazardous catagory C<br><b>74</b>: cargo, Hazardous catagory D<br><b>75</b>: cargo, Reserved for future use<br><b>76</b>: cargo, Reserved for future use<br><b>77</b>: cargo, Reserved for future use<br><b>78</b>: cargo, Reserved for future use<br><b>79</b>: cargo, No additional information<br><b>80</b>: tanker, all ships of this type<br><b>81</b>: tanker, Hazardous catagory A<br><b>82</b>: tanker, Hazardous catagory B<br><b>83</b>: tanker, Hazardous catagory C<br><b>84</b>: tanker, Hazardous catagory D<br><b>85</b>: tanker, Reserved for future use<br><b>86</b>: tanker, Reserved for future use<br><b>87</b>: tanker, Reserved for future use<br><b>88</b>: tanker, Reserved for future use<br><b>89</b>: tanker, No additional information<br><b>90</b>: other type, all ships of this type<br><b>91</b>: other type, Hazardous catagory A<br><b>92</b>: other type, Hazardous catagory B<br><b>93</b>: other type, Hazardous catagory C<br><b>94</b>: other type, Hazardous catagory D<br><b>95</b>: other type, Reserved for future use<br><b>96</b>: other type, Reserved for future use<br><b>97</b>: other type, Reserved for future use<br><b>98</b>: other type, Reserved for future use<br><b>99</b>: other type, No additional information</td>
+</tr>
+<tr>
+<td>Spare2</td>
+<td>22</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Not used.  Should be set to zero.</td>
+</tr>
+<tr>
+<td>TxRxMode</td>
+<td>4</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>TODO<br><b>0</b>: Tx A/Tx B, Rx A/RX B<br><b>1</b>: Tx A, Rx A/Rx B<br><b>2</b>: Tx B, Rx A/Rx B<br><b>3</b>: reserved for future use</td>
+</tr>
+<tr>
+<td>ReportingInterval</td>
+<td>4</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Command the stations to report as given in table 17<br><b>0</b>: As given by the autonomous mode<br><b>1</b>: 10 minutes<br><b>2</b>: 6 minutes<br><b>3</b>: 3 minutes<br><b>4</b>: 1 minute<br><b>5</b>: 30 seconds<br><b>6</b>: 15 seconds<br><b>7</b>: 10 seconds<br><b>8</b>: 5 seconds<br><b>9</b>: Next shorter reporting interval<br><b>10</b>: Next longer reporting interval<br><b>11</b>: Reserved for future use<br><b>12</b>: Reserved for future use<br><b>13</b>: Reserved for future use<br><b>14</b>: Reserved for future use<br><b>15</b>: Reserved for future use</td>
+</tr>
+<tr>
+<td>QuietTime</td>
+<td>22</td>
+<td></td>
+<td>uint</td>
+<td>min</td>
+<td>How long to be quiet</td>
+</tr>
+<tr>
+<td>Spare3</td>
+<td>6</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Not used.  Should be set to zero.</td>
+</tr>
+</table>
+</body>
+</html>

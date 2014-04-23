@@ -1,0 +1,324 @@
+<html>
+<title>AIS Message Definition - Human Readable Form</title>
+<body>
+<h1>AIS Message Definitions</h1>
+<ul><li>
+<a href="#imo_tidal_window">imo_tidal_window</a>
+	      (001:13:): 
+	      IMO tidal window.  Specified
+      in SN/Circ.236 Annex 2, page 5, Application 3.  Also defined in IALA Guidelines on AIS,
+      Vol 1, Part 1, Ed. 1.3. Guildeline No 1028.
+
+      This message should be used to inform vessels about tidal
+      windows which allow a vessel the safe passage of a fairway.  The
+      message includes predictions of current speed and current
+      direction. In this example, three points of tidal information
+      are given. Attributes of message: addressed, shore station
+      transmitting, acknowledgement required.
+    </li></ul>
+<a name="imo_tidal_window"><h2>AIS Message: imo_tidal_window
+	    (001:13:)
+	  </h2></a><h3>Description:</h3>
+<p>IMO tidal window.  Specified
+      in SN/Circ.236 Annex 2, page 5, Application 3.  Also defined in IALA Guidelines on AIS,
+      Vol 1, Part 1, Ed. 1.3. Guildeline No 1028.
+
+      This message should be used to inform vessels about tidal
+      windows which allow a vessel the safe passage of a fairway.  The
+      message includes predictions of current speed and current
+      direction. In this example, three points of tidal information
+      are given. Attributes of message: addressed, shore station
+      transmitting, acknowledgement required.
+    </p>
+<table border="1">
+<tr bgcolor="#9acd32">
+<th align="left">Name</th>
+<th align="left">NumberOfBits</th>
+<th align="left">ArrayLength</th>
+<th align="left">Type</th>
+<th align="left">Units</th>
+<th align="left">Description</th>
+</tr>
+<tr>
+<td>MessageID</td>
+<td>6</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>AIS message number.  Must be 6</td>
+</tr>
+<tr>
+<td>RepeatIndicator</td>
+<td>2</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Indicated how many times a message has been repeated<br><b>0</b>: default<br><b>3</b>: do not repeat any more</td>
+</tr>
+<tr>
+<td>UserID</td>
+<td>30</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>MMSI number of transmitter broadcasting the message</td>
+</tr>
+<tr>
+<td>SeqNum</td>
+<td>2</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Sequence number as described in 5.3.1.  Assigned to each station</td>
+</tr>
+<tr>
+<td>DestinationID</td>
+<td>30</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Unique ship identification number (MMSI)</td>
+</tr>
+<tr>
+<td>RetransmitFlag</td>
+<td>1</td>
+<td></td>
+<td>bool</td>
+<td></td>
+<td>Should be set upon retransmission<br><b>0</b>: no retransmission<br><b>1</b>: restransmitted</td>
+</tr>
+<tr>
+<td>Spare</td>
+<td>1</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Must be 0</td>
+</tr>
+<tr>
+<td>dac</td>
+<td>10</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Designated Area Code - part 1 of the IAI</td>
+</tr>
+<tr>
+<td>fid</td>
+<td>6</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Functional Identifier - part 2 of the IAI</td>
+</tr>
+<tr>
+<td>month</td>
+<td>4</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>UTC month</td>
+</tr>
+<tr>
+<td>day</td>
+<td>5</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>UTC day</td>
+</tr>
+<tr>
+<td>window1_longitude</td>
+<td>28</td>
+<td></td>
+<td>decimal</td>
+<td>degrees</td>
+<td>Not sure what this position is for?  Center?  East West location</td>
+</tr>
+<tr>
+<td>window1_latitude</td>
+<td>27</td>
+<td></td>
+<td>decimal</td>
+<td>degrees</td>
+<td>Not sure what this position is for?  Center?  North South location</td>
+</tr>
+<tr>
+<td>fromhour1</td>
+<td>5</td>
+<td></td>
+<td>uint</td>
+<td>hours</td>
+<td>From UTC hour</td>
+</tr>
+<tr>
+<td>frommin1</td>
+<td>6</td>
+<td></td>
+<td>uint</td>
+<td>minutes</td>
+<td>From UTC minute</td>
+</tr>
+<tr>
+<td>tohour1</td>
+<td>5</td>
+<td></td>
+<td>uint</td>
+<td>hours</td>
+<td>To UTC hour</td>
+</tr>
+<tr>
+<td>tomin1</td>
+<td>6</td>
+<td></td>
+<td>uint</td>
+<td>minutes</td>
+<td>To UTC minute</td>
+</tr>
+<tr>
+<td>curdir1</td>
+<td>9</td>
+<td></td>
+<td>uint</td>
+<td>degrees</td>
+<td>Current direction</td>
+</tr>
+<tr>
+<td>curspeed1</td>
+<td>7</td>
+<td></td>
+<td>udecimal</td>
+<td>knots</td>
+<td>Current speed</td>
+</tr>
+<tr>
+<td>window2_longitude</td>
+<td>28</td>
+<td></td>
+<td>decimal</td>
+<td>degrees</td>
+<td>Not sure what this position is for?  Center?  East West location</td>
+</tr>
+<tr>
+<td>window2_latitude</td>
+<td>27</td>
+<td></td>
+<td>decimal</td>
+<td>degrees</td>
+<td>Not sure what this position is for?  Center?  North South location</td>
+</tr>
+<tr>
+<td>fromhour2</td>
+<td>5</td>
+<td></td>
+<td>uint</td>
+<td>hours</td>
+<td>From UTC hour</td>
+</tr>
+<tr>
+<td>frommin2</td>
+<td>6</td>
+<td></td>
+<td>uint</td>
+<td>minutes</td>
+<td>From UTC minute</td>
+</tr>
+<tr>
+<td>tohour2</td>
+<td>5</td>
+<td></td>
+<td>uint</td>
+<td>hours</td>
+<td>To UTC hour</td>
+</tr>
+<tr>
+<td>tomin2</td>
+<td>6</td>
+<td></td>
+<td>uint</td>
+<td>minutes</td>
+<td>To UTC minute</td>
+</tr>
+<tr>
+<td>curdir2</td>
+<td>9</td>
+<td></td>
+<td>uint</td>
+<td>degrees</td>
+<td>Current direction</td>
+</tr>
+<tr>
+<td>curspeed2</td>
+<td>7</td>
+<td></td>
+<td>udecimal</td>
+<td>knots</td>
+<td>Current speed</td>
+</tr>
+<tr>
+<td>window3_longitude</td>
+<td>28</td>
+<td></td>
+<td>decimal</td>
+<td>degrees</td>
+<td>Not sure what this position is for?  Center?  East West location</td>
+</tr>
+<tr>
+<td>window3_latitude</td>
+<td>27</td>
+<td></td>
+<td>decimal</td>
+<td>degrees</td>
+<td>Not sure what this position is for?  Center?  North South location</td>
+</tr>
+<tr>
+<td>fromhour3</td>
+<td>5</td>
+<td></td>
+<td>uint</td>
+<td>hours</td>
+<td>From UTC hour</td>
+</tr>
+<tr>
+<td>frommin3</td>
+<td>6</td>
+<td></td>
+<td>uint</td>
+<td>minutes</td>
+<td>From UTC minute</td>
+</tr>
+<tr>
+<td>tohour3</td>
+<td>5</td>
+<td></td>
+<td>uint</td>
+<td>hours</td>
+<td>To UTC hour</td>
+</tr>
+<tr>
+<td>tomin3</td>
+<td>6</td>
+<td></td>
+<td>uint</td>
+<td>minutes</td>
+<td>To UTC minute</td>
+</tr>
+<tr>
+<td>curdir3</td>
+<td>9</td>
+<td></td>
+<td>uint</td>
+<td>degrees</td>
+<td>Current direction</td>
+</tr>
+<tr>
+<td>curspeed3</td>
+<td>7</td>
+<td></td>
+<td>udecimal</td>
+<td>knots</td>
+<td>Current speed</td>
+</tr>
+</table>
+</body>
+</html>

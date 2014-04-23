@@ -1,0 +1,89 @@
+<html>
+<title>AIS Message Definition - Human Readable Form</title>
+<body>
+<h1>AIS Message Definitions</h1>
+<ul><li>
+<a href="#gnss_correction">gnss_correction</a>
+	      (::): 
+	      Satellite navigation differential correction</li></ul>
+<a name="gnss_correction"><h2>AIS Message: gnss_correction
+	    (::)
+	  </h2></a><h3>Description:</h3>
+<p>Satellite navigation differential correction</p>
+<p><b>See Also:</b>http://www.itu.int/rec/R-REC-M.823/en</p>
+<table border="1">
+<tr bgcolor="#9acd32">
+<th align="left">Name</th>
+<th align="left">NumberOfBits</th>
+<th align="left">ArrayLength</th>
+<th align="left">Type</th>
+<th align="left">Units</th>
+<th align="left">Description</th>
+</tr>
+<tr>
+<td>MessageID</td>
+<td>6</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>AIS message number.  Must be 17</td>
+</tr>
+<tr>
+<td>RepeatIndicator</td>
+<td>2</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Indicated how many times a message has been repeated<br><b>0</b>: default<br><b>3</b>: do not repeat any more</td>
+</tr>
+<tr>
+<td>UserID</td>
+<td>30</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Base station identification number (MMSI)</td>
+</tr>
+<tr>
+<td>Spare</td>
+<td>2</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Reserved for definition by a regional authority.</td>
+</tr>
+<tr>
+<td>x</td>
+<td>18</td>
+<td></td>
+<td>decimal</td>
+<td>degrees</td>
+<td>East West location</td>
+</tr>
+<tr>
+<td>y</td>
+<td>17</td>
+<td></td>
+<td>decimal</td>
+<td>degrees</td>
+<td>North South location</td>
+</tr>
+<tr>
+<td>Spare2</td>
+<td>5</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Reserved for definition by a regional authority.</td>
+</tr>
+<tr>
+<td>BinaryData</td>
+<td>-1</td>
+<td></td>
+<td>binary</td>
+<td></td>
+<td>GNSS Differential correction data</td>
+</tr>
+</table>
+</body>
+</html>
