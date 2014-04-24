@@ -1361,18 +1361,17 @@ def main():
                     #sys.exit("FIX: need to implement creating nmea capability")
 		else: sys.exit('ERROR: unknown ioType.  Help!')
 
+   if options.sqlCreate:
+      sqlCreateStr(outfile,options.fieldList,dbType=options.dbType)
 
-	if options.sqlCreate:
-		sqlCreateStr(outfile,options.fieldList,dbType=options.dbType)
+   if options.latexDefinitionTable:
+      latexDefinitionTable(outfile)
+         
+   # For conversion to word tables
+   if options.textDefinitionTable:
+      textDefinitionTable(outfile,options.delimTextDefinitionTable)
 
-	if options.latexDefinitionTable:
-		latexDefinitionTable(outfile)
-
-	# For conversion to word tables
-	if options.textDefinitionTable:
-		textDefinitionTable(outfile,options.delimTextDefinitionTable)
-
-	if options.printCsvfieldList:
+   if options.printCsvfieldList:
 		# Make a csv separated list of fields that will be displayed for csv
 		if None == options.fieldList: options.fieldList = fieldList
 		import StringIO
