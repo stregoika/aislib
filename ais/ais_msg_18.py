@@ -1207,11 +1207,10 @@ def addMsgOptions(parser):
 ################################################################################
 def main():
 	from optparse import OptionParser
-   
+   parser = OptionParser(usage="%prog [options]", version="%prog "+__version__)
+
    print 'ais_msg_18::main - Init'
    
-	parser = OptionParser(usage="%prog [options]", version="%prog "+__version__)
-
 	parser.add_option('--doc-test',dest='doctest',default=False,action='store_true',
 		help='run the documentation tests')
 	parser.add_option('--unit-test',dest='unittest',default=False,action='store_true',
