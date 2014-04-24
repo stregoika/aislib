@@ -1262,9 +1262,10 @@ def main():
 
    (options,args) = parser.parse_args()
    success=True
-   
+
    if options.doctest:
-      import os; print os.path.basename(sys.argv[0]), 'doctests ...',
+      import os; 
+      print os.path.basename(sys.argv[0]), 'doctests ...',
       sys.argv= [sys.argv[0]]
 		if options.verbose: sys.argv.append('-v')
 		import doctest
