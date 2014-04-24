@@ -356,7 +356,7 @@ def handle_insert_update(cx, uscg_msg, msg_dict, aismsg):
 
       return True # need to commit db
    
-   # ********** Mensaje 24 (Informe datos estáticos de la clase B CS
+   # ********** Mensaje 24 (Informe datos estaticos de la clase B CS
    if msg_type == 24: # Class B static data report.  Either part A (0) or B (0)
       # remove the old value, but only do it by parts
       cu.execute ('DELETE FROM b_staticdata WHERE userid=%s AND partnum=%s;', (userid,msg_dict['partnum']))
