@@ -68,19 +68,22 @@ def rebuild_track_line(cu,userid,name,start_time=None,point_limit=50):
       x,y = row[0].split()
       x = x.split('(')[1]
       y = y.split(')')[0]
-      # punto fuera de rango valido GPS, se descarta solo ese punto
-      if x=='181' and y=='91':
+      
+      if x=='181' and y=='91': # punto fuera de rango valido GPS, se descarta solo ese punto
          continue
       linePoints.append(row[0].split('(')[1].split(')')[0])
 
    if len(linePoints)<2:
-      #print 'Not enough points.  Delete if exists'
+      print 'nais2postgis::rebuild_track_line - No hay puntos suficientes; borrar track userid', userid
       cu.execute('DELETE FROM track_lines WHERE userid = %s;',(userid,))
-      return
+      return  # finaliza la función de crear track
+    
    lineWKT='LINESTRING('+','.join(linePoints)+')'
-
+   
+   # actualizar track: borrar antigua, crear nueva
    cu.execute('DELETE FROM track_lines WHERE userid=%s;', (userid,) )
    q = 'INSERT INTO track_lines (userid,name,track) VALUES (%s,%s,GeomFromText(%s,4326));'
+   qPrint = 'INSERT INTO track_lines (userid,name,track) VALUES (%s,%s,GeomFromText(%s,4326));' % (userid, name, lineWKT)
    cu.execute(q, (userid,name,lineWKT) )
 
 ################################################################################
