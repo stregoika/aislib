@@ -1383,9 +1383,9 @@ def main():
 		else: print result
 
    if options.doDecode:
-		if len(args)==0: args = sys.stdin
+      if len(args)==0: args = sys.stdin
          for msg in args:
-            bv = None
+         bv = None
          
          if msg[0] in ('$','!') and msg[3:6] in ('VDM','VDO'):
 				# Found nmea
