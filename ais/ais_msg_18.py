@@ -1382,12 +1382,11 @@ def main():
 		if result[-1] == ',': print result[:-1]
 		else: print result
 
-	if options.doDecode:
+   if options.doDecode:
 		if len(args)==0: args = sys.stdin
-		for msg in args:
+         for msg in args:
 			bv = None
-
-			if msg[0] in ('$','!') and msg[3:6] in ('VDM','VDO'):
+         if msg[0] in ('$','!') and msg[3:6] in ('VDM','VDO'):
 				# Found nmea
 				# FIX: do checksum
 				bv = binary.ais6tobitvec(msg.split(',')[5])
