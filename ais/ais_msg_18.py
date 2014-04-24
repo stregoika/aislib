@@ -1385,19 +1385,20 @@ def main():
    if options.doDecode:
 		if len(args)==0: args = sys.stdin
          for msg in args:
-			bv = None
+            bv = None
+         
          if msg[0] in ('$','!') and msg[3:6] in ('VDM','VDO'):
 				# Found nmea
 				# FIX: do checksum
 				bv = binary.ais6tobitvec(msg.split(',')[5])
 			else: # either binary or nmeapayload... expect mostly nmeapayloads
-				# assumes that an all 0 and 1 string can not be a nmeapayload
+            # assumes that an all 0 and 1 string can not be a nmeapayload
 				binaryMsg=True
 				for c in msg:
-					if c not in ('0','1'):
+               if c not in ('0','1'):
 						binaryMsg=False
 						break
-				if binaryMsg:
+            if binaryMsg:
 					bv = BitVector(bitstring=msg)
 				else: # nmeapayload
 					bv = binary.ais6tobitvec(msg)
