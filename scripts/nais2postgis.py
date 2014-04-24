@@ -194,10 +194,9 @@ def handle_insert_update(cx, uscg_msg, msg_dict, aismsg):
       # Actualizar registro de ultima posicion para ese barco
       cu.execute('SELECT key FROM last_position WHERE userid=%s;', (userid,))
       
-   
       row = cu.fetchall()
-      print ('nais2postgis::handle_insert_update - actualizar last_position key {}, userid {}'.format(row[0][0], userid))
       if len(row)>0:
+         print ('nais2postgis::handle_insert_update - actualizar existe last_position key {}, userid {}'.format(row[0][0], userid))
          cu.execute('DELETE FROM last_position WHERE userid = %s;', (userid,))
             
       # comprobar si ya existen datos estaticos de ese barco en la tabla shipdata
@@ -222,8 +221,9 @@ def handle_insert_update(cx, uscg_msg, msg_dict, aismsg):
       if msg_dict['COG'] == 511:
             msg_dict['COG'] = 0 # make unknowns point north
       
-      qPrint =  'INSERT INTO last_position (userid,name,cog,sog,position,cg_r,navigationstatus, shipandcargo) VALUES (%s,%s,%s,%s,GeomFromText(\'POINT('+str(msg_dict['longitude'])+' '+str(msg_dict['latitude']) +')\',4326),%s,%s,%s);' % (userid,name,msg_dict['COG'],msg_dict['SOG'],cg_r,navigationstatus,shipandcargo)        
-      print 'nais2postgis::handle_insert_update - actualizar last_position insert: %s',qPrint
+      qPrint =  'INSERT INTO last_position (userid,name,cog,sog,position,cg_r,navigationstatus, shipandcargo) VALUES ({},{},{},{},GeomFromText(\'POINT('+str(msg_dict['longitude'])+' '+str(msg_dict['latitude']) +')\',4326),{},{},{});'.format(userid,name,msg_dict['COG'],msg_dict['SOG'],cg_r,navigationstatus,shipandcargo)        
+               
+      print 'nais2postgis::handle_insert_update - actualizar last_position insert: {}'.format(qPrint)
                
       cu.execute(q,(userid,name,msg_dict['COG'],msg_dict['SOG'],cg_r,navigationstatus,shipandcargo))
 
