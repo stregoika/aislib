@@ -1267,6 +1267,7 @@ def main():
       import os; 
       print os.path.basename(sys.argv[0]), 'doctests ...',
       sys.argv= [sys.argv[0]]
+   
    if options.verbose: sys.argv.append('-v')
       import doctest
       numfail,numtests=doctest.testmod()
