@@ -1384,7 +1384,7 @@ def main():
 
    if options.doDecode:
       if len(args)==0: args = sys.stdin
-         for msg in args:
+      for msg in args:
          bv = None
          
          if msg[0] in ('$','!') and msg[3:6] in ('VDM','VDO'):
