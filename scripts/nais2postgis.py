@@ -54,26 +54,31 @@ ais_msgs_supported = ('1','2','3','4','5','B','H') # ,'C', 'H')
 #                                                                              #
 ################################################################################
 def rebuild_track_line(cu,userid,name,start_time=None,point_limit=50):
-    q = 'SELECT AsText(position) FROM position WHERE userid=%s ORDER BY cg_sec DESC LIMIT %s;'
+   
+   print 'nais2postgis::rebuild_track_line - Init'
+   q = 'SELECT AsText(position) FROM position WHERE userid=%s ORDER BY cg_sec DESC LIMIT %s;'
+   
+   qPrint = 'SELECT AsText(position) FROM position WHERE userid=%s ORDER BY cg_sec DESC LIMIT %s;', userid, point_limit
+   print 'nais2postgis::rebuild_track_line - select: ',qPrint
+   
+   cu.execute(q,(userid, point_limit))
+   linePoints=[]
+   for row in cu.fetchall():
+      x,y = row[0].split()
+      x = x.split('(')[1]
+      y = y.split(')')[0]
+      if x=='181' and y=='91':
+         continue
+      linePoints.append(row[0].split('(')[1].split(')')[0])
+   if len(linePoints)<2:
+      #print 'Not enough points.  Delete if exists'
+      cu.execute('DELETE FROM track_lines WHERE userid = %s;',(userid,))
+      return
+   lineWKT='LINESTRING('+','.join(linePoints)+')'
 
-    cu.execute(q,(userid, point_limit))
-    linePoints=[]
-    for row in cu.fetchall():
-        x,y = row[0].split()
-        x = x.split('(')[1]
-        y = y.split(')')[0]
-        if x=='181' and y=='91':
-            continue
-        linePoints.append(row[0].split('(')[1].split(')')[0])
-    if len(linePoints)<2:
-        #print 'Not enough points.  Delete if exists'
-        cu.execute('DELETE FROM track_lines WHERE userid = %s;',(userid,))
-        return
-    lineWKT='LINESTRING('+','.join(linePoints)+')'
-
-    cu.execute('DELETE FROM track_lines WHERE userid=%s;', (userid,) )
-    q = 'INSERT INTO track_lines (userid,name,track) VALUES (%s,%s,GeomFromText(%s,4326));'
-    cu.execute(q, (userid,name,lineWKT) )
+   cu.execute('DELETE FROM track_lines WHERE userid=%s;', (userid,) )
+   q = 'INSERT INTO track_lines (userid,name,track) VALUES (%s,%s,GeomFromText(%s,4326));'
+   cu.execute(q, (userid,name,lineWKT) )
 
 ################################################################################
 #                                                                              #
@@ -82,29 +87,30 @@ def rebuild_track_line(cu,userid,name,start_time=None,point_limit=50):
 ################################################################################
 def rebuild_b_track_line(cu,userid,name,start_time=None,point_limit=50):
 
-    q = 'SELECT AsText(position) FROM positionb WHERE userid=%s ORDER BY cg_sec DESC LIMIT %s;'
+   print 'nais2postgis::rebuild_b_track_line - Init'
+      
+   q = 'SELECT AsText(position) FROM positionb WHERE userid=%s ORDER BY cg_sec DESC LIMIT %s;'
 
-    cu.execute(q,(userid, point_limit))
-    linePoints=[]
-    for row in cu.fetchall():
-        x,y = row[0].split()
-        x = x.split('(')[1]
-        y = y.split(')')[0]
-        if x=='181' and y=='91':
+   cu.execute(q,(userid, point_limit))
+   linePoints=[]
+   for row in cu.fetchall():
+      x,y = row[0].split()
+      x = x.split('(')[1]
+      y = y.split(')')[0]
+      if x=='181' and y=='91':
             continue
-        linePoints.append(row[0].split('(')[1].split(')')[0])
-    if len(linePoints)<2:
-        #print 'Not enough points.  Delete if exists'                                                                         
-        cu.execute('DELETE FROM track_lines WHERE userid = %s;',(userid,))
-        return
-    lineWKT='LINESTRING('+','.join(linePoints)+')'
+      linePoints.append(row[0].split('(')[1].split(')')[0])
+   if len(linePoints)<2:
+      #print 'Not enough points.  Delete if exists'
+      cu.execute('DELETE FROM track_lines WHERE userid = %s;',(userid,))
+      return
+   lineWKT='LINESTRING('+','.join(linePoints)+')'
 
-    cu.execute('DELETE FROM track_lines WHERE userid=%s;', (userid,) )
-    q = 'INSERT INTO track_lines (userid,name,track) VALUES (%s,%s,GeomFromText(%s,4326));'
-    cu.execute(q, (userid,name,lineWKT) )
+   cu.execute('DELETE FROM track_lines WHERE userid=%s;', (userid,) )
+   q = 'INSERT INTO track_lines (userid,name,track) VALUES (%s,%s,GeomFromText(%s,4326));'
+   cu.execute(q, (userid,name,lineWKT) )
 
-
-    return
+   return
 
 ################################################################################
 #                                                                              #
