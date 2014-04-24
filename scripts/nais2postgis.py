@@ -184,7 +184,7 @@ def handle_insert_update(cx, uscg_msg, msg_dict, aismsg):
       db_uncommitted_count += 1 #incrementar contador, inserts sin commitear
 
       navigationstatus = msg_dict['NavigationStatus']
-      shipandcargo = 'unknown'  # por que ¿?
+      shipandcargo = 'unknown'  # no se porque ....
       cg_r = uscg_msg.station
 
       # normalizar estado de navegacion
