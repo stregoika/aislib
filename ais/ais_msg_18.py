@@ -1397,7 +1397,7 @@ def main():
 				for c in msg:
                if c not in ('0','1'):
                   binaryMsg=False
-                  break
+               break
 
             if binaryMsg:
                bv = BitVector(bitstring=msg)
