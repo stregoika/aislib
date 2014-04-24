@@ -1395,8 +1395,9 @@ def main():
             # assumes that an all 0 and 1 string can not be a nmeapayload
 				binaryMsg=True
 				for c in msg:
-               if c not in ('0','1'): binaryMsg=False
-               break
+               if c not in ('0','1'): 
+                  binaryMsg=False
+                  break
 
             if binaryMsg: bv = BitVector(bitstring=msg)
             else: # nmeapayload
