@@ -1396,11 +1396,12 @@ def main():
 				binaryMsg=True
 				for c in msg:
                if c not in ('0','1'):
-						binaryMsg=False
-						break
+                  binaryMsg=False
+                  break
+
             if binaryMsg:
-					bv = BitVector(bitstring=msg)
-				else: # nmeapayload
+               bv = BitVector(bitstring=msg)
+            else: # nmeapayload
 					bv = binary.ais6tobitvec(msg)
 
 			printFields(decode(bv)
