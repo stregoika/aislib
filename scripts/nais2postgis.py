@@ -193,9 +193,10 @@ def handle_insert_update(cx, uscg_msg, msg_dict, aismsg):
 
       # Actualizar registro de ultima posicion para ese barco
       cu.execute('SELECT key FROM last_position WHERE userid=%s;', (userid,))
-      print 'nais2postgis::handle_insert_update - actualizar last_position key %s, userid %s',row.key, userid
+      
    
       row = cu.fetchall()
+      print 'nais2postgis::handle_insert_update - actualizar last_position key %s, userid %s',row.key, userid
       if len(row)>0:
          cu.execute('DELETE FROM last_position WHERE userid = %s;', (userid,))
             
