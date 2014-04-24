@@ -58,7 +58,7 @@ def rebuild_track_line(cu,userid,name,start_time=None,point_limit=50):
    print 'nais2postgis::rebuild_track_line - Init'
    q = 'SELECT AsText(position) FROM position WHERE userid=%s ORDER BY cg_sec DESC LIMIT %s;'
    
-   qPrint = 'SELECT AsText(position) FROM position WHERE userid=%s ORDER BY cg_sec DESC LIMIT %s;', userid, point_limit
+   qPrint = 'SELECT AsText(position) FROM position WHERE userid=%s ORDER BY cg_sec DESC LIMIT %s;' % (userid, point_limit)
    print 'nais2postgis::rebuild_track_line - select: ',qPrint
    
    cu.execute(q,(userid, point_limit))
