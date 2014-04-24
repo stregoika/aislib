@@ -1265,30 +1265,30 @@ def main():
    
    if options.doctest:
       import os; print os.path.basename(sys.argv[0]), 'doctests ...',
-		sys.argv= [sys.argv[0]]
+      sys.argv= [sys.argv[0]]
 		if options.verbose: sys.argv.append('-v')
 		import doctest
 		numfail,numtests=doctest.testmod()
 		if numfail==0: print 'ok'
-		else: 
+      else: 
 			print 'FAILED'
 			success=False
 
-	if not success: sys.exit('Something Failed')
-	del success # Hide success from epydoc
+	
+   if not success: sys.exit('Something Failed')
+   del success # Hide success from epydoc
 
-	if options.unittest:
+   if options.unittest:
 		sys.argv = [sys.argv[0]]
 		if options.verbose: sys.argv.append('-v')
 		unittest.main()
 
-	outfile = sys.stdout
-	if None!=options.outputFileName:
-		outfile = file(options.outputFileName,'w')
-
-
-	if options.doEncode:
-		# First make sure all non required options are specified
+   outfile = sys.stdout
+   if None!=options.outputFileName:
+      outfile = file(options.outputFileName,'w')
+	
+   if options.doEncode:
+      # First make sure all non required options are specified
 		if None==options.RepeatIndicatorField: parser.error("missing value for RepeatIndicatorField")
 		if None==options.UserIDField: parser.error("missing value for UserIDField")
 		if None==options.SOGField: parser.error("missing value for SOGField")
