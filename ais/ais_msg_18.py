@@ -1207,6 +1207,9 @@ def addMsgOptions(parser):
 ################################################################################
 def main():
 	from optparse import OptionParser
+   
+   print 'ais_msg_18::main - Init'
+      
 	parser = OptionParser(usage="%prog [options]",
 		version="%prog "+__version__)
 
