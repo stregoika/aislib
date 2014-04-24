@@ -151,13 +151,12 @@ def handle_insert_update(cx, uscg_msg, msg_dict, aismsg):
       x = msg_dict['longitude']
       y = msg_dict['latitude']
 
-      #print 'FIX:',x,y
-
       # Posiciones incorrectas de GPS
       if x > 180 or y > 90:
          print 'nais2postgis::handle_insert_update - Posiciones incorrectas GPS x: %s y: %s', x, y
-         return # 181, 91 is the invalid gps value
-
+         return # abandonar insert
+      
+      # Comprobar posiciones dentro del boundig box definido (si es el caso) 
       if options.lon_min is not None and options.lon_min > x: return
       if options.lon_max is not None and options.lon_max < x: return
       if options.lat_min is not None and options.lat_min > y: return
@@ -171,7 +170,7 @@ def handle_insert_update(cx, uscg_msg, msg_dict, aismsg):
       print 'nais2postgis::handle_insert_update - Insert: ',ins
       try:
          cu.execute(str(ins))
-         print 'nais2postgis::handle_insert_update - Added position'
+         print 'nais2postgis::handle_insert_update - OK Added position'
       except Exception,e:
          errors_file.write('nais2postgis::handle_insert_update - pos SQL INSERT ERROR for line: %s\t\n',str(msg_dict))
          errors_file.write(str(ins))
@@ -182,12 +181,13 @@ def handle_insert_update(cx, uscg_msg, msg_dict, aismsg):
          sys.stderr.write('\n\nBAD DB INSERT\n\n')
          return False
 
-      db_uncommitted_count += 1
+      db_uncommitted_count += 1 #incrementar contador, inserts sin commitear
 
       navigationstatus = msg_dict['NavigationStatus']
-      shipandcargo = 'unknown'
+      shipandcargo = 'unknown'  # por que ¿?
       cg_r = uscg_msg.station
 
+            #
       if str(navigationstatus) in NavigationStatusDecodeLut:
             navigationstatus = NavigationStatusDecodeLut[str(navigationstatus)]
 
