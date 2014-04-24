@@ -1391,7 +1391,7 @@ def main():
 				# Found nmea
 				# FIX: do checksum
 				bv = binary.ais6tobitvec(msg.split(',')[5])
-			else: # either binary or nmeapayload... expect mostly nmeapayloads
+         else: # either binary or nmeapayload... expect mostly nmeapayloads
             # assumes that an all 0 and 1 string can not be a nmeapayload
 				binaryMsg=True
 				for c in msg:
