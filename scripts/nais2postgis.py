@@ -76,14 +76,17 @@ def rebuild_track_line(cu,userid,name,start_time=None,point_limit=50):
    if len(linePoints)<2:
       print 'nais2postgis::rebuild_track_line - No hay puntos suficientes; borrar track userid', userid
       cu.execute('DELETE FROM track_lines WHERE userid = %s;',(userid,))
-      return  # finaliza la función de crear track
+      return  # finaliza la funcion de crear track
     
    lineWKT='LINESTRING('+','.join(linePoints)+')'
    
    # actualizar track: borrar antigua, crear nueva
    cu.execute('DELETE FROM track_lines WHERE userid=%s;', (userid,) )
    q = 'INSERT INTO track_lines (userid,name,track) VALUES (%s,%s,GeomFromText(%s,4326));'
+
    qPrint = 'INSERT INTO track_lines (userid,name,track) VALUES (%s,%s,GeomFromText(%s,4326));' % (userid, name, lineWKT)
+   print 'nais2postgis::rebuild_track_line - insert: ',qPrint
+
    cu.execute(q, (userid,name,lineWKT) )
 
 ################################################################################
@@ -96,6 +99,9 @@ def rebuild_b_track_line(cu,userid,name,start_time=None,point_limit=50):
    print 'nais2postgis::rebuild_b_track_line - Init'
       
    q = 'SELECT AsText(position) FROM positionb WHERE userid=%s ORDER BY cg_sec DESC LIMIT %s;'
+    
+   qPrint = 'SELECT AsText(position) FROM positionb WHERE userid=%s ORDER BY cg_sec DESC LIMIT %s;' % (userid, point_limit)
+   print 'nais2postgis::rebuild_b_track_line - select: ',qPrint
 
    cu.execute(q,(userid, point_limit))
    linePoints=[]
@@ -104,16 +110,22 @@ def rebuild_b_track_line(cu,userid,name,start_time=None,point_limit=50):
       x = x.split('(')[1]
       y = y.split(')')[0]
       if x=='181' and y=='91':
-            continue
+         continue
       linePoints.append(row[0].split('(')[1].split(')')[0])
+
    if len(linePoints)<2:
-      #print 'Not enough points.  Delete if exists'
+      print 'nais2postgis::rebuild_b_track_line - No hay puntos suficientes; borrar track userid', userid
       cu.execute('DELETE FROM track_lines WHERE userid = %s;',(userid,))
       return
+
    lineWKT='LINESTRING('+','.join(linePoints)+')'
 
    cu.execute('DELETE FROM track_lines WHERE userid=%s;', (userid,) )
    q = 'INSERT INTO track_lines (userid,name,track) VALUES (%s,%s,GeomFromText(%s,4326));'
+
+   qPrint = 'INSERT INTO track_lines (userid,name,track) VALUES (%s,%s,GeomFromText(%s,4326));' % (userid, name, lineWKT)
+   print 'nais2postgis::rebuild_b_track_line - insert: ',qPrint
+    
    cu.execute(q, (userid,name,lineWKT) )
 
    return
