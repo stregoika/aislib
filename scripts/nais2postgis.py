@@ -196,7 +196,7 @@ def handle_insert_update(cx, uscg_msg, msg_dict, aismsg):
       
    
       row = cu.fetchall()
-      print 'nais2postgis::handle_insert_update - actualizar last_position key %s, userid %s ',row[0][0], userid
+print ('nais2postgis::handle_insert_update - actualizar last_position key %s, userid %s ' % {row[0][0], userid})
       if len(row)>0:
          cu.execute('DELETE FROM last_position WHERE userid = %s;', (userid,))
             
