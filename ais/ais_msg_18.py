@@ -1268,14 +1268,13 @@ def main():
       print os.path.basename(sys.argv[0]), 'doctests ...',
       sys.argv= [sys.argv[0]]
    if options.verbose: sys.argv.append('-v')
-		import doctest
-		numfail,numtests=doctest.testmod()
-		if numfail==0: print 'ok'
+      import doctest
+      numfail,numtests=doctest.testmod()
+      if numfail==0: print 'ok'
       else: 
-			print 'FAILED'
-			success=False
+         print 'FAILED'
+         success=False
 
-	
    if not success: sys.exit('Something Failed')
    del success # Hide success from epydoc
 
