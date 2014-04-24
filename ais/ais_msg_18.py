@@ -1207,20 +1207,19 @@ def addMsgOptions(parser):
 ################################################################################
 def main():
    from optparse import OptionParser
-
-   parser = OptionParser(usage="%prog [options]", version="%prog "+__version__)
-
+   
    print 'ais_msg_18::main - Init'
    
-	parser.add_option('--doc-test',dest='doctest',default=False,action='store_true',
-		help='run the documentation tests')
-	parser.add_option('--unit-test',dest='unittest',default=False,action='store_true',
-		help='run the unit tests')
-	parser.add_option('-v','--verbose',dest='verbose',default=False,action='store_true',
-		help='Make the test output verbose')
+   parser = OptionParser(usage="%prog [options]"
+                         ,version="%prog "+__version__)
 
-	# FIX: remove nmea from binary messages.  No way to build the whole packet?
-	# FIX: or build the surrounding msg 8 for a broadcast?
+   parser.add_option('--doc-test',dest='doctest',default=False,action='store_true',                                                                                  help='run the documentation tests')
+   parser.add_option('--unit-test',dest='unittest',default=False,action='store_true',                                                    help='run the unit tests')
+   parser.add_option('-v','--verbose',dest='verbose',default=False,action='store_true',                                                  help='Make the test output verbose')
+
+   # FIX: remove nmea from binary messages.  No way to build the whole packet?
+	
+   # FIX: or build the surrounding msg 8 for a broadcast?
 	typeChoices = ('binary','nmeapayload','nmea') # FIX: what about a USCG type message?
       
 	parser.add_option('-t','--type',choices=typeChoices,type='choice',dest='ioType'
