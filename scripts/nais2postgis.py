@@ -221,8 +221,7 @@ def handle_insert_update(cx, uscg_msg, msg_dict, aismsg):
       if msg_dict['COG'] == 511:
             msg_dict['COG'] = 0 # make unknowns point north
       
-      qPrint =  'INSERT INTO last_position (userid,name,cog,sog,position,cg_r,navigationstatus, shipandcargo) VALUES (%s,%s,%s,%s,GeomFromText(\'POINT('+str(msg_dict['longitude'])+' '+str(msg_dict['latitude']) +')\',4326),%s,%s,%s);' % 
-         (userid,name,msg_dict['COG'],msg_dict['SOG'],cg_r,navigationstatus,shipandcargo)        
+      qPrint =  'INSERT INTO last_position (userid,name,cog,sog,position,cg_r,navigationstatus, shipandcargo) VALUES (%s,%s,%s,%s,GeomFromText(\'POINT('+str(msg_dict['longitude'])+' '+str(msg_dict['latitude']) +')\',4326),%s,%s,%s);' % (userid,name,msg_dict['COG'],msg_dict['SOG'],cg_r,navigationstatus,shipandcargo)        
       print 'nais2postgis::handle_insert_update - actualizar last_position insert: %s',qPrint
                
       cu.execute(q,(userid,name,msg_dict['COG'],msg_dict['SOG'],cg_r,navigationstatus,shipandcargo))
