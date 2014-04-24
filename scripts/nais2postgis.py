@@ -342,21 +342,21 @@ def handle_insert_update(cx, uscg_msg, msg_dict, aismsg):
 
       return True # need to commit db
          
-   #sonita - hasta aqui
-
-   if msg_type == 19: # Class B extended report
+   # ********** Mensaje 19 (Informe ampliado de posicion de los equipos de la Clase B)
+   if msg_type == 19: 
       cu.execute ('DELETE FROM b_pos_and_shipdata WHERE userid=%s AND partnum=%s;', (userid,msg_dict['partnum']))
 
       ins = aismsg.sqlInsert(msg_dict, dbType='postgres')
       ins.add('cg_sec',       uscg_msg.cg_sec)
       ins.add('cg_timestamp', uscg_msg.sqlTimestampStr)
       ins.add('cg_r',         uscg_msg.station)
-      print 'msg 19:',str(ins)
-
+     
+      print 'nais2postgis::handle_insert_update - Insert: ',ins
       cu.execute(str(ins))
 
       return True # need to commit db
-
+   
+   # ********** Mensaje 24 (Informe datos estáticos de la clase B CS
    if msg_type == 24: # Class B static data report.  Either part A (0) or B (0)
       # remove the old value, but only do it by parts
       cu.execute ('DELETE FROM b_staticdata WHERE userid=%s AND partnum=%s;', (userid,msg_dict['partnum']))
@@ -366,11 +366,12 @@ def handle_insert_update(cx, uscg_msg, msg_dict, aismsg):
       ins.add('cg_timestamp', uscg_msg.sqlTimestampStr)
       ins.add('cg_r',         uscg_msg.station)
 
+      print 'nais2postgis::handle_insert_update - Insert: ',ins
       cu.execute(str(ins))
 
       return True
 
-   return False # No db commit needed
+   return False # No db commit needed - mensaje de tipo no soportado
 
 ################################################################################
 #                                                                              #
