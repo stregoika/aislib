@@ -39,13 +39,12 @@ from BitVector import BitVector
 
 import binary, aisstring
 
-# FIX: check to see if these will be needed
 TrueBV  = BitVector(bitstring="1")
 "Why always rebuild the True bit?  This should speed things up a bunch"
 FalseBV = BitVector(bitstring="0")
 "Why always rebuild the False bit?  This should speed things up a bunch"
 
-
+# Campos de ddbb
 fieldList = (
 	'MessageID',
 	'RepeatIndicator',
@@ -111,9 +110,13 @@ pgTypes = {
 '''
 Lookup table for each postgis field name to get its type.
 '''
-
+################################################################################
+#                                                                              #
+#                           encode                                             #
+#                                                                              #
+################################################################################
 def encode(params, validate=False):
-	'''Create a shipdata binary message payload to pack into an AIS Msg shipdata.
+   '''Create a shipdata binary message payload to pack into an AIS Msg shipdata.
 
 	Fields in params:
 	  - MessageID(uint): AIS message number.  Must be 5 (field automatically set to "5")
@@ -147,7 +150,7 @@ def encode(params, validate=False):
 	bvList = []
 	bvList.append(binary.setBitVectorSize(BitVector(intVal=5),6))
 	if 'RepeatIndicator' in params:
-		bvList.append(binary.setBitVectorSize(BitVector(intVal=params['RepeatIndicator']),2))
+      bvList.append(binary.setBitVectorSize(BitVector(intVal=params['RepeatIndicator']),2))
 	else:
 		bvList.append(binary.setBitVectorSize(BitVector(intVal=0),2))
 	bvList.append(binary.setBitVectorSize(BitVector(intVal=params['UserID']),30))
@@ -220,6 +223,12 @@ def encode(params, validate=False):
 
 	return binary.joinBV(bvList)
 
+
+################################################################################
+#                                                                              #
+#                        decode                                                #
+#                                                                              #
+################################################################################
 def decode(bv, validate=False):
 	'''Unpack a shipdata message 
 
@@ -342,213 +351,223 @@ def decodedte(bv, validate=False):
 def decodeSpare(bv, validate=False):
 	return 0
 
-
+################################################################################
+#                                                                              #
+#                          printHtml                                           #
+#                                                                              #
+################################################################################
 def printHtml(params, out=sys.stdout):
-		out.write("<h3>shipdata</h3>\n")
-		out.write("<table border=\"1\">\n")
-		out.write("<tr bgcolor=\"orange\">\n")
-		out.write("<th align=\"left\">Field Name</th>\n")
-		out.write("<th align=\"left\">Type</th>\n")
-		out.write("<th align=\"left\">Value</th>\n")
-		out.write("<th align=\"left\">Value in Lookup Table</th>\n")
-		out.write("<th align=\"left\">Units</th>\n")
-		out.write("</tr>\n")
-		out.write("\n")
-		out.write("<tr>\n")
-		out.write("<td>MessageID</td>\n")
-		out.write("<td>uint</td>\n")
+   
+   out.write("<h3>shipdata</h3>\n")
+	out.write("<table border=\"1\">\n")
+	out.write("<tr bgcolor=\"orange\">\n")
+	out.write("<th align=\"left\">Field Name</th>\n")
+	out.write("<th align=\"left\">Type</th>\n")
+	out.write("<th align=\"left\">Value</th>\n")
+	out.write("<th align=\"left\">Value in Lookup Table</th>\n")
+	out.write("<th align=\"left\">Units</th>\n")
+	out.write("</tr>\n")
+	out.write("\n")
+	out.write("<tr>\n")
+	out.write("<td>MessageID</td>\n")
+	out.write("<td>uint</td>\n")
 		if 'MessageID' in params:
 			out.write("	<td>"+str(params['MessageID'])+"</td>\n")
 			out.write("	<td>"+str(params['MessageID'])+"</td>\n")
-		out.write("</tr>\n")
-		out.write("\n")
-		out.write("<tr>\n")
-		out.write("<td>RepeatIndicator</td>\n")
-		out.write("<td>uint</td>\n")
-		if 'RepeatIndicator' in params:
-			out.write("	<td>"+str(params['RepeatIndicator'])+"</td>\n")
-			if str(params['RepeatIndicator']) in RepeatIndicatorDecodeLut:
-				out.write("<td>"+RepeatIndicatorDecodeLut[str(params['RepeatIndicator'])]+"</td>")
-			else:
-				out.write("<td><i>Missing LUT entry</i></td>")
-		out.write("</tr>\n")
-		out.write("\n")
-		out.write("<tr>\n")
-		out.write("<td>UserID</td>\n")
-		out.write("<td>uint</td>\n")
-		if 'UserID' in params:
-			out.write("	<td>"+str(params['UserID'])+"</td>\n")
-			out.write("	<td>"+str(params['UserID'])+"</td>\n")
-		out.write("</tr>\n")
-		out.write("\n")
-		out.write("<tr>\n")
-		out.write("<td>AISversion</td>\n")
-		out.write("<td>uint</td>\n")
-		if 'AISversion' in params:
-			out.write("	<td>"+str(params['AISversion'])+"</td>\n")
-			out.write("	<td>"+str(params['AISversion'])+"</td>\n")
-		out.write("</tr>\n")
-		out.write("\n")
-		out.write("<tr>\n")
-		out.write("<td>IMOnumber</td>\n")
-		out.write("<td>uint</td>\n")
-		if 'IMOnumber' in params:
-			out.write("	<td>"+str(params['IMOnumber'])+"</td>\n")
-			out.write("	<td>"+str(params['IMOnumber'])+"</td>\n")
-		out.write("</tr>\n")
-		out.write("\n")
-		out.write("<tr>\n")
-		out.write("<td>callsign</td>\n")
-		out.write("<td>aisstr6</td>\n")
-		if 'callsign' in params:
-			out.write("	<td>"+str(params['callsign'])+"</td>\n")
-			out.write("	<td>"+str(params['callsign'])+"</td>\n")
-		out.write("</tr>\n")
-		out.write("\n")
-		out.write("<tr>\n")
-		out.write("<td>name</td>\n")
-		out.write("<td>aisstr6</td>\n")
-		if 'name' in params:
-			out.write("	<td>"+str(params['name'])+"</td>\n")
-			out.write("	<td>"+str(params['name'])+"</td>\n")
-		out.write("</tr>\n")
-		out.write("\n")
-		out.write("<tr>\n")
-		out.write("<td>shipandcargo</td>\n")
-		out.write("<td>uint</td>\n")
-		if 'shipandcargo' in params:
-			out.write("	<td>"+str(params['shipandcargo'])+"</td>\n")
-			if str(params['shipandcargo']) in shipandcargoDecodeLut:
-				out.write("<td>"+shipandcargoDecodeLut[str(params['shipandcargo'])]+"</td>")
-			else:
-				out.write("<td><i>Missing LUT entry</i></td>")
-		out.write("</tr>\n")
-		out.write("\n")
-		out.write("<tr>\n")
-		out.write("<td>dimA</td>\n")
-		out.write("<td>uint</td>\n")
-		if 'dimA' in params:
-			out.write("	<td>"+str(params['dimA'])+"</td>\n")
-			out.write("	<td>"+str(params['dimA'])+"</td>\n")
-		out.write("<td>m</td>\n")
-		out.write("</tr>\n")
-		out.write("\n")
-		out.write("<tr>\n")
-		out.write("<td>dimB</td>\n")
-		out.write("<td>uint</td>\n")
-		if 'dimB' in params:
-			out.write("	<td>"+str(params['dimB'])+"</td>\n")
-			out.write("	<td>"+str(params['dimB'])+"</td>\n")
-		out.write("<td>m</td>\n")
-		out.write("</tr>\n")
-		out.write("\n")
-		out.write("<tr>\n")
-		out.write("<td>dimC</td>\n")
-		out.write("<td>uint</td>\n")
-		if 'dimC' in params:
-			out.write("	<td>"+str(params['dimC'])+"</td>\n")
-			if str(params['dimC']) in dimCDecodeLut:
-				out.write("<td>"+dimCDecodeLut[str(params['dimC'])]+"</td>")
-			else:
-				out.write("<td><i>Missing LUT entry</i></td>")
-		out.write("<td>m</td>\n")
-		out.write("</tr>\n")
-		out.write("\n")
-		out.write("<tr>\n")
-		out.write("<td>dimD</td>\n")
-		out.write("<td>uint</td>\n")
-		if 'dimD' in params:
-			out.write("	<td>"+str(params['dimD'])+"</td>\n")
-			if str(params['dimD']) in dimDDecodeLut:
-				out.write("<td>"+dimDDecodeLut[str(params['dimD'])]+"</td>")
-			else:
-				out.write("<td><i>Missing LUT entry</i></td>")
-		out.write("<td>m</td>\n")
-		out.write("</tr>\n")
-		out.write("\n")
-		out.write("<tr>\n")
-		out.write("<td>fixtype</td>\n")
-		out.write("<td>uint</td>\n")
-		if 'fixtype' in params:
-			out.write("	<td>"+str(params['fixtype'])+"</td>\n")
-			if str(params['fixtype']) in fixtypeDecodeLut:
-				out.write("<td>"+fixtypeDecodeLut[str(params['fixtype'])]+"</td>")
-			else:
-				out.write("<td><i>Missing LUT entry</i></td>")
-		out.write("</tr>\n")
-		out.write("\n")
-		out.write("<tr>\n")
-		out.write("<td>ETAmonth</td>\n")
-		out.write("<td>uint</td>\n")
-		if 'ETAmonth' in params:
-			out.write("	<td>"+str(params['ETAmonth'])+"</td>\n")
-			out.write("	<td>"+str(params['ETAmonth'])+"</td>\n")
-		out.write("</tr>\n")
-		out.write("\n")
-		out.write("<tr>\n")
-		out.write("<td>ETAday</td>\n")
-		out.write("<td>uint</td>\n")
-		if 'ETAday' in params:
-			out.write("	<td>"+str(params['ETAday'])+"</td>\n")
-			out.write("	<td>"+str(params['ETAday'])+"</td>\n")
-		out.write("</tr>\n")
-		out.write("\n")
-		out.write("<tr>\n")
-		out.write("<td>ETAhour</td>\n")
-		out.write("<td>uint</td>\n")
-		if 'ETAhour' in params:
-			out.write("	<td>"+str(params['ETAhour'])+"</td>\n")
-			out.write("	<td>"+str(params['ETAhour'])+"</td>\n")
-		out.write("</tr>\n")
-		out.write("\n")
-		out.write("<tr>\n")
-		out.write("<td>ETAminute</td>\n")
-		out.write("<td>uint</td>\n")
-		if 'ETAminute' in params:
-			out.write("	<td>"+str(params['ETAminute'])+"</td>\n")
-			out.write("	<td>"+str(params['ETAminute'])+"</td>\n")
-		out.write("</tr>\n")
-		out.write("\n")
-		out.write("<tr>\n")
-		out.write("<td>draught</td>\n")
-		out.write("<td>udecimal</td>\n")
-		if 'draught' in params:
-			out.write("	<td>"+str(params['draught'])+"</td>\n")
-			if str(params['draught']) in draughtDecodeLut:
-				out.write("<td>"+draughtDecodeLut[str(params['draught'])]+"</td>")
-			else:
-				out.write("<td><i>Missing LUT entry</i></td>")
-		out.write("<td>m</td>\n")
-		out.write("</tr>\n")
-		out.write("\n")
-		out.write("<tr>\n")
-		out.write("<td>destination</td>\n")
-		out.write("<td>aisstr6</td>\n")
-		if 'destination' in params:
-			out.write("	<td>"+str(params['destination'])+"</td>\n")
-			out.write("	<td>"+str(params['destination'])+"</td>\n")
-		out.write("</tr>\n")
-		out.write("\n")
-		out.write("<tr>\n")
-		out.write("<td>dte</td>\n")
-		out.write("<td>uint</td>\n")
-		if 'dte' in params:
-			out.write("	<td>"+str(params['dte'])+"</td>\n")
-			if str(params['dte']) in dteDecodeLut:
-				out.write("<td>"+dteDecodeLut[str(params['dte'])]+"</td>")
-			else:
-				out.write("<td><i>Missing LUT entry</i></td>")
-		out.write("</tr>\n")
-		out.write("\n")
-		out.write("<tr>\n")
-		out.write("<td>Spare</td>\n")
-		out.write("<td>uint</td>\n")
-		if 'Spare' in params:
-			out.write("	<td>"+str(params['Spare'])+"</td>\n")
-			out.write("	<td>"+str(params['Spare'])+"</td>\n")
-		out.write("</tr>\n")
-		out.write("</table>\n")
+	out.write("</tr>\n")
+	out.write("\n")
+	out.write("<tr>\n")
+	out.write("<td>RepeatIndicator</td>\n")
+	out.write("<td>uint</td>\n")
+	if 'RepeatIndicator' in params:
+      out.write("	<td>"+str(params['RepeatIndicator'])+"</td>\n")
+      if str(params['RepeatIndicator']) in RepeatIndicatorDecodeLut:
+         out.write("<td>"+RepeatIndicatorDecodeLut[str(params['RepeatIndicator'])]+"</td>")
+      else:
+         out.write("<td><i>Missing LUT entry</i></td>")
+	out.write("</tr>\n")
+	out.write("\n")
+	out.write("<tr>\n")
+	out.write("<td>UserID</td>\n")
+	out.write("<td>uint</td>\n")
+	if 'UserID' in params:
+      out.write("	<td>"+str(params['UserID'])+"</td>\n")
+      out.write("	<td>"+str(params['UserID'])+"</td>\n")
+	out.write("</tr>\n")
+	out.write("\n")
+	out.write("<tr>\n")
+	out.write("<td>AISversion</td>\n")
+	out.write("<td>uint</td>\n")
+	if 'AISversion' in params:
+      out.write("	<td>"+str(params['AISversion'])+"</td>\n")
+      out.write("	<td>"+str(params['AISversion'])+"</td>\n")
+	out.write("</tr>\n")
+	out.write("\n")
+	out.write("<tr>\n")
+	out.write("<td>IMOnumber</td>\n")
+	out.write("<td>uint</td>\n")
+	if 'IMOnumber' in params:
+      out.write("	<td>"+str(params['IMOnumber'])+"</td>\n")
+      out.write("	<td>"+str(params['IMOnumber'])+"</td>\n")
+	out.write("</tr>\n")
+	out.write("\n")
+	out.write("<tr>\n")
+	out.write("<td>callsign</td>\n")
+	out.write("<td>aisstr6</td>\n")
+	if 'callsign' in params:
+      out.write("	<td>"+str(params['callsign'])+"</td>\n")
+      out.write("	<td>"+str(params['callsign'])+"</td>\n")
+	out.write("</tr>\n")
+	out.write("\n")
+	out.write("<tr>\n")
+	out.write("<td>name</td>\n")
+	out.write("<td>aisstr6</td>\n")
+	if 'name' in params:
+      out.write("	<td>"+str(params['name'])+"</td>\n")
+      out.write("	<td>"+str(params['name'])+"</td>\n")
+	out.write("</tr>\n")
+	out.write("\n")
+	out.write("<tr>\n")
+	out.write("<td>shipandcargo</td>\n")
+	out.write("<td>uint</td>\n")
+	if 'shipandcargo' in params:
+      out.write("	<td>"+str(params['shipandcargo'])+"</td>\n")
+      if str(params['shipandcargo']) in shipandcargoDecodeLut:
+         out.write("<td>"+shipandcargoDecodeLut[str(params['shipandcargo'])]+"</td>")
+      else:
+         out.write("<td><i>Missing LUT entry</i></td>")
+   out.write("</tr>\n")
+   out.write("\n")
+   out.write("<tr>\n")
+   out.write("<td>dimA</td>\n")
+   out.write("<td>uint</td>\n")
+   if 'dimA' in params:
+      out.write("	<td>"+str(params['dimA'])+"</td>\n")
+      out.write("	<td>"+str(params['dimA'])+"</td>\n")
+   out.write("<td>m</td>\n")
+   out.write("</tr>\n")
+   out.write("\n")
+   out.write("<tr>\n")
+   out.write("<td>dimB</td>\n")
+   out.write("<td>uint</td>\n")
+   if 'dimB' in params:
+      out.write("	<td>"+str(params['dimB'])+"</td>\n")
+      out.write("	<td>"+str(params['dimB'])+"</td>\n")
+   out.write("<td>m</td>\n")
+   out.write("</tr>\n")
+   out.write("\n")
+   out.write("<tr>\n")
+   out.write("<td>dimC</td>\n")
+   out.write("<td>uint</td>\n")
+   if 'dimC' in params:
+      out.write("	<td>"+str(params['dimC'])+"</td>\n")
+      if str(params['dimC']) in dimCDecodeLut:
+         out.write("<td>"+dimCDecodeLut[str(params['dimC'])]+"</td>")
+      else:
+         out.write("<td><i>Missing LUT entry</i></td>")
+   out.write("<td>m</td>\n")
+   out.write("</tr>\n")
+   out.write("\n")
+   out.write("<tr>\n")
+   out.write("<td>dimD</td>\n")
+   out.write("<td>uint</td>\n")
+   if 'dimD' in params:
+      out.write("	<td>"+str(params['dimD'])+"</td>\n")
+      if str(params['dimD']) in dimDDecodeLut:
+         out.write("<td>"+dimDDecodeLut[str(params['dimD'])]+"</td>")
+      else:
+         out.write("<td><i>Missing LUT entry</i></td>")
+   out.write("<td>m</td>\n")
+   out.write("</tr>\n")
+   out.write("\n")
+   out.write("<tr>\n")
+   out.write("<td>fixtype</td>\n")
+   out.write("<td>uint</td>\n")
+   if 'fixtype' in params:
+      out.write("	<td>"+str(params['fixtype'])+"</td>\n")
+      if str(params['fixtype']) in fixtypeDecodeLut:
+         out.write("<td>"+fixtypeDecodeLut[str(params['fixtype'])]+"</td>")
+      else:
+         out.write("<td><i>Missing LUT entry</i></td>")
+   out.write("</tr>\n")
+   out.write("\n")
+   out.write("<tr>\n")
+   out.write("<td>ETAmonth</td>\n")
+   out.write("<td>uint</td>\n")
+   if 'ETAmonth' in params:
+      out.write("	<td>"+str(params['ETAmonth'])+"</td>\n")
+      out.write("	<td>"+str(params['ETAmonth'])+"</td>\n")
+   out.write("</tr>\n")
+   out.write("\n")
+   out.write("<tr>\n")
+   out.write("<td>ETAday</td>\n")
+   out.write("<td>uint</td>\n")
+   if 'ETAday' in params:
+      out.write("	<td>"+str(params['ETAday'])+"</td>\n")
+      out.write("	<td>"+str(params['ETAday'])+"</td>\n")
+   out.write("</tr>\n")
+   out.write("\n")
+   out.write("<tr>\n")
+   out.write("<td>ETAhour</td>\n")
+   out.write("<td>uint</td>\n")
+   if 'ETAhour' in params:
+      out.write("	<td>"+str(params['ETAhour'])+"</td>\n")
+      out.write("	<td>"+str(params['ETAhour'])+"</td>\n")
+   out.write("</tr>\n")
+   out.write("\n")
+   out.write("<tr>\n")
+   out.write("<td>ETAminute</td>\n")
+   out.write("<td>uint</td>\n")
+   if 'ETAminute' in params:
+      out.write("	<td>"+str(params['ETAminute'])+"</td>\n")
+      out.write("	<td>"+str(params['ETAminute'])+"</td>\n")
+   out.write("</tr>\n")
+   out.write("\n")
+   out.write("<tr>\n")
+   out.write("<td>draught</td>\n")
+   out.write("<td>udecimal</td>\n")
+   if 'draught' in params:
+      out.write("	<td>"+str(params['draught'])+"</td>\n")
+      if str(params['draught']) in draughtDecodeLut:
+         out.write("<td>"+draughtDecodeLut[str(params['draught'])]+"</td>")
+      else:
+         out.write("<td><i>Missing LUT entry</i></td>")
+   out.write("<td>m</td>\n")
+   out.write("</tr>\n")
+   out.write("\n")
+   out.write("<tr>\n")
+   out.write("<td>destination</td>\n")
+   out.write("<td>aisstr6</td>\n")
+   if 'destination' in params:
+      out.write("	<td>"+str(params['destination'])+"</td>\n")
+      out.write("	<td>"+str(params['destination'])+"</td>\n")
+   out.write("</tr>\n")
+   out.write("\n")
+   out.write("<tr>\n")
+   out.write("<td>dte</td>\n")
+   out.write("<td>uint</td>\n")
+   if 'dte' in params:
+      out.write("	<td>"+str(params['dte'])+"</td>\n")
+      if str(params['dte']) in dteDecodeLut:
+         out.write("<td>"+dteDecodeLut[str(params['dte'])]+"</td>")
+      else:
+         out.write("<td><i>Missing LUT entry</i></td>")
+   out.write("</tr>\n")
+   out.write("\n")
+   out.write("<tr>\n")
+   out.write("<td>Spare</td>\n")
+   out.write("<td>uint</td>\n")
+   if 'Spare' in params:
+      out.write("	<td>"+str(params['Spare'])+"</td>\n")
+      out.write("	<td>"+str(params['Spare'])+"</td>\n")
+   out.write("</tr>\n")
+   out.write("</table>\n")
 
+################################################################################
+#                                                                              #
+#                    printFields                                               #
+#                                                                              #
+################################################################################
 def printFields(params, out=sys.stdout, format='std', fieldList=None, dbType='postgres'):
 	'''Print a shipdata message to stdout.
 
@@ -624,6 +643,13 @@ def printFields(params, out=sys.stdout, format='std', fieldList=None, dbType='po
 
 	return # Nothing to return
 
+################################################################################
+#                                                                              #
+#                    Codificacion                                              #
+#                                                                              #
+################################################################################
+#
+# Campos de correspondencia de codificaciones
 RepeatIndicatorEncodeLut = {
 	'default':'0',
 	'do not repeat any more':'3',
@@ -856,10 +882,16 @@ dteDecodeLut = {
 	'1':'not available',
 	} # dteEncodeLut
 
-######################################################################
-# SQL SUPPORT
-######################################################################
-
+# ******************************************************************************
+#                                                                              #
+#                             SQL SUPPORT                                      #
+#                                                                              #
+# ******************************************************************************
+################################################################################
+#                                                                              #
+#                    sqlCreateStr                                              #
+#                                                                              #
+################################################################################
 dbTableName='shipdata'
 'Database table name'
 
@@ -883,6 +915,11 @@ def sqlCreateStr(outfile=sys.stdout, fields=None, extraFields=None
 	# FIX: should this sqlCreate be the same as in LaTeX (createFuncName) rather than hard coded?
 	outfile.write(str(sqlCreate(fields,extraFields,addCoastGuardFields,dbType=dbType)))
 
+################################################################################
+#                                                                              #
+#                          sqlCreate                                           #
+#                                                                              #
+################################################################################
 def sqlCreate(fields=None, extraFields=None, addCoastGuardFields=True, dbType='postgres'):
 	'''
 	Return the sqlhelp object to create the table.
@@ -933,7 +970,11 @@ def sqlCreate(fields=None, extraFields=None, addCoastGuardFields=True, dbType='p
 		c.addTimestamp('cg_timestamp') # UTC decoded cg_sec - not actually in the data stream
 
 	return c
-
+################################################################################
+#                                                                              #
+#                     sqlInsertStr                                             #
+#                                                                              #
+################################################################################
 def sqlInsertStr(params, outfile=sys.stdout, extraParams=None, dbType='postgres'):
 	'''
 	Return the SQL INSERT command for this message type
@@ -947,7 +988,11 @@ def sqlInsertStr(params, outfile=sys.stdout, extraParams=None, dbType='postgres'
 	'''
 	outfile.write(str(sqlInsert(params,extraParams,dbType=dbType)))
 
-
+################################################################################
+#                                                                              #
+#                       sqlInsert                                              #
+#                                                                              #
+################################################################################
 def sqlInsert(params,extraParams=None,dbType='postgres'):
 	'''
 	Give the SQL INSERT statement
@@ -998,10 +1043,16 @@ def sqlInsert(params,extraParams=None,dbType='postgres'):
 
 	return i
 
-######################################################################
-# LATEX SUPPORT
-######################################################################
-
+# **************************************************************************** #
+#                                                                              #
+#                           LATEX SUPPORT                                      #
+#                                                                              #
+# **************************************************************************** #
+################################################################################
+#                                                                              #
+#                    latexDefinitionTable                                      #
+#                                                                              #
+################################################################################
 def latexDefinitionTable(outfile=sys.stdout
 		):
 	'''
@@ -1049,10 +1100,16 @@ Total bits & 424 & Appears to take 2 slots \\\\ \\hline
 \\end{table}
 ''')
 
-######################################################################
-# Text Definition
-######################################################################
-
+# **************************************************************************** #
+#                                                                              #
+#                          TEX DEFINITION                                      #
+#                                                                              #
+# **************************************************************************** #
+################################################################################
+#                                                                              #
+#                    textDefinitionTable                                       #
+#                                                                              #
+################################################################################
 def textDefinitionTable(outfile=sys.stdout
 		,delim='\t'
 		):
@@ -1090,9 +1147,16 @@ Spare'''+delim+'''1'''+delim+'''Reserved for definition by a regional authority.
 Total bits'''+delim+'''424'''+delim+'''Appears to take 2 slots''')
 
 
-######################################################################
-# UNIT TESTING
-######################################################################
+# **************************************************************************** #
+#                                                                              #
+#                          UNIT TESTING                                        #
+#                                                                              #
+# **************************************************************************** #
+################################################################################
+#                                                                              #
+#                    addMsgOptions                                             #
+#                                                                              #
+################################################################################
 import unittest
 def testParams():
 	'''Return a params file base on the testvalue tags.
@@ -1124,6 +1188,11 @@ def testParams():
 
 	return params
 
+################################################################################
+#                                                                              #
+#                    Teshipdata                                                #
+#                                                                              #
+################################################################################
 class Testshipdata(unittest.TestCase):
 	'''Use testvalue tag text from each type to build test case the shipdata message'''
 	def testEncodeDecode(self):
@@ -1155,6 +1224,11 @@ class Testshipdata(unittest.TestCase):
 		self.failUnlessEqual(r['dte'],params['dte'])
 		self.failUnlessEqual(r['Spare'],params['Spare'])
 
+################################################################################
+#                                                                              #
+#                    addMsgOptions                                             #
+#                                                                              #
+################################################################################
 def addMsgOptions(parser):
 	parser.add_option('-d','--decode',dest='doDecode',default=False,action='store_true',
 		help='decode a "shipdata" AIS message')
@@ -1199,6 +1273,11 @@ def addMsgOptions(parser):
 	parser.add_option('--dte-field', dest='dteField',metavar='uint',type='int'
 		,help='Field parameter value [default: %default]')
 
+################################################################################
+#                                                                              #
+#                    ais_msg_5 main                                            #
+#                                                                              #
+################################################################################
 def main():
 	from optparse import OptionParser
 	parser = OptionParser(usage="%prog [options]",

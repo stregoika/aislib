@@ -114,7 +114,11 @@ pgTypes = {
 '''
 Lookup table for each postgis field name to get its type.
 '''
-
+################################################################################
+#                                                                              #
+#                          encode                                              #
+#                                                                              #
+################################################################################
 def encode(params, validate=False):
 	'''Create a positionb binary message payload to pack into an AIS Msg positionb.
 
@@ -200,6 +204,11 @@ def encode(params, validate=False):
 
 	return binary.joinBV(bvList)
 
+################################################################################
+#                                                                              #
+#                        decode                                                #
+#                                                                              #
+################################################################################
 def decode(bv, validate=False):
 	'''Unpack a positionb message 
 
@@ -322,7 +331,11 @@ def decodeCommStateSelector(bv, validate=False):
 def decodeCommState(bv, validate=False):
 	return int(bv[149:168])
 
-
+################################################################################
+#                                                                              #
+#                       printHtml                                              #
+#                                                                              #
+################################################################################
 def printHtml(params, out=sys.stdout):
 		out.write("<h3>positionb</h3>\n")
 		out.write("<table border=\"1\">\n")
@@ -546,6 +559,11 @@ def printHtml(params, out=sys.stdout):
 		out.write("</table>\n")
 
 
+################################################################################
+#                                                                              #
+#                        printKml                                              #
+#                                                                              #
+################################################################################
 def printKml(params, out=sys.stdout):
 	'''KML (Keyhole Markup Language) for Google Earth, but without the header/footer'''
 	out.write("\	<Placemark>\n")
@@ -567,6 +585,12 @@ def printKml(params, out=sys.stdout):
 	out.write("\t\t</Point>\n")
 	out.write("\t</Placemark>\n")
 
+
+################################################################################
+#                                                                              #
+#                        printFields                                           #
+#                                                                              #
+################################################################################
 def printFields(params, out=sys.stdout, format='std', fieldList=None, dbType='postgres'):
 	'''Print a positionb message to stdout.
 
@@ -652,6 +676,11 @@ def printFields(params, out=sys.stdout, format='std', fieldList=None, dbType='po
 
 	return # Nothing to return
 
+################################################################################
+#                                                                              #
+#                    Tablas de decodificacion                                  #
+#                                                                              #
+################################################################################
 RepeatIndicatorEncodeLut = {
 	'default':'0',
 	'do not repeat any more':'3',
@@ -774,10 +803,16 @@ CommStateSelectorDecodeLut = {
 	'1':'ITDMA',
 	} # CommStateSelectorEncodeLut
 
-######################################################################
-# SQL SUPPORT
-######################################################################
-
+# ******************************************************************************
+#                                                                              #
+#                             SQL SUPPORT                                      #
+#                                                                              #
+# ******************************************************************************
+################################################################################
+#                                                                              #
+#                    sqlCreateStr                                              #
+#                                                                              #
+################################################################################
 dbTableName='positionb'
 'Database table name'
 
@@ -801,6 +836,11 @@ def sqlCreateStr(outfile=sys.stdout, fields=None, extraFields=None
 	# FIX: should this sqlCreate be the same as in LaTeX (createFuncName) rather than hard coded?
 	outfile.write(str(sqlCreate(fields,extraFields,addCoastGuardFields,dbType=dbType)))
 
+################################################################################
+#                                                                              #
+#                    sqlCreateStr                                              #
+#                                                                              #
+################################################################################
 def sqlCreate(fields=None, extraFields=None, addCoastGuardFields=True, dbType='postgres'):
 	'''
 	Return the sqlhelp object to create the table.
@@ -859,6 +899,11 @@ def sqlCreate(fields=None, extraFields=None, addCoastGuardFields=True, dbType='p
 
 	return c
 
+################################################################################
+#                                                                              #
+#                    sqlCreateStr                                              #
+#                                                                              #
+################################################################################
 def sqlInsertStr(params, outfile=sys.stdout, extraParams=None, dbType='postgres'):
 	'''
 	Return the SQL INSERT command for this message type
@@ -872,7 +917,11 @@ def sqlInsertStr(params, outfile=sys.stdout, extraParams=None, dbType='postgres'
 	'''
 	outfile.write(str(sqlInsert(params,extraParams,dbType=dbType)))
 
-
+################################################################################
+#                                                                              #
+#                    sqlCreateStr                                              #
+#                                                                              #
+################################################################################
 def sqlInsert(params,extraParams=None,dbType='postgres'):
 	'''
 	Give the SQL INSERT statement
@@ -923,10 +972,16 @@ def sqlInsert(params,extraParams=None,dbType='postgres'):
 
 	return i
 
-######################################################################
-# LATEX SUPPORT
-######################################################################
-
+# ******************************************************************************
+#                                                                              #
+#                             LATEX SUPPORT                                    #
+#                                                                              #
+# ******************************************************************************
+################################################################################
+#                                                                              #
+#                    sqlCreateStr                                              #
+#                                                                              #
+################################################################################
 def latexDefinitionTable(outfile=sys.stdout
 		):
 	'''
@@ -974,10 +1029,16 @@ Total bits & 168 & Appears to take 1 slot \\\\ \\hline
 \\end{table}
 ''')
 
-######################################################################
-# Text Definition
-######################################################################
-
+# ******************************************************************************
+#                                                                              #
+#                          TEXT DEFINITION                                     #
+#                                                                              #
+# ******************************************************************************
+################################################################################
+#                                                                              #
+#                    sqlCreateStr                                              #
+#                                                                              #
+################################################################################
 def textDefinitionTable(outfile=sys.stdout
 		,delim='\t'
 		):
@@ -1015,9 +1076,16 @@ CommState'''+delim+'''19'''+delim+'''Not decoded by this software yet
 Total bits'''+delim+'''168'''+delim+'''Appears to take 1 slot''')
 
 
-######################################################################
-# UNIT TESTING
-######################################################################
+# ******************************************************************************
+#                                                                              #
+#                             UNIT TESTING                                     #
+#                                                                              #
+# ******************************************************************************
+################################################################################
+#                                                                              #
+#                    sqlCreateStr                                              #
+#                                                                              #
+################################################################################
 import unittest
 def testParams():
 	'''Return a params file base on the testvalue tags.
@@ -1049,6 +1117,11 @@ def testParams():
 
 	return params
 
+################################################################################
+#                                                                              #
+#                    sqlCreateStr                                              #
+#                                                                              #
+################################################################################
 class Testpositionb(unittest.TestCase):
 	'''Use testvalue tag text from each type to build test case the positionb message'''
 	def testEncodeDecode(self):
@@ -1080,6 +1153,11 @@ class Testpositionb(unittest.TestCase):
 		self.failUnlessEqual(r['CommStateSelector'],params['CommStateSelector'])
 		self.failUnlessEqual(r['CommState'],params['CommState'])
 
+################################################################################
+#                                                                              #
+#                    sqlCreateStr                                              #
+#                                                                              #
+################################################################################
 def addMsgOptions(parser):
 	parser.add_option('-d','--decode',dest='doDecode',default=False,action='store_true',
 		help='decode a "positionb" AIS message')
@@ -1122,6 +1200,11 @@ def addMsgOptions(parser):
 	parser.add_option('--CommState-field', dest='CommStateField',metavar='uint',type='int'
 		,help='Field parameter value [default: %default]')
 
+################################################################################
+#                                                                              #
+#                    sqlCreateStr                                              #
+#                                                                              #
+################################################################################
 def main():
 	from optparse import OptionParser
 	parser = OptionParser(usage="%prog [options]",

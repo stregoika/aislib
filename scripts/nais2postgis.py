@@ -502,7 +502,6 @@ class Nais2Postgis:
             continue
             
          print 'nais2postgis::Nais2Postgis - Mensaje decodificado: ',msg_dict
-         #print msg_dict
          #print 'uscg_msg:',type(uscg_msg)
          try:
             if handle_insert_update(self.cx, uscg_msg, msg_dict, aismsg):
