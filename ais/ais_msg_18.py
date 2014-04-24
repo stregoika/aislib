@@ -1209,9 +1209,8 @@ def main():
 	from optparse import OptionParser
    
    print 'ais_msg_18::main - Init'
-      
-	parser = OptionParser(usage="%prog [options]",
-		version="%prog "+__version__)
+   
+	parser = OptionParser(usage="%prog [options]", version="%prog "+__version__)
 
 	parser.add_option('--doc-test',dest='doctest',default=False,action='store_true',
 		help='run the documentation tests')
@@ -1223,12 +1222,13 @@ def main():
 	# FIX: remove nmea from binary messages.  No way to build the whole packet?
 	# FIX: or build the surrounding msg 8 for a broadcast?
 	typeChoices = ('binary','nmeapayload','nmea') # FIX: what about a USCG type message?
+      
 	parser.add_option('-t','--type',choices=typeChoices,type='choice',dest='ioType'
 		,default='nmeapayload'
 		,help='What kind of string to write for encoding ('+', '.join(typeChoices)+') [default: %default]')
 
-
 	outputChoices = ('std','html','csv','sql' , 'kml','kml-full')
+      
 	parser.add_option('-T','--output-type',choices=outputChoices,type='choice',dest='outputType'
 		,default='std'
 		,help='What kind of string to output ('+', '.join(outputChoices)+') [default: %default]')
