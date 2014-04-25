@@ -1206,209 +1206,197 @@ def addMsgOptions(parser):
 #                                                                              #
 ################################################################################
 def main():
-   from optparse import OptionParser
+    from optparse import OptionParser
    
-   print 'ais_msg_18::main - Init'
-   
-   parser = OptionParser(usage="%prog [options]"
+    print 'ais_msg_18::main - Init'
+    
+    parser = OptionParser(usage="%prog [options]"
                          ,version="%prog "+__version__)
 
-   parser.add_option('--doc-test',dest='doctest',default=False,action='store_true',                                                                                  help='run the documentation tests')
-   parser.add_option('--unit-test',dest='unittest',default=False,action='store_true',                                                    help='run the unit tests')
-   parser.add_option('-v','--verbose',dest='verbose',default=False,action='store_true',                                                  help='Make the test output verbose')
+    parser.add_option('--doc-test',dest='doctest',default=False,action='store_true',                                   help='run the documentation tests')
+        
+    parser.add_option('--unit-test',dest='unittest',default=False,action='store_true', help='run the unit tests')
+
+    parser.add_option('-v','--verbose',dest='verbose',default=False,action='store_true',                                                  help='Make the test output verbose')
    
 # FIX: remove nmea from binary messages.  No way to build the whole packet?
 # FIX: or build the surrounding msg 8 for a broadcast?
 
-   typeChoices = ('binary','nmeapayload','nmea') # FIX: what about a USCG type message?
-   
-   parser.add_option('-t','--type',choices=typeChoices,type='choice',dest='ioType'
+    typeChoices = ('binary','nmeapayload','nmea') # FIX: what about a USCG type message?
+    
+    parser.add_option('-t','--type',choices=typeChoices,type='choice',dest='ioType'
 		,default='nmeapayload'
 		,help='What kind of string to write for encoding ('+', '.join(typeChoices)+') [default: %default]')
 
-   outputChoices = ('std','html','csv','sql' , 'kml','kml-full')
-      
-   parser.add_option('-T','--output-type',choices=outputChoices,type='choice',dest='outputType'
+    outputChoices = ('std','html','csv','sql' , 'kml','kml-full')
+
+    parser.add_option('-T','--output-type',choices=outputChoices,type='choice',dest='outputType'
 		,default='std'
 		,help='What kind of string to output ('+', '.join(outputChoices)+') [default: %default]')
 
-   parser.add_option('-o','--output',dest='outputFileName',default=None,
+    parser.add_option('-o','--output',dest='outputFileName',default=None,
 			  help='Name of the python file to write [default: stdout]')
 
-   parser.add_option('-f','--fields',dest='fieldList',default=None, action='append',
+    parser.add_option('-f','--fields',dest='fieldList',default=None, action='append',
 			  choices=fieldList,
 			  help='Which fields to include in the output.  Currently only for csv output [default: all]')
 
-   parser.add_option('-p','--print-csv-field-list',dest='printCsvfieldList',default=False,action='store_true',
+    parser.add_option('-p','--print-csv-field-list',dest='printCsvfieldList',default=False,action='store_true',
 			  help='Print the field name for csv')
 
-   parser.add_option('-c','--sql-create',dest='sqlCreate',default=False,action='store_true',
+    parser.add_option('-c','--sql-create',dest='sqlCreate',default=False,action='store_true',
 			  help='Print out an sql create command for the table.')
 
-   parser.add_option('--latex-table',dest='latexDefinitionTable',default=False,action='store_true',
+    parser.add_option('--latex-table',dest='latexDefinitionTable',default=False,action='store_true',
 			  help='Print a LaTeX table of the type')
 
-   parser.add_option('--text-table',dest='textDefinitionTable',default=False,action='store_true',
+    parser.add_option('--text-table',dest='textDefinitionTable',default=False,action='store_true',
 			  help='Print delimited table of the type (for Word table importing)')
-   parser.add_option('--delimt-text-table',dest='delimTextDefinitionTable',default='\t'
+
+    parser.add_option('--delimt-text-table',dest='delimTextDefinitionTable',default='\t'
 			  ,help='Delimiter for text table [default: \'%default\'](for Word table importing)')
 
-
-   dbChoices = ('sqlite','postgres')
-   parser.add_option('-D','--db-type',dest='dbType',default='postgres'
+    dbChoices = ('sqlite','postgres')
+    parser.add_option('-D','--db-type',dest='dbType',default='postgres'
 			  ,choices=dbChoices,type='choice'
 			  ,help='What kind of database ('+', '.join(dbChoices)+') [default: %default]')
-   addMsgOptions(parser)
 
-   (options,args) = parser.parse_args()
-   success=True
+    addMsgOptions(parser)
 
-   if sucess:
-      print "hola"
-   else:
-      print "adios"
-   
+    (options,args) = parser.parse_args()
+    success=True
+    
+    if options.doctest:
+        import os
+        #print os.path.basename(sys.argv[0]), 'doctests ...', sys.argv=[sys.argv[0]]
+        if options.verbose: sys.argv.append('-v')
+        import doctest
+        numfail,numtests=doctest.testmod()
+        if numfail==0:
+            print 'ais_msg_18::main - Success'
+            success=True
+        else:
+            print 'ais_msg_18::main - Fail'
+            success=False
 
-   if options.doctest:
-      import os; print os.path.basename(sys.argv[0]), 'doctests ...',
-      sys.argv= [sys.argv[0]]
-      if options.verbose: sys.argv.append('-v')
-      import doctest
-      numfail,numtests=doctest.testmod()
-      print " "
-      if numfail==0:
-         print 'ais_msg_18::main - Success'
-         success=True
-      else:
-         print 'ais_msg_18::main - Fail'
-         success=False
+    if not success: sys.exit('Something Failed')
+    del success # Hide success from epydoc
 
-   if not success: sys.exit('Something Failed')
-   del success # Hide success from epydoc
+    if options.unittest:
+        sys.argv = [sys.argv[0]]
+        if options.verbose: sys.argv.append('-v')
+        unittest.main()
 
-   if options.unittest:
-		sys.argv = [sys.argv[0]]
-		if options.verbose: sys.argv.append('-v')
-		unittest.main()
+    outfile = sys.stdout
 
-   outfile = sys.stdout
-   if None!=options.outputFileName:
-      outfile = file(options.outputFileName,'w')
-	
-   if options.doEncode:
-      # First make sure all non required options are specified
-		if None==options.RepeatIndicatorField: parser.error("missing value for RepeatIndicatorField")
-		if None==options.UserIDField: parser.error("missing value for UserIDField")
-		if None==options.SOGField: parser.error("missing value for SOGField")
-		if None==options.PositionAccuracyField: parser.error("missing value for PositionAccuracyField")
-		if None==options.longitudeField: parser.error("missing value for longitudeField")
-		if None==options.latitudeField: parser.error("missing value for latitudeField")
-		if None==options.COGField: parser.error("missing value for COGField")
-		if None==options.TrueHeadingField: parser.error("missing value for TrueHeadingField")
-		if None==options.TimeStampField: parser.error("missing value for TimeStampField")
-		if None==options.cs_unitField: parser.error("missing value for cs_unitField")
-		if None==options.display_flagField: parser.error("missing value for display_flagField")
-		if None==options.dsc_flagField: parser.error("missing value for dsc_flagField")
-		if None==options.band_flagField: parser.error("missing value for band_flagField")
-		if None==options.msg22_flagField: parser.error("missing value for msg22_flagField")
-		if None==options.mode_flagField: parser.error("missing value for mode_flagField")
-		if None==options.RAIMField: parser.error("missing value for RAIMField")
-		if None==options.CommStateSelectorField: parser.error("missing value for CommStateSelectorField")
-		if None==options.CommStateField: parser.error("missing value for CommStateField")
-		msgDict={
-			'MessageID': '18',
-			'RepeatIndicator': options.RepeatIndicatorField,
-			'UserID': options.UserIDField,
-			'Reserved1': '0',
-			'SOG': options.SOGField,
-			'PositionAccuracy': options.PositionAccuracyField,
-			'longitude': options.longitudeField,
-			'latitude': options.latitudeField,
-			'COG': options.COGField,
-			'TrueHeading': options.TrueHeadingField,
-			'TimeStamp': options.TimeStampField,
-			'Spare': '0',
-			'cs_unit': options.cs_unitField,
-			'display_flag': options.display_flagField,
-			'dsc_flag': options.dsc_flagField,
-			'band_flag': options.band_flagField,
-			'msg22_flag': options.msg22_flagField,
-			'mode_flag': options.mode_flagField,
-			'RAIM': options.RAIMField,
-			'CommStateSelector': options.CommStateSelectorField,
-			'CommState': options.CommStateField,
-		}
+    if None!=options.outputFileName:
+        outfile = file(options.outputFileName,'w')
 
-		bits = encode(msgDict)
+    if options.doEncode:
+        # First make sure all non required options are specified
+        if None==options.RepeatIndicatorField: parser.error("missing value for RepeatIndicatorField")
+        if None==options.UserIDField: parser.error("missing value for UserIDField")
+        if None==options.SOGField: parser.error("missing value for SOGField")
+        if None==options.PositionAccuracyField: parser.error("missing value for PositionAccuracyField")
+        if None==options.longitudeField: parser.error("missing value for longitudeField")
+        if None==options.latitudeField: parser.error("missing value for latitudeField")
+        if None==options.COGField: parser.error("missing value for COGField")
+        if None==options.TrueHeadingField: parser.error("missing value for TrueHeadingField")
+        if None==options.TimeStampField: parser.error("missing value for TimeStampField")
+        if None==options.cs_unitField: parser.error("missing value for cs_unitField")
+        if None==options.display_flagField: parser.error("missing value for display_flagField")
+        if None==options.dsc_flagField: parser.error("missing value for dsc_flagField")
+        if None==options.band_flagField: parser.error("missing value for band_flagField")
+        if None==options.msg22_flagField: parser.error("missing value for msg22_flagField")
+        if None==options.mode_flagField: parser.error("missing value for mode_flagField")
+        if None==options.RAIMField: parser.error("missing value for RAIMField")
+        if None==options.CommStateSelectorField: parser.error("missing value for CommStateSelectorField")
+        if None==options.CommStateField: parser.error("missing value for CommStateField")
+        msgDict={
+            'MessageID': '18',
+            'RepeatIndicator': options.RepeatIndicatorField,
+            'UserID': options.UserIDField,
+            'Reserved1': '0',
+            'SOG': options.SOGField,
+            'PositionAccuracy': options.PositionAccuracyField,
+            'longitude': options.longitudeField,
+            'latitude': options.latitudeField,
+            'COG': options.COGField,
+            'TrueHeading': options.TrueHeadingField,
+            'TimeStamp': options.TimeStampField,
+            'Spare': '0',
+            'cs_unit': options.cs_unitField,
+            'display_flag': options.display_flagField,
+            'dsc_flag': options.dsc_flagField,
+            'band_flag': options.band_flagField,
+            'msg22_flag': options.msg22_flagField,
+            'mode_flag': options.mode_flagField,
+            'RAIM': options.RAIMField,
+            'CommStateSelector': options.CommStateSelectorField,
+            'CommState': options.CommStateField,
+        }
 
-      if 'binary'==options.ioType:
-         print 'hola'
-      elif 'nmeapayload'==options.ioType:
-         # FIX: figure out if this might be necessary at compile time
-         bitLen = len(bits)
-         if bitLen%6 != 0: bits = bits + BitVector(size=(6 - (bitLen%6))) # Pad out to multiple of 6
-         #print binary.bitvectoais6(bits)[0]
-      elif 'nmea'==options.ioType:
-         #bitLen=len(bits)
-         #if bitLen%6!=0:
-         #	bits = bits + BitVector(size=(6 - (bitLen%6)))  # Pad out to multiple of 6
-         import aisutils.uscg as uscg
-         nmea = uscg.create_nmea(bits)
-         print nmea
+        bits = encode(msgDict)
 
+        if 'binary'==options.ioType: print str(bits)
+        elif 'nmeapayload'==options.ioType:
+            # FIX: figure out if this might be necessary at compile time
+            bitLen = len(bits)
+            if bitLen%6 != 0: bits = bits + BitVector(size=(6 - (bitLen%6))) # Pad out to multiple of 6
+            #print binary.bitvectoais6(bits)[0]
+        elif 'nmea'==options.ioType:
+            #bitLen=len(bits)
+            #if bitLen%6!=0:
+            #	bits = bits + BitVector(size=(6 - (bitLen%6)))  # Pad out to multiple of 6
+            import aisutils.uscg as uscg
+            nmea = uscg.create_nmea(bits)
+            print nmea
+            #sys.exit("FIX: need to implement creating nmea capability")
+        else:
+            sys.exit('ERROR: unknown ioType.  Help!')
 
-         #sys.exit("FIX: need to implement creating nmea capability")
-   else: sys.exit('ERROR: unknown ioType.  Help!')
+    if options.sqlCreate:
+        sqlCreateStr(outfile,options.fieldList,dbType=options.dbType)
 
-   if options.sqlCreate:
-      sqlCreateStr(outfile,options.fieldList,dbType=options.dbType)
+    if options.latexDefinitionTable:
+        latexDefinitionTable(outfile)
+            
+    # For conversion to word tables
+    if options.textDefinitionTable:
+        textDefinitionTable(outfile,options.delimTextDefinitionTable)
 
-   if options.latexDefinitionTable:
-      latexDefinitionTable(outfile)
-         
-   # For conversion to word tables
-   if options.textDefinitionTable:
-      textDefinitionTable(outfile,options.delimTextDefinitionTable)
+    if options.printCsvfieldList:
+        # Make a csv separated list of fields that will be displayed for csv
+        if None == options.fieldList: options.fieldList = fieldList
+        import StringIO
+        buf = StringIO.StringIO()
+        for field in options.fieldList:
+            buf.write(field+',')
+        result = buf.getvalue()
+        if result[-1] == ',': print result[:-1]
+        else: print result
 
-   if options.printCsvfieldList:
-		# Make a csv separated list of fields that will be displayed for csv
-		if None == options.fieldList: options.fieldList = fieldList
-		import StringIO
-		buf = StringIO.StringIO()
-		for field in options.fieldList:
-			buf.write(field+',')
-		result = buf.getvalue()
-		if result[-1] == ',': print result[:-1]
-		else: print result
+    if options.doDecode:
+        if len(args)==0: args = sys.stdin
+        for msg in args:
+            bv = None
+            if msg[0] in ('$','!') and msg[3:6] in ('VDM','VDO'):
+                # Found nmea
+                # FIX: do checksum
+                bv = binary.ais6tobitvec(msg.split(',')[5])
+            else: # either binary or nmeapayload... expect mostly nmeapayloads
+                # assumes that an all 0 and 1 string can not be a nmeapayload
+                binaryMsg=True
+                for c in msg:
+                    if c not in ('0','1'):
+                        binaryMsg=False
+                        break
+                if binaryMsg:
+                    bv = BitVector(bitstring=msg)
+                else: # nmeapayload
+                    bv = binary.ais6tobitvec(msg)
+            printFields(decode(bv), out=outfile ,format=options.outputType, fieldList=options.fieldList, dbType=options.dbType)
 
-   if options.doDecode:
-      if len(args)==0: args = sys.stdin
-      for msg in args:
-         bv = None
-         
-         if msg[0] in ('$','!') and msg[3:6] in ('VDM','VDO'):
-				# Found nmea
-				# FIX: do checksum
-				bv = binary.ais6tobitvec(msg.split(',')[5])
-         else: # either binary or nmeapayload... expect mostly nmeapayloads
-            # assumes that an all 0 and 1 string can not be a nmeapayload
-				binaryMsg=True
-				for c in msg:
-               if c not in ('0','1'): 
-                  binaryMsg=False
-                  break
-
-            if binaryMsg:
-               bv = BitVector(bitstring=msg)
-            else: # nmeapayload
-					bv = binary.ais6tobitvec(msg)
-
-			printFields(decode(bv)
-				    ,out=outfile
-				    ,format=options.outputType
-				    ,fieldList=options.fieldList
-				    ,dbType=options.dbType
-				    )
 
 ############################################################
 if __name__=='__main__':
