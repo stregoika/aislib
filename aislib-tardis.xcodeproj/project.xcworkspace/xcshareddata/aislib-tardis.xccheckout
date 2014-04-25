@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>FC183E00-1EBA-4E21-8323-89AC8088508E</string>
+	<key>IDESourceControlProjectName</key>
+	<string>aislib-tardis</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>2F037955-6523-4622-945F-E807CA12982A</key>
+		<string>ssh://github.com/stregoika/aislib.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>aislib-tardis.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>2F037955-6523-4622-945F-E807CA12982A</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>ssh://github.com/stregoika/aislib.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>2F037955-6523-4622-945F-E807CA12982A</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>2F037955-6523-4622-945F-E807CA12982A</string>
+			<key>IDESourceControlWCCName</key>
+			<string>aislib-tardis</string>
+		</dict>
+	</array>
+</dict>
+</plist>
