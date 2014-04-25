@@ -1176,21 +1176,20 @@ def main():
         }
 
         bits = encode(msgDict)
-
         if 'binary'==options.ioType: print str(bits)
         elif 'nmeapayload'==options.ioType:
             # FIX: figure out if this might be necessary at compile time
             #print "bitLen",len(bits)
             bitLen=len(bits)
-            if bitLen%6!=0:
-                bits = bits + BitVector(size=(6 - (bitLen%6)))  # Pad out to multiple of 6
+            if bitLen%6!=0: bits = bits + BitVector(size=(6 - (bitLen%6)))  # Pad out to multiple of 6
             #print "result:",binary.bitvectoais6(bits)[0]
             print binary.bitvectoais6(bits)[0]
+
         # FIX: Do not emit this option for the binary message payloads.  Does not make sense.
         elif 'nmea'==options.ioType: 
             #bitLen=len(bits)
             #if bitLen%6!=0:
-            #	bits = bits + BitVector(size=(6 - (bitLen%6)))  # Pad out to multiple of 6
+            #   bits = bits + BitVector(size=(6 - (bitLen%6)))  # Pad out to multiple of 6
             import aisutils.uscg as uscg
             nmea = uscg.create_nmea(bits)
             print nmea
