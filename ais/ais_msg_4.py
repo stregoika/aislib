@@ -1204,36 +1204,36 @@ def main():
 	if options.latexDefinitionTable:
 		latexDefinitionTable(outfile)
 
-	# For conversion to word tables
-	if options.textDefinitionTable:
-		textDefinitionTable(outfile,options.delimTextDefinitionTable)
-
-	if options.printCsvfieldList:
-		# Make a csv separated list of fields that will be displayed for csv
-		if None == options.fieldList: options.fieldList = fieldList
-		import StringIO
-		buf = StringIO.StringIO()
-		for field in options.fieldList:
-			buf.write(field+',')
-		result = buf.getvalue()
-		if result[-1] == ',': print result[:-1]
-		else: print result
+    # For conversion to word tables
+    if options.textDefinitionTable:
+        textDefinitionTable(outfile,options.delimTextDefinitionTable)
+    
+    if options.printCsvfieldList:
+        # Make a csv separated list of fields that will be displayed for csv
+        if None == options.fieldList: options.fieldList = fieldList
+        import StringIO
+        buf = StringIO.StringIO()
+        for field in options.fieldList:
+            buf.write(field+',')
+        result = buf.getvalue()
+        if result[-1] == ',': print result[:-1]
+        else: print result
 
     if options.doDecode:
-		if len(args)==0: args = sys.stdin
-		for msg in args:
-			bv = None
-			if msg[0] in ('$','!') and msg[3:6] in ('VDM','VDO'):
-				# Found nmea
-				# FIX: do checksum
-				bv = binary.ais6tobitvec(msg.split(',')[5])
-			else: # either binary or nmeapayload... expect mostly nmeapayloads
-				# assumes that an all 0 and 1 string can not be a nmeapayload
-				binaryMsg=True
-				for c in msg:
-					if c not in ('0','1'):
-						binaryMsg=False
-						break
+        if len(args)==0: args = sys.stdin
+        for msg in args:
+            bv = None
+            if msg[0] in ('$','!') and msg[3:6] in ('VDM','VDO'):
+                # Found nmea
+                # FIX: do checksum
+                bv = binary.ais6tobitvec(msg.split(',')[5])
+            else: # either binary or nmeapayload... expect mostly nmeapayloads
+                # assumes that an all 0 and 1 string can not be a nmeapayload
+                binaryMsg=True
+                for c in msg:
+                    if c not in ('0','1'):
+                        binaryMsg=False
+                        break
                 if binaryMsg: 
                     bv = BitVector(bitstring=msg)
                 else: 
