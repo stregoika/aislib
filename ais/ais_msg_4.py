@@ -1174,7 +1174,8 @@ def main():
 			'state_slottimeout': options.state_slottimeoutField,
 			'state_slotoffset': options.state_slotoffsetField,
         }
-		bits = encode(msgDict)
+
+        bits = encode(msgDict)
 
         if 'binary'==options.ioType: print str(bits)
         elif 'nmeapayload'==options.ioType:
@@ -1196,7 +1197,6 @@ def main():
             #sys.exit("FIX: need to implement creating nmea capability")
         else: 
             sys.exit('ERROR: unknown ioType.  Help!')
-
 
 	if options.sqlCreate:
 		sqlCreateStr(outfile,options.fieldList,dbType=options.dbType)
