@@ -1,0 +1,120 @@
+<html>
+<title>AIS Message Definition - Human Readable Form</title>
+<body>
+<h1>AIS Message Definitions</h1>
+<ul><li>
+<a href="#binack">binack</a>
+	      (::): 
+	      Binary acknowledgement of addressed message</li></ul>
+<a name="binack"><h2>AIS Message: binack
+	    (::)
+	  </h2></a><h3>Description:</h3>
+<p>Binary acknowledgement of addressed message</p>
+<table border="1">
+<tr bgcolor="#9acd32">
+<th align="left">Name</th>
+<th align="left">NumberOfBits</th>
+<th align="left">ArrayLength</th>
+<th align="left">Type</th>
+<th align="left">Units</th>
+<th align="left">Description</th>
+</tr>
+<tr>
+<td>MessageID</td>
+<td>6</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>AIS message number.  Must be 7</td>
+</tr>
+<tr>
+<td>RepeatIndicator</td>
+<td>2</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Indicated how many times a message has been repeated<br><b>0</b>: default<br><b>3</b>: do not repeat any more</td>
+</tr>
+<tr>
+<td>UserID</td>
+<td>30</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Unique ship identification number (MMSI).  Also known as the Source ID</td>
+</tr>
+<tr>
+<td>Spare</td>
+<td>2</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Not used.  Should be set to zero.</td>
+</tr>
+<tr>
+<td>DestID1</td>
+<td>30</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>MMSI destication to ACK</td>
+</tr>
+<tr>
+<td>SeqID1</td>
+<td>2</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Sequence ID of the message to be acknowledged</td>
+</tr>
+<tr>
+<td>DestID2</td>
+<td>30</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>MMSI destication to ACK</td>
+</tr>
+<tr>
+<td>SeqID2</td>
+<td>2</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Sequence ID of the message to be acknowledged</td>
+</tr>
+<tr>
+<td>DestID3</td>
+<td>30</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>MMSI destication to ACK</td>
+</tr>
+<tr>
+<td>SeqID3</td>
+<td>2</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Sequence ID of the message to be acknowledged</td>
+</tr>
+<tr>
+<td>DestID4</td>
+<td>30</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>MMSI destication to ACK</td>
+</tr>
+<tr>
+<td>SeqID4</td>
+<td>2</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Sequence ID of the message to be acknowledged</td>
+</tr>
+</table>
+</body>
+</html>

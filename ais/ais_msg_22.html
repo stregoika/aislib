@@ -1,0 +1,160 @@
+<html>
+<title>AIS Message Definition - Human Readable Form</title>
+<body>
+<h1>AIS Message Definitions</h1>
+<ul><li>
+<a href="#ChanMngmt">ChanMngmt</a>
+	      (::): 
+	      Base station report - F</li></ul>
+<a name="ChanMngmt"><h2>AIS Message: ChanMngmt
+	    (::)
+	  </h2></a><h3>Description:</h3>
+<p>Base station report - F</p>
+<table border="1">
+<tr bgcolor="#9acd32">
+<th align="left">Name</th>
+<th align="left">NumberOfBits</th>
+<th align="left">ArrayLength</th>
+<th align="left">Type</th>
+<th align="left">Units</th>
+<th align="left">Description</th>
+</tr>
+<tr>
+<td>MessageID</td>
+<td>6</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>AIS message number.  Must be 22</td>
+</tr>
+<tr>
+<td>RepeatIndicator</td>
+<td>2</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Indicated how many times a message has been repeated<br><b>0</b>: default<br><b>3</b>: do not repeat any more</td>
+</tr>
+<tr>
+<td>UserID</td>
+<td>30</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Unique ship identification number (MMSI)</td>
+</tr>
+<tr>
+<td>Spare</td>
+<td>2</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Not used.  Should be set to zero.</td>
+</tr>
+<tr>
+<td>ChanA</td>
+<td>12</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Channel number from ITU-R M.1084 Annex 4</td>
+</tr>
+<tr>
+<td>ChanB</td>
+<td>12</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Channel number from ITU-R M.1084 Annex 4</td>
+</tr>
+<tr>
+<td>TxRxMode</td>
+<td>4</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>FIX: find the description<br><b>0</b>: Tx A/Tx B, Rx A/RX B<br><b>1</b>: Tx A, Rx A/Rx B<br><b>2</b>: Tx B, Rx A/Rx B</td>
+</tr>
+<tr>
+<td>power</td>
+<td>1</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>FIX: put in a description<br><b>0</b>: high<br><b>1</b>: low</td>
+</tr>
+<tr>
+<td>corner1_lon</td>
+<td>18</td>
+<td></td>
+<td>decimal</td>
+<td>degrees</td>
+<td>north-east corner of area for assignment  longitude of corner</td>
+</tr>
+<tr>
+<td>corner1_lat</td>
+<td>17</td>
+<td></td>
+<td>decimal</td>
+<td>degrees</td>
+<td>north-east corner of area for assignment  latitude of corner</td>
+</tr>
+<tr>
+<td>corner2_lon</td>
+<td>18</td>
+<td></td>
+<td>decimal</td>
+<td>degrees</td>
+<td>south-west corner of area for assignment  longitude of corner</td>
+</tr>
+<tr>
+<td>corner2_lat</td>
+<td>17</td>
+<td></td>
+<td>decimal</td>
+<td>degrees</td>
+<td>south-west corner of area for assignment  latitude of corner</td>
+</tr>
+<tr>
+<td>IndicatorType</td>
+<td>1</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>FIX: put in a description<br><b>0</b>: broadcast<br><b>1</b>: addressed</td>
+</tr>
+<tr>
+<td>ChanABandwidth</td>
+<td>1</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>FIX: put in a description<br><b>0</b>: specified by channel number<br><b>1</b>: 12.5kHz</td>
+</tr>
+<tr>
+<td>ChanBBandwidth</td>
+<td>1</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>FIX: put in a description<br><b>0</b>: specified by channel number<br><b>1</b>: 12.5kHz</td>
+</tr>
+<tr>
+<td>TransZoneSize</td>
+<td>3</td>
+<td></td>
+<td>uint</td>
+<td>nm</td>
+<td>FIX: put in a description<br><b>0</b>: 1<br><b>1</b>: 2<br><b>2</b>: 3<br><b>3</b>: 4<br><b>4</b>: 5<br><b>5</b>: 6<br><b>6</b>: 7<br><b>7</b>: 8</td>
+</tr>
+<tr>
+<td>Spare2</td>
+<td>23</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Not used.  Should be set to zero.</td>
+</tr>
+</table>
+</body>
+</html>

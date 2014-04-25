@@ -1,0 +1,96 @@
+<html>
+<title>AIS Message Definition - Human Readable Form</title>
+<body>
+<h1>AIS Message Definitions</h1>
+<ul><li>
+<a href="#sls_wind">sls_wind</a>
+	      (366 316:1:2): 
+	      St Lawrance Seaway wind information</li></ul>
+<a name="sls_wind"><h2>AIS Message: sls_wind
+	    (366 316:1:2)
+	  </h2></a><h3>Description:</h3>
+<p>St Lawrance Seaway wind information</p>
+<table border="1">
+<tr bgcolor="#9acd32">
+<th align="left">Name</th>
+<th align="left">NumberOfBits</th>
+<th align="left">ArrayLength</th>
+<th align="left">Type</th>
+<th align="left">Units</th>
+<th align="left">Description</th>
+</tr>
+<tr>
+<td>time_month</td>
+<td>4</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Time tag of measurement  month 1..12</td>
+</tr>
+<tr>
+<td>time_day</td>
+<td>5</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Time tag of measurement  day of the month 1..31</td>
+</tr>
+<tr>
+<td>time_hour</td>
+<td>5</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Time tag of measurement  UTC hours 0..23</td>
+</tr>
+<tr>
+<td>time_min</td>
+<td>6</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Time tag of measurement  minutes</td>
+</tr>
+<tr>
+<td>stationid</td>
+<td>6</td>
+<td>7</td>
+<td>aisstr6</td>
+<td></td>
+<td>Character identifier of the station</td>
+</tr>
+<tr>
+<td>pos_longitude</td>
+<td>25</td>
+<td></td>
+<td>decimal</td>
+<td>degrees</td>
+<td>Location of measurement  East West location</td>
+</tr>
+<tr>
+<td>pos_latitude</td>
+<td>24</td>
+<td></td>
+<td>decimal</td>
+<td>degrees</td>
+<td>Location of measurement  North South location</td>
+</tr>
+<tr>
+<td>flow</td>
+<td>10</td>
+<td></td>
+<td>uint</td>
+<td>m^3/s</td>
+<td>Water flow</td>
+</tr>
+<tr>
+<td>reserved</td>
+<td>19</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Reserved bits for future use</td>
+</tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<html>
+<title>AIS Message Definition - Human Readable Form</title>
+<body>
+<h1>AIS Message Definitions</h1>
+<ul><li>
+<a href="#bin_broadcast">bin_broadcast</a>
+	      (::): 
+	      Variable length broadcast taking 1..5 slots</li></ul>
+<a name="bin_broadcast"><h2>AIS Message: bin_broadcast
+	    (::)
+	  </h2></a><h3>Description:</h3>
+<p>Variable length broadcast taking 1..5 slots</p>
+<p><b>Note:</b>Need to make much of this an include-struct so that 1-3 are as simple as possible</p>
+<p><b>See Also:</b></p>
+<table border="1">
+<tr bgcolor="#9acd32">
+<th align="left">Name</th>
+<th align="left">NumberOfBits</th>
+<th align="left">ArrayLength</th>
+<th align="left">Type</th>
+<th align="left">Units</th>
+<th align="left">Description</th>
+</tr>
+<tr>
+<td>MessageID</td>
+<td>6</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>AIS message number.  Must be 8</td>
+</tr>
+<tr>
+<td>RepeatIndicator</td>
+<td>2</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Indicated how many times a message has been repeated<br><b>0</b>: default<br><b>3</b>: do not repeat any more</td>
+</tr>
+<tr>
+<td>UserID</td>
+<td>30</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Unique ship identification number (MMSI)</td>
+</tr>
+<tr>
+<td>Spare</td>
+<td>2</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Reserved for definition by a regional authority.</td>
+</tr>
+<tr>
+<td>dac</td>
+<td>10</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Appid designated area code (country)</td>
+</tr>
+<tr>
+<td>fi</td>
+<td>6</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Appid functional identifier</td>
+</tr>
+<tr>
+<td>BinaryData</td>
+<td>-1</td>
+<td></td>
+<td>binary</td>
+<td></td>
+<td>Bits for a binary broadcast message</td>
+</tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,162 @@
+<html>
+<title>AIS Message Definition - Human Readable Form</title>
+<body>
+<h1>AIS Message Definitions</h1>
+<ul><li>
+<a href="#whalenotice">whalenotice</a>
+	      (366:63:2): 
+	      Endangered whale notification binary message</li></ul>
+<a name="whalenotice"><h2>AIS Message: whalenotice
+	    (366:63:2)
+	  </h2></a><h3>Description:</h3>
+<p>Endangered whale notification binary message</p>
+<p><b>Note:</b>LNG terminal project.  This is a draft.  Please comment on the content of this message</p>
+<p><b>See Also:</b>http://http://vislab-ccom.unh.edu/~schwehr/ais/waterlevel/</p>
+<table border="1">
+<tr bgcolor="#9acd32">
+<th align="left">Name</th>
+<th align="left">NumberOfBits</th>
+<th align="left">ArrayLength</th>
+<th align="left">Type</th>
+<th align="left">Units</th>
+<th align="left">Description</th>
+</tr>
+<tr>
+<td>MessageID</td>
+<td>6</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>AIS message number.  Must be 8</td>
+</tr>
+<tr>
+<td>RepeatIndicator</td>
+<td>2</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Indicated how many times a message has been repeated<br><b>0</b>: default<br><b>3</b>: do not repeat any more</td>
+</tr>
+<tr>
+<td>UserID</td>
+<td>30</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Unique ship identification number (MMSI)</td>
+</tr>
+<tr>
+<td>Spare</td>
+<td>2</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Reserved for definition by a regional authority.</td>
+</tr>
+<tr>
+<td>dac</td>
+<td>10</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Designated Area Code - 366 for the United States</td>
+</tr>
+<tr>
+<td>fid</td>
+<td>6</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Functional IDentifier - 63 for the Whale Notice</td>
+</tr>
+<tr>
+<td>efid</td>
+<td>12</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Extended Functional IDentifier.  1 for the Whale Notice (dac+fid+efid defines the exact message type)</td>
+</tr>
+<tr>
+<td>month</td>
+<td>4</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Time of most recent whale detection.  UTC month 1..12</td>
+</tr>
+<tr>
+<td>day</td>
+<td>5</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Time of most recent whale detection.  UTC day of the month 1..31</td>
+</tr>
+<tr>
+<td>hour</td>
+<td>5</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Time of most recent whale detection.  UTC hours 0..23</td>
+</tr>
+<tr>
+<td>min</td>
+<td>6</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Time of most recent whale detection.  UTC minutes</td>
+</tr>
+<tr>
+<td>sec</td>
+<td>6</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Time of most recent whale detection.  UTC seconds</td>
+</tr>
+<tr>
+<td>stationid</td>
+<td>6</td>
+<td>7</td>
+<td>aisstr6</td>
+<td></td>
+<td>Identifier of the station that detected the whale.  (e.g. which buoy)</td>
+</tr>
+<tr>
+<td>longitude</td>
+<td>28</td>
+<td></td>
+<td>decimal</td>
+<td>degrees</td>
+<td>Center of the detection zone.  East West location</td>
+</tr>
+<tr>
+<td>latitude</td>
+<td>27</td>
+<td></td>
+<td>decimal</td>
+<td>degrees</td>
+<td>Center of the detection zone.  North South location</td>
+</tr>
+<tr>
+<td>timetoexpire</td>
+<td>16</td>
+<td></td>
+<td>uint</td>
+<td>seconds</td>
+<td>Seconds from the detection time until the notice expires</td>
+</tr>
+<tr>
+<td>radius</td>
+<td>16</td>
+<td></td>
+<td>uint</td>
+<td>m</td>
+<td>Distance from center of detection zone (lat/lon above)</td>
+</tr>
+</table>
+</body>
+</html>

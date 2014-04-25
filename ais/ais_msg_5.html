@@ -1,0 +1,192 @@
+<html>
+<title>AIS Message Definition - Human Readable Form</title>
+<body>
+<h1>AIS Message Definitions</h1>
+<ul><li>
+<a href="#shipdata">shipdata</a>
+	      (::): 
+	      Class A vessel data report</li></ul>
+<a name="shipdata"><h2>AIS Message: shipdata
+	    (::)
+	  </h2></a><h3>Description:</h3>
+<p>Class A vessel data report</p>
+<table border="1">
+<tr bgcolor="#9acd32">
+<th align="left">Name</th>
+<th align="left">NumberOfBits</th>
+<th align="left">ArrayLength</th>
+<th align="left">Type</th>
+<th align="left">Units</th>
+<th align="left">Description</th>
+</tr>
+<tr>
+<td>MessageID</td>
+<td>6</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>AIS message number.  Must be 5</td>
+</tr>
+<tr>
+<td>RepeatIndicator</td>
+<td>2</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Indicated how many times a message has been repeated<br><b>0</b>: default<br><b>3</b>: do not repeat any more</td>
+</tr>
+<tr>
+<td>UserID</td>
+<td>30</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Unique ship identification number (MMSI)</td>
+</tr>
+<tr>
+<td>AISversion</td>
+<td>2</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Compliant with what edition.  0 is the first edition.</td>
+</tr>
+<tr>
+<td>IMOnumber</td>
+<td>30</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>vessel identification number (different than mmsi)</td>
+</tr>
+<tr>
+<td>callsign</td>
+<td>6</td>
+<td>7</td>
+<td>aisstr6</td>
+<td></td>
+<td>Ship radio call sign</td>
+</tr>
+<tr>
+<td>name</td>
+<td>6</td>
+<td>20</td>
+<td>aisstr6</td>
+<td></td>
+<td>Vessel name</td>
+</tr>
+<tr>
+<td>shipandcargo</td>
+<td>8</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Type of ship and cargo type<br><b>20</b>: Wing in ground (WIG), all ships of this type<br><b>21</b>: Wing in ground (WIG), Hazardous catagory A<br><b>22</b>: Wing in ground (WIG), Hazardous catagory B<br><b>23</b>: Wing in ground (WIG), Hazardous catagory C<br><b>24</b>: Wing in ground (WIG), Hazardous catagory D<br><b>25</b>: Wing in ground (WIG), Reserved for future use<br><b>26</b>: Wing in ground (WIG), Reserved for future use<br><b>27</b>: Wing in ground (WIG), Reserved for future use<br><b>28</b>: Wing in ground (WIG), Reserved for future use<br><b>29</b>: Wing in ground (WIG), No additional information<br><b>30</b>: fishing<br><b>31</b>: towing<br><b>32</b>: towing length exceeds 200m or breadth exceeds 25m<br><b>33</b>: dredging or underwater ops<br><b>34</b>: diving ops<br><b>35</b>: military ops<br><b>36</b>: sailing<br><b>37</b>: pleasure craft<br><b>38</b>: reserved<br><b>39</b>: reserved<br><b>40</b>: High speed craft (HSC), all ships of this type<br><b>41</b>: High speed craft (HSC), Hazardous catagory A<br><b>42</b>: High speed craft (HSC), Hazardous catagory B<br><b>43</b>: High speed craft (HSC), Hazardous catagory C<br><b>44</b>: High speed craft (HSC), Hazardous catagory D<br><b>45</b>: High speed craft (HSC), Reserved for future use<br><b>46</b>: High speed craft (HSC), Reserved for future use<br><b>47</b>: High speed craft (HSC), Reserved for future use<br><b>48</b>: High speed craft (HSC), Reserved for future use<br><b>49</b>: High speed craft (HSC), No additional information<br><b>50</b>: pilot vessel<br><b>51</b>: search and rescue vessel<br><b>52</b>: tug<br><b>53</b>: port tender<br><b>54</b>: anti-polution equipment<br><b>55</b>: law enforcement<br><b>56</b>: spare - local vessel<br><b>57</b>: spare - local vessel<br><b>58</b>: medical transport<br><b>59</b>: ship according to RR Resolution No. 18<br><b>60</b>: passenger, all ships of this type<br><b>61</b>: passenger, Hazardous catagory A<br><b>62</b>: passenger, Hazardous catagory B<br><b>63</b>: passenger, Hazardous catagory C<br><b>64</b>: passenger, Hazardous catagory D<br><b>65</b>: passenger, Reserved for future use<br><b>66</b>: passenger, Reserved for future use<br><b>67</b>: passenger, Reserved for future use<br><b>68</b>: passenger, Reserved for future use<br><b>69</b>: passenger, No additional information<br><b>70</b>: cargo, all ships of this type<br><b>71</b>: cargo, Hazardous catagory A<br><b>72</b>: cargo, Hazardous catagory B<br><b>73</b>: cargo, Hazardous catagory C<br><b>74</b>: cargo, Hazardous catagory D<br><b>75</b>: cargo, Reserved for future use<br><b>76</b>: cargo, Reserved for future use<br><b>77</b>: cargo, Reserved for future use<br><b>78</b>: cargo, Reserved for future use<br><b>79</b>: cargo, No additional information<br><b>80</b>: tanker, all ships of this type<br><b>81</b>: tanker, Hazardous catagory A<br><b>82</b>: tanker, Hazardous catagory B<br><b>83</b>: tanker, Hazardous catagory C<br><b>84</b>: tanker, Hazardous catagory D<br><b>85</b>: tanker, Reserved for future use<br><b>86</b>: tanker, Reserved for future use<br><b>87</b>: tanker, Reserved for future use<br><b>88</b>: tanker, Reserved for future use<br><b>89</b>: tanker, No additional information<br><b>90</b>: other type, all ships of this type<br><b>91</b>: other type, Hazardous catagory A<br><b>92</b>: other type, Hazardous catagory B<br><b>93</b>: other type, Hazardous catagory C<br><b>94</b>: other type, Hazardous catagory D<br><b>95</b>: other type, Reserved for future use<br><b>96</b>: other type, Reserved for future use<br><b>97</b>: other type, Reserved for future use<br><b>98</b>: other type, Reserved for future use<br><b>99</b>: other type, No additional information</td>
+</tr>
+<tr>
+<td>dimA</td>
+<td>9</td>
+<td></td>
+<td>uint</td>
+<td>m</td>
+<td>Distance from bow to reference position</td>
+</tr>
+<tr>
+<td>dimB</td>
+<td>9</td>
+<td></td>
+<td>uint</td>
+<td>m</td>
+<td>Distance from reference position to stern</td>
+</tr>
+<tr>
+<td>dimC</td>
+<td>6</td>
+<td></td>
+<td>uint</td>
+<td>m</td>
+<td>Distance from port side to reference position<br><b>63</b>: 63 m or greater</td>
+</tr>
+<tr>
+<td>dimD</td>
+<td>6</td>
+<td></td>
+<td>uint</td>
+<td>m</td>
+<td>Distance from reference position to starboard side<br><b>63</b>: 63 m or greater</td>
+</tr>
+<tr>
+<td>fixtype</td>
+<td>4</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Method used for positioning<br><b>0</b>: undefined<br><b>1</b>: GPS<br><b>2</b>: GLONASS<br><b>3</b>: combined GPS/GLONASS<br><b>4</b>: Loran-C<br><b>5</b>: Chayka<br><b>6</b>: integrated navigation system<br><b>7</b>: surveyed</td>
+</tr>
+<tr>
+<td>ETAmonth</td>
+<td>4</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Estimated time of arrival - month</td>
+</tr>
+<tr>
+<td>ETAday</td>
+<td>5</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Estimated time of arrival - day</td>
+</tr>
+<tr>
+<td>ETAhour</td>
+<td>5</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Estimated time of arrival - hour</td>
+</tr>
+<tr>
+<td>ETAminute</td>
+<td>6</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Estimated time of arrival - minutes</td>
+</tr>
+<tr>
+<td>draught</td>
+<td>8</td>
+<td></td>
+<td>udecimal</td>
+<td>m</td>
+<td>Maximum present static draught<br><b>25.5</b>: 25.5 m or greater</td>
+</tr>
+<tr>
+<td>destination</td>
+<td>6</td>
+<td>20</td>
+<td>aisstr6</td>
+<td></td>
+<td>Where is the vessel going</td>
+</tr>
+<tr>
+<td>dte</td>
+<td>1</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Data terminal ready<br><b>0</b>: available<br><b>1</b>: not available</td>
+</tr>
+<tr>
+<td>Spare</td>
+<td>1</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Reserved for definition by a regional authority.</td>
+</tr>
+</table>
+</body>
+</html>

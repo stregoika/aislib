@@ -1,0 +1,243 @@
+<html>
+<title>AIS Message Definition - Human Readable Form</title>
+<body>
+<h1>AIS Message Definitions</h1>
+<ul><li>
+<a href="#waterlevel">waterlevel</a>
+	      (366:63:2): 
+	      Water level report.  In this case from the NOAA
+Co-Ops 6 minute raw data.  This is DRAFT/PROPOSED message
+format and should not be considered any sort of standard.  The main
+goal is to illustrated the Tide Aware ENC and the AIS XML engine.
+    </li></ul>
+<a name="waterlevel"><h2>AIS Message: waterlevel
+	    (366:63:2)
+	  </h2></a><h3>Description:</h3>
+<p>Water level report.  In this case from the NOAA
+Co-Ops 6 minute raw data.  This is DRAFT/PROPOSED message
+format and should not be considered any sort of standard.  The main
+goal is to illustrated the Tide Aware ENC and the AIS XML engine.
+    </p>
+<p><b>Note:</b>Prototype only for the Hampton Roads/Elizabeth River 2007 demonstration project</p>
+<p><b>See Also:</b>http://opendap.co-ops.nos.noaa.gov/axis/</p>
+<p><b>See Also:</b>http://http://vislab-ccom.unh.edu/~schwehr/ais/waterlevel/</p>
+<table border="1">
+<tr bgcolor="#9acd32">
+<th align="left">Name</th>
+<th align="left">NumberOfBits</th>
+<th align="left">ArrayLength</th>
+<th align="left">Type</th>
+<th align="left">Units</th>
+<th align="left">Description</th>
+</tr>
+<tr>
+<td>MessageID</td>
+<td>6</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>AIS message number.  Must be 8</td>
+</tr>
+<tr>
+<td>RepeatIndicator</td>
+<td>2</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Indicated how many times a message has been repeated<br><b>0</b>: default<br><b>3</b>: do not repeat any more</td>
+</tr>
+<tr>
+<td>UserID</td>
+<td>30</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Unique ship identification number (MMSI)</td>
+</tr>
+<tr>
+<td>Spare</td>
+<td>2</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Reserved for definition by a regional authority.</td>
+</tr>
+<tr>
+<td>dac</td>
+<td>10</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Designated Area Code</td>
+</tr>
+<tr>
+<td>fid</td>
+<td>6</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Functional Identifier</td>
+</tr>
+<tr>
+<td>efid</td>
+<td>12</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>extended functional identifier</td>
+</tr>
+<tr>
+<td>month</td>
+<td>4</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Time the measurement represents  month 1..12</td>
+</tr>
+<tr>
+<td>day</td>
+<td>5</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Time the measurement represents  day of the month 1..31</td>
+</tr>
+<tr>
+<td>hour</td>
+<td>5</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Time the measurement represents  UTC hours 0..23</td>
+</tr>
+<tr>
+<td>min</td>
+<td>6</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Time the measurement represents  minutes</td>
+</tr>
+<tr>
+<td>sec</td>
+<td>6</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Time the measurement represents  seconds</td>
+</tr>
+<tr>
+<td>stationid</td>
+<td>6</td>
+<td>7</td>
+<td>aisstr6</td>
+<td></td>
+<td>Character identifier of the station.  Usually a number.</td>
+</tr>
+<tr>
+<td>longitude</td>
+<td>28</td>
+<td></td>
+<td>decimal</td>
+<td>degrees</td>
+<td>Location of the sensor taking the water level measurement or position of prediction.  East West location</td>
+</tr>
+<tr>
+<td>latitude</td>
+<td>27</td>
+<td></td>
+<td>decimal</td>
+<td>degrees</td>
+<td>Location of the sensor taking the water level measurement or position of prediction.  North South location</td>
+</tr>
+<tr>
+<td>waterlevel</td>
+<td>16</td>
+<td></td>
+<td>int</td>
+<td>cm</td>
+<td>Water level in centimeters</td>
+</tr>
+<tr>
+<td>datum</td>
+<td>5</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>What reference datum applies to the value<br><b>0</b>: MLLW<br><b>1</b>: IGLD-85<br><b>2</b>: WaterDepth<br><b>3</b>: STND<br><b>4</b>: MHW<br><b>5</b>: MSL<br><b>6</b>: NGVD<br><b>7</b>: NAVD<br><b>8</b>: WGS-84<br><b>9</b>: LAT</td>
+</tr>
+<tr>
+<td>sigma</td>
+<td>32</td>
+<td></td>
+<td>float</td>
+<td>m</td>
+<td>Standard deviation of 1 second samples used to compute the water level height</td>
+</tr>
+<tr>
+<td>o</td>
+<td>8</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Count of number of samples that fall outside a 3-sigma band about the mean</td>
+</tr>
+<tr>
+<td>levelinferred</td>
+<td>1</td>
+<td></td>
+<td>bool</td>
+<td></td>
+<td>indicates that the water level value has been inferred</td>
+</tr>
+<tr>
+<td>flat_tolerance_exceeded</td>
+<td>1</td>
+<td></td>
+<td>bool</td>
+<td></td>
+<td>flat tolerance limit was exceeded.  Need better descr</td>
+</tr>
+<tr>
+<td>rate_tolerance_exceeded</td>
+<td>1</td>
+<td></td>
+<td>bool</td>
+<td></td>
+<td>rate of change tolerance limit was exceeded</td>
+</tr>
+<tr>
+<td>temp_tolerance_exceeded</td>
+<td>1</td>
+<td></td>
+<td>bool</td>
+<td></td>
+<td>temperature difference tolerance limit was exceeded</td>
+</tr>
+<tr>
+<td>expected_height_exceeded</td>
+<td>1</td>
+<td></td>
+<td>bool</td>
+<td></td>
+<td>either the maximum or minimum expected water level height limit was exceeded</td>
+</tr>
+<tr>
+<td>link_down</td>
+<td>1</td>
+<td></td>
+<td>bool</td>
+<td></td>
+<td>Unable to communicate with the tide system.  All data invalid</td>
+</tr>
+<tr>
+<td>timeLastMeasured</td>
+<td>12</td>
+<td></td>
+<td>udecimal</td>
+<td>hours</td>
+<td>Time relative since the timetag that the station actually measured a value.</td>
+</tr>
+</table>
+</body>
+</html>

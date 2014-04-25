@@ -1,0 +1,377 @@
+<html>
+<title>AIS Message Definition - Human Readable Form</title>
+<body>
+<h1>AIS Message Definitions</h1>
+<ul><li>
+<a href="#imo_met_hydro">imo_met_hydro</a>
+	      (001:11:): 
+	      IMO meteorological and hydroglogical data.  Specified
+      in SN/Circ.236 Annex 2.  Also defined in IALA Guidelines on AIS,
+      Vol 1, Part 1, Ed. 1.3. Guildeline No 1028.
+    </li></ul>
+<a name="imo_met_hydro"><h2>AIS Message: imo_met_hydro
+	    (001:11:)
+	  </h2></a><h3>Description:</h3>
+<p>IMO meteorological and hydroglogical data.  Specified
+      in SN/Circ.236 Annex 2.  Also defined in IALA Guidelines on AIS,
+      Vol 1, Part 1, Ed. 1.3. Guildeline No 1028.
+    </p>
+<p><b>Note:</b>All unavailable values are defined to be the highest
+    possible number in the next following</p>
+<table border="1">
+<tr bgcolor="#9acd32">
+<th align="left">Name</th>
+<th align="left">NumberOfBits</th>
+<th align="left">ArrayLength</th>
+<th align="left">Type</th>
+<th align="left">Units</th>
+<th align="left">Description</th>
+</tr>
+<tr>
+<td>MessageID</td>
+<td>6</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>AIS message number.  Must be 8</td>
+</tr>
+<tr>
+<td>RepeatIndicator</td>
+<td>2</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Indicated how many times a message has been repeated<br><b>0</b>: default<br><b>3</b>: do not repeat any more</td>
+</tr>
+<tr>
+<td>UserID</td>
+<td>30</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>MMSI number of transmitter broadcasting the message</td>
+</tr>
+<tr>
+<td>Spare</td>
+<td>2</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Reserved for definition by a regional authority.</td>
+</tr>
+<tr>
+<td>dac</td>
+<td>10</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Designated Area Code - part 1 of the IAI</td>
+</tr>
+<tr>
+<td>fid</td>
+<td>6</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Functional Identifier - part 2 of the IAI</td>
+</tr>
+<tr>
+<td>latitude</td>
+<td>24</td>
+<td></td>
+<td>decimal</td>
+<td>degrees</td>
+<td>Location of the vessel.  North South location</td>
+</tr>
+<tr>
+<td>longitude</td>
+<td>25</td>
+<td></td>
+<td>decimal</td>
+<td>degrees</td>
+<td>Location of the vessel.  East West location</td>
+</tr>
+<tr>
+<td>day</td>
+<td>5</td>
+<td></td>
+<td>uint</td>
+<td>days</td>
+<td>Day 0..31</td>
+</tr>
+<tr>
+<td>hour</td>
+<td>5</td>
+<td></td>
+<td>uint</td>
+<td>hours</td>
+<td>Hour 0..23</td>
+</tr>
+<tr>
+<td>min</td>
+<td>6</td>
+<td></td>
+<td>uint</td>
+<td>minutes</td>
+<td>Min</td>
+</tr>
+<tr>
+<td>avewind</td>
+<td>7</td>
+<td></td>
+<td>uint</td>
+<td>knots</td>
+<td>Average wind speed values for the last 10 minutes.</td>
+</tr>
+<tr>
+<td>windgust</td>
+<td>7</td>
+<td></td>
+<td>uint</td>
+<td>knots</td>
+<td>Wind gust is the max wind speed value reading
+ during the last 10 minutes.</td>
+</tr>
+<tr>
+<td>winddir</td>
+<td>9</td>
+<td></td>
+<td>uint</td>
+<td>degrees</td>
+<td>Wind direction</td>
+</tr>
+<tr>
+<td>windgustdir</td>
+<td>9</td>
+<td></td>
+<td>uint</td>
+<td>degrees</td>
+<td>Wind direction for the gust.</td>
+</tr>
+<tr>
+<td>airtemp</td>
+<td>11</td>
+<td></td>
+<td>decimal</td>
+<td>degrees Celsius</td>
+<td>Dry bulb temperature</td>
+</tr>
+<tr>
+<td>relhumid</td>
+<td>7</td>
+<td></td>
+<td>uint</td>
+<td>percent</td>
+<td>Relative humidity</td>
+</tr>
+<tr>
+<td>dewpoint</td>
+<td>10</td>
+<td></td>
+<td>decimal</td>
+<td>degrees Celsius</td>
+<td>Dew Point</td>
+</tr>
+<tr>
+<td>airpressure</td>
+<td>9</td>
+<td></td>
+<td>udecimal</td>
+<td>hPa</td>
+<td>Air pressure</td>
+</tr>
+<tr>
+<td>airpressuretrend</td>
+<td>2</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Air pressure trend<br><b>0</b>: steady<br><b>1</b>: decreasing<br><b>2</b>: increasing<br><b>3</b>: unavailable</td>
+</tr>
+<tr>
+<td>horizvis</td>
+<td>8</td>
+<td></td>
+<td>udecimal</td>
+<td>nm</td>
+<td>Horizontal visibility</td>
+</tr>
+<tr>
+<td>waterlevel</td>
+<td>9</td>
+<td></td>
+<td>decimal</td>
+<td>m</td>
+<td>Water level (incl. tide)</td>
+</tr>
+<tr>
+<td>waterleveltrend</td>
+<td>2</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Water level trend<br><b>0</b>: steady<br><b>1</b>: decreasing<br><b>2</b>: increasing<br><b>3</b>: unavailable</td>
+</tr>
+<tr>
+<td>surfcurspeed</td>
+<td>8</td>
+<td></td>
+<td>udecimal</td>
+<td>knots</td>
+<td>Surface current speed</td>
+</tr>
+<tr>
+<td>surfcurdir</td>
+<td>9</td>
+<td></td>
+<td>uint</td>
+<td>degrees</td>
+<td>Surface current direction</td>
+</tr>
+<tr>
+<td>curspeed2</td>
+<td>8</td>
+<td></td>
+<td>udecimal</td>
+<td>knots</td>
+<td>Level 2 current speed</td>
+</tr>
+<tr>
+<td>curdir2</td>
+<td>9</td>
+<td></td>
+<td>uint</td>
+<td>degrees</td>
+<td>Level 2 current direction</td>
+</tr>
+<tr>
+<td>curlevel2</td>
+<td>5</td>
+<td></td>
+<td>uint</td>
+<td>m</td>
+<td>Measuring level below sea surface for level 2</td>
+</tr>
+<tr>
+<td>curspeed3</td>
+<td>8</td>
+<td></td>
+<td>udecimal</td>
+<td>knots</td>
+<td>Level 3 current speed</td>
+</tr>
+<tr>
+<td>curdir3</td>
+<td>9</td>
+<td></td>
+<td>uint</td>
+<td>degrees</td>
+<td>Level 3 current direction</td>
+</tr>
+<tr>
+<td>curlevel3</td>
+<td>5</td>
+<td></td>
+<td>uint</td>
+<td>m</td>
+<td>Measuring level below sea surface for level 3</td>
+</tr>
+<tr>
+<td>sigwaveheight</td>
+<td>8</td>
+<td></td>
+<td>udecimal</td>
+<td>m</td>
+<td>Significant wave height</td>
+</tr>
+<tr>
+<td>waveperiod</td>
+<td>6</td>
+<td></td>
+<td>uint</td>
+<td>sec</td>
+<td>Wave period</td>
+</tr>
+<tr>
+<td>wavedir</td>
+<td>9</td>
+<td></td>
+<td>uint</td>
+<td>degrees</td>
+<td>Wave direction</td>
+</tr>
+<tr>
+<td>swellheight</td>
+<td>8</td>
+<td></td>
+<td>udecimal</td>
+<td>m</td>
+<td>Swell height</td>
+</tr>
+<tr>
+<td>swellperiod</td>
+<td>6</td>
+<td></td>
+<td>uint</td>
+<td>sec</td>
+<td>Swell period</td>
+</tr>
+<tr>
+<td>swelldir</td>
+<td>9</td>
+<td></td>
+<td>uint</td>
+<td>degrees</td>
+<td>Swell direction</td>
+</tr>
+<tr>
+<td>seastate</td>
+<td>4</td>
+<td></td>
+<td>uint</td>
+<td>Beaufort scale</td>
+<td>Sea state according to the Beaufort scale<br><b>0</b>: Calm<br><b>1</b>: Light air<br><b>2</b>: Light breeze<br><b>3</b>: Gentle breeze<br><b>4</b>: Moderate breeze<br><b>5</b>: Fresh breeze<br><b>6</b>: Strong breeze<br><b>7</b>: Near gale<br><b>8</b>: Gale<br><b>9</b>: Strong gale<br><b>10</b>: Storm<br><b>11</b>: Violent storm<br><b>12</b>: Hurricane<br><b>15</b>: unavailable</td>
+</tr>
+<tr>
+<td>watertemp</td>
+<td>10</td>
+<td></td>
+<td>udecimal</td>
+<td>degrees Celsius</td>
+<td>Water temperature</td>
+</tr>
+<tr>
+<td>preciptype</td>
+<td>3</td>
+<td></td>
+<td>uint</td>
+<td>WMO scale index</td>
+<td>According to WMO<br><b>0</b>: FIX: find the WMO list of types<br><b>7</b>: unavailable</td>
+</tr>
+<tr>
+<td>salinity</td>
+<td>9</td>
+<td></td>
+<td>decimal</td>
+<td>0/00</td>
+<td>Salinity</td>
+</tr>
+<tr>
+<td>ice</td>
+<td>2</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Yes or no for the presence of ice<br><b>0</b>: No ice<br><b>1</b>: Ice present<br><b>2</b>: Reserved<br><b>3</b>: Unknown if there is ice present</td>
+</tr>
+<tr>
+<td>Spare2</td>
+<td>6</td>
+<td></td>
+<td>uint</td>
+<td></td>
+<td>Must be zero</td>
+</tr>
+</table>
+</body>
+</html>
