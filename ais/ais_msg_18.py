@@ -1332,13 +1332,13 @@ def main():
 
 		bits = encode(msgDict)
 
-      if 'binary' == options.ioType: print str(bits)
-      elif 'nmeapayload' == options.ioType:
+      if 'binary'==options.ioType: print str(bits)
+      elif 'nmeapayload'==options.ioType:
          # FIX: figure out if this might be necessary at compile time
          bitLen = len(bits)
          if bitLen%6 != 0: bits = bits + BitVector(size=(6 - (bitLen%6))) # Pad out to multiple of 6
-         print binary.bitvectoais6(bits)[0]
-      elif 'nmea' == options.ioType:
+         #print binary.bitvectoais6(bits)[0]
+      elif 'nmea'==options.ioType:
          #bitLen=len(bits)
          #if bitLen%6!=0:
          #	bits = bits + BitVector(size=(6 - (bitLen%6)))  # Pad out to multiple of 6
