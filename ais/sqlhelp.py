@@ -387,18 +387,18 @@ class insert:
         s2List=[]
         for i in range(len(fields)):
             #s1List.append(str(fields[i]))
-	    if bool == type(self.values[i]):
+            if bool == type(self.values[i]):
                 if 'sqlite'==self.dbType:
                     if self.values[i]: s2List.append('1')
                     else: s2List.append('0')
                 else: s2List.append(str(self.values[i]))
-	    elif isinstance(self.values[i],BitVector): s2List.append('\''+str(self.values[i])+'\'')
+            elif isinstance(self.values[i],BitVector): s2List.append('\''+str(self.values[i])+'\'')
             elif str == type(self.values[i]):          s2List.append('\''+str(self.values[i])+'\'')
             elif type(self.values[i]) in (int, float): s2List.append(str(self.values[i]))
 
-	    elif not self.values[i]:
+            elif not self.values[i]:
                 print 'FIX: what was I trying to accomplish with this?',fields[i],self.values[i]
-		s2List.append('NULL')
+                s2List.append('NULL')
             else:
                 s2List.append(str(self.values[i]))
 
