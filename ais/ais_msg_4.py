@@ -1199,6 +1199,7 @@ def main():
             sys.exit('ERROR: unknown ioType.  Help!')
 
 	if options.sqlCreate:
+        print 'ais_msg_4::main - Voy a crear'
 		sqlCreateStr(outfile,options.fieldList,dbType=options.dbType)
 
 	if options.latexDefinitionTable:
