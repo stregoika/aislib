@@ -1092,7 +1092,7 @@ def main():
     
     parser.add_option('-t','--type',choices=typeChoices,type='choice',dest='ioType', default='nmeapayload', help='What kind of string to write for encoding ('+', '.join(typeChoices)+') [default: %default]')
     
-	outputChoices = ('std','html','csv','sql','kml','kml-full' )
+    outputChoices = ('std','html','csv','sql','kml','kml-full' )
 
     parser.add_option('-T','--output-type',choices=outputChoices,type='choice',dest='outputType',default='std',help='What kind of string to output ('+', '.join(outputChoices)+')[default: %default]' )  
 
