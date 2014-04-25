@@ -1264,19 +1264,15 @@ def main():
    success=True
 
    if options.doctest:
-      import os; 
-      print os.path.basename(sys.argv[0]), 'doctests ...',
+      import os; print os.path.basename(sys.argv[0]), 'doctests ...',
       sys.argv= [sys.argv[0]]
-   
-   if options.verbose: sys.argv.append('-v')
-      
-   import doctest
-   numfail,numtests=doctest.testmod()
-      
-   if numfail==0: print 'ok'
-   else: 
-      print 'FAILED'
-      success=False
+      if options.verbose: sys.argv.append('-v')
+      import doctest
+      numfail,numtests=doctest.testmod()
+      if numfail==0: print 'ok'
+      else:
+         print 'FAILED'
+         success=False
 
    if not success: sys.exit('Something Failed')
    del success # Hide success from epydoc
@@ -1337,29 +1333,29 @@ def main():
 		bits = encode(msgDict)
 		if 'binary'==options.ioType: print str(bits)
 		elif 'nmeapayload'==options.ioType:
-		    # FIX: figure out if this might be necessary at compile time
-		    #print "bitLen",len(bits)
-		    bitLen=len(bits)
-		    if bitLen%6!=0:
-			bits = bits + BitVector(size=(6 - (bitLen%6)))  # Pad out to multiple of 6
-		    #print "result:",binary.bitvectoais6(bits)[0]
-		    print binary.bitvectoais6(bits)[0]
+         # FIX: figure out if this might be necessary at compile time
+         #print "bitLen",len(bits)
+         bitLen=len(bits)
+         if bitLen%6!=0:
+            bits = bits + BitVector(size=(6 - (bitLen%6)))  # Pad out to multiple of 6
+         #print "result:",binary.bitvectoais6(bits)[0]
+         print binary.bitvectoais6(bits)[0]
 
 
 		# FIX: Do not emit this option for the binary message payloads.  Does not make sense.
 		elif 'nmea'==options.ioType: 
-		    #bitLen=len(bits)
+         #bitLen=len(bits)
                     #if bitLen%6!=0:
-		    #	bits = bits + BitVector(size=(6 - (bitLen%6)))  # Pad out to multiple of 6
-                    import aisutils.uscg as uscg
-                    nmea = uscg.create_nmea(bits)
-                    print nmea
-                    #
-                    #
+         #	bits = bits + BitVector(size=(6 - (bitLen%6)))  # Pad out to multiple of 6
+         import aisutils.uscg as uscg
+         nmea = uscg.create_nmea(bits)
+         print nmea
+         #
+         #
 
 
-                    #sys.exit("FIX: need to implement creating nmea capability")
-		else: sys.exit('ERROR: unknown ioType.  Help!')
+         #sys.exit("FIX: need to implement creating nmea capability")
+   else: sys.exit('ERROR: unknown ioType.  Help!')
 
    if options.sqlCreate:
       sqlCreateStr(outfile,options.fieldList,dbType=options.dbType)
@@ -1399,7 +1395,8 @@ def main():
                   binaryMsg=False
                   break
 
-            if binaryMsg: bv = BitVector(bitstring=msg)
+            if binaryMsg:
+               bv = BitVector(bitstring=msg)
             else: # nmeapayload
 					bv = binary.ais6tobitvec(msg)
 
