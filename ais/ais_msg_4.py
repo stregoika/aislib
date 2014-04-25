@@ -1175,6 +1175,7 @@ def main():
 			'state_slotoffset': options.state_slotoffsetField,
         }
 
+
         bits = encode(msgDict)
         if 'binary'==options.ioType: print str(bits)
         elif 'nmeapayload'==options.ioType:
