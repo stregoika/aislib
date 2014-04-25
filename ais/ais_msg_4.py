@@ -1112,7 +1112,7 @@ def main():
     
     addMsgOptions(parser)
     (options,args) = parser.parse_args()
-	success=True
+    success=True
     
     if options.doctest:
         import os #print os.path.basename(sys.argv[0]), 'doctests ...',sys.argv= [sys.argv[0]]
@@ -1128,16 +1128,15 @@ def main():
     del success # Hide success from epydoc
 
     if options.unittest:
-		sys.argv = [sys.argv[0]]
-		if options.verbose: sys.argv.append('-v')
-		unittest.main()
+        sys.argv = [sys.argv[0]]
+        if options.verbose: sys.argv.append('-v')
+        unittest.main()
 
     outfile = sys.stdout
-	if None!=options.outputFileName:
-		outfile = file(options.outputFileName,'w')
+    if None!=options.outputFileName:
+        outfile = file(options.outputFileName,'w')
 
-
-	if options.doEncode:
+    if options.doEncode:
 		# First make sure all non required options are specified
 		if None==options.RepeatIndicatorField: parser.error("missing value for RepeatIndicatorField")
 		if None==options.UserIDField: parser.error("missing value for UserIDField")
