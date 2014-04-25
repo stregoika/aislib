@@ -495,8 +495,7 @@ if __name__=='__main__':
     success=True
 
     if options.doctest:
-	import os; print os.path.basename(sys.argv[0]), 'doctests ...',
-	sys.argv= [sys.argv[0]]
+	import os; print os.path.basename(sys.argv[0]),'doctests ...',sys.argv=[sys.argv[0]]
 	if options.verbosity>=TERSE: sys.argv.append('-v')
 	import doctest
 	numfail,numtests=doctest.testmod()
