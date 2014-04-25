@@ -1332,7 +1332,8 @@ def main():
 
 		bits = encode(msgDict)
 
-      if 'binary'==options.ioType: print 'hola {}'.format(str(bits))
+      if 'binary'==options.ioType:
+         print 'hola'
       elif 'nmeapayload'==options.ioType:
          # FIX: figure out if this might be necessary at compile time
          bitLen = len(bits)
