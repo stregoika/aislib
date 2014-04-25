@@ -1263,15 +1263,24 @@ def main():
    (options,args) = parser.parse_args()
    success=True
 
+   if sucess:
+      print "hola"
+   else:
+      print "adios"
+   
+
    if options.doctest:
       import os; print os.path.basename(sys.argv[0]), 'doctests ...',
       sys.argv= [sys.argv[0]]
       if options.verbose: sys.argv.append('-v')
       import doctest
       numfail,numtests=doctest.testmod()
-      if numfail==0: print 'ok'
+      print " "
+      if numfail==0:
+         print 'ais_msg_18::main - Success'
+         success=True
       else:
-         print 'FAILED'
+         print 'ais_msg_18::main - Fail'
          success=False
 
    if not success: sys.exit('Something Failed')
@@ -1327,7 +1336,7 @@ def main():
 			'mode_flag': options.mode_flagField,
 			'RAIM': options.RAIMField,
 			'CommStateSelector': options.CommStateSelectorField,
-			'CommState': options.CommStateField
+			'CommState': options.CommStateField,
 		}
 
 		bits = encode(msgDict)
