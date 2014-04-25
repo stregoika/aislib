@@ -1198,12 +1198,12 @@ def main():
         else: 
             sys.exit('ERROR: unknown ioType.  Help!')
 
-	if options.sqlCreate:
+    if options.sqlCreate:
         print 'ais_msg_4::main - Voy a crear'
-		sqlCreateStr(outfile,options.fieldList,dbType=options.dbType)
-
-	if options.latexDefinitionTable:
-		latexDefinitionTable(outfile)
+        sqlCreateStr(outfile,options.fieldList,dbType=options.dbType)
+        
+    if options.latexDefinitionTable:
+        latexDefinitionTable(outfile)
 
     # For conversion to word tables
     if options.textDefinitionTable:
