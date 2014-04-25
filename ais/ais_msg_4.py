@@ -1137,42 +1137,42 @@ def main():
         outfile = file(options.outputFileName,'w')
 
     if options.doEncode:
-		# First make sure all non required options are specified
-		if None==options.RepeatIndicatorField: parser.error("missing value for RepeatIndicatorField")
-		if None==options.UserIDField: parser.error("missing value for UserIDField")
-		if None==options.Time_yearField: parser.error("missing value for Time_yearField")
-		if None==options.Time_monthField: parser.error("missing value for Time_monthField")
-		if None==options.Time_dayField: parser.error("missing value for Time_dayField")
-		if None==options.Time_hourField: parser.error("missing value for Time_hourField")
-		if None==options.Time_minField: parser.error("missing value for Time_minField")
-		if None==options.Time_secField: parser.error("missing value for Time_secField")
-		if None==options.PositionAccuracyField: parser.error("missing value for PositionAccuracyField")
-		if None==options.Position_longitudeField: parser.error("missing value for Position_longitudeField")
-		if None==options.Position_latitudeField: parser.error("missing value for Position_latitudeField")
-		if None==options.fixtypeField: parser.error("missing value for fixtypeField")
-		if None==options.RAIMField: parser.error("missing value for RAIMField")
-		if None==options.state_syncstateField: parser.error("missing value for state_syncstateField")
-		if None==options.state_slottimeoutField: parser.error("missing value for state_slottimeoutField")
-		if None==options.state_slotoffsetField: parser.error("missing value for state_slotoffsetField")
-		msgDict={
-			'MessageID': '4',
-			'RepeatIndicator': options.RepeatIndicatorField,
-			'UserID': options.UserIDField,
-			'Time_year': options.Time_yearField,
-			'Time_month': options.Time_monthField,
-			'Time_day': options.Time_dayField,
-			'Time_hour': options.Time_hourField,
-			'Time_min': options.Time_minField,
-			'Time_sec': options.Time_secField,
-			'PositionAccuracy': options.PositionAccuracyField,
-			'Position_longitude': options.Position_longitudeField,
-			'Position_latitude': options.Position_latitudeField,
-			'fixtype': options.fixtypeField,
-			'Spare': '0',
-			'RAIM': options.RAIMField,
-			'state_syncstate': options.state_syncstateField,
-			'state_slottimeout': options.state_slottimeoutField,
-			'state_slotoffset': options.state_slotoffsetField,
+        # First make sure all non required options are specified
+        if None==options.RepeatIndicatorField: parser.error("missing value for RepeatIndicatorField")
+        if None==options.UserIDField: parser.error("missing value for UserIDField")
+        if None==options.Time_yearField: parser.error("missing value for Time_yearField")
+        if None==options.Time_monthField: parser.error("missing value for Time_monthField")
+        if None==options.Time_dayField: parser.error("missing value for Time_dayField")
+        if None==options.Time_hourField: parser.error("missing value for Time_hourField")
+        if None==options.Time_minField: parser.error("missing value for Time_minField")
+        if None==options.Time_secField: parser.error("missing value for Time_secField")
+        if None==options.PositionAccuracyField: parser.error("missing value for PositionAccuracyField")
+        if None==options.Position_longitudeField: parser.error("missing value for Position_longitudeField")
+        if None==options.Position_latitudeField: parser.error("missing value for Position_latitudeField")
+        if None==options.fixtypeField: parser.error("missing value for fixtypeField")
+        if None==options.RAIMField: parser.error("missing value for RAIMField")
+        if None==options.state_syncstateField: parser.error("missing value for state_syncstateField")
+        if None==options.state_slottimeoutField: parser.error("missing value for state_slottimeoutField")
+        if None==options.state_slotoffsetField: parser.error("missing value for state_slotoffsetField")
+        msgDict={
+            'MessageID': '4',
+            'RepeatIndicator': options.RepeatIndicatorField,
+            'UserID': options.UserIDField,
+            'Time_year': options.Time_yearField,
+            'Time_month': options.Time_monthField,
+            'Time_day': options.Time_dayField,
+            'Time_hour': options.Time_hourField,
+            'Time_min': options.Time_minField,
+            'Time_sec': options.Time_secField,
+            'PositionAccuracy': options.PositionAccuracyField,
+            'Position_longitude': options.Position_longitudeField,
+            'Position_latitude': options.Position_latitudeField,
+            'fixtype': options.fixtypeField,
+            'Spare': '0',
+            'RAIM': options.RAIMField,
+            'state_syncstate': options.state_syncstateField,
+            'state_slottimeout': options.state_slottimeoutField,
+            'state_slotoffset': options.state_slotoffsetField,
         }
 
 
