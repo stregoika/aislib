@@ -1327,7 +1327,7 @@ def main():
 			'mode_flag': options.mode_flagField,
 			'RAIM': options.RAIMField,
 			'CommStateSelector': options.CommStateSelectorField,
-			'CommState': options.CommStateField,
+			'CommState': options.CommStateField
 		}
 
 		bits = encode(msgDict)
