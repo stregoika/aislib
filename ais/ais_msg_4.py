@@ -1076,29 +1076,25 @@ def addMsgOptions(parser):
 #                                                                              #
 ################################################################################
 def main():
-	from optparse import OptionParser
+from optparse import OptionParser        
+    parser = OptionParser(usage="%prog [options]",version="%prog "+__version__)
     
-	parser = OptionParser(usage="%prog [options]",
-		version="%prog "+__version__)
-
-	parser.add_option('--doc-test',dest='doctest',default=False,action='store_true', help='run the documentation tests')
-        
-	parser.add_option('--unit-test',dest='unittest',default=False,action='store_true', help='run the unit tests')
-        
-	parser.add_option('-v','--verbose',dest='verbose',default=False,action='store_true', help='Make the test output verbose')
-
-	# FIX: remove nmea from binary messages.  No way to build the whole packet?
-	# FIX: or build the surrounding msg 8 for a broadcast?
-	typeChoices = ('binary','nmeapayload','nmea') # FIX: what about a USCG type message?
+    parser.add_option('--doc-test',dest='doctest',default=False,action='store_true', help='run the documentation tests')
     
-	parser.add_option('-t','--type',choices=typeChoices,type='choice',dest='ioType', default='nmeapayload', help='What kind of string to write for encoding ('+', '.join(typeChoices)+') [default: %default]')
+    parser.add_option('--unit-test',dest='unittest',default=False,action='store_true', help='run the unit tests')
+    
+    parser.add_option('-v','--verbose',dest='verbose',default=False,action='store_true', help='Make the test output verbose')
+    
+    # FIX: remove nmea from binary messages.  No way to build the whole packet?
+    # FIX: or build the surrounding msg 8 for a broadcast?
+    typeChoices = ('binary','nmeapayload','nmea') # FIX: what about a USCG type message? 
+    
+    parser.add_option('-t','--type',choices=typeChoices,type='choice',dest='ioType', default='nmeapayload', help='What kind of string to write for encoding ('+', '.join(typeChoices)+') [default: %default]')
     
 	outputChoices = ('std','html','csv','sql','kml','kml-full' )
 
+    parser.add_option('-T','--output-type',choices=outputChoices,type='choice',dest='outputType',default='std',help='What kind of string to output ('+', '.join(outputChoices)+')[default: %default]' )  
 
-
-    parser.add_option('-T','--output-type',choices=outputChoices,type='choice',dest='outputType',default='std',help='What kind of string to output ('+', '.join(outputChoices)+')[default: %default]' ) 
-        
     parser.add_option('-o','--output',dest='outputFileName',default=None, help='Name of the python file to write [default: stdout]') 
 
     parser.add_option('-f','--fields',dest='fieldList',default=None, action='append', choices=fieldList, help='Which fields to include in the output. Currently only for csv output [default: all]')
@@ -1177,9 +1173,9 @@ def main():
 			'state_syncstate': options.state_syncstateField,
 			'state_slottimeout': options.state_slottimeoutField,
 			'state_slotoffset': options.state_slotoffsetField,
-		}
-
+        }
 		bits = encode(msgDict)
+
 		if 'binary'==options.ioType: print str(bits)
 		elif 'nmeapayload'==options.ioType:
 		    # FIX: figure out if this might be necessary at compile time
@@ -1189,8 +1185,6 @@ def main():
                 bits = bits + BitVector(size=(6 - (bitLen%6)))  # Pad out to multiple of 6
 		    #print "result:",binary.bitvectoais6(bits)[0]
 		    print binary.bitvectoais6(bits)[0]
-
-
 		# FIX: Do not emit this option for the binary message payloads.  Does not make sense.
 		elif 'nmea'==options.ioType: 
 		    #bitLen=len(bits)
@@ -1199,10 +1193,9 @@ def main():
             import aisutils.uscg as uscg
             nmea = uscg.create_nmea(bits)
             print nmea
-            #
-            #
             #sys.exit("FIX: need to implement creating nmea capability")
-        else: sys.exit('ERROR: unknown ioType.  Help!')
+        else: 
+            sys.exit('ERROR: unknown ioType.  Help!')
 
 
 	if options.sqlCreate:
@@ -1226,7 +1219,7 @@ def main():
 		if result[-1] == ',': print result[:-1]
 		else: print result
 
-	if options.doDecode:
+    if options.doDecode:
 		if len(args)==0: args = sys.stdin
 		for msg in args:
 			bv = None
@@ -1241,12 +1234,12 @@ def main():
 					if c not in ('0','1'):
 						binaryMsg=False
 						break
-				if binaryMsg:
-					bv = BitVector(bitstring=msg)
-				else: # nmeapayload
-					bv = binary.ais6tobitvec(msg)
-
+                if binaryMsg: 
+                    bv = BitVector(bitstring=msg)
+                else: 
+                    bv = binary.ais6tobitvec(msg) #nmeapyaload
             printFields(decode(bv), out=outfile, format=options.outputType, fieldList=options.fieldList, dbType=options.dbType)
+
 
 # ******************************************************************************
 #                                                                              #
