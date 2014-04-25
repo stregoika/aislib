@@ -188,10 +188,10 @@ class create:
         create.add('username','VARCHAR(40)')
         create.add('id','INTEGER PRIMARY KEY')
 
-	@param field: name of the field
-	@param typeStr: the type of field
+        @param field: name of the field
+        @param typeStr: the type of field
 
-	@todo: Allow setting of primary key in a simple way
+        @todo: Allow setting of primary key in a simple way
         '''
         self.fields.append(field)
         self.types.append(typeStr)
@@ -229,46 +229,46 @@ class create:
         self.types.append("REAL")
 
     def addVarChar(self,field,length):
-	'''
-	SQL VARCHAR field... variable length up to a max size
-	@param field: name of the field
-	@param length: max length of the field
-	'''
+        '''
+        SQL VARCHAR field... variable length up to a max size
+        @param field: name of the field
+        @param length: max length of the field
+        '''
         self.fields.append(field)
         self.types.append("VARCHAR("+str(length)+")")
 
 
     def addBool(self,field):
-	'''
-	SQL Boolean field
-	@param field: name of the field
-	'''
+        '''
+        SQL Boolean field
+        @param field: name of the field
+        '''
         self.fields.append(field)
         self.types.append("BOOL")
 
     def addBitVarying(self,field,length):
-	'''
-	SQL Boolean field
-	@param field: name of the field
-	@param length: largest possible size
-	'''
+        '''
+        SQL Boolean field
+        @param field: name of the field
+        @param length: largest possible size
+        '''
 	assert (length>0)
         self.fields.append(field)
         self.types.append('BIT VARYING('+str(length)+')')
 
 
     def addDecimal(self,field,precision=5,scale=0):
-	'''
-	@param precision: overall digits including to right of decimal
-	@param scale: number of digits to the right of decimal
-	'''
+        '''
+        @param precision: overall digits including to right of decimal
+        @param scale: number of digits to the right of decimal
+        '''
 	self.fields.append(field)
 	self.types.append('DECIMAL('+str(precision)+','+str(scale)+')')
 
     def addTimestamp(self,field):
-	'''SQL TIMESTAMP field
-	@param field: name of the field
-	'''
+        '''SQL TIMESTAMP field
+        @param field: name of the field
+        '''
         self.fields.append(field)
         self.types.append("TIMESTAMP")
         return
@@ -296,7 +296,8 @@ class create:
 
     def __str__(self):
         '''Return the SQL string for the table creation
-	@rtype: str'''
+	    @rtype: str
+        '''
         assert (len(self.fields)>0)
         assert (len(self.types)>0)
         assert (len(self.fields)==len(self.types))
@@ -351,11 +352,11 @@ class insert:
         return
 
     def dump(self):
-	'''Print out a safer dump to std out rather than str for debugging'''
-	print '\n === dump insert for table',self.table,'==='
-	for i in range(1,len(self.fields)):
-	    print self.fields[i], self.values[i],'    (',type(self.fields[i]), type(self.values[i]),')'
-	print
+        '''Print out a safer dump to std out rather than str for debugging'''
+        print '\n === dump insert for table',self.table,'==='
+        for i in range(1,len(self.fields)):
+            print self.fields[i], self.values[i],'    (',type(self.fields[i]), type(self.values[i]),')'
+        print
 
     def __str__(self):
         "Return the SQL string for the insert"
@@ -421,8 +422,8 @@ class insert:
         '''Add a field value pair to the insert
 
         @note: Integers and floats should NOT be converted to strings.
-	@param field: name of the field
-	@param value: value to be assigned to that field.
+        @param field: name of the field
+        @param value: value to be assigned to that field.
         '''
 
         if type(value)==str:
