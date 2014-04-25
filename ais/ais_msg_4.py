@@ -45,7 +45,7 @@ TrueBV  = BitVector(bitstring="1")
 FalseBV = BitVector(bitstring="0")
 "Why always rebuild the False bit?  This should speed things up a bunch"
 
-
+# Campos ddbb
 fieldList = (
 	'MessageID',
 	'RepeatIndicator',
@@ -108,7 +108,11 @@ pgTypes = {
 '''
 Lookup table for each postgis field name to get its type.
 '''
-
+################################################################################
+#                                                                              #
+#                           encode                                             #
+#                                                                              #
+################################################################################
 def encode(params, validate=False):
 	'''Create a bsreport binary message payload to pack into an AIS Msg bsreport.
 
@@ -190,7 +194,11 @@ def encode(params, validate=False):
 	bvList.append(binary.setBitVectorSize(BitVector(intVal=params['state_slotoffset']),14))
 
 	return binary.joinBV(bvList)
-
+################################################################################
+#                                                                              #
+#                           decode                                             #
+#                                                                              #
+################################################################################
 def decode(bv, validate=False):
 	'''Unpack a bsreport message 
 
@@ -298,7 +306,11 @@ def decodestate_slottimeout(bv, validate=False):
 def decodestate_slotoffset(bv, validate=False):
 	return int(bv[154:168])
 
-
+################################################################################
+#                                                                              #
+#                           printHtml                                          #
+#                                                                              #
+################################################################################
 def printHtml(params, out=sys.stdout):
 		out.write("<h3>bsreport</h3>\n")
 		out.write("<table border=\"1\">\n")
@@ -476,7 +488,11 @@ def printHtml(params, out=sys.stdout):
 		out.write("</tr>\n")
 		out.write("</table>\n")
 
-
+################################################################################
+#                                                                              #
+#                           printKml                                           #
+#                                                                              #
+################################################################################
 def printKml(params, out=sys.stdout):
 	'''KML (Keyhole Markup Language) for Google Earth, but without the header/footer'''
 	out.write("\	<Placemark>\n")
@@ -498,6 +514,12 @@ def printKml(params, out=sys.stdout):
 	out.write("\t\t</Point>\n")
 	out.write("\t</Placemark>\n")
 
+
+################################################################################
+#                                                                              #
+#                           printFields                                        #
+#                                                                              #
+################################################################################
 def printFields(params, out=sys.stdout, format='std', fieldList=None, dbType='postgres'):
 	'''Print a bsreport message to stdout.
 
@@ -577,6 +599,11 @@ def printFields(params, out=sys.stdout, format='std', fieldList=None, dbType='po
 
 	return # Nothing to return
 
+# ******************************************************************************
+#                                                                              #
+#                             CODIFICATION                                     #
+#                                                                              #
+# ******************************************************************************
 RepeatIndicatorEncodeLut = {
 	'default':'0',
 	'do not repeat any more':'3',
@@ -667,10 +694,16 @@ state_slottimeoutDecodeLut = {
 	'7':'7 frames left',
 	} # state_slottimeoutEncodeLut
 
-######################################################################
-# SQL SUPPORT
-######################################################################
-
+# ******************************************************************************
+#                                                                              #
+#                             SQL SUPPORT                                      #
+#                                                                              #
+# ******************************************************************************
+################################################################################
+#                                                                              #
+#                           sqlCreateStr                                       #
+#                                                                              #
+################################################################################
 dbTableName='bsreport'
 'Database table name'
 
@@ -694,6 +727,11 @@ def sqlCreateStr(outfile=sys.stdout, fields=None, extraFields=None
 	# FIX: should this sqlCreate be the same as in LaTeX (createFuncName) rather than hard coded?
 	outfile.write(str(sqlCreate(fields,extraFields,addCoastGuardFields,dbType=dbType)))
 
+################################################################################
+#                                                                              #
+#                           sqlCreate                                          #
+#                                                                              #
+################################################################################
 def sqlCreate(fields=None, extraFields=None, addCoastGuardFields=True, dbType='postgres'):
 	'''
 	Return the sqlhelp object to create the table.
@@ -749,6 +787,11 @@ def sqlCreate(fields=None, extraFields=None, addCoastGuardFields=True, dbType='p
 
 	return c
 
+################################################################################
+#                                                                              #
+#                           sqlInsertStr                                       #
+#                                                                              #
+################################################################################
 def sqlInsertStr(params, outfile=sys.stdout, extraParams=None, dbType='postgres'):
 	'''
 	Return the SQL INSERT command for this message type
@@ -762,7 +805,11 @@ def sqlInsertStr(params, outfile=sys.stdout, extraParams=None, dbType='postgres'
 	'''
 	outfile.write(str(sqlInsert(params,extraParams,dbType=dbType)))
 
-
+################################################################################
+#                                                                              #
+#                           sqlInsert                                          #
+#                                                                              #
+################################################################################
 def sqlInsert(params,extraParams=None,dbType='postgres'):
 	'''
 	Give the SQL INSERT statement
@@ -813,10 +860,16 @@ def sqlInsert(params,extraParams=None,dbType='postgres'):
 
 	return i
 
-######################################################################
-# LATEX SUPPORT
-######################################################################
-
+# ******************************************************************************
+#                                                                              #
+#                           LATEX SUPPORT                                      #
+#                                                                              #
+# ******************************************************************************
+################################################################################
+#                                                                              #
+#                           latexDefinitionTable                               #
+#                                                                              #
+################################################################################
 def latexDefinitionTable(outfile=sys.stdout
 		):
 	'''
@@ -861,10 +914,16 @@ Total bits & 168 & Appears to take 1 slot \\\\ \\hline
 \\end{table}
 ''')
 
-######################################################################
-# Text Definition
-######################################################################
-
+# ******************************************************************************
+#                                                                              #
+#                             TEXT DEFINITION                                  #
+#                                                                              #
+# ******************************************************************************
+################################################################################
+#                                                                              #
+#                           textDefinitionTable                                #
+#                                                                              #
+################################################################################
 def textDefinitionTable(outfile=sys.stdout
 		,delim='\t'
 		):
@@ -898,10 +957,16 @@ state_slottimeout'''+delim+'''3'''+delim+'''Communications State - SOTDMA  Frame
 state_slotoffset'''+delim+'''14'''+delim+'''Communications State - SOTDMA  In what slot will the next transmission occur. BROKEN
 Total bits'''+delim+'''168'''+delim+'''Appears to take 1 slot''')
 
-
-######################################################################
-# UNIT TESTING
-######################################################################
+# ******************************************************************************
+#                                                                              #
+#                             UNIT TESTING                                     #
+#                                                                              #
+# ******************************************************************************
+################################################################################
+#                                                                              #
+#                           testParams                                         #
+#                                                                              #
+################################################################################
 import unittest
 def testParams():
 	'''Return a params file base on the testvalue tags.
@@ -929,7 +994,11 @@ def testParams():
 	params['state_slotoffset'] = 1221
 
 	return params
-
+################################################################################
+#                                                                              #
+#                           testbsreport                                       #
+#                                                                              #
+################################################################################
 class Testbsreport(unittest.TestCase):
 	'''Use testvalue tag text from each type to build test case the bsreport message'''
 	def testEncodeDecode(self):
@@ -958,6 +1027,11 @@ class Testbsreport(unittest.TestCase):
 		self.failUnlessEqual(r['state_slottimeout'],params['state_slottimeout'])
 		self.failUnlessEqual(r['state_slotoffset'],params['state_slotoffset'])
 
+################################################################################
+#                                                                              #
+#                           addMsgOptions                                      #
+#                                                                              #
+################################################################################
 def addMsgOptions(parser):
 	parser.add_option('-d','--decode',dest='doDecode',default=False,action='store_true',
 		help='decode a "bsreport" AIS message')
@@ -996,83 +1070,73 @@ def addMsgOptions(parser):
 	parser.add_option('--state_slotoffset-field', dest='state_slotoffsetField',metavar='uint',type='int'
 		,help='Field parameter value [default: %default]')
 
+################################################################################
+#                                                                              #
+#                           main                                               #
+#                                                                              #
+################################################################################
 def main():
 	from optparse import OptionParser
 	parser = OptionParser(usage="%prog [options]",
 		version="%prog "+__version__)
 
-	parser.add_option('--doc-test',dest='doctest',default=False,action='store_true',
-		help='run the documentation tests')
-	parser.add_option('--unit-test',dest='unittest',default=False,action='store_true',
-		help='run the unit tests')
-	parser.add_option('-v','--verbose',dest='verbose',default=False,action='store_true',
-		help='Make the test output verbose')
+	parser.add_option('--doc-test',dest='doctest',default=False,action='store_true', help='run the documentation tests')
+        
+	parser.add_option('--unit-test',dest='unittest',default=False,action='store_true', help='run the unit tests')
+        
+	parser.add_option('-v','--verbose',dest='verbose',default=False,action='store_true', help='Make the test output verbose')
 
 	# FIX: remove nmea from binary messages.  No way to build the whole packet?
 	# FIX: or build the surrounding msg 8 for a broadcast?
 	typeChoices = ('binary','nmeapayload','nmea') # FIX: what about a USCG type message?
-	parser.add_option('-t','--type',choices=typeChoices,type='choice',dest='ioType'
-		,default='nmeapayload'
-		,help='What kind of string to write for encoding ('+', '.join(typeChoices)+') [default: %default]')
-
+    
+	parser.add_option('-t','--type',choices=typeChoices,type='choice',dest='ioType', default='nmeapayload', help='What kind of string to write for encoding ('+', '.join(typeChoices)+') [default: %default]')
 
 	outputChoices = ('std','html','csv','sql' , 'kml','kml-full')
-	parser.add_option('-T','--output-type',choices=outputChoices,type='choice',dest='outputType'
-		,default='std'
-		,help='What kind of string to output ('+', '.join(outputChoices)+') [default: %default]')
+    
+	parser.add_option('-T','--output-type',choices=outputChoices,type='choice',dest='outputType', default='std', help='What kind of string to output ('+', '.join(outputChoices)+') [default: %default]')
 
-	parser.add_option('-o','--output',dest='outputFileName',default=None,
-			  help='Name of the python file to write [default: stdout]')
+	parser.add_option('-o','--output',dest='outputFileName',default=None, help='Name of the python file to write [default: stdout]')
 
-	parser.add_option('-f','--fields',dest='fieldList',default=None, action='append',
-			  choices=fieldList,
-			  help='Which fields to include in the output.  Currently only for csv output [default: all]')
+	parser.add_option('-f','--fields',dest='fieldList',default=None, action='append', choices=fieldList, help='Which fields to include in the output.  Currently only for csv output [default: all]')
 
-	parser.add_option('-p','--print-csv-field-list',dest='printCsvfieldList',default=False,action='store_true',
-			  help='Print the field name for csv')
+	parser.add_option('-p','--print-csv-field-list',dest='printCsvfieldList',default=False,action='store_true', help='Print the field name for csv')
 
-	parser.add_option('-c','--sql-create',dest='sqlCreate',default=False,action='store_true',
-			  help='Print out an sql create command for the table.')
+	parser.add_option('-c','--sql-create',dest='sqlCreate',default=False,action='store_true', help='Print out an sql create command for the table.')
 
-	parser.add_option('--latex-table',dest='latexDefinitionTable',default=False,action='store_true',
-			  help='Print a LaTeX table of the type')
+	parser.add_option('--latex-table',dest='latexDefinitionTable', default=False, action='store_true', help='Print a LaTeX table of the type')
 
-	parser.add_option('--text-table',dest='textDefinitionTable',default=False,action='store_true',
-			  help='Print delimited table of the type (for Word table importing)')
-	parser.add_option('--delimt-text-table',dest='delimTextDefinitionTable',default='\t'
-			  ,help='Delimiter for text table [default: \'%default\'](for Word table importing)')
+	parser.add_option('--text-table', dest='textDefinitionTable', default=False, action='store_true', help='Print delimited table of the type (for Word table importing)')
 
+    parser.add_option('--delimt-text-table', dest='delimTextDefinitionTable', default='\t', help='Delimiter for text table [default: \'%default\'](for Word table importing)')
+    
+    dbChoices = ('sqlite','postgres')
 
-	dbChoices = ('sqlite','postgres')
-	parser.add_option('-D','--db-type',dest='dbType',default='postgres'
-			  ,choices=dbChoices,type='choice'
-			  ,help='What kind of database ('+', '.join(dbChoices)+') [default: %default]')
-
-	addMsgOptions(parser)
-
-	(options,args) = parser.parse_args()
+    parser.add_option('-D','--db-type',dest='dbType',default='postgres', choices=dbChoices,type='choice', help='What kind of database ('+', '.join(dbChoices)+') [default: %default]')
+    
+    addMsgOptions(parser)
+    (options,args) = parser.parse_args()
 	success=True
+    
+    if options.doctest:
+        import os #print os.path.basename(sys.argv[0]), 'doctests ...',sys.argv= [sys.argv[0]]
+        if options.verbose: sys.argv.append('-v')
+        import doctest
+        numfail,numtests=doctest.testmod()
+        if numfail==0: print 'ok'
+        else:
+            print 'FAILED'
+            success=False
 
-	if options.doctest:
-		import os; print os.path.basename(sys.argv[0]), 'doctests ...',
-		sys.argv= [sys.argv[0]]
-		if options.verbose: sys.argv.append('-v')
-		import doctest
-		numfail,numtests=doctest.testmod()
-		if numfail==0: print 'ok'
-		else: 
-			print 'FAILED'
-			success=False
+    if not success: sys.exit('Something Failed')
+    del success # Hide success from epydoc
 
-	if not success: sys.exit('Something Failed')
-	del success # Hide success from epydoc
-
-	if options.unittest:
+    if options.unittest:
 		sys.argv = [sys.argv[0]]
 		if options.verbose: sys.argv.append('-v')
 		unittest.main()
 
-	outfile = sys.stdout
+    outfile = sys.stdout
 	if None!=options.outputFileName:
 		outfile = file(options.outputFileName,'w')
 
@@ -1123,7 +1187,7 @@ def main():
 		    #print "bitLen",len(bits)
 		    bitLen=len(bits)
 		    if bitLen%6!=0:
-			bits = bits + BitVector(size=(6 - (bitLen%6)))  # Pad out to multiple of 6
+                bits = bits + BitVector(size=(6 - (bitLen%6)))  # Pad out to multiple of 6
 		    #print "result:",binary.bitvectoais6(bits)[0]
 		    print binary.bitvectoais6(bits)[0]
 
@@ -1131,17 +1195,15 @@ def main():
 		# FIX: Do not emit this option for the binary message payloads.  Does not make sense.
 		elif 'nmea'==options.ioType: 
 		    #bitLen=len(bits)
-                    #if bitLen%6!=0:
+            #if bitLen%6!=0:
 		    #	bits = bits + BitVector(size=(6 - (bitLen%6)))  # Pad out to multiple of 6
-                    import aisutils.uscg as uscg
-                    nmea = uscg.create_nmea(bits)
-                    print nmea
-                    #
-                    #
-
-
-                    #sys.exit("FIX: need to implement creating nmea capability")
-		else: sys.exit('ERROR: unknown ioType.  Help!')
+            import aisutils.uscg as uscg
+            nmea = uscg.create_nmea(bits)
+            print nmea
+            #
+            #
+            #sys.exit("FIX: need to implement creating nmea capability")
+        else: sys.exit('ERROR: unknown ioType.  Help!')
 
 
 	if options.sqlCreate:
@@ -1169,7 +1231,6 @@ def main():
 		if len(args)==0: args = sys.stdin
 		for msg in args:
 			bv = None
-
 			if msg[0] in ('$','!') and msg[3:6] in ('VDM','VDO'):
 				# Found nmea
 				# FIX: do checksum
@@ -1186,13 +1247,12 @@ def main():
 				else: # nmeapayload
 					bv = binary.ais6tobitvec(msg)
 
-			printFields(decode(bv)
-				    ,out=outfile
-				    ,format=options.outputType
-				    ,fieldList=options.fieldList
-				    ,dbType=options.dbType
-				    )
+            printFields(decode(bv), out=outfile, format=options.outputType, fieldList=options.fieldList, dbType=options.dbType)
 
-############################################################
+# ******************************************************************************
+#                                                                              #
+#                                    main                                      #
+#                                                                              #
+# ******************************************************************************
 if __name__=='__main__':
     main()
