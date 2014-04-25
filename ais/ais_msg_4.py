@@ -1077,6 +1077,7 @@ def addMsgOptions(parser):
 ################################################################################
 def main():
 	from optparse import OptionParser
+    
 	parser = OptionParser(usage="%prog [options]",
 		version="%prog "+__version__)
 
@@ -1091,23 +1092,21 @@ def main():
 	typeChoices = ('binary','nmeapayload','nmea') # FIX: what about a USCG type message?
     
 	parser.add_option('-t','--type',choices=typeChoices,type='choice',dest='ioType', default='nmeapayload', help='What kind of string to write for encoding ('+', '.join(typeChoices)+') [default: %default]')
-
-	outputChoices = ('std','html','csv','sql' , 'kml','kml-full')
     
-	parser.add_option('-T','--output-type',choices=outputChoices,type='choice',dest='outputType', default='std', help='What kind of string to output ('+', '.join(outputChoices)+') [default: %default]')
+	outputChoices = ('std','html','csv','sql','kml','kml-full' )
 
-	parser.add_option('-o','--output',dest='outputFileName',default=None, help='Name of the python file to write [default: stdout]')
 
-	parser.add_option('-f','--fields',dest='fieldList',default=None, action='append', choices=fieldList, help='Which fields to include in the output.  Currently only for csv output [default: all]')
 
-	parser.add_option('-p','--print-csv-field-list',dest='printCsvfieldList',default=False,action='store_true', help='Print the field name for csv')
+    parser.add_option('-T','--output-type',choices=outputChoices,type='choice',dest='outputType',default='std',help='What kind of string to output ('+', '.join(outputChoices)+')[default: %default]' ) 
+        
+    parser.add_option('-o','--output',dest='outputFileName',default=None, help='Name of the python file to write [default: stdout]') 
 
-	parser.add_option('-c','--sql-create',dest='sqlCreate',default=False,action='store_true', help='Print out an sql create command for the table.')
-
-	parser.add_option('--latex-table',dest='latexDefinitionTable', default=False, action='store_true', help='Print a LaTeX table of the type')
-
-	parser.add_option('--text-table', dest='textDefinitionTable', default=False, action='store_true', help='Print delimited table of the type (for Word table importing)')
-
+    parser.add_option('-f','--fields',dest='fieldList',default=None, action='append', choices=fieldList, help='Which fields to include in the output. Currently only for csv output [default: all]')
+        
+    parser.add_option('-p','--print-csv-field-list',dest='printCsvfieldList', default=False,action='store_true', help='Print the field name for csv')
+    parser.add_option('-c','--sql-create', dest='sqlCreate', default=False,action='store_true', help='Print out an sql create command for the table.')
+    parser.add_option('--latex-table',dest='latexDefinitionTable', default=False, action='store_true', help='Print a LaTeX table of the type')
+    parser.add_option('--text-table', dest='textDefinitionTable', default=False, action='store_true', help='Print delimited table of the type (for Word table importing)')
     parser.add_option('--delimt-text-table', dest='delimTextDefinitionTable', default='\t', help='Delimiter for text table [default: \'%default\'](for Word table importing)')
     
     dbChoices = ('sqlite','postgres')
