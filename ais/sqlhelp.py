@@ -252,7 +252,7 @@ class create:
         @param field: name of the field
         @param length: largest possible size
         '''
-	assert (length>0)
+        assert (length>0)
         self.fields.append(field)
         self.types.append('BIT VARYING('+str(length)+')')
 
@@ -262,8 +262,8 @@ class create:
         @param precision: overall digits including to right of decimal
         @param scale: number of digits to the right of decimal
         '''
-	self.fields.append(field)
-	self.types.append('DECIMAL('+str(precision)+','+str(scale)+')')
+        self.fields.append(field)
+        self.types.append('DECIMAL('+str(precision)+','+str(scale)+')')
 
     def addTimestamp(self,field):
         '''SQL TIMESTAMP field
@@ -427,9 +427,9 @@ class insert:
         '''
 
         if type(value)==str:
-	    # Prevent quotes from breaking out of a string/varchar.  "" is SQL for " in a character string
-	    value = value.replace('"','""')
-	self.fields.append(field)
+            # Prevent quotes from breaking out of a string/varchar.  "" is SQL for " in a character string
+            value = value.replace('"','""')
+        self.fields.append(field)
         self.values.append(value)
         return
 
