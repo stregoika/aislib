@@ -212,18 +212,18 @@ class create:
         return
 
     def addInt(self,field):
-	'''
-	SQL integer field
-	@param field: name of the field
-	'''
+        '''
+        SQL integer field
+        @param field: name of the field
+        '''
         self.fields.append(field)
         self.types.append("INTEGER")
 
     def addReal(self,field):
-	'''
-	SQL floating point field
-	@param field: name of the field
-	'''
+        '''
+        SQL floating point field
+        @param field: name of the field
+        '''
 
         self.fields.append(field)
         self.types.append("REAL")
