@@ -26,6 +26,7 @@ import sys
 import datetime
 import traceback
 import psycopg2 as psycopg
+import pwd
 
 # own libraries
 import ais
@@ -77,7 +78,9 @@ def stdCmdlineOptions(parser,dbType='postgres',verbose=False):
       parser.add_option('-D','--database-host',dest='databaseHost',default='localhost'
                           ,help='Host name of the computer serving the dbx [default: %default]')
             
-      defaultUser = os.getlogin()
+      #defaultUser = os.getlogin()
+      defualtUser = pwd.getpwuid(os.getuid())[0]
+       
       parser.add_option('-u','--database-user',dest='databaseUser',default=defaultUser
                           ,help='Host name of the to access the database with [default: %default]')
 
