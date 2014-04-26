@@ -79,7 +79,7 @@ def stdCmdlineOptions(parser,dbType='postgres',verbose=False):
                           ,help='Host name of the computer serving the dbx [default: %default]')
             
       #defaultUser = os.getlogin()
-      defualtUser = pwd.getpwuid(os.getuid())[0]
+      defaultUser = pwd.getpwuid(os.getuid())[0]
        
       parser.add_option('-u','--database-user',dest='databaseUser',default=defaultUser
                           ,help='Host name of the to access the database with [default: %default]')
