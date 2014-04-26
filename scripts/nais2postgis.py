@@ -28,7 +28,6 @@ import sys
 import time
 import socket
 import select
-#import Queue
 import exceptions      # For KeyboardInterupt pychecker complaint
 import logging         # Python's logger module for tracking progress
 import aisutils.daemon
@@ -38,7 +37,6 @@ import aisutils.normalize
 import ais.sqlhelp
 import aisutils.database
 
-#import ais.ais_msg_1 as msg1
 import ais
 
 from ais.ais_msg_1 import NavigationStatusDecodeLut
@@ -136,242 +134,244 @@ def rebuild_b_track_line(cu,userid,name,start_time=None,point_limit=50):
 #                                                                              #
 ################################################################################
 def handle_insert_update(cx, uscg_msg, msg_dict, aismsg):
+    
+    print 'nais2postgis::handle_insert_update - Init'
+        
+    db_uncommitted_count = 0 # how many commits were done... return this
+
+    msg_type = msg_dict['MessageID']
+    
+    userid = int(msg_dict['UserID'])
+        
+    cu = cx.cursor()
    
-   print 'nais2postgis::handle_insert_update - Init'
-   
-   db_uncommitted_count = 0 # how many commits were done... return this
-
-   msg_type = msg_dict['MessageID']
-
-   userid = int(msg_dict['UserID'])
-
-   cu = cx.cursor()
-   
-   # ********** Mensajes 1 2 3 (informes de posicion)
-   if msg_type in (1,2,3):
-      x = msg_dict['longitude']
-      y = msg_dict['latitude']
-
-      # Posiciones incorrectas de GPS
-      if x > 180 or y > 90:
-         print 'nais2postgis::handle_insert_update - Posiciones incorrectas GPS x: %s y: %s', x, y
-         return # abandonar insert
-      
-      # Comprobar posiciones dentro del boundig box definido (si es el caso) 
-      if options.lon_min is not None and options.lon_min > x: return
-      if options.lon_max is not None and options.lon_max < x: return
-      if options.lat_min is not None and options.lat_min > y: return
-      if options.lat_max is not None and options.lat_max < y: return
-
-      ins = aismsg.sqlInsert(msg_dict, dbType='postgres')
-      ins.add('cg_sec',       uscg_msg.cg_sec)
-      ins.add('cg_timestamp', uscg_msg.sqlTimestampStr)
-      ins.add('cg_r',         uscg_msg.station)
-
-      print 'nais2postgis::handle_insert_update - Insert: ',ins
-      try:
-         cu.execute(str(ins))
-         print 'nais2postgis::handle_insert_update - OK Added position'
-      except Exception,e:
-         errors_file.write('nais2postgis::handle_insert_update - pos SQL INSERT ERROR for line: %s\t\n',str(msg_dict))
-         errors_file.write(str(ins))
-         errors_file.write('\n')
-         errors_file.flush()
-         traceback.print_exc(file=errors_file)
-         traceback.print_exc()
-         sys.stderr.write('\n\nBAD DB INSERT\n\n')
-         return False
-
-      db_uncommitted_count += 1 #incrementar contador, inserts sin commitear
-
-      navigationstatus = msg_dict['NavigationStatus']
-      shipandcargo = 'unknown'  # no se porque ....
-      cg_r = uscg_msg.station
-
-      # normalizar estado de navegacion
-      if str(navigationstatus) in NavigationStatusDecodeLut:
-            navigationstatus = NavigationStatusDecodeLut[str(navigationstatus)]
-
-      # Actualizar registro de ultima posicion para ese barco
-      cu.execute('SELECT key FROM last_position WHERE userid=%s;', (userid,))
-      
-      row = cu.fetchall()
-      if len(row)>0:
-         print ('nais2postgis::handle_insert_update - actualizar existe last_position key {}, userid {}'.format(row[0][0], userid))
-         cu.execute('DELETE FROM last_position WHERE userid = %s;', (userid,))
+    # ********** Mensajes 1 2 3 (informes de posicion)
+    if msg_type in (1,2,3):
+        x = msg_dict['longitude']
+        y = msg_dict['latitude']
             
-      # comprobar si ya existen datos estaticos de ese barco en la tabla shipdata
-      # para normalizar los nombres del barco en ambas tablas
-      cu.execute('SELECT name,shipandcargo FROM shipdata WHERE userid=%s LIMIT 1;',(userid,))
-      row = cu.fetchall()
-      if len(row)>0:
-         name = row[0][0].rstrip(' @')
-         shipandcargo = int(row[0][1])
-         if str(shipandcargo) in shipandcargoDecodeLut:
-            shipandcargo = shipandcargoDecodeLut[str(shipandcargo)]
-            if len(shipandcargo) > 29:
-               shipandcargo = shipandcargo[:29]
-         else:
-            shipandcargo = str(shipandcargo)
+        # Posiciones incorrectas de GPS
+        if x > 180 or y > 90:
+            print 'nais2postgis::handle_insert_update - Posiciones incorrectas GPS x: %s y: %s', x, y
+            return # abandonar insert
 
-      else:
-         name = str(userid)
+        # Comprobar posiciones dentro del boundig box definido (si es el caso) 
+        if options.lon_min is not None and options.lon_min > x: return
+        if options.lon_max is not None and options.lon_max < x: return
+        if options.lat_min is not None and options.lat_min > y: return
+        if options.lat_max is not None and options.lat_max < y: return
+    
+        ins = aismsg.sqlInsert(msg_dict, dbType='postgres')
+        ins.add('cg_sec',       uscg_msg.cg_sec)
+        ins.add('cg_timestamp', uscg_msg.sqlTimestampStr)
+        ins.add('cg_r',         uscg_msg.station)
+            
+        print 'nais2postgis::handle_insert_update - Insert: ',ins
+        try:
+            cu.execute(str(ins))
+            print 'nais2postgis::handle_insert_update - OK Added position'
+        except Exception,e:
+            errors_file.write('nais2postgis::handle_insert_update - pos SQL INSERT ERROR for line: %s\t\n',str(msg_dict))
+            errors_file.write(str(ins))
+            errors_file.write('\n')
+            errors_file.flush()
+            traceback.print_exc(file=errors_file)
+            traceback.print_exc()
+            sys.stderr.write('\n\nBAD DB INSERT\n\n')
+            return False
 
-      q = 'INSERT INTO last_position (userid,name,cog,sog,position,cg_r,navigationstatus, shipandcargo) VALUES (%s,%s,%s,%s,GeomFromText(\'POINT('+str(msg_dict['longitude'])+' '+str(msg_dict['latitude']) +')\',4326),%s,%s,%s);'
+        db_uncommitted_count += 1 #incrementar contador, inserts sin commitear
+
+        navigationstatus = msg_dict['NavigationStatus']
+        shipandcargo = 'unknown'  # no se porque ....
+        cg_r = uscg_msg.station
+            
+        # normalizar estado de navegacion
+        if str(navigationstatus) in NavigationStatusDecodeLut:
+            navigationstatus = NavigationStatusDecodeLut[str(navigationstatus)]
+                
+        # Actualizar registro de ultima posicion para ese barco
+        cu.execute('SELECT key FROM last_position WHERE userid=%s;', (userid,))
+            
+        row = cu.fetchall()
+        if len(row)>0:
+            print ('nais2postgis::handle_insert_update - actualizar existe last_position key {}, userid {}'.format(row[0][0], userid))
+            cu.execute('DELETE FROM last_position WHERE userid = %s;', (userid,))
+                
+        # comprobar si ya existen datos estaticos de ese barco en la tabla shipdata
+        # para normalizar los nombres del barco en ambas tablas
+        cu.execute('SELECT name,shipandcargo FROM shipdata WHERE userid=%s LIMIT 1;',(userid,))
+        row = cu.fetchall()
+        if len(row)>0:
+            name = row[0][0].rstrip(' @')
+            shipandcargo = int(row[0][1])
+            if str(shipandcargo) in shipandcargoDecodeLut:
+                shipandcargo = shipandcargoDecodeLut[str(shipandcargo)]
+                if len(shipandcargo) > 29:
+                    shipandcargo = shipandcargo[:29]
+            else:
+                shipandcargo = str(shipandcargo)
+
+        else:
+            name = str(userid)
+
+        q = 'INSERT INTO last_position (userid,name,cog,sog,position,cg_r,navigationstatus, shipandcargo) VALUES (%s,%s,%s,%s,GeomFromText(\'POINT('+str(msg_dict['longitude'])+' '+str(msg_dict['latitude']) +')\',4326),%s,%s,%s);'
       
-      if msg_dict['COG'] == 511:
+        if msg_dict['COG'] == 511:
             msg_dict['COG'] = 0 # make unknowns point north
       
-      qPrint =  'INSERT INTO last_position (userid,name,cog,sog,position,cg_r,navigationstatus, shipandcargo) VALUES ({},{},{},{},GeomFromText(\'POINT('+str(msg_dict['longitude'])+' '+str(msg_dict['latitude']) +')\',4326),{},{},{});'.format(userid,name,msg_dict['COG'],msg_dict['SOG'],cg_r,navigationstatus,shipandcargo)        
+        qPrint =  'INSERT INTO last_position (userid,name,cog,sog,position,cg_r,navigationstatus, shipandcargo) VALUES ({},{},{},{},GeomFromText(\'POINT('+str(msg_dict['longitude'])+' '+str(msg_dict['latitude']) +')\',4326),{},{},{});'.format(userid,name,msg_dict['COG'],msg_dict['SOG'],cg_r,navigationstatus,shipandcargo)        
                
-      print 'nais2postgis::handle_insert_update - actualizar last_position insert: {}'.format(qPrint)
+        print 'nais2postgis::handle_insert_update - actualizar last_position insert: {}'.format(qPrint)
                
-      cu.execute(q,(userid,name,msg_dict['COG'],msg_dict['SOG'],cg_r,navigationstatus,shipandcargo))
+        cu.execute(q,(userid,name,msg_dict['COG'],msg_dict['SOG'],cg_r,navigationstatus,shipandcargo))
 
-      # drop the old value
-      rebuild_track_line(cu,userid,name)  # This will leave out the current point
+        # drop the old value
+        rebuild_track_line(cu,userid,name)  # This will leave out the current point
 
-      return True # need to commit db
-   
-   # ********** Mensaje 4 (informe de estacion base)
-   if msg_type == 4:
-      cu.execute('DELETE FROM bsreport WHERE userid = %s;',(userid,))
-      db_uncommitted_count += 1
+        return True # need to commit db
+                
+    # ********** Mensaje 4 (informe de estacion base)
+    if msg_type == 4:
+        print 'nais2postgis::handle_insert_update - procesar mensaje 4, delete bsreport userid', userid
+           
+        cu.execute('DELETE FROM bsreport WHERE userid = %s;',(userid,))
+        db_uncommitted_count += 1
 
-      ins = aismsg.sqlInsert(msg_dict, dbType='postgres')
-      ins.add('cg_sec',       uscg_msg.cg_sec)
-      ins.add('cg_timestamp', uscg_msg.sqlTimestampStr)
-      ins.add('cg_r',         uscg_msg.station)
+        ins = aismsg.sqlInsert(msg_dict, dbType='postgres')
+        ins.add('cg_sec',       uscg_msg.cg_sec)
+        ins.add('cg_timestamp', uscg_msg.sqlTimestampStr)
+        ins.add('cg_r',         uscg_msg.station)
 
-      print 'nais2postgis::handle_insert_update - Insert: ',ins
-      cu.execute(str(ins))
+        print 'nais2postgis::handle_insert_update - Insert: ',ins
+        cu.execute(str(ins))
 
-      return True # need to commit db
+        return True # need to commit db
 
-   # ********** Mensaje 5 (datos estaticos del barco y relacionados con la travesia)
-   if msg_type == 5:
-      cu.execute('DELETE FROM shipdata WHERE userid = %s;',(userid,))
+    # ********** Mensaje 5 (datos estaticos del barco y relacionados con la travesia)
+    if msg_type == 5:
+        cu.execute('DELETE FROM shipdata WHERE userid = %s;',(userid,))
 
-      ins = aismsg.sqlInsert(msg_dict, dbType='postgres')
-      ins.add('cg_sec',       uscg_msg.cg_sec)
-      ins.add('cg_timestamp', uscg_msg.sqlTimestampStr)
-      ins.add('cg_r',         uscg_msg.station)
-      
-      print 'nais2postgis::handle_insert_update - Insert: ',ins
-      try:
-         cu.execute(str(ins))
-      except Exception,e:
-         #errors_file = file('errors-nais2postgis','w+')
-         print 'nais2postgis::handle_insert_update - Error insert BAD BAD'
-         errors_file.write('SQL INSERT ERROR for line: %s\t\n',str(msg_dict))
-         errors_file.write(str(ins))
-         errors_file.write('\n')
-         errors_file.flush()
-         traceback.print_exc(file=errors_file)
-         traceback.print_exc()
-         sys.stderr.write('\n\nBAD DB INSERT\n\n')
-         return False  # no commit
+        ins = aismsg.sqlInsert(msg_dict, dbType='postgres')
+        ins.add('cg_sec',       uscg_msg.cg_sec)
+        ins.add('cg_timestamp', uscg_msg.sqlTimestampStr)
+        ins.add('cg_r',         uscg_msg.station)
+                
+        print 'nais2postgis::handle_insert_update - Insert: ',ins
+        try:
+            cu.execute(str(ins))
+        except Exception,e:
+            #errors_file = file('errors-nais2postgis','w+')
+            print 'nais2postgis::handle_insert_update - Error insert BAD BAD'
+            errors_file.write('SQL INSERT ERROR for line: %s\t\n',str(msg_dict))
+            errors_file.write(str(ins))
+            errors_file.write('\n')
+            errors_file.flush()
+            traceback.print_exc(file=errors_file)
+            traceback.print_exc()
+            sys.stderr.write('\n\nBAD DB INSERT\n\n')
+            return False  # no commit
 
-      return True # need to commit db
+        return True # need to commit db
 
-   # *********** Mensaje 18 (Informe normal de posicion de los equipos de la Clase B)   
-   if msg_type == 18:
+    # *********** Mensaje 18 (Informe normal de posicion de los equipos de la Clase B)   
+    if msg_type == 18:
 
-      x = msg_dict['longitude']
-      y = msg_dict['latitude']
+        x = msg_dict['longitude']
+        y = msg_dict['latitude']
 
-      # Salir si la posicion es incorrecta
-      if x > 180 or y > 90:
-         return # 181, 91 is the invalid gps value
+        # Salir si la posicion es incorrecta
+        if x > 180 or y > 90:
+            return # 181, 91 is the invalid gps value
 
-      # Normalizar posicion dentro de bounding box definido
-      if options.lon_min is not None and options.lon_min > x: return
-      if options.lon_max is not None and options.lon_max < x: return
-      if options.lat_min is not None and options.lat_min > y: return
-      if options.lat_max is not None and options.lat_max < y: return
+        # Normalizar posicion dentro de bounding box definido
+        if options.lon_min is not None and options.lon_min > x: return
+        if options.lon_max is not None and options.lon_max < x: return
+        if options.lat_min is not None and options.lat_min > y: return
+        if options.lat_max is not None and options.lat_max < y: return
 
-      ins = aismsg.sqlInsert(msg_dict, dbType='postgres')
-      ins.add('cg_sec',       uscg_msg.cg_sec)
-      ins.add('cg_timestamp', uscg_msg.sqlTimestampStr)
-      ins.add('cg_r',         uscg_msg.station)
+        ins = aismsg.sqlInsert(msg_dict, dbType='postgres')
+        ins.add('cg_sec',       uscg_msg.cg_sec)
+        ins.add('cg_timestamp', uscg_msg.sqlTimestampStr)
+        ins.add('cg_r',         uscg_msg.station)
 
-      print 'nais2postgis::handle_insert_update - Insert: ',ins   
-      cu.execute(str(ins))
+        print 'nais2postgis::handle_insert_update - Insert: ',ins   
+        cu.execute(str(ins))
 
-      #navigationstatus = msg_dict['NavigationStatus']
-      shipandcargo = 'unknown'
-      cg_r = uscg_msg.station
+        #navigationstatus = msg_dict['NavigationStatus']
+        shipandcargo = 'unknown'
+        cg_r = uscg_msg.station
 
-      cu.execute('SELECT key FROM last_position WHERE userid=%s;', (userid,))
-      row = cu.fetchall()
-      if len(row)>0:
-         print ('nais2postgis::handle_insert_update - actualizar existe last_position eliminar antiguo userid {}'.format(userid))
-         cu.execute('DELETE FROM last_position WHERE userid = %s;', (userid,))
+        cu.execute('SELECT key FROM last_position WHERE userid=%s;', (userid,))
+        row = cu.fetchall()
+        if len(row)>0:
+            print ('nais2postgis::handle_insert_update - actualizar existe last_position eliminar antiguo userid {}'.format(userid))
+            cu.execute('DELETE FROM last_position WHERE userid = %s;', (userid,))
 
-      # Mirar si ya existen datos de esa estacion base      
-      cu.execute('SELECT name FROM b_staticdata WHERE partnum=0 AND userid=%s LIMIT 1;',(userid,))
-      row = cu.fetchall()
-      if len(row)>0:
-         name = row[0][0].rstrip(' @')
-      else:
-         name = str(userid)
+        # Mirar si ya existen datos de esa estacion base      
+        cu.execute('SELECT name FROM b_staticdata WHERE partnum=0 AND userid=%s LIMIT 1;',(userid,))
+        row = cu.fetchall()
+        if len(row)>0:
+            name = row[0][0].rstrip(' @')
+        else:
+            name = str(userid)
 
-      cu.execute('SELECT shipandcargo FROM b_staticdata WHERE partnum=1 AND userid=%s LIMIT 1;',(userid,))
-      row = cu.fetchall()
-      if len(row)>0:
-         shipandcargo = int(row[0][0])
-         if str(shipandcargo) in shipandcargoDecodeLut:
-            shipandcargo = shipandcargoDecodeLut[str(shipandcargo)]
-            if len(shipandcargo) > 29:
-               shipandcargo = shipandcargo[:29]
-         else:
-            shipandcargo = str(shipandcargo)
+        cu.execute('SELECT shipandcargo FROM b_staticdata WHERE partnum=1 AND userid=%s LIMIT 1;',(userid,))
+        row = cu.fetchall()
+        if len(row)>0:
+            shipandcargo = int(row[0][0])
+            if str(shipandcargo) in shipandcargoDecodeLut:
+                shipandcargo = shipandcargoDecodeLut[str(shipandcargo)]
+                if len(shipandcargo) > 29:
+                    shipandcargo = shipandcargo[:29]
+            else:
+                shipandcargo = str(shipandcargo)
 
-      # FIX: add navigation status
-      q = 'INSERT INTO last_position (userid,name,cog,sog,position,cg_r,shipandcargo) VALUES (%s,%s,%s,%s,GeomFromText(\'POINT('+str(msg_dict['longitude'])+' '+str(msg_dict['latitude']) +')\',4326),%s,%s);'
-                   
-      if msg_dict['COG'] == 511:
-         msg_dict['COG'] = 0 # make unknowns point north
+        # FIX: add navigation status
+        q = 'INSERT INTO last_position (userid,name,cog,sog,position,cg_r,shipandcargo) VALUES (%s,%s,%s,%s,GeomFromText(\'POINT('+str(msg_dict['longitude'])+' '+str(msg_dict['latitude']) +')\',4326),%s,%s);'
 
-      qPrint = 'INSERT INTO last_position (userid,name,cog,sog,position,cg_r,shipandcargo) VALUES ({},{},{},{},GeomFromText(\'POINT('+str(msg_dict['longitude'])+' '+str(msg_dict['latitude']) +')\',4326),{},{});'.format(userid,name,msg_dict['COG'],msg_dict['SOG'],cg_r,shipandcargo)        
-      print 'nais2postgis::handle_insert_update - actualizar last_position insert: {}'.format(qPrint)            
+        if msg_dict['COG'] == 511:
+            msg_dict['COG'] = 0 # make unknowns point north
+
+        qPrint = 'INSERT INTO last_position (userid,name,cog,sog,position,cg_r,shipandcargo) VALUES ({},{},{},{},GeomFromText(\'POINT('+str(msg_dict['longitude'])+' '+str(msg_dict['latitude']) +')\',4326),{},{});'.format(userid,name,msg_dict['COG'],msg_dict['SOG'],cg_r,shipandcargo)        
+        print 'nais2postgis::handle_insert_update - actualizar last_position insert: {}'.format(qPrint)            
             
-      cu.execute(q,(userid,name,msg_dict['COG'],msg_dict['SOG'],cg_r,shipandcargo) )
+        cu.execute(q,(userid,name,msg_dict['COG'],msg_dict['SOG'],cg_r,shipandcargo) )
 
-      rebuild_b_track_line(cu,userid,name)
+        rebuild_b_track_line(cu,userid,name)
 
-      return True # need to commit db
-         
-   # ********** Mensaje 19 (Informe ampliado de posicion de los equipos de la Clase B)
-   if msg_type == 19: 
-      cu.execute ('DELETE FROM b_pos_and_shipdata WHERE userid=%s AND partnum=%s;', (userid,msg_dict['partnum']))
+        return True # need to commit db
 
-      ins = aismsg.sqlInsert(msg_dict, dbType='postgres')
-      ins.add('cg_sec',       uscg_msg.cg_sec)
-      ins.add('cg_timestamp', uscg_msg.sqlTimestampStr)
-      ins.add('cg_r',         uscg_msg.station)
-     
-      print 'nais2postgis::handle_insert_update - Insert: ',ins
-      cu.execute(str(ins))
+    # ********** Mensaje 19 (Informe ampliado de posicion de los equipos de la Clase B)
+    if msg_type == 19: 
+        cu.execute ('DELETE FROM b_pos_and_shipdata WHERE userid=%s AND partnum=%s;', (userid,msg_dict['partnum']))
 
-      return True # need to commit db
+        ins = aismsg.sqlInsert(msg_dict, dbType='postgres')
+        ins.add('cg_sec',       uscg_msg.cg_sec)
+        ins.add('cg_timestamp', uscg_msg.sqlTimestampStr)
+        ins.add('cg_r',         uscg_msg.station)
+
+        print 'nais2postgis::handle_insert_update - Insert: ',ins
+        cu.execute(str(ins))
+            
+        return True # need to commit db
    
-   # ********** Mensaje 24 (Informe datos estaticos de la clase B CS
-   if msg_type == 24: # Class B static data report.  Either part A (0) or B (0)
-      # remove the old value, but only do it by parts
-      cu.execute ('DELETE FROM b_staticdata WHERE userid=%s AND partnum=%s;', (userid,msg_dict['partnum']))
+    # ********** Mensaje 24 (Informe datos estaticos de la clase B CS
+    if msg_type == 24: # Class B static data report.  Either part A (0) or B (0)
+        # remove the old value, but only do it by parts
+        cu.execute ('DELETE FROM b_staticdata WHERE userid=%s AND partnum=%s;', (userid,msg_dict['partnum']))
 
-      ins = aismsg.sqlInsert(msg_dict, dbType='postgres')
-      ins.add('cg_sec',       uscg_msg.cg_sec)
-      ins.add('cg_timestamp', uscg_msg.sqlTimestampStr)
-      ins.add('cg_r',         uscg_msg.station)
+        ins = aismsg.sqlInsert(msg_dict, dbType='postgres')
+        ins.add('cg_sec',       uscg_msg.cg_sec)
+        ins.add('cg_timestamp', uscg_msg.sqlTimestampStr)
+        ins.add('cg_r',         uscg_msg.station)
 
-      print 'nais2postgis::handle_insert_update - Insert: ',ins
-      cu.execute(str(ins))
+        print 'nais2postgis::handle_insert_update - Insert: ',ins
+        cu.execute(str(ins))
 
-      return True
+        return True
 
-   return False # No db commit needed - mensaje de tipo no soportado
+    return False # No db commit needed - mensaje de tipo no soportado
 
 ################################################################################
 #                                                                              #
