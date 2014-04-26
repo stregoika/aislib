@@ -116,112 +116,112 @@ Lookup table for each postgis field name to get its type.
 #                                                                              #
 ################################################################################
 def encode(params, validate=False):
-   '''Create a shipdata binary message payload to pack into an AIS Msg shipdata.
-
-	Fields in params:
-	  - MessageID(uint): AIS message number.  Must be 5 (field automatically set to "5")
-	  - RepeatIndicator(uint): Indicated how many times a message has been repeated
-	  - UserID(uint): Unique ship identification number (MMSI)
-	  - AISversion(uint): Compliant with what edition.  0 is the first edition.
-	  - IMOnumber(uint): vessel identification number (different than mmsi)
-	  - callsign(aisstr6): Ship radio call sign
-	  - name(aisstr6): Vessel name
-	  - shipandcargo(uint): what
-	  - dimA(uint): Distance from bow to reference position
-	  - dimB(uint): Distance from reference position to stern
-	  - dimC(uint): Distance from port side to reference position
-	  - dimD(uint): Distance from reference position to starboard side
-	  - fixtype(uint): Method used for positioning
-	  - ETAmonth(uint): Estimated time of arrival - month
-	  - ETAday(uint): Estimated time of arrival - day
-	  - ETAhour(uint): Estimated time of arrival - hour
-	  - ETAminute(uint): Estimated time of arrival - minutes
-	  - draught(udecimal): Maximum present static draught
-	  - destination(aisstr6): Where is the vessel going
-	  - dte(uint): Data terminal ready
-	  - Spare(uint): Reserved for definition by a regional authority. (field automatically set to "0")
-	@param params: Dictionary of field names/values.  Throws a ValueError exception if required is missing
-	@param validate: Set to true to cause checking to occur.  Runs slower.  FIX: not implemented.
-	@rtype: BitVector
-	@return: encoded binary message (for binary messages, this needs to be wrapped in a msg 8
-	@note: The returned bits may not be 6 bit aligned.  It is up to you to pad out the bits.
-	'''
-
-	bvList = []
-	bvList.append(binary.setBitVectorSize(BitVector(intVal=5),6))
-	if 'RepeatIndicator' in params:
-      bvList.append(binary.setBitVectorSize(BitVector(intVal=params['RepeatIndicator']),2))
-	else:
-		bvList.append(binary.setBitVectorSize(BitVector(intVal=0),2))
-	bvList.append(binary.setBitVectorSize(BitVector(intVal=params['UserID']),30))
-	if 'AISversion' in params:
-		bvList.append(binary.setBitVectorSize(BitVector(intVal=params['AISversion']),2))
-	else:
-		bvList.append(binary.setBitVectorSize(BitVector(intVal=0),2))
-	if 'IMOnumber' in params:
-		bvList.append(binary.setBitVectorSize(BitVector(intVal=params['IMOnumber']),30))
-	else:
-		bvList.append(binary.setBitVectorSize(BitVector(intVal=0),30))
-	if 'callsign' in params:
-		bvList.append(aisstring.encode(params['callsign'],42))
-	else:
-		bvList.append(aisstring.encode('@@@@@@@',42))
-	if 'name' in params:
-		bvList.append(aisstring.encode(params['name'],120))
-	else:
-		bvList.append(aisstring.encode('@@@@@@@@@@@@@@@@@@@@',120))
-	if 'shipandcargo' in params:
-		bvList.append(binary.setBitVectorSize(BitVector(intVal=params['shipandcargo']),8))
-	else:
-		bvList.append(binary.setBitVectorSize(BitVector(intVal=0),8))
-	if 'dimA' in params:
-		bvList.append(binary.setBitVectorSize(BitVector(intVal=params['dimA']),9))
-	else:
-		bvList.append(binary.setBitVectorSize(BitVector(intVal=0),9))
-	if 'dimB' in params:
-		bvList.append(binary.setBitVectorSize(BitVector(intVal=params['dimB']),9))
-	else:
-		bvList.append(binary.setBitVectorSize(BitVector(intVal=0),9))
-	if 'dimC' in params:
-		bvList.append(binary.setBitVectorSize(BitVector(intVal=params['dimC']),6))
-	else:
-		bvList.append(binary.setBitVectorSize(BitVector(intVal=0),6))
-	if 'dimD' in params:
-		bvList.append(binary.setBitVectorSize(BitVector(intVal=params['dimD']),6))
-	else:
-		bvList.append(binary.setBitVectorSize(BitVector(intVal=0),6))
-	if 'fixtype' in params:
-		bvList.append(binary.setBitVectorSize(BitVector(intVal=params['fixtype']),4))
-	else:
-		bvList.append(binary.setBitVectorSize(BitVector(intVal=0),4))
-	if 'ETAmonth' in params:
-		bvList.append(binary.setBitVectorSize(BitVector(intVal=params['ETAmonth']),4))
-	else:
-		bvList.append(binary.setBitVectorSize(BitVector(intVal=0),4))
-	if 'ETAday' in params:
-		bvList.append(binary.setBitVectorSize(BitVector(intVal=params['ETAday']),5))
-	else:
-		bvList.append(binary.setBitVectorSize(BitVector(intVal=0),5))
-	if 'ETAhour' in params:
-		bvList.append(binary.setBitVectorSize(BitVector(intVal=params['ETAhour']),5))
-	else:
-		bvList.append(binary.setBitVectorSize(BitVector(intVal=24),5))
-	if 'ETAminute' in params:
-		bvList.append(binary.setBitVectorSize(BitVector(intVal=params['ETAminute']),6))
-	else:
-		bvList.append(binary.setBitVectorSize(BitVector(intVal=60),6))
-	if 'draught' in params:
-		bvList.append(binary.setBitVectorSize(BitVector(intVal=int((Decimal(params['draught'])*Decimal('10')))),8))
-	else:
-		bvList.append(binary.setBitVectorSize(BitVector(intVal=int(0)),8))
-	if 'destination' in params:
-		bvList.append(aisstring.encode(params['destination'],120))
-	else:
-		bvList.append(aisstring.encode('@@@@@@@@@@@@@@@@@@@@',120))
-	bvList.append(binary.setBitVectorSize(BitVector(intVal=params['dte']),1))
-	bvList.append(binary.setBitVectorSize(BitVector(intVal=0),1))
-
-	return binary.joinBV(bvList)
+    '''Create a shipdata binary message payload to pack into an AIS Msg shipdata.
+        
+    Fields in params:
+        - MessageID(uint): AIS message number.  Must be 5 (field automatically set to "5")
+        - RepeatIndicator(uint): Indicated how many times a message has been repeated
+        - UserID(uint): Unique ship identification number (MMSI)
+        - AISversion(uint): Compliant with what edition.  0 is the first edition.
+        - IMOnumber(uint): vessel identification number (different than mmsi)
+        - callsign(aisstr6): Ship radio call sign
+        - name(aisstr6): Vessel name
+        - shipandcargo(uint): what
+        - dimA(uint): Distance from bow to reference position
+        - dimB(uint): Distance from reference position to stern
+        - dimC(uint): Distance from port side to reference position
+        - dimD(uint): Distance from reference position to starboard side
+        - fixtype(uint): Method used for positioning
+        - ETAmonth(uint): Estimated time of arrival - month
+        - ETAday(uint): Estimated time of arrival - day
+        - ETAhour(uint): Estimated time of arrival - hour
+        - ETAminute(uint): Estimated time of arrival - minutes
+        - draught(udecimal): Maximum present static draught
+        - destination(aisstr6): Where is the vessel going
+        - dte(uint): Data terminal ready
+        - Spare(uint): Reserved for definition by a regional authority. (field automatically set to "0")
+        @param params: Dictionary of field names/values.  Throws a ValueError exception if required is missing
+        @param validate: Set to true to cause checking to occur.  Runs slower.  FIX: not implemented.
+        @rtype: BitVector
+        @return: encoded binary message (for binary messages, this needs to be wrapped in a msg 8
+        @note: The returned bits may not be 6 bit aligned.  It is up to you to pad out the bits.
+    '''
+    
+    bvList = []
+    bvList.append(binary.setBitVectorSize(BitVector(intVal=5),6))
+    if 'RepeatIndicator' in params:
+        bvList.append(binary.setBitVectorSize(BitVector(intVal=params['RepeatIndicator']),2))
+    else:
+        bvList.append(binary.setBitVectorSize(BitVector(intVal=0),2))
+    bvList.append(binary.setBitVectorSize(BitVector(intVal=params['UserID']),30))
+    if 'AISversion' in params:
+        bvList.append(binary.setBitVectorSize(BitVector(intVal=params['AISversion']),2))
+    else:
+        bvList.append(binary.setBitVectorSize(BitVector(intVal=0),2))
+    if 'IMOnumber' in params:
+        bvList.append(binary.setBitVectorSize(BitVector(intVal=params['IMOnumber']),30))
+    else:
+        bvList.append(binary.setBitVectorSize(BitVector(intVal=0),30))
+    if 'callsign' in params:
+        bvList.append(aisstring.encode(params['callsign'],42))
+    else:
+        bvList.append(aisstring.encode('@@@@@@@',42))
+    if 'name' in params:
+        bvList.append(aisstring.encode(params['name'],120))
+    else:
+        bvList.append(aisstring.encode('@@@@@@@@@@@@@@@@@@@@',120))
+    if 'shipandcargo' in params:
+        bvList.append(binary.setBitVectorSize(BitVector(intVal=params['shipandcargo']),8))
+    else:
+        bvList.append(binary.setBitVectorSize(BitVector(intVal=0),8))
+    if 'dimA' in params:
+        bvList.append(binary.setBitVectorSize(BitVector(intVal=params['dimA']),9))
+    else:
+        bvList.append(binary.setBitVectorSize(BitVector(intVal=0),9))
+    if 'dimB' in params:
+        bvList.append(binary.setBitVectorSize(BitVector(intVal=params['dimB']),9))
+    else:
+        bvList.append(binary.setBitVectorSize(BitVector(intVal=0),9))
+    if 'dimC' in params:
+        bvList.append(binary.setBitVectorSize(BitVector(intVal=params['dimC']),6))
+    else:
+        bvList.append(binary.setBitVectorSize(BitVector(intVal=0),6))
+    if 'dimD' in params:
+        bvList.append(binary.setBitVectorSize(BitVector(intVal=params['dimD']),6))
+    else:
+        bvList.append(binary.setBitVectorSize(BitVector(intVal=0),6))
+    if 'fixtype' in params:
+        bvList.append(binary.setBitVectorSize(BitVector(intVal=params['fixtype']),4))
+    else:
+        bvList.append(binary.setBitVectorSize(BitVector(intVal=0),4))
+    if 'ETAmonth' in params:
+        bvList.append(binary.setBitVectorSize(BitVector(intVal=params['ETAmonth']),4))
+    else:
+        bvList.append(binary.setBitVectorSize(BitVector(intVal=0),4))
+    if 'ETAday' in params:
+        bvList.append(binary.setBitVectorSize(BitVector(intVal=params['ETAday']),5))
+    else:
+        bvList.append(binary.setBitVectorSize(BitVector(intVal=0),5))
+    if 'ETAhour' in params:
+        bvList.append(binary.setBitVectorSize(BitVector(intVal=params['ETAhour']),5))
+    else:
+        bvList.append(binary.setBitVectorSize(BitVector(intVal=24),5))
+    if 'ETAminute' in params:
+        bvList.append(binary.setBitVectorSize(BitVector(intVal=params['ETAminute']),6))
+    else:
+        bvList.append(binary.setBitVectorSize(BitVector(intVal=60),6))
+    if 'draught' in params:
+        bvList.append(binary.setBitVectorSize(BitVector(intVal=int((Decimal(params['draught'])*Decimal('10')))),8))
+    else:
+        bvList.append(binary.setBitVectorSize(BitVector(intVal=int(0)),8))
+    if 'destination' in params:
+        bvList.append(aisstring.encode(params['destination'],120))
+    else:
+        bvList.append(aisstring.encode('@@@@@@@@@@@@@@@@@@@@',120))
+    bvList.append(binary.setBitVectorSize(BitVector(intVal=params['dte']),1))
+    bvList.append(binary.setBitVectorSize(BitVector(intVal=0),1))
+        
+    return binary.joinBV(bvList)
 
 
 ################################################################################
