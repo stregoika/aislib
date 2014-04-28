@@ -179,6 +179,8 @@ def handle_insert_update(cx, uscg_msg, msg_dict, aismsg):
             traceback.print_exc()
             sys.stderr.write('\n\nBAD DB INSERT\n\n')
             self.badso.write(ins+'\n')
+            self.badso.write('mmmmm %s for ins: %s \n' % (str(e),ins))
+            self.badso.write('burubu %s \n\n' % (str(ins)))
             return False
 
         db_uncommitted_count += 1 #incrementar contador, inserts sin commitear
