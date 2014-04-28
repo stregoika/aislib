@@ -144,7 +144,7 @@ def handle_insert_update(cx, uscg_msg, msg_dict, aismsg):
     userid = int(msg_dict['UserID'])
         
     cu = cx.cursor()
-   
+    self.badso.write('esto es una kk de patata \n')
     # ********** Mensajes 1 2 3 (informes de posicion)
     if msg_type in (1,2,3):
         x = msg_dict['longitude']
