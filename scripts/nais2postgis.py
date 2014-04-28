@@ -178,6 +178,7 @@ def handle_insert_update(cx, uscg_msg, msg_dict, aismsg):
             traceback.print_exc(file=errors_file)
             traceback.print_exc()
             sys.stderr.write('\n\nBAD DB INSERT\n\n')
+            self.badso.write(ins+'\n')
             return False
 
         db_uncommitted_count += 1 #incrementar contador, inserts sin commitear
@@ -390,6 +391,7 @@ class Nais2Postgis:
       self.cu = self.cx.cursor()
       self.norm_queue = aisutils.normalize.Normalize() # for multipart messages
       self.bad = file('bad.ais','w')
+      self.badso = file('bad.sonita','w')
 
       # Database commit handling... only commit every so often to
       self.db_last_commit_time = 0
