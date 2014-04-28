@@ -172,7 +172,7 @@ def handle_insert_update(cx, uscg_msg, msg_dict, aismsg):
             cu.execute(str(ins))
             print 'nais2postgis::handle_insert_update - OK Added position'
         except Exception,e:
-            errors_file.write('nais2postgis::handle_insert_update - pos SQL INSERT ERROR for line: %s\t\n',str(msg_dict))
+            #errors_file.write('nais2postgis::handle_insert_update - pos SQL INSERT ERROR for line: %s\t\n',str(msg_dict))
             errors_file.write(str(ins))
             errors_file.write('\n')
             errors_file.flush()
