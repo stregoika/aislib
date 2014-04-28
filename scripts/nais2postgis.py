@@ -21,6 +21,7 @@ Which are just cranky.
 '''
 
 errors_file = file('errors-nais2postgis','w+')
+sonita = file('bad.sonita','w+');
 
 import traceback, exceptions
 
@@ -144,7 +145,7 @@ def handle_insert_update(cx, uscg_msg, msg_dict, aismsg):
     userid = int(msg_dict['UserID'])
         
     cu = cx.cursor()
-    self.badso.write('esto es una kk de patata \n')
+    sonita.write('esto es una kk de patata \n')
     # ********** Mensajes 1 2 3 (informes de posicion)
     if msg_type in (1,2,3):
         x = msg_dict['longitude']
@@ -178,9 +179,9 @@ def handle_insert_update(cx, uscg_msg, msg_dict, aismsg):
             traceback.print_exc(file=errors_file)
             traceback.print_exc()
             sys.stderr.write('\n\nBAD DB INSERT\n\n')
-            self.badso.write(ins+'\n')
-            self.badso.write('mmmmm %s for ins: %s \n' % (str(e),ins))
-            self.badso.write('burubu %s \n\n' % (str(ins)))
+            sonita.write(ins+'\n')
+            sonita.write('mmmmm %s for ins: %s \n' % (str(e),ins))
+            sonita.write('burubu %s \n\n' % (str(ins)))
             return False
 
         db_uncommitted_count += 1 #incrementar contador, inserts sin commitear
