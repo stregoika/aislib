@@ -71,7 +71,7 @@ def itdma_sql_fields(c):
 def itdma_parse_bits(bv):
     assert( len(bv) == 19 )
     r = {}
-    r['sync_state'] = int(bv[:2])
+    r['state_syncstate'] = int(bv[:2])   # cambiado state_syncstate
     r['slot_increment'] = int( bv[2:15] )
     r['slots_to_allocate'] = int( bv[15:18] )
     r['keep_flag'] = int( bv[18] )
