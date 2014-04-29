@@ -280,7 +280,7 @@
 		18A6D9521908808F001539D4 /* ais-db */ = {isa = PBXFileReference; lastKnownFileType = text; path = "ais-db"; sourceTree = "<group>"; };
 		18A6D9531908808F001539D4 /* ais-db-rebuild-cache-tables */ = {isa = PBXFileReference; lastKnownFileType = text; path = "ais-db-rebuild-cache-tables"; sourceTree = "<group>"; };
 		18A6D9541908808F001539D4 /* ais-net-to-postgis */ = {isa = PBXFileReference; lastKnownFileType = text; path = "ais-net-to-postgis"; sourceTree = "<group>"; };
-		18A6D9551908808F001539D4 /* ais-port-forward */ = {isa = PBXFileReference; lastKnownFileType = text; path = "ais-port-forward"; sourceTree = "<group>"; };
+		18A6D9551908808F001539D4 /* ais-port-forward */ = {isa = PBXFileReference; lastKnownFileType = text; path = "ais-port-forward"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.python; };
 		18A6D9561908808F001539D4 /* ais-process-day.bash */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "ais-process-day.bash"; sourceTree = "<group>"; };
 		18A6D9571908808F001539D4 /* ais-receive-bbox */ = {isa = PBXFileReference; lastKnownFileType = text; path = "ais-receive-bbox"; sourceTree = "<group>"; };
 		18A6D9581908808F001539D4 /* ais_5report.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_5report.py; sourceTree = "<group>"; };

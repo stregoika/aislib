@@ -17,14 +17,14 @@ Handle communication state as described in Annex 2 - 3.3.7.2.1 of ITU 1371.3
 '''
 
 sotdma_fields = (
-    'state_syncstate',
-    'state_slottimeout',
+    'state_syncstate',       #sync_state 
+    'state_slottimeout',     #slot_timeout 
     'received_stations',
     'slot_number',
     'commstate_utc_hour',
     'commstate_utc_min',
     'commstate_utc_spare',
-    'state_slotoffset'
+    'state_slotoffset'       #slot_offset 
 )
 
 def sotdma_sql_fields(c):
@@ -36,8 +36,8 @@ def sotdma_sql_fields(c):
 def sotdma_parse_bits(bv):
     assert(len(bv)==19)
     r = {}
-    r['state_syncstate'] = int(bv[:2])
-    r['state_slottimeout'] = slottimeout = int(bv[2:5])
+    r['state_syncstate'] = int(bv[:2]) #cambiado
+    r['state_slottimeout'] = slottimeout = int(bv[2:5]) #cambiado
     submessage = bv[-14:]
 
     if slottimeout in (3,5,7):
@@ -49,14 +49,14 @@ def sotdma_parse_bits(bv):
         r['commstate_utc_min'] = int(submessage[5:12])
         r['commstate_utc_spare'] = int(submessage[-2:])
     elif slottimeout == 0:
-        r['state_slotoffset'] = int(submessage)
+        r['state_slotoffset'] = int(submessage) #cambiado
     else:
         assert False
 
     return r
 
 itdma_fields = (
-    'sync_state',
+    'state_syncstate',   # cambiado de sync_state
     'slot_increment',
     'slots_to_allocate',
     'keep_flag',
