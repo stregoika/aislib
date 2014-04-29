@@ -142,15 +142,15 @@ def handle_insert_update(cx, uscg_msg, msg_dict, aismsg):
     
     print 'nais2postgis::handle_insert_update - Init'
         
-    db_uncommitted_count = 0 # how many commits were done... return this
+    db_uncommitted_count = 0 # Control numero de sentencias que aun no se han comiteado
 
     msg_type = msg_dict['MessageID']
     
     userid = int(msg_dict['UserID'])
         
     cu = cx.cursor()
-    #sonita.write('esto es una kk de patata \n')
-    # ********** Mensajes 1 2 3 (informes de posicion)
+
+    # ********** Mensajes tipo 1 - 2 - 3 (informes de posicion)
     if msg_type in (1,2,3):
         x = msg_dict['longitude']
         y = msg_dict['latitude']
@@ -176,7 +176,7 @@ def handle_insert_update(cx, uscg_msg, msg_dict, aismsg):
             cu.execute(str(ins))
             print 'nais2postgis::handle_insert_update - OK Added position'
         except Exception,e:
-            #errors_file.write('nais2postgis::handle_insert_update - pos SQL INSERT ERROR for line: %s\t\n',str(msg_dict))
+            errors_file.write('nais2postgis::handle_insert_update - pos SQL INSERT ERROR for line: %s\t\n',str(msg_dict))
             errors_file.write(str(ins))
             errors_file.write('\n')
             errors_file.flush()
@@ -237,9 +237,9 @@ def handle_insert_update(cx, uscg_msg, msg_dict, aismsg):
         # drop the old value
         rebuild_track_line(cu,userid,name)  # This will leave out the current point
 
-        return True # need to commit db
+        return True # hay que commitear
                 
-    # ********** Mensaje 4 (informe de estacion base)
+    # ********** Mensaje tipo 4 (informe de estacion base)
     if msg_type == 4:
         print 'nais2postgis::handle_insert_update - procesar mensaje 4, delete bsreport userid', userid
            
@@ -256,7 +256,7 @@ def handle_insert_update(cx, uscg_msg, msg_dict, aismsg):
 
         return True # need to commit db
 
-    # ********** Mensaje 5 (datos estaticos del barco y relacionados con la travesia)
+    # ********** Mensaje tipo 5 (datos estaticos del barco y relacionados con la travesia)
     if msg_type == 5:
         cu.execute('DELETE FROM shipdata WHERE userid = %s;',(userid,))
 
@@ -282,7 +282,7 @@ def handle_insert_update(cx, uscg_msg, msg_dict, aismsg):
 
         return True # need to commit db
 
-    # *********** Mensaje 18 (Informe normal de posicion de los equipos de la Clase B)   
+    # *********** Mensaje tipo 18 (Informe normal de posicion de los equipos de la Clase B)   
     if msg_type == 18:
 
         x = msg_dict['longitude']
@@ -350,7 +350,7 @@ def handle_insert_update(cx, uscg_msg, msg_dict, aismsg):
 
         return True # need to commit db
 
-    # ********** Mensaje 19 (Informe ampliado de posicion de los equipos de la Clase B)
+    # ********** Mensaje tipo 19 (Informe ampliado de posicion de los equipos de la Clase B)
     if msg_type == 19: 
         cu.execute ('DELETE FROM b_pos_and_shipdata WHERE userid=%s AND partnum=%s;', (userid,msg_dict['partnum']))
 
@@ -364,7 +364,7 @@ def handle_insert_update(cx, uscg_msg, msg_dict, aismsg):
             
         return True # need to commit db
    
-    # ********** Mensaje 24 (Informe datos estaticos de la clase B CS
+    # ********** Mensaje tipo 24 (Informe datos estaticos de la clase B CS
     if msg_type == 24: # Class B static data report.  Either part A (0) or B (0)
         # remove the old value, but only do it by parts
         cu.execute ('DELETE FROM b_staticdata WHERE userid=%s AND partnum=%s;', (userid,msg_dict['partnum']))
