@@ -47,6 +47,9 @@ from ais.ais_msg_5 import shipandcargoDecodeLut
 ais_msgs_supported = ('1','2','3','4','5','B','H') # ,'C', 'H') 
 ''' Which AIS messages will be handled.  The rest will be dropped. '''
 
+# Ficheros: 
+# Fichero de log: nais2postgis.py.log
+
 ################################################################################
 #                                                                              #
 #                    rebuild_track_line                                        #
@@ -548,93 +551,94 @@ class Nais2Postgis:
 #                                                                              #
 ################################################################################
 if __name__=='__main__':
-   from optparse import OptionParser
-
-   print 'nais2postgis::main - Init'
-   # FIX: is importing __init__ safe?
-   dbType='postgres';
-
-   parser = OptionParser(usage="%prog [options]"
-                          ,version="%prog "+__version__ + " ("+__date__+")")
-
-   parser.add_option('-i','--in-port',dest='inPort',type='int', default=31414
-                      ,help='Where the data comes from [default: %default]')
-                      
-   parser.add_option('-I','--in-host',dest='inHost',type='string',default='localhost'
-                      ,help='What host to read data from [default: %default]')
-                      
-   parser.add_option('--in-gethostname',dest='inHostname', action='store_true', default=False
-			,help='Where the data comes from [default: %default]')
-
-   parser.add_option('-t','--timeout',dest='timeout',type='float', default='5'
-                      ,help='Number of seconds to timeout after if no data [default: %default]')
-
-#    parser.add_option('-a','--add-station',action='append',dest='allowStations'
-#                      ,default=None
-#                      ,help='Specify limited set stations to forward (e.g. r003679900) [default: all]')
-
-#    parser.add_option('-x','--lon-min', dest='lon_min', type='float', default=-71
-   parser.add_option('-x','--lon-min', dest='lon_min', type='float', default=None
-                      ,help=' [default: %default]')
-                      
-   parser.add_option('-X','--lon-max', dest='lon_max', type='float', default=None
-                      ,help=' [default: %default]')
-
-#    parser.add_option('-y','--lat-min', dest='lat_min', type='float', default=42
-   parser.add_option('-y','--lat-min', dest='lat_min', type='float', default=None
-                      ,help=' [default: %default]')
-
-   parser.add_option('-Y','--lat-max', dest='lat_max', type='float', default=None
-                      ,help=' [default: %default]')
-
-
-   aisutils.daemon.stdCmdlineOptions(parser, skip_short=True)
-
-   aisutils.database.stdCmdlineOptions(parser, 'postgres')
-
-   parser.add_option('-v','--verbose',dest='verbose',default=False,action='store_true'
-                      ,help='Make the test output verbose')
-
-   default_log = sys.argv[0].split('/')[-1]+'.log'
-
-   parser.add_option('-l', '--log-file', dest='log_file', type='string', default=default_log,
-                      help='Tracing and logging file for status [default: %default]')
-
-   parser.add_option('-L','--log-level',dest='log_level',type='int', default='0'
-                      ,help='Log level for tracing.  Defaults to all [default: %default]')
-
-   (options,args) = parser.parse_args()
-   v = options.verbose
-   if v:
-      sys.stderr.write('nais2postgis::main - Starting Logging to %s at %d\n' %
-                        (options.log_file, options.log_level) )
-
-   sys.stderr.write('nais2postgis::main - Bounding box: X: %s to %s \t\t Y: %s to %s\n' % (options.lon_min,options.lon_max,options.lat_min,options.lat_max))
-
-   if options.inHostname:
-	   options.inHost=socket.gethostname()
-
-   if options.daemon_mode:
-      aisutils.daemon.start(options.pid_file)
-
-   logging.basicConfig(filename = options.log_file, level  = options.log_level)
-
-   n2p = Nais2Postgis(options)
-
-   loop_count=0
-
-   while True:
-      loop_count += 1
-      if 0 == loop_count % 1000:
-         print 'nais2postgis::main - top level loop',loop_count
-      try:
-         n2p.do_one_loop()
-      except Exception, e:
-         sys.stderr.write('*** nais2postgis::main - do_one_loop exception\n')
-         sys.stderr.write('   Exception:' + str(type(Exception))+'\n')
-         sys.stderr.write('   Exception args:'+ str(e)+'\n')
-         traceback.print_exc(file=sys.stderr)
-         continue
-
-      time.sleep(0.01)
+    from optparse import OptionParser
         
+    print 'nais2postgis::main - Inicializar parseo mensajes AIS'
+
+    dbType='postgres'; # forzar tipo ddbb
+
+    parser = OptionParser(usage="%prog [options]",version="%prog "+__version__ + " ("+__date__+")")
+
+    parser.add_option('-i','--in-port',dest='inPort',type='int', default=31414 
+                      ,help='Puerto de recepcion [default: %default]')
+                      
+    parser.add_option('-I','--in-host',dest='inHost',type='string',default='localhost'
+                      ,help='Host de recepcion [default: %default]')
+                    
+    parser.add_option('--in-gethostname',dest='inHostname', action='store_true', default=False 
+                      ,help='Host de donde provienen los datos [default: %default]')
+        
+    parser.add_option('-t','--timeout',dest='timeout',type='float', default='5'
+                      ,help='Numero de segundos para timeout si no se reciben datos [default: %default]')
+        
+    #parser.add_option('-a','--add-station',action='append',dest='allowStations',default=None
+    #                    ,help='Limite de estaciones para reenvio (e.g. r003679900) [default: all]')
+
+    # lon_min default=-71
+    parser.add_option('-x','--lon-min', dest='lon_min', type='float', default=None
+                      ,help='Bounding box, longitud minima [default: %default]')
+                    
+    parser.add_option('-X','--lon-max', dest='lon_max', type='float', default=None
+                      ,help='Bounding box, longitud maxima [default: %default]')
+
+    # lat_min default default=42
+    parser.add_option('-y','--lat-min', dest='lat_min', type='float', default=None
+                      ,help='Bounding box, latitud minina [default: %default]')
+
+    parser.add_option('-Y','--lat-max', dest='lat_max', type='float', default=None
+                      ,help='Bounding box, latitud maxima [default: %default]')
+
+
+    aisutils.daemon.stdCmdlineOptions(parser, skip_short=True)
+
+    aisutils.database.stdCmdlineOptions(parser, 'postgres')
+
+    parser.add_option('-v','--verbose',dest='verbose',default=False,action='store_true'
+                      ,help='Indicar modo verbose')
+
+    # Fichero de log: nais2postgis.py.log 
+    default_log = sys.argv[0].split('/')[-1]+'.log'
+    
+    parser.add_option('-l', '--log-file', dest='log_file', type='string', default=default_log
+                      , help='Fichero de log [default: %default]')
+
+    parser.add_option('-L','--log-level',dest='log_level',type='int', default='0'
+                      ,help='Nivel de log (por defecto, todo) [default: %default]')
+       
+    (options,args) = parser.parse_args()
+    
+    v = options.verbose
+    if v:
+        sys.stderr.write('nais2postgis::main - Modo verbose; fichero %s nivel %d\n' % 
+                         (options.log_file, options.log_level) )
+    
+    sys.stderr.write('nais2postgis::main - Bounding box: X: %s to %s \t\t Y: %s to %s\n' % 
+                     (options.lon_min,options.lon_max,options.lat_min,options.lat_max))
+
+    if options.inHostname:
+        options.inHost=socket.gethostname()
+
+    if options.daemon_mode:
+        aisutils.daemon.start(options.pid_file)
+            
+    logging.basicConfig(filename = options.log_file, level  = options.log_level)
+
+    n2p = Nais2Postgis(options)
+
+    loop_count=0
+
+    while True:
+        loop_count += 1
+        if 0 == loop_count % 1000:
+            print 'nais2postgis::main - top level loop',loop_count
+        try:
+            n2p.do_one_loop()
+        except Exception, e:
+            sys.stderr.write('*** nais2postgis::main - do_one_loop exception\n')
+            sys.stderr.write('   Exception:' + str(type(Exception))+'\n')
+            sys.stderr.write('   Exception args:'+ str(e)+'\n')
+            traceback.print_exc(file=sys.stderr)
+            continue
+                
+        time.sleep(0.01)
+
