@@ -513,8 +513,7 @@ class Nais2Postgis:
                 self.bad.write(msg+'\n')
                 self.cx.commit() # reset the transaction
 
-        print 'nais2postgis::Nais2Postgis - Should commit?',self.db_last_commit_time, time.time() - self.db_last_commit_time
-                , self.db_uncommitted_count
+        print 'nais2postgis::Nais2Postgis - Should commit?',self.db_last_commit_time, time.time() - self.db_last_commit_time, self.db_uncommitted_count
 
         #print 'nais2postgis::Nais2Postgis - temporal forzar commit'
         #self.db_last_commit_time = None
