@@ -49,6 +49,7 @@ ais_msgs_supported = ('1','2','3','4','5','B','H') # ,'C', 'H')
 
 # Ficheros: 
 # Fichero de log: nais2postgis.py.log
+# Mensajes ais fallidos: bad.ais
 
 ################################################################################
 #                                                                              #
@@ -386,163 +387,155 @@ def handle_insert_update(cx, uscg_msg, msg_dict, aismsg):
 #                                                                              #
 ################################################################################
 class Nais2Postgis:
-   def __init__(self,options):
-      self.v = options.verbose
-      self.options = options
-      self.timeout=options.timeout
-      self.nais_connected = False
-      self.loop_count = 0
-      self.nais_src = None
-      self.cx = aisutils.database.connect(options, dbType='postgres')
-      self.cu = self.cx.cursor()
-      self.norm_queue = aisutils.normalize.Normalize() # for multipart messages
-      self.bad = file('bad.ais','w')
+    def __init__(self,options):
+        self.v = options.verbose
+        self.options = options
+        self.timeout=options.timeout
+        self.nais_connected = False
+        self.loop_count = 0
+        self.nais_src = None
+        self.cx = aisutils.database.connect(options, dbType='postgres')
+        self.cu = self.cx.cursor()
+        self.norm_queue = aisutils.normalize.Normalize() # for multipart messages
+        self.bad = file('bad.ais','w')
 
-      # Database commit handling... only commit every so often to
-      self.db_last_commit_time = 0
-      self.db_uncommitted_count = 0
+        # Gestion de commits; evitar que sean excesivos
+        self.db_last_commit_time = 0
+        self.db_uncommitted_count = 0
 
-   print "nais2postgis::Nais2Postgis - Init"
+        print "nais2postgis::Nais2Postgis - Init"
 
-   def do_one_loop(self):
-      '''
-      @return: true on success, false if disconnected or other error.
-      '''
-      connection_attempts = 0
-      while not self.nais_connected:
-         self.loop_count += 1
-         connection_attempts += 1
-         if connection_attempts%100 == 1:
-            logging.warn('nais2postgis::Nais2Postgis - Connecting to NAIS')
-            sys.stderr.write('nais2postgis::Nais2Postgis - Connecting to %s:%d\n' %
-                              (str(self.options.inHost), self.options.inPort))
-         try:
-            self.nais_src = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-            self.nais_src.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-            self.nais_src.connect((self.options.inHost, self.options.inPort))
-         except socket.error, inst:
-            if self.loop_count%50 == 0:
-               sys.stderr.write('nais2postgis::Nais2Postgis - %d : Failed to connect to nais_src ... %s\tWill try again\n' %
+    def do_one_loop(self):
+        # Valor de retorno: true si satisfactorio; falso si desconexion u otro error
+
+        connection_attempts = 0
+        while not self.nais_connected:
+            self.loop_count += 1
+            connection_attempts += 1
+            if connection_attempts%100 == 1:
+                logging.warn('nais2postgis::Nais2Postgis - Conectando a fuente AIS')
+                sys.stderr.write('nais2postgis::Nais2Postgis - Conectando host %s (puerto %d)\n' %
+                                (str(self.options.inHost), self.options.inPort))
+            try:
+                self.nais_src = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+                self.nais_src.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+                self.nais_src.connect((self.options.inHost, self.options.inPort))
+            except socket.error, inst:
+                if self.loop_count%50 == 0:
+                    sys.stderr.write('nais2postgis::Nais2Postgis - %d : Fallo de conexion nais_src ... %s\tReintento\n' %
                                  (self.loop_count,str(inst)))
-               time.sleep(.5)
-         else:
-            self.nais_connected=True
-            logging.warn('nais2postgis::Nais2Postgis - Connected to NAIS')
-            sys.stderr.write('nais2postgis::Nais2Postgis - Connected...\n')
-         #time.sleep(.1)
+                time.sleep(.5)
+            else:
+                self.nais_connected=True
+                logging.warn('nais2postgis::Nais2Postgis - Conectado a AIS')
+                sys.stderr.write('nais2postgis::Nais2Postgis - Conectado...\n')
+            #time.sleep(.1)
 
-      readersready,outputready,exceptready = select.select([self.nais_src,],[],[],self.timeout)
+        readersready,outputready,exceptready = select.select([self.nais_src,],[],[],self.timeout)
 
-      if len(readersready) == 0:
-         return
+        # No se leen datos
+        if len(readersready) == 0:
+            return
 
-      for sock in readersready:
-         msgs = sock.recv(10000)
-         if len(msgs)==0:
-            self.nais_connected=False
-            logging.warn('nais2postgis::Nais2Postgis - DISCONNECT from NAIS\n')
-            sys.stderr.write('nais2postgis::Nais2Postgis - DISCONNECT from NAIS\n')
-         if self.v:
-            sys.stderr.write('nais2postgis::Nais2Postgis - received %d bytes: %s\n' % (len(msgs),msgs.strip()) )
+        for sock in readersready:
+            msgs = sock.recv(10000)
+            if len(msgs)==0:
+                self.nais_connected=False
+                logging.warn('nais2postgis::Nais2Postgis - DESCONEXION de AIS\n')
+                sys.stderr.write('nais2postgis::Nais2Postgis - DESCONEXION de AIS\n')
+            if self.v:
+                sys.stderr.write('nais2postgis::Nais2Postgis - recibidos %d bytes; mensaje %s\n' % (len(msgs),msgs.strip()))
 
-      if not self.nais_connected:
-         return False
+        if not self.nais_connected:
+            return False
 
-      #
-      # FIX: does not handle partial messages coming through!
-      #
+        # FIX: does not handle partial messages coming through!
+      
+        for msg in msgs.split('\n'):
+            msg = msg.strip()
+            if 'AIVDM'!= msg[1:6]: continue
+            try:
+                self.norm_queue.put(msg)
+            except Exception, e:
+                sys.stderr.write('nais2postgis::Nais2Postgis - Incorrecto mensaje AIVDM: %s\n' % (msg))
+                sys.stderr.write('   Exception:' + str(type(Exception))+'\n')
+                sys.stderr.write('   Exception args:'+ str(e)+'\n')
+                traceback.print_exc(file=sys.stderr)
+                continue
 
-      for msg in msgs.split('\n'):
-         msg = msg.strip()
-         if 'AIVDM'!= msg[1:6]: continue
-         try:
-            self.norm_queue.put(msg)
-         except Exception, e:
-            sys.stderr.write('nais2postgis::Nais2Postgis - Bad AIVDM message: %s\n' % (msg,))
-            sys.stderr.write('   Exception:' + str(type(Exception))+'\n')
-            sys.stderr.write('   Exception args:'+ str(e)+'\n')
-            traceback.print_exc(file=sys.stderr)
-            continue
+        while self.norm_queue.qsize() > 0:
+            #print 'norm_queue loop',self.norm_queue.qsize()
+            msg = self.norm_queue.get()
+            try:
+                uscg_msg = aisutils.uscg.UscgNmea(msg)
+            except Exception, e:
+                logging.exception('nais2postgis::Nais2Postgis - uscg decode exception %s for msg: %s' % (str(e),msg))
+                self.bad.write('nais2postgis::Nais2Postgis - uscg decode exception %s for msg: %s' % (str(e),msg ) )
+                #self.bad.write(msg+'\n')
+                continue
 
+            print 'nais2postgis::Nais2Postgis - Tipo Mensaje',uscg_msg.msgTypeChar,' ;tipos soportados: ',ais_msgs_supported
 
-      while self.norm_queue.qsize() > 0:
-         #print 'norm_queue loop',self.norm_queue.qsize()
-         msg = self.norm_queue.get()
+            if uscg_msg.msgTypeChar not in ais_msgs_supported:
+                print 'nais2postgis::Nais2Postgis - Mensaje no soportado'
+                #logging.warn('msg not supportd "%s"' % (msg[7],))
+                continue
+            else:
+                print 'nais2postgis::Nais2Postgis - Mensaje soportado'
+                print 'nais2postgis::Nais2Postgis - Mensaje: ',msg
 
-         try:
-            uscg_msg = aisutils.uscg.UscgNmea(msg)
-         except Exception, e:
-            logging.exception('nais2postgis::Nais2Postgis - uscg decode exception %s for msg: %s' % (str(e),msg))
-            self.bad.write('nais2postgis::Nais2Postgis - uscg decode exception %s for msg: %s' % (str(e),msg ) )
-            #self.bad.write(msg+'\n')
-            continue
+            try:
+                aismsg = ais.msgModByFirstChar[uscg_msg.msgTypeChar]
+            except Exception, e:
+                sys.stderr.write('   nais2postgis::Nais2Postgis - Eliminar mensaje tipo desconocido: %s\n\t%s\n' % 
+                                 (uscg_msg.msgTypeChar,str(e),) )
+                self.bad.write(msg+'\n')
+                continue
 
-         # FIX: hack for ERMA
-#        if uscg_msg.station not in ('r01SPHA1', 'r07CSJU1', 'r07XPON1'):
-         # If it's not Portsmouth, NH or Puerto Rico, do not deal with the message
-#           continue
-
-         print 'nais2postgis::Nais2Postgis - Tipo Mensaje',uscg_msg.msgTypeChar,' ;tipos soportados: ',ais_msgs_supported
-         if uscg_msg.msgTypeChar not in ais_msgs_supported:
-            print 'nais2postgis::Nais2Postgis - Mensaje no soportado'
-            #logging.warn('msg not supportd "%s"' % (msg[7],))
-            continue
-         else:
-            print 'nais2postgis::Nais2Postgis - Mensaje soportado'
-            print 'nais2postgis::Nais2Postgis - Mensaje: ',msg
-                #print 'allowing',uscg_msg.msgTypeChar
-                #print '  ',msg
-
-         try:
-            aismsg = ais.msgModByFirstChar[uscg_msg.msgTypeChar]
-         except Exception, e:
-            sys.stderr.write('   nais2postgis::Nais2Postgis - Dropping unknown msg type: %s\n\t%s\n' % (uscg_msg.msgTypeChar,str(e),) )
-            self.bad.write(msg+'\n')
-            continue
-
-         bv = ais.binary.ais6tobitvec(uscg_msg.contents)
-         try:
-            msg_dict = aismsg.decode(bv)
-         except Exception, e:
-            sys.stderr.write('   nais2postgis::Nais2Postgis - Dropping bad msg and calling continue: %s,%s\n' % (str(e),msg,) )
-            self.bad.write(msg+'\n')
-            continue
+            bv = ais.binary.ais6tobitvec(uscg_msg.contents)
+            try:
+                msg_dict = aismsg.decode(bv)
+            except Exception, e:
+                sys.stderr.write('   nais2postgis::Nais2Postgis - Eliminar mensaje fallido: %s,%s\n' % (str(e),msg,) )
+                self.bad.write(msg+'\n')
+                continue
             
-         print 'nais2postgis::Nais2Postgis - Mensaje decodificado: ',msg_dict
-         #print 'uscg_msg:',type(uscg_msg)
-         try:
-            if handle_insert_update(self.cx, uscg_msg, msg_dict, aismsg):
-               self.db_uncommitted_count += 1
-            
-         except Exception, e:
-            sys.stderr.write('*** nais2postgis::Nais2Postgis - handle_insert_update exception\n')
-            sys.stderr.write('   Exception:' + str(type(Exception))+'\n')
-            sys.stderr.write('   Exception args:'+ str(e)+'\n')
-            traceback.print_exc(file=sys.stderr)
-            self.bad.write(msg+'\n')
-            self.cx.commit() # reset the transaction
+            print 'nais2postgis::Nais2Postgis - Mensaje decodificado: ',msg_dict
 
-      print 'nais2postgis::Nais2Postgis - Should commit?',self.db_last_commit_time, time.time() - self.db_last_commit_time, self.db_uncommitted_count
-      print 'nais2postgis::Nais2Postgis - temporal forzar commit'
-      self.db_last_commit_time = None
-      # Check on database commits
-      if (self.db_last_commit_time is None) or (time.time() - self.db_last_commit_time > 30. and self.db_uncommitted_count > 0):
-         print 'nais2postgis::Nais2Postgis - committing:',self.db_last_commit_time,self.db_uncommitted_count
-         self.db_last_commit_time = time.time()
-         self.db_uncommitted_count = 0
-         try:
-            print 'nais2postgis::Nais2Postgis - Committing'
-            self.cx.commit()
-            print '  Successful'
-         except Exception, e:
-            # FIX: What are we likely to see here?
-            sys.stderr.write('*** nais2postgis::Nais2Postgis - handle_insert_update exception\n')
-            sys.stderr.write('   Exception:' + str(type(Exception))+'\n')
-            sys.stderr.write('   Exception args:'+ str(e)+'\n')
-            traceback.print_exc(file=sys.stderr)
-            self.bad.write(msg+'\n')
-            time.sleep(.1)
-            self.cx.commit() # reset the transaction
+            try:
+                if handle_insert_update(self.cx, uscg_msg, msg_dict, aismsg):
+                    self.db_uncommitted_count += 1
+            except Exception, e:
+                sys.stderr.write('*** nais2postgis::Nais2Postgis - handle_insert_update exception\n')
+                sys.stderr.write('   Exception:' + str(type(Exception))+'\n')
+                sys.stderr.write('   Exception args:'+ str(e)+'\n')
+                traceback.print_exc(file=sys.stderr)
+                self.bad.write(msg+'\n')
+                self.cx.commit() # reset the transaction
+
+        print 'nais2postgis::Nais2Postgis - Should commit?',self.db_last_commit_time, time.time() - self.db_last_commit_time
+                , self.db_uncommitted_count
+
+        #print 'nais2postgis::Nais2Postgis - temporal forzar commit'
+        #self.db_last_commit_time = None
+
+        # Gestionar necesidad de commitear
+        if (self.db_last_commit_time is None) or (time.time() - self.db_last_commit_time > 30. and self.db_uncommitted_count > 0):
+            print 'nais2postgis::Nais2Postgis - Committing:',self.db_last_commit_time,self.db_uncommitted_count
+            self.db_last_commit_time = time.time()
+            self.db_uncommitted_count = 0
+            try:
+                print 'nais2postgis::Nais2Postgis - Va a commitear'
+                self.cx.commit()
+                print '  ... Commit exitoso'
+            except Exception, e:
+                sys.stderr.write('*** nais2postgis::Nais2Postgis - handle_insert_update exception\n')
+                sys.stderr.write('   Exception:' + str(type(Exception))+'\n')
+                sys.stderr.write('   Exception args:'+ str(e)+'\n')
+                traceback.print_exc(file=sys.stderr)
+                self.bad.write(msg+'\n')
+                time.sleep(.1)
+                self.cx.commit() # resetear transaccion
 
 
 ################################################################################
