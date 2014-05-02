@@ -6,10 +6,967 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXFileReference section */
+		18100F341913FBAC00403A1E /* __init__.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = __init__.py; sourceTree = "<group>"; };
+		18100F351913FBAC00403A1E /* ais.xsl */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = ais.xsl; sourceTree = "<group>"; };
+		18100F361913FBAC00403A1E /* ais_msg_1.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = ais_msg_1.html; sourceTree = "<group>"; };
+		18100F371913FBAC00403A1E /* ais_msg_1.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_msg_1.py; sourceTree = "<group>"; };
+		18100F381913FBAC00403A1E /* ais_msg_1.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = ais_msg_1.xml; sourceTree = "<group>"; };
+		18100F391913FBAC00403A1E /* ais_msg_10.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = ais_msg_10.html; sourceTree = "<group>"; };
+		18100F3A1913FBAC00403A1E /* ais_msg_10.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_msg_10.py; sourceTree = "<group>"; };
+		18100F3B1913FBAC00403A1E /* ais_msg_10.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = ais_msg_10.xml; sourceTree = "<group>"; };
+		18100F3C1913FBAC00403A1E /* ais_msg_11.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = ais_msg_11.html; sourceTree = "<group>"; };
+		18100F3D1913FBAC00403A1E /* ais_msg_11.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_msg_11.py; sourceTree = "<group>"; };
+		18100F3E1913FBAC00403A1E /* ais_msg_11.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = ais_msg_11.xml; sourceTree = "<group>"; };
+		18100F3F1913FBAC00403A1E /* ais_msg_12.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = ais_msg_12.html; sourceTree = "<group>"; };
+		18100F401913FBAC00403A1E /* ais_msg_12.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_msg_12.py; sourceTree = "<group>"; };
+		18100F411913FBAC00403A1E /* ais_msg_12.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = ais_msg_12.xml; sourceTree = "<group>"; };
+		18100F421913FBAC00403A1E /* ais_msg_14.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = ais_msg_14.html; sourceTree = "<group>"; };
+		18100F431913FBAC00403A1E /* ais_msg_14.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_msg_14.py; sourceTree = "<group>"; };
+		18100F441913FBAC00403A1E /* ais_msg_14.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = ais_msg_14.xml; sourceTree = "<group>"; };
+		18100F451913FBAC00403A1E /* ais_msg_15.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = ais_msg_15.html; sourceTree = "<group>"; };
+		18100F461913FBAC00403A1E /* ais_msg_15.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_msg_15.py; sourceTree = "<group>"; };
+		18100F471913FBAC00403A1E /* ais_msg_15.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = ais_msg_15.xml; sourceTree = "<group>"; };
+		18100F481913FBAC00403A1E /* ais_msg_17.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = ais_msg_17.html; sourceTree = "<group>"; };
+		18100F491913FBAC00403A1E /* ais_msg_17.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_msg_17.py; sourceTree = "<group>"; };
+		18100F4A1913FBAC00403A1E /* ais_msg_17.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = ais_msg_17.xml; sourceTree = "<group>"; };
+		18100F4B1913FBAC00403A1E /* ais_msg_18.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = ais_msg_18.html; sourceTree = "<group>"; };
+		18100F4C1913FBAC00403A1E /* ais_msg_18.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_msg_18.py; sourceTree = "<group>"; };
+		18100F4D1913FBAC00403A1E /* ais_msg_18.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = ais_msg_18.xml; sourceTree = "<group>"; };
+		18100F4E1913FBAC00403A1E /* ais_msg_19.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = ais_msg_19.html; sourceTree = "<group>"; };
+		18100F4F1913FBAC00403A1E /* ais_msg_19.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_msg_19.py; sourceTree = "<group>"; };
+		18100F501913FBAC00403A1E /* ais_msg_19.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = ais_msg_19.xml; sourceTree = "<group>"; };
+		18100F511913FBAC00403A1E /* ais_msg_1_handcoded.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_msg_1_handcoded.py; sourceTree = "<group>"; };
+		18100F521913FBAC00403A1E /* ais_msg_2.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = ais_msg_2.html; sourceTree = "<group>"; };
+		18100F531913FBAC00403A1E /* ais_msg_2.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_msg_2.py; sourceTree = "<group>"; };
+		18100F541913FBAC00403A1E /* ais_msg_2.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = ais_msg_2.xml; sourceTree = "<group>"; };
+		18100F551913FBAC00403A1E /* ais_msg_20.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = ais_msg_20.html; sourceTree = "<group>"; };
+		18100F561913FBAC00403A1E /* ais_msg_20.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_msg_20.py; sourceTree = "<group>"; };
+		18100F571913FBAC00403A1E /* ais_msg_20.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = ais_msg_20.xml; sourceTree = "<group>"; };
+		18100F581913FBAC00403A1E /* ais_msg_21.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = ais_msg_21.html; sourceTree = "<group>"; };
+		18100F591913FBAC00403A1E /* ais_msg_21.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_msg_21.py; sourceTree = "<group>"; };
+		18100F5A1913FBAC00403A1E /* ais_msg_21.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = ais_msg_21.xml; sourceTree = "<group>"; };
+		18100F5B1913FBAC00403A1E /* ais_msg_21_handcoded.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_msg_21_handcoded.py; sourceTree = "<group>"; };
+		18100F5C1913FBAC00403A1E /* ais_msg_22.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = ais_msg_22.html; sourceTree = "<group>"; };
+		18100F5D1913FBAC00403A1E /* ais_msg_22.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_msg_22.py; sourceTree = "<group>"; };
+		18100F5E1913FBAC00403A1E /* ais_msg_22.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = ais_msg_22.xml; sourceTree = "<group>"; };
+		18100F5F1913FBAC00403A1E /* ais_msg_23.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = ais_msg_23.html; sourceTree = "<group>"; };
+		18100F601913FBAC00403A1E /* ais_msg_23.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_msg_23.py; sourceTree = "<group>"; };
+		18100F611913FBAC00403A1E /* ais_msg_23.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = ais_msg_23.xml; sourceTree = "<group>"; };
+		18100F621913FBAC00403A1E /* ais_msg_24_handcoded.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_msg_24_handcoded.py; sourceTree = "<group>"; };
+		18100F631913FBAC00403A1E /* ais_msg_2_handcoded.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_msg_2_handcoded.py; sourceTree = "<group>"; };
+		18100F641913FBAC00403A1E /* ais_msg_3.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = ais_msg_3.html; sourceTree = "<group>"; };
+		18100F651913FBAC00403A1E /* ais_msg_3.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_msg_3.py; sourceTree = "<group>"; };
+		18100F661913FBAC00403A1E /* ais_msg_3.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = ais_msg_3.xml; sourceTree = "<group>"; };
+		18100F671913FBAC00403A1E /* ais_msg_3_handcoded.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_msg_3_handcoded.py; sourceTree = "<group>"; };
+		18100F681913FBAC00403A1E /* ais_msg_4.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = ais_msg_4.html; sourceTree = "<group>"; };
+		18100F691913FBAC00403A1E /* ais_msg_4.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_msg_4.py; sourceTree = "<group>"; };
+		18100F6A1913FBAC00403A1E /* ais_msg_4.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = ais_msg_4.xml; sourceTree = "<group>"; };
+		18100F6B1913FBAC00403A1E /* ais_msg_4_handcoded.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_msg_4_handcoded.py; sourceTree = "<group>"; };
+		18100F6C1913FBAC00403A1E /* ais_msg_5.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = ais_msg_5.html; sourceTree = "<group>"; };
+		18100F6D1913FBAC00403A1E /* ais_msg_5.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_msg_5.py; sourceTree = "<group>"; };
+		18100F6E1913FBAC00403A1E /* ais_msg_5.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = ais_msg_5.xml; sourceTree = "<group>"; };
+		18100F6F1913FBAC00403A1E /* ais_msg_5_utils.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_msg_5_utils.py; sourceTree = "<group>"; };
+		18100F701913FBAC00403A1E /* ais_msg_6.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = ais_msg_6.html; sourceTree = "<group>"; };
+		18100F711913FBAC00403A1E /* ais_msg_6.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_msg_6.py; sourceTree = "<group>"; };
+		18100F721913FBAC00403A1E /* ais_msg_6.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = ais_msg_6.xml; sourceTree = "<group>"; };
+		18100F731913FBAC00403A1E /* ais_msg_7.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = ais_msg_7.html; sourceTree = "<group>"; };
+		18100F741913FBAC00403A1E /* ais_msg_7.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_msg_7.py; sourceTree = "<group>"; };
+		18100F751913FBAC00403A1E /* ais_msg_7.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = ais_msg_7.xml; sourceTree = "<group>"; };
+		18100F761913FBAC00403A1E /* ais_msg_7_handcoded.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_msg_7_handcoded.py; sourceTree = "<group>"; };
+		18100F771913FBAC00403A1E /* ais_msg_8.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = ais_msg_8.html; sourceTree = "<group>"; };
+		18100F781913FBAC00403A1E /* ais_msg_8.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_msg_8.py; sourceTree = "<group>"; };
+		18100F791913FBAC00403A1E /* ais_msg_8.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = ais_msg_8.xml; sourceTree = "<group>"; };
+		18100F7A1913FBAC00403A1E /* ais_msg_9.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = ais_msg_9.html; sourceTree = "<group>"; };
+		18100F7B1913FBAC00403A1E /* ais_msg_9.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_msg_9.py; sourceTree = "<group>"; };
+		18100F7C1913FBAC00403A1E /* ais_msg_9.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = ais_msg_9.xml; sourceTree = "<group>"; };
+		18100F7D1913FBAC00403A1E /* aisfield.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = aisfield.py; sourceTree = "<group>"; };
+		18100F7E1913FBAC00403A1E /* aisstring.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = aisstring.py; sourceTree = "<group>"; };
+		18100F7F1913FBAC00403A1E /* aisstring.pyc */ = {isa = PBXFileReference; lastKnownFileType = file; path = aisstring.pyc; sourceTree = "<group>"; };
+		18100F801913FBAC00403A1E /* allaistypes.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = allaistypes.html; sourceTree = "<group>"; };
+		18100F811913FBAC00403A1E /* allaistypes.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = allaistypes.py; sourceTree = "<group>"; };
+		18100F821913FBAC00403A1E /* allaistypes.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = allaistypes.xml; sourceTree = "<group>"; };
+		18100F831913FBAC00403A1E /* binary.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = binary.py; sourceTree = "<group>"; };
+		18100F841913FBAC00403A1E /* binary.pyc */ = {isa = PBXFileReference; lastKnownFileType = file; path = binary.pyc; sourceTree = "<group>"; };
+		18100F851913FBAC00403A1E /* BitVector.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = BitVector.py; sourceTree = "<group>"; };
+		18100F861913FBAC00403A1E /* BitVector.pyc */ = {isa = PBXFileReference; lastKnownFileType = file; path = BitVector.pyc; sourceTree = "<group>"; };
+		18100F871913FBAC00403A1E /* commstate.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = commstate.py; sourceTree = "<group>"; };
+		18100F881913FBAC00403A1E /* exampleParser.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = exampleParser.py; sourceTree = "<group>"; };
+		18100F891913FBAC00403A1E /* expandais.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = expandais.py; sourceTree = "<group>"; };
+		18100F8A1913FBAC00403A1E /* imo_001_11.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = imo_001_11.html; sourceTree = "<group>"; };
+		18100F8B1913FBAC00403A1E /* imo_001_11.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = imo_001_11.py; sourceTree = "<group>"; };
+		18100F8C1913FBAC00403A1E /* imo_001_11.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = imo_001_11.xml; sourceTree = "<group>"; };
+		18100F8D1913FBAC00403A1E /* imo_001_11_handcoded.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = imo_001_11_handcoded.py; sourceTree = "<group>"; };
+		18100F8E1913FBAC00403A1E /* imo_001_13.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = imo_001_13.html; sourceTree = "<group>"; };
+		18100F8F1913FBAC00403A1E /* imo_001_13.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = imo_001_13.py; sourceTree = "<group>"; };
+		18100F901913FBAC00403A1E /* imo_001_13.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = imo_001_13.xml; sourceTree = "<group>"; };
+		18100F911913FBAC00403A1E /* imo_001_14.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = imo_001_14.html; sourceTree = "<group>"; };
+		18100F921913FBAC00403A1E /* imo_001_14.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = imo_001_14.py; sourceTree = "<group>"; };
+		18100F931913FBAC00403A1E /* imo_001_14.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = imo_001_14.xml; sourceTree = "<group>"; };
+		18100F941913FBAC00403A1E /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
+		18100F951913FBAC00403A1E /* nmea.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = nmea.py; sourceTree = "<group>"; };
+		18100F971913FBAC00403A1E /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
+		18100F981913FBAC00403A1E /* waterlevel.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = waterlevel.html; sourceTree = "<group>"; };
+		18100F991913FBAC00403A1E /* waterlevel.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = waterlevel.xml; sourceTree = "<group>"; };
+		18100F9B1913FBAC00403A1E /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
+		18100F9C1913FBAC00403A1E /* rtcm-20-zone.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "rtcm-20-zone.xml"; sourceTree = "<group>"; };
+		18100F9E1913FBAC00403A1E /* estlocktimes.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = estlocktimes.html; sourceTree = "<group>"; };
+		18100F9F1913FBAC00403A1E /* estlocktimes.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = estlocktimes.xml; sourceTree = "<group>"; };
+		18100FA01913FBAC00403A1E /* header.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = header.xml; sourceTree = "<group>"; };
+		18100FA11913FBAC00403A1E /* lockorder.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = lockorder.html; sourceTree = "<group>"; };
+		18100FA21913FBAC00403A1E /* lockorder.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = lockorder.xml; sourceTree = "<group>"; };
+		18100FA31913FBAC00403A1E /* lockschedule.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = lockschedule.html; sourceTree = "<group>"; };
+		18100FA41913FBAC00403A1E /* lockschedule.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = lockschedule.xml; sourceTree = "<group>"; };
+		18100FA51913FBAC00403A1E /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
+		18100FA61913FBAC00403A1E /* structures.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = structures.xml; sourceTree = "<group>"; };
+		18100FA71913FBAC00403A1E /* waterflow.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = waterflow.html; sourceTree = "<group>"; };
+		18100FA81913FBAC00403A1E /* waterflow.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = waterflow.xml; sourceTree = "<group>"; };
+		18100FA91913FBAC00403A1E /* waterlevel.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = waterlevel.html; sourceTree = "<group>"; };
+		18100FAA1913FBAC00403A1E /* waterlevel.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = waterlevel.xml; sourceTree = "<group>"; };
+		18100FAB1913FBAC00403A1E /* weatherreport.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = weatherreport.html; sourceTree = "<group>"; };
+		18100FAC1913FBAC00403A1E /* weatherreport.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = weatherreport.xml; sourceTree = "<group>"; };
+		18100FAD1913FBAC00403A1E /* wind.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = wind.html; sourceTree = "<group>"; };
+		18100FAE1913FBAC00403A1E /* wind.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = wind.xml; sourceTree = "<group>"; };
+		18100FAF1913FBAC00403A1E /* sqlhelp.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = sqlhelp.py; sourceTree = "<group>"; };
+		18100FB01913FBAC00403A1E /* sqlhelp.pyc */ = {isa = PBXFileReference; lastKnownFileType = file; path = sqlhelp.pyc; sourceTree = "<group>"; };
+		18100FB11913FBAC00403A1E /* structs-inc.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "structs-inc.xml"; sourceTree = "<group>"; };
+		18100FB31913FBAC00403A1E /* ais_msg_1_1.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = ais_msg_1_1.xml; sourceTree = "<group>"; };
+		18100FB41913FBAC00403A1E /* ais_msg_8_1.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = ais_msg_8_1.xml; sourceTree = "<group>"; };
+		18100FB51913FBAC00403A1E /* sls_waterlevel_3_1.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = sls_waterlevel_3_1.xml; sourceTree = "<group>"; };
+		18100FB61913FBAC00403A1E /* sls_waterlevel_3_2.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = sls_waterlevel_3_2.xml; sourceTree = "<group>"; };
+		18100FB71913FBAC00403A1E /* sls_wind_2_1.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = sls_wind_2_1.xml; sourceTree = "<group>"; };
+		18100FB81913FBAC00403A1E /* test.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = test.py; sourceTree = "<group>"; };
+		18100FB91913FBAC00403A1E /* test_sls_waterlevel.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = test_sls_waterlevel.py; sourceTree = "<group>"; };
+		18100FBA1913FBAC00403A1E /* timed_circular_notice.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = timed_circular_notice.html; sourceTree = "<group>"; };
+		18100FBB1913FBAC00403A1E /* timed_circular_notice.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = timed_circular_notice.py; sourceTree = "<group>"; };
+		18100FBC1913FBAC00403A1E /* timed_circular_notice.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = timed_circular_notice.xml; sourceTree = "<group>"; };
+		18100FBD1913FBAC00403A1E /* translators.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = translators.py; sourceTree = "<group>"; };
+		18100FBE1913FBAC00403A1E /* waterlevel.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = waterlevel.html; sourceTree = "<group>"; };
+		18100FBF1913FBAC00403A1E /* waterlevel.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = waterlevel.py; sourceTree = "<group>"; };
+		18100FC01913FBAC00403A1E /* waterlevel.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = waterlevel.xml; sourceTree = "<group>"; };
+		18100FC11913FBAC00403A1E /* waterlevel2.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = waterlevel2.html; sourceTree = "<group>"; };
+		18100FC21913FBAC00403A1E /* waterlevel2.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = waterlevel2.py; sourceTree = "<group>"; };
+		18100FC31913FBAC00403A1E /* waterlevel2.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = waterlevel2.xml; sourceTree = "<group>"; };
+		18100FC41913FBAC00403A1E /* whalenotice.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = whalenotice.html; sourceTree = "<group>"; };
+		18100FC51913FBAC00403A1E /* whalenotice.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = whalenotice.py; sourceTree = "<group>"; };
+		18100FC61913FBAC00403A1E /* whalenotice.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = whalenotice.xml; sourceTree = "<group>"; };
+		18100FC71913FBAC00403A1E /* whalenotice1.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = whalenotice1.html; sourceTree = "<group>"; };
+		18100FC81913FBAC00403A1E /* whalenotice1.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = whalenotice1.py; sourceTree = "<group>"; };
+		18100FC91913FBAC00403A1E /* whalenotice1.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = whalenotice1.xml; sourceTree = "<group>"; };
+		18100FCA1913FBAC00403A1E /* whalenotice2.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = whalenotice2.html; sourceTree = "<group>"; };
+		18100FCB1913FBAC00403A1E /* whalenotice2.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = whalenotice2.py; sourceTree = "<group>"; };
+		18100FCC1913FBAC00403A1E /* whalenotice2.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = whalenotice2.xml; sourceTree = "<group>"; };
+		18100FCD1913FBAC00403A1E /* aislib-artax.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = "aislib-artax.xcodeproj"; sourceTree = "<group>"; };
+		18100FD01913FBAC00403A1E /* aislib-tardis.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = "aislib-tardis.xcodeproj"; sourceTree = "<group>"; };
+		18100FD41913FBAC00403A1E /* __init__.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = __init__.py; sourceTree = "<group>"; };
+		18100FD51913FBAC00403A1E /* daemon.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = daemon.py; sourceTree = "<group>"; };
+		18100FD61913FBAC00403A1E /* database.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = database.py; sourceTree = "<group>"; };
+		18100FD71913FBAC00403A1E /* grid.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = grid.py; sourceTree = "<group>"; };
+		18100FD81913FBAC00403A1E /* nmea_ait.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = nmea_ait.py; sourceTree = "<group>"; };
+		18100FD91913FBAC00403A1E /* nmea_cnc.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = nmea_cnc.py; sourceTree = "<group>"; };
+		18100FDA1913FBAC00403A1E /* normalize.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = normalize.py; sourceTree = "<group>"; };
+		18100FDB1913FBAC00403A1E /* server.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = server.py; sourceTree = "<group>"; };
+		18100FDC1913FBAC00403A1E /* uscg.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = uscg.py; sourceTree = "<group>"; };
+		18100FDD1913FBAC00403A1E /* wkb.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = wkb.py; sourceTree = "<group>"; };
+		18100FDE1913FBAC00403A1E /* bad.ais */ = {isa = PBXFileReference; lastKnownFileType = text; path = bad.ais; sourceTree = "<group>"; };
+		18100FDF1913FBAC00403A1E /* bad.sonita */ = {isa = PBXFileReference; lastKnownFileType = text; path = bad.sonita; sourceTree = "<group>"; };
+		18100FE01913FBAC00403A1E /* ChangeLog.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = ChangeLog.html; sourceTree = "<group>"; };
+		18100FE11913FBAC00403A1E /* control.in */ = {isa = PBXFileReference; lastKnownFileType = text; path = control.in; sourceTree = "<group>"; };
+		18100FE21913FBAC00403A1E /* COPYING */ = {isa = PBXFileReference; lastKnownFileType = text; path = COPYING; sourceTree = "<group>"; };
+		18100FE41913FBAC00403A1E /* gsc.dat */ = {isa = PBXFileReference; lastKnownFileType = text; path = gsc.dat; sourceTree = "<group>"; };
+		18100FE51913FBAC00403A1E /* mmsi_prefix.sql */ = {isa = PBXFileReference; lastKnownFileType = text; path = mmsi_prefix.sql; sourceTree = "<group>"; };
+		18100FE61913FBAC00403A1E /* stellwagen.dat */ = {isa = PBXFileReference; lastKnownFileType = text; path = stellwagen.dat; sourceTree = "<group>"; };
+		18100FE81913FBAC00403A1E /* ce_fisheries-clean_vessel.sql */ = {isa = PBXFileReference; lastKnownFileType = text; path = "ce_fisheries-clean_vessel.sql"; sourceTree = "<group>"; };
+		18100FE91913FBAC00403A1E /* sonita */ = {isa = PBXFileReference; lastKnownFileType = text; path = sonita; sourceTree = "<group>"; };
+		18100FEB1913FBAC00403A1E /* noaadata_py-0.45-py2.7.egg */ = {isa = PBXFileReference; lastKnownFileType = file; path = "noaadata_py-0.45-py2.7.egg"; sourceTree = "<group>"; };
+		18100FEE1913FBAC00403A1E /* __init__.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = __init__.py; sourceTree = "<group>"; };
+		18100FF01913FBAC00403A1E /* __init__.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = __init__.py; sourceTree = "<group>"; };
+		18100FF11913FBAC00403A1E /* dac.sql */ = {isa = PBXFileReference; lastKnownFileType = text; path = dac.sql; sourceTree = "<group>"; };
+		18100FF21913FBAC00403A1E /* models.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = models.py; sourceTree = "<group>"; };
+		18100FF31913FBAC00403A1E /* preload.sql */ = {isa = PBXFileReference; lastKnownFileType = text; path = preload.sql; sourceTree = "<group>"; };
+		18100FF41913FBAC00403A1E /* README.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
+		18100FF51913FBAC00403A1E /* views.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = views.py; sourceTree = "<group>"; };
+		18100FF61913FBAC00403A1E /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
+		18100FF71913FBAC00403A1E /* manage.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = manage.py; sourceTree = "<group>"; };
+		18100FF91913FBAC00403A1E /* __init__.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = __init__.py; sourceTree = "<group>"; };
+		18100FFA1913FBAC00403A1E /* models.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = models.py; sourceTree = "<group>"; };
+		18100FFB1913FBAC00403A1E /* views.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = views.py; sourceTree = "<group>"; };
+		18100FFC1913FBAC00403A1E /* settings.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = settings.py; sourceTree = "<group>"; };
+		18100FFD1913FBAC00403A1E /* urls.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = urls.py; sourceTree = "<group>"; };
+		18100FFE1913FBAC00403A1E /* README.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
+		181010001913FBAC00403A1E /* ais-messages-HEADER.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = "ais-messages-HEADER.html"; sourceTree = "<group>"; };
+		181010011913FBAC00403A1E /* ais.bib */ = {isa = PBXFileReference; lastKnownFileType = text; path = ais.bib; sourceTree = "<group>"; };
+		181010021913FBAC00403A1E /* configure-ais-logging.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "configure-ais-logging.txt"; sourceTree = "<group>"; };
+		181010031913FBAC00403A1E /* database-setup.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "database-setup.txt"; sourceTree = "<group>"; };
+		181010041913FBAC00403A1E /* esr-review.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "esr-review.txt"; sourceTree = "<group>"; };
+		181010051913FBAC00403A1E /* main-HEADER.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = "main-HEADER.html"; sourceTree = "<group>"; };
+		181010061913FBAC00403A1E /* README.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
+		181010071913FBAC00403A1E /* errors-nais2postgis */ = {isa = PBXFileReference; lastKnownFileType = text; path = "errors-nais2postgis"; sourceTree = "<group>"; };
+		1810100A1913FBAC00403A1E /* __init__.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = __init__.py; sourceTree = "<group>"; };
+		1810100C1913FBAC00403A1E /* __init__.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = __init__.py; sourceTree = "<group>"; };
+		1810100D1913FBAC00403A1E /* models.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = models.py; sourceTree = "<group>"; };
+		1810100E1913FBAC00403A1E /* urls.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = urls.py; sourceTree = "<group>"; };
+		1810100F1913FBAC00403A1E /* views.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = views.py; sourceTree = "<group>"; };
+		181010111913FBAC00403A1E /* __init__.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = __init__.py; sourceTree = "<group>"; };
+		181010121913FBAC00403A1E /* dac.sql */ = {isa = PBXFileReference; lastKnownFileType = text; path = dac.sql; sourceTree = "<group>"; };
+		181010131913FBAC00403A1E /* models.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = models.py; sourceTree = "<group>"; };
+		181010141913FBAC00403A1E /* preload.sql */ = {isa = PBXFileReference; lastKnownFileType = text; path = preload.sql; sourceTree = "<group>"; };
+		181010151913FBAC00403A1E /* README.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
+		181010161913FBAC00403A1E /* urls.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = urls.py; sourceTree = "<group>"; };
+		181010171913FBAC00403A1E /* views.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = views.py; sourceTree = "<group>"; };
+		181010181913FBAC00403A1E /* hello.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = hello.py; sourceTree = "<group>"; };
+		181010191913FBAC00403A1E /* hello_template.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = hello_template.py; sourceTree = "<group>"; };
+		1810101A1913FBAC00403A1E /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
+		1810101B1913FBAC00403A1E /* manage.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = manage.py; sourceTree = "<group>"; };
+		1810101C1913FBAC00403A1E /* settings.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = settings.py; sourceTree = "<group>"; };
+		1810101E1913FBAC00403A1E /* current_datetime.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = current_datetime.html; sourceTree = "<group>"; };
+		1810101F1913FBAC00403A1E /* urls.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = urls.py; sourceTree = "<group>"; };
+		181010211913FBAC00403A1E /* ais-forward */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "ais-forward"; sourceTree = "<group>"; };
+		181010221913FBAC00403A1E /* logais */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = logais; sourceTree = "<group>"; };
+		181010231913FBAC00403A1E /* logtide */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = logtide; sourceTree = "<group>"; };
+		181010241913FBAC00403A1E /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		181010251913FBAC00403A1E /* make_waterlevel_ais.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = make_waterlevel_ais.py; sourceTree = "<group>"; };
+		181010261913FBAC00403A1E /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
+		181010271913FBAC00403A1E /* MANIFEST.in */ = {isa = PBXFileReference; lastKnownFileType = text; path = MANIFEST.in; sourceTree = "<group>"; };
+		181010281913FBAC00403A1E /* nais2postgis.py.log */ = {isa = PBXFileReference; lastKnownFileType = text; path = nais2postgis.py.log; sourceTree = "<group>"; };
+		1810102A1913FBAC00403A1E /* __init__.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = __init__.py; sourceTree = "<group>"; };
+		1810102B1913FBAC00403A1E /* checksum.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = checksum.py; sourceTree = "<group>"; };
+		1810102C1913FBAC00403A1E /* gga.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = gga.py; sourceTree = "<group>"; };
+		1810102D1913FBAC00403A1E /* nmea_error.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = nmea_error.py; sourceTree = "<group>"; };
+		1810102E1913FBAC00403A1E /* rmc.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = rmc.py; sourceTree = "<group>"; };
+		1810102F1913FBAD00403A1E /* zda.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = zda.py; sourceTree = "<group>"; };
+		181010301913FBAD00403A1E /* znt.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = znt.py; sourceTree = "<group>"; };
+		181010311913FBAD00403A1E /* noaa_waterlevel_ais.bash */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = noaa_waterlevel_ais.bash; sourceTree = "<group>"; };
+		181010331913FBAD00403A1E /* __init__.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = __init__.py; sourceTree = "<group>"; };
+		181010341913FBAD00403A1E /* dumpallwl.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = dumpallwl.py; sourceTree = "<group>"; };
+		181010351913FBAD00403A1E /* stations-soap.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "stations-soap.xml"; sourceTree = "<group>"; };
+		181010361913FBAD00403A1E /* stations.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = stations.py; sourceTree = "<group>"; };
+		181010371913FBAD00403A1E /* tideserver.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = tideserver.py; sourceTree = "<group>"; };
+		181010381913FBAD00403A1E /* waterlevel_dap.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = waterlevel_dap.py; sourceTree = "<group>"; };
+		181010391913FBAD00403A1E /* waterlevelraw.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = waterlevelraw.py; sourceTree = "<group>"; };
+		1810103B1913FBAD00403A1E /* dependency_links.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = dependency_links.txt; sourceTree = "<group>"; };
+		1810103C1913FBAD00403A1E /* PKG-INFO */ = {isa = PBXFileReference; lastKnownFileType = text; path = "PKG-INFO"; sourceTree = "<group>"; };
+		1810103D1913FBAD00403A1E /* SOURCES.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = SOURCES.txt; sourceTree = "<group>"; };
+		1810103E1913FBAD00403A1E /* top_level.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = top_level.txt; sourceTree = "<group>"; };
+		1810103F1913FBAD00403A1E /* noaadata-py.info.in */ = {isa = PBXFileReference; lastKnownFileType = text; path = "noaadata-py.info.in"; sourceTree = "<group>"; };
+		181010401913FBAD00403A1E /* PKG-INFO */ = {isa = PBXFileReference; lastKnownFileType = text; path = "PKG-INFO"; sourceTree = "<group>"; };
+		181010421913FBAD00403A1E /* csv_to_pg.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = csv_to_pg.py; sourceTree = "<group>"; };
+		181010431913FBAD00403A1E /* netcdf_test.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = netcdf_test.py; sourceTree = "<group>"; };
+		181010441913FBAD00403A1E /* README */ = {isa = PBXFileReference; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
+		181010451913FBAD00403A1E /* README.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		181010471913FBAD00403A1E /* adjust_time.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = adjust_time.py; sourceTree = "<group>"; };
+		181010481913FBAD00403A1E /* ais_filter_by_mmsi.cxx */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ais_filter_by_mmsi.cxx; sourceTree = "<group>"; };
+		181010491913FBAD00403A1E /* ais_pg_dailyvessels.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_pg_dailyvessels.py; sourceTree = "<group>"; };
+		1810104A1913FBAD00403A1E /* ais_pg_import2006spreadsheet.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_pg_import2006spreadsheet.py; sourceTree = "<group>"; };
+		1810104B1913FBAD00403A1E /* ais_pg_monthhistogram.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_pg_monthhistogram.py; sourceTree = "<group>"; };
+		1810104C1913FBAD00403A1E /* ais_pg_speedsummary.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_pg_speedsummary.py; sourceTree = "<group>"; };
+		1810104D1913FBAD00403A1E /* ais_pg_transitsummary.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_pg_transitsummary.py; sourceTree = "<group>"; };
+		1810104E1913FBAD00403A1E /* ais_pg_vesselsummary.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_pg_vesselsummary.py; sourceTree = "<group>"; };
+		1810104F1913FBAD00403A1E /* bbm.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = bbm.py; sourceTree = "<group>"; };
+		181010501913FBAD00403A1E /* bogus_unittest.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = bogus_unittest.py; sourceTree = "<group>"; };
+		181010511913FBAD00403A1E /* build-time-notice-test-data.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "build-time-notice-test-data.sh"; sourceTree = "<group>"; };
+		181010521913FBAD00403A1E /* buildais.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = buildais.py; sourceTree = "<group>"; };
+		181010531913FBAD00403A1E /* cptimestamp2front.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = cptimestamp2front.py; sourceTree = "<group>"; };
+		181010541913FBAD00403A1E /* gsc-and-tss.dat */ = {isa = PBXFileReference; lastKnownFileType = text; path = "gsc-and-tss.dat"; sourceTree = "<group>"; };
+		181010551913FBAD00403A1E /* gsc-and-tss.kml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "gsc-and-tss.kml"; sourceTree = "<group>"; };
+		181010561913FBAD00403A1E /* gsc-bbox.kml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "gsc-bbox.kml"; sourceTree = "<group>"; };
+		181010571913FBAD00403A1E /* gsc.dat */ = {isa = PBXFileReference; lastKnownFileType = text; path = gsc.dat; sourceTree = "<group>"; };
+		181010581913FBAD00403A1E /* gsc.kml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = gsc.kml; sourceTree = "<group>"; };
+		181010591913FBAD00403A1E /* gsc.tss.dat */ = {isa = PBXFileReference; lastKnownFileType = text; path = gsc.tss.dat; sourceTree = "<group>"; };
+		1810105A1913FBAD00403A1E /* gsc.tss.kml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = gsc.tss.kml; sourceTree = "<group>"; };
+		1810105B1913FBAD00403A1E /* kml_countdown_placemark.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = kml_countdown_placemark.py; sourceTree = "<group>"; };
+		1810105C1913FBAD00403A1E /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
+		1810105D1913FBAD00403A1E /* maru-xy.dat */ = {isa = PBXFileReference; lastKnownFileType = text; path = "maru-xy.dat"; sourceTree = "<group>"; };
+		1810105E1913FBAD00403A1E /* monthplots.gp */ = {isa = PBXFileReference; lastKnownFileType = text; path = monthplots.gp; sourceTree = "<group>"; };
+		1810105F1913FBAD00403A1E /* nmea.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = nmea.py; sourceTree = "<group>"; };
+		181010601913FBAD00403A1E /* nmeamessages.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = nmeamessages.py; sourceTree = "<group>"; };
+		181010611913FBAD00403A1E /* revelle2uscgold.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = revelle2uscgold.py; sourceTree = "<group>"; };
+		181010621913FBAD00403A1E /* sbnms-buoys-ab.xys */ = {isa = PBXFileReference; lastKnownFileType = text; path = "sbnms-buoys-ab.xys"; sourceTree = "<group>"; };
+		181010631913FBAD00403A1E /* sbnms-buoys-ab.xyt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "sbnms-buoys-ab.xyt"; sourceTree = "<group>"; };
+		181010641913FBAD00403A1E /* sbnms.grd.cmd */ = {isa = PBXFileReference; lastKnownFileType = text.script.csh; path = sbnms.grd.cmd; sourceTree = "<group>"; };
+		181010651913FBAD00403A1E /* six_min_avg.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = six_min_avg.m; sourceTree = "<group>"; };
+		181010661913FBAD00403A1E /* soapclient.pl */ = {isa = PBXFileReference; lastKnownFileType = text.script.perl; path = soapclient.pl; sourceTree = "<group>"; };
+		181010671913FBAD00403A1E /* stripfront.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = stripfront.py; sourceTree = "<group>"; };
+		181010681913FBAD00403A1E /* tideconvert.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = tideconvert.py; sourceTree = "<group>"; };
+		181010691913FBAD00403A1E /* timestamp.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = timestamp.py; sourceTree = "<group>"; };
+		1810106A1913FBAD00403A1E /* timetest.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = timetest.py; sourceTree = "<group>"; };
+		1810106B1913FBAD00403A1E /* whalemortality.dat */ = {isa = PBXFileReference; lastKnownFileType = text; path = whalemortality.dat; sourceTree = "<group>"; };
+		1810106D1913FBAD00403A1E /* ais-db */ = {isa = PBXFileReference; lastKnownFileType = text; path = "ais-db"; sourceTree = "<group>"; };
+		1810106E1913FBAD00403A1E /* ais-db-rebuild-cache-tables */ = {isa = PBXFileReference; lastKnownFileType = text; path = "ais-db-rebuild-cache-tables"; sourceTree = "<group>"; };
+		1810106F1913FBAD00403A1E /* ais-net-to-postgis */ = {isa = PBXFileReference; lastKnownFileType = text; path = "ais-net-to-postgis"; sourceTree = "<group>"; };
+		181010701913FBAD00403A1E /* ais-port-forward */ = {isa = PBXFileReference; lastKnownFileType = text; path = "ais-port-forward"; sourceTree = "<group>"; };
+		181010711913FBAD00403A1E /* ais-process-day.bash */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "ais-process-day.bash"; sourceTree = "<group>"; };
+		181010721913FBAD00403A1E /* ais-receive-bbox */ = {isa = PBXFileReference; lastKnownFileType = text; path = "ais-receive-bbox"; sourceTree = "<group>"; };
+		181010731913FBAD00403A1E /* ais_5report.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_5report.py; sourceTree = "<group>"; };
+		181010741913FBAD00403A1E /* ais_bin_msgs.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_bin_msgs.py; sourceTree = "<group>"; };
+		181010751913FBAD00403A1E /* ais_build_postgis.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_build_postgis.py; sourceTree = "<group>"; };
+		181010761913FBAD00403A1E /* ais_build_sqlite.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_build_sqlite.py; sourceTree = "<group>"; };
+		181010771913FBAD00403A1E /* ais_build_sqlite3.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_build_sqlite3.py; sourceTree = "<group>"; };
+		181010781913FBAD00403A1E /* ais_decimate_traffic.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_decimate_traffic.py; sourceTree = "<group>"; };
+		181010791913FBAD00403A1E /* ais_distance.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_distance.py; sourceTree = "<group>"; };
+		1810107A1913FBAD00403A1E /* ais_dump_mmsi.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_dump_mmsi.py; sourceTree = "<group>"; };
+		1810107B1913FBAD00403A1E /* ais_dumpnames.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_dumpnames.py; sourceTree = "<group>"; };
+		1810107C1913FBAD00403A1E /* ais_filter.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_filter.py; sourceTree = "<group>"; };
+		1810107D1913FBAD00403A1E /* ais_info.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_info.py; sourceTree = "<group>"; };
+		1810107E1913FBAD00403A1E /* ais_liststations.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_liststations.py; sourceTree = "<group>"; };
+		1810107F1913FBAD00403A1E /* ais_names.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_names.py; sourceTree = "<group>"; };
+		181010801913FBAD00403A1E /* ais_nmea_find_matches.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_nmea_find_matches.py; sourceTree = "<group>"; };
+		181010811913FBAD00403A1E /* ais_nmea_info.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_nmea_info.py; sourceTree = "<group>"; };
+		181010821913FBAD00403A1E /* ais_nmea_remove_dups.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_nmea_remove_dups.py; sourceTree = "<group>"; };
+		181010831913FBAD00403A1E /* ais_nmea_uptime.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_nmea_uptime.py; sourceTree = "<group>"; };
+		181010841913FBAD00403A1E /* ais_nmea_uptime2.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_nmea_uptime2.py; sourceTree = "<group>"; };
+		181010851913FBAD00403A1E /* ais_nmea_uscg_timeshift.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_nmea_uscg_timeshift.py; sourceTree = "<group>"; };
+		181010861913FBAD00403A1E /* ais_normalize.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_normalize.py; sourceTree = "<group>"; };
+		181010871913FBAD00403A1E /* ais_oldlog2newlog.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_oldlog2newlog.py; sourceTree = "<group>"; };
+		181010881913FBAD00403A1E /* ais_pg_create_transit_table.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_pg_create_transit_table.py; sourceTree = "<group>"; };
+		181010891913FBAD00403A1E /* ais_pg_grid.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_pg_grid.py; sourceTree = "<group>"; };
+		1810108A1913FBAD00403A1E /* ais_pg_grid_transits.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_pg_grid_transits.py; sourceTree = "<group>"; };
+		1810108B1913FBAD00403A1E /* ais_pg_transitlines.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_pg_transitlines.py; sourceTree = "<group>"; };
+		1810108C1913FBAD00403A1E /* ais_pg_transitlines_noMakeLine.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_pg_transitlines_noMakeLine.py; sourceTree = "<group>"; };
+		1810108D1913FBAD00403A1E /* ais_position_in_polygon.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_position_in_polygon.py; sourceTree = "<group>"; };
+		1810108E1913FBAD00403A1E /* ais_positions.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_positions.py; sourceTree = "<group>"; };
+		1810108F1913FBAD00403A1E /* ais_sqlite_bsreport_analysis.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_sqlite_bsreport_analysis.py; sourceTree = "<group>"; };
+		181010901913FBAD00403A1E /* ais_towersplit.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_towersplit.py; sourceTree = "<group>"; };
+		181010911913FBAD00403A1E /* ais_traffic_analysis.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_traffic_analysis.py; sourceTree = "<group>"; };
+		181010921913FBAD00403A1E /* ais_transits.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_transits.py; sourceTree = "<group>"; };
+		181010931913FBAD00403A1E /* ais_uniq.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_uniq.py; sourceTree = "<group>"; };
+		181010941913FBAD00403A1E /* ais_uscg_splitstations.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_uscg_splitstations.py; sourceTree = "<group>"; };
+		181010951913FBAD00403A1E /* aisuser_monitor.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = aisuser_monitor.py; sourceTree = "<group>"; };
+		181010961913FBAD00403A1E /* aisxml2wxpy.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = aisxml2wxpy.py; sourceTree = "<group>"; };
+		181010971913FBAD00403A1E /* aisxmlbinmsg2py.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = aisxmlbinmsg2py.py; sourceTree = "<group>"; };
+		181010981913FBAD00403A1E /* bbox-to-kml */ = {isa = PBXFileReference; lastKnownFileType = text; path = "bbox-to-kml"; sourceTree = "<group>"; };
+		181010991913FBAD00403A1E /* daily.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = daily.sh; sourceTree = "<group>"; };
+		1810109A1913FBAD00403A1E /* decimate */ = {isa = PBXFileReference; lastKnownFileType = text; path = decimate; sourceTree = "<group>"; };
+		1810109B1913FBAD00403A1E /* dump_wl.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = dump_wl.py; sourceTree = "<group>"; };
+		1810109C1913FBAD00403A1E /* find_missing_logs.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = find_missing_logs.py; sourceTree = "<group>"; };
+		1810109D1913FBAD00403A1E /* jpegexif2kml.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = jpegexif2kml.py; sourceTree = "<group>"; };
+		1810109E1913FBAD00403A1E /* log_udp.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = log_udp.py; sourceTree = "<group>"; };
+		1810109F1913FBAD00403A1E /* logger_handlers.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = logger_handlers.py; sourceTree = "<group>"; };
+		181010A01913FBAD00403A1E /* logger_handlers.pyc */ = {isa = PBXFileReference; lastKnownFileType = file; path = logger_handlers.pyc; sourceTree = "<group>"; };
+		181010A11913FBAD00403A1E /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
+		181010A21913FBAD00403A1E /* nais2postgis.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = nais2postgis.py; sourceTree = "<group>"; };
+		181010A31913FBAD00403A1E /* nais_pg_realtime_reaper.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = nais_pg_realtime_reaper.py; sourceTree = "<group>"; };
+		181010A41913FBAD00403A1E /* port_server.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = port_server.py; sourceTree = "<group>"; };
+		181010A51913FBAD00403A1E /* serial-logger */ = {isa = PBXFileReference; lastKnownFileType = text; path = "serial-logger"; sourceTree = "<group>"; };
+		181010A61913FBAD00403A1E /* serial-logger2.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = "serial-logger2.py"; sourceTree = "<group>"; };
+		181010A71913FBAD00403A1E /* serial_send.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = serial_send.py; sourceTree = "<group>"; };
+		181010A81913FBAD00403A1E /* serial_send2.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = serial_send2.py; sourceTree = "<group>"; };
+		181010A91913FBAD00403A1E /* socket_logger.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = socket_logger.py; sourceTree = "<group>"; };
+		181010AA1913FBAD00403A1E /* socket_send.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = socket_send.py; sourceTree = "<group>"; };
+		181010AB1913FBAD00403A1E /* stellwagen-crossings.bash */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "stellwagen-crossings.bash"; sourceTree = "<group>"; };
+		181010AC1913FBAD00403A1E /* stellwagen-shipreport.bash */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "stellwagen-shipreport.bash"; sourceTree = "<group>"; };
+		181010AD1913FBAD00403A1E /* test_ais_server.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = test_ais_server.py; sourceTree = "<group>"; };
+		181010AE1913FBAD00403A1E /* tide4_process_logs.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = tide4_process_logs.py; sourceTree = "<group>"; };
+		181010AF1913FBAD00403A1E /* xy2kml */ = {isa = PBXFileReference; lastKnownFileType = text; path = xy2kml; sourceTree = "<group>"; };
+		181010B01913FBAD00403A1E /* xy2kmlline */ = {isa = PBXFileReference; lastKnownFileType = text; path = xy2kmlline; sourceTree = "<group>"; };
+		181010B11913FBAD00403A1E /* xy_pos_filter */ = {isa = PBXFileReference; lastKnownFileType = text; path = xy_pos_filter; sourceTree = "<group>"; };
+		181010B21913FBAD00403A1E /* xymt2kml */ = {isa = PBXFileReference; lastKnownFileType = text; path = xymt2kml; sourceTree = "<group>"; };
+		181010B31913FBAD00403A1E /* setup.cfg */ = {isa = PBXFileReference; lastKnownFileType = text; path = setup.cfg; sourceTree = "<group>"; };
+		181010B41913FBAD00403A1E /* setup.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = setup.py; sourceTree = "<group>"; };
+		181010B51913FBAD00403A1E /* sonita */ = {isa = PBXFileReference; lastKnownFileType = text; path = sonita; sourceTree = "<group>"; };
+		181010B71913FBAD00403A1E /* grid_tests.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = grid_tests.py; sourceTree = "<group>"; };
+		181010B81913FBAD00403A1E /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
+		181010B91913FBAD00403A1E /* test.ais */ = {isa = PBXFileReference; lastKnownFileType = text; path = test.ais; sourceTree = "<group>"; };
+		181010BA1913FBAD00403A1E /* TODO */ = {isa = PBXFileReference; lastKnownFileType = text; path = TODO; sourceTree = "<group>"; };
+		181010BB1913FBAD00403A1E /* VERSION */ = {isa = PBXFileReference; lastKnownFileType = text; path = VERSION; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
 /* Begin PBXGroup section */
+		18100F331913FBAC00403A1E /* ais */ = {
+			isa = PBXGroup;
+			children = (
+				18100F341913FBAC00403A1E /* __init__.py */,
+				18100F351913FBAC00403A1E /* ais.xsl */,
+				18100F361913FBAC00403A1E /* ais_msg_1.html */,
+				18100F371913FBAC00403A1E /* ais_msg_1.py */,
+				18100F381913FBAC00403A1E /* ais_msg_1.xml */,
+				18100F391913FBAC00403A1E /* ais_msg_10.html */,
+				18100F3A1913FBAC00403A1E /* ais_msg_10.py */,
+				18100F3B1913FBAC00403A1E /* ais_msg_10.xml */,
+				18100F3C1913FBAC00403A1E /* ais_msg_11.html */,
+				18100F3D1913FBAC00403A1E /* ais_msg_11.py */,
+				18100F3E1913FBAC00403A1E /* ais_msg_11.xml */,
+				18100F3F1913FBAC00403A1E /* ais_msg_12.html */,
+				18100F401913FBAC00403A1E /* ais_msg_12.py */,
+				18100F411913FBAC00403A1E /* ais_msg_12.xml */,
+				18100F421913FBAC00403A1E /* ais_msg_14.html */,
+				18100F431913FBAC00403A1E /* ais_msg_14.py */,
+				18100F441913FBAC00403A1E /* ais_msg_14.xml */,
+				18100F451913FBAC00403A1E /* ais_msg_15.html */,
+				18100F461913FBAC00403A1E /* ais_msg_15.py */,
+				18100F471913FBAC00403A1E /* ais_msg_15.xml */,
+				18100F481913FBAC00403A1E /* ais_msg_17.html */,
+				18100F491913FBAC00403A1E /* ais_msg_17.py */,
+				18100F4A1913FBAC00403A1E /* ais_msg_17.xml */,
+				18100F4B1913FBAC00403A1E /* ais_msg_18.html */,
+				18100F4C1913FBAC00403A1E /* ais_msg_18.py */,
+				18100F4D1913FBAC00403A1E /* ais_msg_18.xml */,
+				18100F4E1913FBAC00403A1E /* ais_msg_19.html */,
+				18100F4F1913FBAC00403A1E /* ais_msg_19.py */,
+				18100F501913FBAC00403A1E /* ais_msg_19.xml */,
+				18100F511913FBAC00403A1E /* ais_msg_1_handcoded.py */,
+				18100F521913FBAC00403A1E /* ais_msg_2.html */,
+				18100F531913FBAC00403A1E /* ais_msg_2.py */,
+				18100F541913FBAC00403A1E /* ais_msg_2.xml */,
+				18100F551913FBAC00403A1E /* ais_msg_20.html */,
+				18100F561913FBAC00403A1E /* ais_msg_20.py */,
+				18100F571913FBAC00403A1E /* ais_msg_20.xml */,
+				18100F581913FBAC00403A1E /* ais_msg_21.html */,
+				18100F591913FBAC00403A1E /* ais_msg_21.py */,
+				18100F5A1913FBAC00403A1E /* ais_msg_21.xml */,
+				18100F5B1913FBAC00403A1E /* ais_msg_21_handcoded.py */,
+				18100F5C1913FBAC00403A1E /* ais_msg_22.html */,
+				18100F5D1913FBAC00403A1E /* ais_msg_22.py */,
+				18100F5E1913FBAC00403A1E /* ais_msg_22.xml */,
+				18100F5F1913FBAC00403A1E /* ais_msg_23.html */,
+				18100F601913FBAC00403A1E /* ais_msg_23.py */,
+				18100F611913FBAC00403A1E /* ais_msg_23.xml */,
+				18100F621913FBAC00403A1E /* ais_msg_24_handcoded.py */,
+				18100F631913FBAC00403A1E /* ais_msg_2_handcoded.py */,
+				18100F641913FBAC00403A1E /* ais_msg_3.html */,
+				18100F651913FBAC00403A1E /* ais_msg_3.py */,
+				18100F661913FBAC00403A1E /* ais_msg_3.xml */,
+				18100F671913FBAC00403A1E /* ais_msg_3_handcoded.py */,
+				18100F681913FBAC00403A1E /* ais_msg_4.html */,
+				18100F691913FBAC00403A1E /* ais_msg_4.py */,
+				18100F6A1913FBAC00403A1E /* ais_msg_4.xml */,
+				18100F6B1913FBAC00403A1E /* ais_msg_4_handcoded.py */,
+				18100F6C1913FBAC00403A1E /* ais_msg_5.html */,
+				18100F6D1913FBAC00403A1E /* ais_msg_5.py */,
+				18100F6E1913FBAC00403A1E /* ais_msg_5.xml */,
+				18100F6F1913FBAC00403A1E /* ais_msg_5_utils.py */,
+				18100F701913FBAC00403A1E /* ais_msg_6.html */,
+				18100F711913FBAC00403A1E /* ais_msg_6.py */,
+				18100F721913FBAC00403A1E /* ais_msg_6.xml */,
+				18100F731913FBAC00403A1E /* ais_msg_7.html */,
+				18100F741913FBAC00403A1E /* ais_msg_7.py */,
+				18100F751913FBAC00403A1E /* ais_msg_7.xml */,
+				18100F761913FBAC00403A1E /* ais_msg_7_handcoded.py */,
+				18100F771913FBAC00403A1E /* ais_msg_8.html */,
+				18100F781913FBAC00403A1E /* ais_msg_8.py */,
+				18100F791913FBAC00403A1E /* ais_msg_8.xml */,
+				18100F7A1913FBAC00403A1E /* ais_msg_9.html */,
+				18100F7B1913FBAC00403A1E /* ais_msg_9.py */,
+				18100F7C1913FBAC00403A1E /* ais_msg_9.xml */,
+				18100F7D1913FBAC00403A1E /* aisfield.py */,
+				18100F7E1913FBAC00403A1E /* aisstring.py */,
+				18100F7F1913FBAC00403A1E /* aisstring.pyc */,
+				18100F801913FBAC00403A1E /* allaistypes.html */,
+				18100F811913FBAC00403A1E /* allaistypes.py */,
+				18100F821913FBAC00403A1E /* allaistypes.xml */,
+				18100F831913FBAC00403A1E /* binary.py */,
+				18100F841913FBAC00403A1E /* binary.pyc */,
+				18100F851913FBAC00403A1E /* BitVector.py */,
+				18100F861913FBAC00403A1E /* BitVector.pyc */,
+				18100F871913FBAC00403A1E /* commstate.py */,
+				18100F881913FBAC00403A1E /* exampleParser.py */,
+				18100F891913FBAC00403A1E /* expandais.py */,
+				18100F8A1913FBAC00403A1E /* imo_001_11.html */,
+				18100F8B1913FBAC00403A1E /* imo_001_11.py */,
+				18100F8C1913FBAC00403A1E /* imo_001_11.xml */,
+				18100F8D1913FBAC00403A1E /* imo_001_11_handcoded.py */,
+				18100F8E1913FBAC00403A1E /* imo_001_13.html */,
+				18100F8F1913FBAC00403A1E /* imo_001_13.py */,
+				18100F901913FBAC00403A1E /* imo_001_13.xml */,
+				18100F911913FBAC00403A1E /* imo_001_14.html */,
+				18100F921913FBAC00403A1E /* imo_001_14.py */,
+				18100F931913FBAC00403A1E /* imo_001_14.xml */,
+				18100F941913FBAC00403A1E /* Makefile */,
+				18100F951913FBAC00403A1E /* nmea.py */,
+				18100F961913FBAC00403A1E /* ris */,
+				18100F9A1913FBAC00403A1E /* rtcm */,
+				18100F9D1913FBAC00403A1E /* sls */,
+				18100FAF1913FBAC00403A1E /* sqlhelp.py */,
+				18100FB01913FBAC00403A1E /* sqlhelp.pyc */,
+				18100FB11913FBAC00403A1E /* structs-inc.xml */,
+				18100FB21913FBAC00403A1E /* test */,
+				18100FB81913FBAC00403A1E /* test.py */,
+				18100FB91913FBAC00403A1E /* test_sls_waterlevel.py */,
+				18100FBA1913FBAC00403A1E /* timed_circular_notice.html */,
+				18100FBB1913FBAC00403A1E /* timed_circular_notice.py */,
+				18100FBC1913FBAC00403A1E /* timed_circular_notice.xml */,
+				18100FBD1913FBAC00403A1E /* translators.py */,
+				18100FBE1913FBAC00403A1E /* waterlevel.html */,
+				18100FBF1913FBAC00403A1E /* waterlevel.py */,
+				18100FC01913FBAC00403A1E /* waterlevel.xml */,
+				18100FC11913FBAC00403A1E /* waterlevel2.html */,
+				18100FC21913FBAC00403A1E /* waterlevel2.py */,
+				18100FC31913FBAC00403A1E /* waterlevel2.xml */,
+				18100FC41913FBAC00403A1E /* whalenotice.html */,
+				18100FC51913FBAC00403A1E /* whalenotice.py */,
+				18100FC61913FBAC00403A1E /* whalenotice.xml */,
+				18100FC71913FBAC00403A1E /* whalenotice1.html */,
+				18100FC81913FBAC00403A1E /* whalenotice1.py */,
+				18100FC91913FBAC00403A1E /* whalenotice1.xml */,
+				18100FCA1913FBAC00403A1E /* whalenotice2.html */,
+				18100FCB1913FBAC00403A1E /* whalenotice2.py */,
+				18100FCC1913FBAC00403A1E /* whalenotice2.xml */,
+			);
+			path = ais;
+			sourceTree = "<group>";
+		};
+		18100F961913FBAC00403A1E /* ris */ = {
+			isa = PBXGroup;
+			children = (
+				18100F971913FBAC00403A1E /* Makefile */,
+				18100F981913FBAC00403A1E /* waterlevel.html */,
+				18100F991913FBAC00403A1E /* waterlevel.xml */,
+			);
+			path = ris;
+			sourceTree = "<group>";
+		};
+		18100F9A1913FBAC00403A1E /* rtcm */ = {
+			isa = PBXGroup;
+			children = (
+				18100F9B1913FBAC00403A1E /* Makefile */,
+				18100F9C1913FBAC00403A1E /* rtcm-20-zone.xml */,
+			);
+			path = rtcm;
+			sourceTree = "<group>";
+		};
+		18100F9D1913FBAC00403A1E /* sls */ = {
+			isa = PBXGroup;
+			children = (
+				18100F9E1913FBAC00403A1E /* estlocktimes.html */,
+				18100F9F1913FBAC00403A1E /* estlocktimes.xml */,
+				18100FA01913FBAC00403A1E /* header.xml */,
+				18100FA11913FBAC00403A1E /* lockorder.html */,
+				18100FA21913FBAC00403A1E /* lockorder.xml */,
+				18100FA31913FBAC00403A1E /* lockschedule.html */,
+				18100FA41913FBAC00403A1E /* lockschedule.xml */,
+				18100FA51913FBAC00403A1E /* Makefile */,
+				18100FA61913FBAC00403A1E /* structures.xml */,
+				18100FA71913FBAC00403A1E /* waterflow.html */,
+				18100FA81913FBAC00403A1E /* waterflow.xml */,
+				18100FA91913FBAC00403A1E /* waterlevel.html */,
+				18100FAA1913FBAC00403A1E /* waterlevel.xml */,
+				18100FAB1913FBAC00403A1E /* weatherreport.html */,
+				18100FAC1913FBAC00403A1E /* weatherreport.xml */,
+				18100FAD1913FBAC00403A1E /* wind.html */,
+				18100FAE1913FBAC00403A1E /* wind.xml */,
+			);
+			path = sls;
+			sourceTree = "<group>";
+		};
+		18100FB21913FBAC00403A1E /* test */ = {
+			isa = PBXGroup;
+			children = (
+				18100FB31913FBAC00403A1E /* ais_msg_1_1.xml */,
+				18100FB41913FBAC00403A1E /* ais_msg_8_1.xml */,
+				18100FB51913FBAC00403A1E /* sls_waterlevel_3_1.xml */,
+				18100FB61913FBAC00403A1E /* sls_waterlevel_3_2.xml */,
+				18100FB71913FBAC00403A1E /* sls_wind_2_1.xml */,
+			);
+			path = test;
+			sourceTree = "<group>";
+		};
+		18100FCE1913FBAC00403A1E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		18100FD11913FBAC00403A1E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		18100FD31913FBAC00403A1E /* aisutils */ = {
+			isa = PBXGroup;
+			children = (
+				18100FD41913FBAC00403A1E /* __init__.py */,
+				18100FD51913FBAC00403A1E /* daemon.py */,
+				18100FD61913FBAC00403A1E /* database.py */,
+				18100FD71913FBAC00403A1E /* grid.py */,
+				18100FD81913FBAC00403A1E /* nmea_ait.py */,
+				18100FD91913FBAC00403A1E /* nmea_cnc.py */,
+				18100FDA1913FBAC00403A1E /* normalize.py */,
+				18100FDB1913FBAC00403A1E /* server.py */,
+				18100FDC1913FBAC00403A1E /* uscg.py */,
+				18100FDD1913FBAC00403A1E /* wkb.py */,
+			);
+			path = aisutils;
+			sourceTree = "<group>";
+		};
+		18100FE31913FBAC00403A1E /* data */ = {
+			isa = PBXGroup;
+			children = (
+				18100FE41913FBAC00403A1E /* gsc.dat */,
+				18100FE51913FBAC00403A1E /* mmsi_prefix.sql */,
+				18100FE61913FBAC00403A1E /* stellwagen.dat */,
+			);
+			path = data;
+			sourceTree = "<group>";
+		};
+		18100FE71913FBAC00403A1E /* ddbb_utils */ = {
+			isa = PBXGroup;
+			children = (
+				18100FE81913FBAC00403A1E /* ce_fisheries-clean_vessel.sql */,
+				18100FE91913FBAC00403A1E /* sonita */,
+			);
+			path = ddbb_utils;
+			sourceTree = "<group>";
+		};
+		18100FEA1913FBAC00403A1E /* dist */ = {
+			isa = PBXGroup;
+			children = (
+				18100FEB1913FBAC00403A1E /* noaadata_py-0.45-py2.7.egg */,
+			);
+			path = dist;
+			sourceTree = "<group>";
+		};
+		18100FEC1913FBAC00403A1E /* django-ais */ = {
+			isa = PBXGroup;
+			children = (
+				18100FED1913FBAC00403A1E /* ais_www */,
+				18100FFE1913FBAC00403A1E /* README.txt */,
+			);
+			path = "django-ais";
+			sourceTree = "<group>";
+		};
+		18100FED1913FBAC00403A1E /* ais_www */ = {
+			isa = PBXGroup;
+			children = (
+				18100FEE1913FBAC00403A1E /* __init__.py */,
+				18100FEF1913FBAC00403A1E /* define_ais */,
+				18100FF61913FBAC00403A1E /* Makefile */,
+				18100FF71913FBAC00403A1E /* manage.py */,
+				18100FF81913FBAC00403A1E /* msgs */,
+				18100FFC1913FBAC00403A1E /* settings.py */,
+				18100FFD1913FBAC00403A1E /* urls.py */,
+			);
+			path = ais_www;
+			sourceTree = "<group>";
+		};
+		18100FEF1913FBAC00403A1E /* define_ais */ = {
+			isa = PBXGroup;
+			children = (
+				18100FF01913FBAC00403A1E /* __init__.py */,
+				18100FF11913FBAC00403A1E /* dac.sql */,
+				18100FF21913FBAC00403A1E /* models.py */,
+				18100FF31913FBAC00403A1E /* preload.sql */,
+				18100FF41913FBAC00403A1E /* README.txt */,
+				18100FF51913FBAC00403A1E /* views.py */,
+			);
+			path = define_ais;
+			sourceTree = "<group>";
+		};
+		18100FF81913FBAC00403A1E /* msgs */ = {
+			isa = PBXGroup;
+			children = (
+				18100FF91913FBAC00403A1E /* __init__.py */,
+				18100FFA1913FBAC00403A1E /* models.py */,
+				18100FFB1913FBAC00403A1E /* views.py */,
+			);
+			path = msgs;
+			sourceTree = "<group>";
+		};
+		18100FFF1913FBAC00403A1E /* doc */ = {
+			isa = PBXGroup;
+			children = (
+				181010001913FBAC00403A1E /* ais-messages-HEADER.html */,
+				181010011913FBAC00403A1E /* ais.bib */,
+				181010021913FBAC00403A1E /* configure-ais-logging.txt */,
+				181010031913FBAC00403A1E /* database-setup.txt */,
+				181010041913FBAC00403A1E /* esr-review.txt */,
+				181010051913FBAC00403A1E /* main-HEADER.html */,
+				181010061913FBAC00403A1E /* README.txt */,
+			);
+			path = doc;
+			sourceTree = "<group>";
+		};
+		181010081913FBAC00403A1E /* geodjango */ = {
+			isa = PBXGroup;
+			children = (
+				181010091913FBAC00403A1E /* ais_www */,
+			);
+			path = geodjango;
+			sourceTree = "<group>";
+		};
+		181010091913FBAC00403A1E /* ais_www */ = {
+			isa = PBXGroup;
+			children = (
+				1810100A1913FBAC00403A1E /* __init__.py */,
+				1810100B1913FBAC00403A1E /* ais_msgs */,
+				181010101913FBAC00403A1E /* define_ais */,
+				181010181913FBAC00403A1E /* hello.py */,
+				181010191913FBAC00403A1E /* hello_template.py */,
+				1810101A1913FBAC00403A1E /* Makefile */,
+				1810101B1913FBAC00403A1E /* manage.py */,
+				1810101C1913FBAC00403A1E /* settings.py */,
+				1810101D1913FBAC00403A1E /* templates */,
+				1810101F1913FBAC00403A1E /* urls.py */,
+			);
+			path = ais_www;
+			sourceTree = "<group>";
+		};
+		1810100B1913FBAC00403A1E /* ais_msgs */ = {
+			isa = PBXGroup;
+			children = (
+				1810100C1913FBAC00403A1E /* __init__.py */,
+				1810100D1913FBAC00403A1E /* models.py */,
+				1810100E1913FBAC00403A1E /* urls.py */,
+				1810100F1913FBAC00403A1E /* views.py */,
+			);
+			path = ais_msgs;
+			sourceTree = "<group>";
+		};
+		181010101913FBAC00403A1E /* define_ais */ = {
+			isa = PBXGroup;
+			children = (
+				181010111913FBAC00403A1E /* __init__.py */,
+				181010121913FBAC00403A1E /* dac.sql */,
+				181010131913FBAC00403A1E /* models.py */,
+				181010141913FBAC00403A1E /* preload.sql */,
+				181010151913FBAC00403A1E /* README.txt */,
+				181010161913FBAC00403A1E /* urls.py */,
+				181010171913FBAC00403A1E /* views.py */,
+			);
+			path = define_ais;
+			sourceTree = "<group>";
+		};
+		1810101D1913FBAC00403A1E /* templates */ = {
+			isa = PBXGroup;
+			children = (
+				1810101E1913FBAC00403A1E /* current_datetime.html */,
+			);
+			path = templates;
+			sourceTree = "<group>";
+		};
+		181010201913FBAC00403A1E /* init.d */ = {
+			isa = PBXGroup;
+			children = (
+				181010211913FBAC00403A1E /* ais-forward */,
+				181010221913FBAC00403A1E /* logais */,
+				181010231913FBAC00403A1E /* logtide */,
+			);
+			path = init.d;
+			sourceTree = "<group>";
+		};
+		181010291913FBAC00403A1E /* nmea */ = {
+			isa = PBXGroup;
+			children = (
+				1810102A1913FBAC00403A1E /* __init__.py */,
+				1810102B1913FBAC00403A1E /* checksum.py */,
+				1810102C1913FBAC00403A1E /* gga.py */,
+				1810102D1913FBAC00403A1E /* nmea_error.py */,
+				1810102E1913FBAC00403A1E /* rmc.py */,
+				1810102F1913FBAD00403A1E /* zda.py */,
+				181010301913FBAD00403A1E /* znt.py */,
+			);
+			path = nmea;
+			sourceTree = "<group>";
+		};
+		181010321913FBAD00403A1E /* noaadata */ = {
+			isa = PBXGroup;
+			children = (
+				181010331913FBAD00403A1E /* __init__.py */,
+				181010341913FBAD00403A1E /* dumpallwl.py */,
+				181010351913FBAD00403A1E /* stations-soap.xml */,
+				181010361913FBAD00403A1E /* stations.py */,
+				181010371913FBAD00403A1E /* tideserver.py */,
+				181010381913FBAD00403A1E /* waterlevel_dap.py */,
+				181010391913FBAD00403A1E /* waterlevelraw.py */,
+			);
+			path = noaadata;
+			sourceTree = "<group>";
+		};
+		1810103A1913FBAD00403A1E /* noaadata_py.egg-info */ = {
+			isa = PBXGroup;
+			children = (
+				1810103B1913FBAD00403A1E /* dependency_links.txt */,
+				1810103C1913FBAD00403A1E /* PKG-INFO */,
+				1810103D1913FBAD00403A1E /* SOURCES.txt */,
+				1810103E1913FBAD00403A1E /* top_level.txt */,
+			);
+			path = "noaadata_py.egg-info";
+			sourceTree = "<group>";
+		};
+		181010411913FBAD00403A1E /* proc_utils */ = {
+			isa = PBXGroup;
+			children = (
+				181010421913FBAD00403A1E /* csv_to_pg.py */,
+				181010431913FBAD00403A1E /* netcdf_test.py */,
+			);
+			path = proc_utils;
+			sourceTree = "<group>";
+		};
+		181010461913FBAD00403A1E /* scraps */ = {
+			isa = PBXGroup;
+			children = (
+				181010471913FBAD00403A1E /* adjust_time.py */,
+				181010481913FBAD00403A1E /* ais_filter_by_mmsi.cxx */,
+				181010491913FBAD00403A1E /* ais_pg_dailyvessels.py */,
+				1810104A1913FBAD00403A1E /* ais_pg_import2006spreadsheet.py */,
+				1810104B1913FBAD00403A1E /* ais_pg_monthhistogram.py */,
+				1810104C1913FBAD00403A1E /* ais_pg_speedsummary.py */,
+				1810104D1913FBAD00403A1E /* ais_pg_transitsummary.py */,
+				1810104E1913FBAD00403A1E /* ais_pg_vesselsummary.py */,
+				1810104F1913FBAD00403A1E /* bbm.py */,
+				181010501913FBAD00403A1E /* bogus_unittest.py */,
+				181010511913FBAD00403A1E /* build-time-notice-test-data.sh */,
+				181010521913FBAD00403A1E /* buildais.py */,
+				181010531913FBAD00403A1E /* cptimestamp2front.py */,
+				181010541913FBAD00403A1E /* gsc-and-tss.dat */,
+				181010551913FBAD00403A1E /* gsc-and-tss.kml */,
+				181010561913FBAD00403A1E /* gsc-bbox.kml */,
+				181010571913FBAD00403A1E /* gsc.dat */,
+				181010581913FBAD00403A1E /* gsc.kml */,
+				181010591913FBAD00403A1E /* gsc.tss.dat */,
+				1810105A1913FBAD00403A1E /* gsc.tss.kml */,
+				1810105B1913FBAD00403A1E /* kml_countdown_placemark.py */,
+				1810105C1913FBAD00403A1E /* Makefile */,
+				1810105D1913FBAD00403A1E /* maru-xy.dat */,
+				1810105E1913FBAD00403A1E /* monthplots.gp */,
+				1810105F1913FBAD00403A1E /* nmea.py */,
+				181010601913FBAD00403A1E /* nmeamessages.py */,
+				181010611913FBAD00403A1E /* revelle2uscgold.py */,
+				181010621913FBAD00403A1E /* sbnms-buoys-ab.xys */,
+				181010631913FBAD00403A1E /* sbnms-buoys-ab.xyt */,
+				181010641913FBAD00403A1E /* sbnms.grd.cmd */,
+				181010651913FBAD00403A1E /* six_min_avg.m */,
+				181010661913FBAD00403A1E /* soapclient.pl */,
+				181010671913FBAD00403A1E /* stripfront.py */,
+				181010681913FBAD00403A1E /* tideconvert.py */,
+				181010691913FBAD00403A1E /* timestamp.py */,
+				1810106A1913FBAD00403A1E /* timetest.py */,
+				1810106B1913FBAD00403A1E /* whalemortality.dat */,
+			);
+			path = scraps;
+			sourceTree = "<group>";
+		};
+		1810106C1913FBAD00403A1E /* scripts */ = {
+			isa = PBXGroup;
+			children = (
+				1810106D1913FBAD00403A1E /* ais-db */,
+				1810106E1913FBAD00403A1E /* ais-db-rebuild-cache-tables */,
+				1810106F1913FBAD00403A1E /* ais-net-to-postgis */,
+				181010701913FBAD00403A1E /* ais-port-forward */,
+				181010711913FBAD00403A1E /* ais-process-day.bash */,
+				181010721913FBAD00403A1E /* ais-receive-bbox */,
+				181010731913FBAD00403A1E /* ais_5report.py */,
+				181010741913FBAD00403A1E /* ais_bin_msgs.py */,
+				181010751913FBAD00403A1E /* ais_build_postgis.py */,
+				181010761913FBAD00403A1E /* ais_build_sqlite.py */,
+				181010771913FBAD00403A1E /* ais_build_sqlite3.py */,
+				181010781913FBAD00403A1E /* ais_decimate_traffic.py */,
+				181010791913FBAD00403A1E /* ais_distance.py */,
+				1810107A1913FBAD00403A1E /* ais_dump_mmsi.py */,
+				1810107B1913FBAD00403A1E /* ais_dumpnames.py */,
+				1810107C1913FBAD00403A1E /* ais_filter.py */,
+				1810107D1913FBAD00403A1E /* ais_info.py */,
+				1810107E1913FBAD00403A1E /* ais_liststations.py */,
+				1810107F1913FBAD00403A1E /* ais_names.py */,
+				181010801913FBAD00403A1E /* ais_nmea_find_matches.py */,
+				181010811913FBAD00403A1E /* ais_nmea_info.py */,
+				181010821913FBAD00403A1E /* ais_nmea_remove_dups.py */,
+				181010831913FBAD00403A1E /* ais_nmea_uptime.py */,
+				181010841913FBAD00403A1E /* ais_nmea_uptime2.py */,
+				181010851913FBAD00403A1E /* ais_nmea_uscg_timeshift.py */,
+				181010861913FBAD00403A1E /* ais_normalize.py */,
+				181010871913FBAD00403A1E /* ais_oldlog2newlog.py */,
+				181010881913FBAD00403A1E /* ais_pg_create_transit_table.py */,
+				181010891913FBAD00403A1E /* ais_pg_grid.py */,
+				1810108A1913FBAD00403A1E /* ais_pg_grid_transits.py */,
+				1810108B1913FBAD00403A1E /* ais_pg_transitlines.py */,
+				1810108C1913FBAD00403A1E /* ais_pg_transitlines_noMakeLine.py */,
+				1810108D1913FBAD00403A1E /* ais_position_in_polygon.py */,
+				1810108E1913FBAD00403A1E /* ais_positions.py */,
+				1810108F1913FBAD00403A1E /* ais_sqlite_bsreport_analysis.py */,
+				181010901913FBAD00403A1E /* ais_towersplit.py */,
+				181010911913FBAD00403A1E /* ais_traffic_analysis.py */,
+				181010921913FBAD00403A1E /* ais_transits.py */,
+				181010931913FBAD00403A1E /* ais_uniq.py */,
+				181010941913FBAD00403A1E /* ais_uscg_splitstations.py */,
+				181010951913FBAD00403A1E /* aisuser_monitor.py */,
+				181010961913FBAD00403A1E /* aisxml2wxpy.py */,
+				181010971913FBAD00403A1E /* aisxmlbinmsg2py.py */,
+				181010981913FBAD00403A1E /* bbox-to-kml */,
+				181010991913FBAD00403A1E /* daily.sh */,
+				1810109A1913FBAD00403A1E /* decimate */,
+				1810109B1913FBAD00403A1E /* dump_wl.py */,
+				1810109C1913FBAD00403A1E /* find_missing_logs.py */,
+				1810109D1913FBAD00403A1E /* jpegexif2kml.py */,
+				1810109E1913FBAD00403A1E /* log_udp.py */,
+				1810109F1913FBAD00403A1E /* logger_handlers.py */,
+				181010A01913FBAD00403A1E /* logger_handlers.pyc */,
+				181010A11913FBAD00403A1E /* Makefile */,
+				181010A21913FBAD00403A1E /* nais2postgis.py */,
+				181010A31913FBAD00403A1E /* nais_pg_realtime_reaper.py */,
+				181010A41913FBAD00403A1E /* port_server.py */,
+				181010A51913FBAD00403A1E /* serial-logger */,
+				181010A61913FBAD00403A1E /* serial-logger2.py */,
+				181010A71913FBAD00403A1E /* serial_send.py */,
+				181010A81913FBAD00403A1E /* serial_send2.py */,
+				181010A91913FBAD00403A1E /* socket_logger.py */,
+				181010AA1913FBAD00403A1E /* socket_send.py */,
+				181010AB1913FBAD00403A1E /* stellwagen-crossings.bash */,
+				181010AC1913FBAD00403A1E /* stellwagen-shipreport.bash */,
+				181010AD1913FBAD00403A1E /* test_ais_server.py */,
+				181010AE1913FBAD00403A1E /* tide4_process_logs.py */,
+				181010AF1913FBAD00403A1E /* xy2kml */,
+				181010B01913FBAD00403A1E /* xy2kmlline */,
+				181010B11913FBAD00403A1E /* xy_pos_filter */,
+				181010B21913FBAD00403A1E /* xymt2kml */,
+			);
+			path = scripts;
+			sourceTree = "<group>";
+		};
+		181010B61913FBAD00403A1E /* test */ = {
+			isa = PBXGroup;
+			children = (
+				181010B71913FBAD00403A1E /* grid_tests.py */,
+				181010B81913FBAD00403A1E /* Makefile */,
+				181010B91913FBAD00403A1E /* test.ais */,
+			);
+			path = test;
+			sourceTree = "<group>";
+		};
 		18DCFC561913FACF003CD8D7 = {
 			isa = PBXGroup;
 			children = (
+				18100F331913FBAC00403A1E /* ais */,
+				18100FCD1913FBAC00403A1E /* aislib-artax.xcodeproj */,
+				18100FD01913FBAC00403A1E /* aislib-tardis.xcodeproj */,
+				18100FD31913FBAC00403A1E /* aisutils */,
+				18100FDE1913FBAC00403A1E /* bad.ais */,
+				18100FDF1913FBAC00403A1E /* bad.sonita */,
+				18100FE01913FBAC00403A1E /* ChangeLog.html */,
+				18100FE11913FBAC00403A1E /* control.in */,
+				18100FE21913FBAC00403A1E /* COPYING */,
+				18100FE31913FBAC00403A1E /* data */,
+				18100FE71913FBAC00403A1E /* ddbb_utils */,
+				18100FEA1913FBAC00403A1E /* dist */,
+				18100FEC1913FBAC00403A1E /* django-ais */,
+				18100FFF1913FBAC00403A1E /* doc */,
+				181010071913FBAC00403A1E /* errors-nais2postgis */,
+				181010081913FBAC00403A1E /* geodjango */,
+				181010201913FBAC00403A1E /* init.d */,
+				181010241913FBAC00403A1E /* LICENSE */,
+				181010251913FBAC00403A1E /* make_waterlevel_ais.py */,
+				181010261913FBAC00403A1E /* Makefile */,
+				181010271913FBAC00403A1E /* MANIFEST.in */,
+				181010281913FBAC00403A1E /* nais2postgis.py.log */,
+				181010291913FBAC00403A1E /* nmea */,
+				181010311913FBAD00403A1E /* noaa_waterlevel_ais.bash */,
+				181010321913FBAD00403A1E /* noaadata */,
+				1810103A1913FBAD00403A1E /* noaadata_py.egg-info */,
+				1810103F1913FBAD00403A1E /* noaadata-py.info.in */,
+				181010401913FBAD00403A1E /* PKG-INFO */,
+				181010411913FBAD00403A1E /* proc_utils */,
+				181010441913FBAD00403A1E /* README */,
+				181010451913FBAD00403A1E /* README.md */,
+				181010461913FBAD00403A1E /* scraps */,
+				1810106C1913FBAD00403A1E /* scripts */,
+				181010B31913FBAD00403A1E /* setup.cfg */,
+				181010B41913FBAD00403A1E /* setup.py */,
+				181010B51913FBAD00403A1E /* sonita */,
+				181010B61913FBAD00403A1E /* test */,
+				181010BA1913FBAD00403A1E /* TODO */,
+				181010BB1913FBAD00403A1E /* VERSION */,
 			);
 			sourceTree = "<group>";
 		};
@@ -30,6 +987,16 @@
 			);
 			mainGroup = 18DCFC561913FACF003CD8D7;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 18100FCE1913FBAC00403A1E /* Products */;
+					ProjectRef = 18100FCD1913FBAC00403A1E /* aislib-artax.xcodeproj */;
+				},
+				{
+					ProductGroup = 18100FD11913FBAC00403A1E /* Products */;
+					ProjectRef = 18100FD01913FBAC00403A1E /* aislib-tardis.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 			);
