@@ -158,7 +158,6 @@
 		182A58311913F269009E4D07 /* whalenotice2.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = whalenotice2.xml; sourceTree = "<group>"; };
 		182A58321913F269009E4D07 /* aislib-artax.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = "aislib-artax.xcodeproj"; sourceTree = "<group>"; };
 		182A58351913F269009E4D07 /* aislib-tardis.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = "aislib-tardis.xcodeproj"; sourceTree = "<group>"; };
-		182A58381913F269009E4D07 /* aislib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = aislib.xcodeproj; sourceTree = "<group>"; };
 		182A583C1913F269009E4D07 /* __init__.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = __init__.py; sourceTree = "<group>"; };
 		182A583D1913F269009E4D07 /* daemon.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = daemon.py; sourceTree = "<group>"; };
 		182A583E1913F269009E4D07 /* database.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = database.py; sourceTree = "<group>"; };
@@ -575,11 +574,6 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		182A58391913F269009E4D07 /* Products */ = {
-			isa = PBXGroup;
-			name = Products;
-			sourceTree = "<group>";
-		};
 		182A583B1913F269009E4D07 /* aisutils */ = {
 			isa = PBXGroup;
 			children = (
@@ -937,7 +931,6 @@
 				182A57981913F267009E4D07 /* ais */,
 				182A58321913F269009E4D07 /* aislib-artax.xcodeproj */,
 				182A58351913F269009E4D07 /* aislib-tardis.xcodeproj */,
-				182A58381913F269009E4D07 /* aislib.xcodeproj */,
 				182A583B1913F269009E4D07 /* aisutils */,
 				182A58461913F269009E4D07 /* bad.ais */,
 				182A58471913F269009E4D07 /* bad.sonita */,
@@ -1002,10 +995,6 @@
 				{
 					ProductGroup = 182A58361913F269009E4D07 /* Products */;
 					ProjectRef = 182A58351913F269009E4D07 /* aislib-tardis.xcodeproj */;
-				},
-				{
-					ProductGroup = 182A58391913F269009E4D07 /* Products */;
-					ProjectRef = 182A58381913F269009E4D07 /* aislib.xcodeproj */;
 				},
 			);
 			projectRoot = "";
