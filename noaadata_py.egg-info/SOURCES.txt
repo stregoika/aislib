@@ -10,6 +10,7 @@ control.in
 make_waterlevel_ais.py
 noaa_waterlevel_ais.bash
 noaadata-py.info.in
+setup.cfg
 setup.py
 ais/BitVector.py
 ais/Makefile
@@ -320,6 +321,7 @@ scripts/find_missing_logs.py
 scripts/jpegexif2kml.py
 scripts/log_udp.py
 scripts/logger_handlers.py
+scripts/logger_handlers.pyc
 scripts/nais2postgis.py
 scripts/nais_pg_realtime_reaper.py
 scripts/port_server.py
