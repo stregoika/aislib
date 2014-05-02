@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXGroup section */
-		1878386A1913F217008C2F5F = {
+		180FC8AD1913F88E0063EF04 = {
 			isa = PBXGroup;
 			children = (
 			);
@@ -16,19 +16,19 @@
 /* End PBXGroup section */
 
 /* Begin PBXProject section */
-		1878386C1913F217008C2F5F /* Project object */ = {
+		180FC8AF1913F88E0063EF04 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0420;
 			};
-			buildConfigurationList = 1878386F1913F217008C2F5F /* Build configuration list for PBXProject "aislib-atreyu" */;
+			buildConfigurationList = 180FC8B21913F88E0063EF04 /* Build configuration list for PBXProject "aislib-atreyu" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 			);
-			mainGroup = 1878386A1913F217008C2F5F;
+			mainGroup = 180FC8AD1913F88E0063EF04;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -37,13 +37,13 @@
 /* End PBXProject section */
 
 /* Begin XCBuildConfiguration section */
-		187838711913F217008C2F5F /* Debug */ = {
+		180FC8B41913F88E0063EF04 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 			};
 			name = Debug;
 		};
-		187838721913F217008C2F5F /* Release */ = {
+		180FC8B51913F88E0063EF04 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 			};
@@ -52,16 +52,16 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1878386F1913F217008C2F5F /* Build configuration list for PBXProject "aislib-atreyu" */ = {
+		180FC8B21913F88E0063EF04 /* Build configuration list for PBXProject "aislib-atreyu" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				187838711913F217008C2F5F /* Debug */,
-				187838721913F217008C2F5F /* Release */,
+				180FC8B41913F88E0063EF04 /* Debug */,
+				180FC8B51913F88E0063EF04 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 1878386C1913F217008C2F5F /* Project object */;
+	rootObject = 180FC8AF1913F88E0063EF04 /* Project object */;
 }
