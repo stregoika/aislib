@@ -1,4 +1,4 @@
-﻿CREATE OR REPLACE FUNCTION ce_fisheries.clean_vessel() 
+CREATE OR REPLACE FUNCTION ce_fisheries.clean_vessel() 
 RETURNS void AS
 $BODY$
 DECLARE    
@@ -26,7 +26,11 @@ BEGIN
    	        power_aux, hull_material, com_year, com_month, com_day, segment, 
    	        construction_year, construction_place, import_date) 
             VALUES
-               (regVessel.id, regVessel.country_code, regVessel.cfr, 'Y', 
+               (regVessel.id, regVessel.country_code, regVessel.cfr, 
+		CASE 
+                    WHEN regVessel.event_code != ALL (eventOut) THEN 'Y'
+                    ELSE 'N'
+                END,
                 regVessel.reg_num, regVessel.ext_marking, regVessel.vessel_name, 
                 regVessel.port_code, regVessel.port_name, regVessel.ircs_code,
    	        regVessel.ircs, regVessel.vms_code, regVessel.gear_main_code, 
@@ -51,29 +55,45 @@ BEGIN
            SELECT * INTO regVesselClean 
                FROM ce_fisheries.vessel 
                WHERE ce_fisheries.vessel.cfr=regVessel.cfr;
-           /* Ponerlo como inactivo */
-           IF regVessel.event_code = ANY(eventOut) AND regVesselClean.active = 'Y' THEN
-               UPDATE ce_fisheries.vessel AS V 
-               SET
-                   id = cVessel.id,
-                   country_code = cVessel.country_code,
-                   active = 'N',
-                   reg_num = cVessel.reg_num,
-                   ext_marking = cVessel.ext_marking,
-                   vessel_name = cVessel.vessel_name,
-                   port_code = cVessel.port_code,
-                   port_name = cVessel.port_name,
-                   ircs_code = cVessel.ircs_code,
-                   ircs = cVessel.ircs,
-                   vms_code = cVessel.vms_code,
-                   gear_main_code = cVessel.gear_main_code,
-                   gear_sec_code = cVessel.gear_sec_code,
-                   loa = cVessel.loar,
-                   lbp = cVessel.lbp,
-                   ton_ref = cVessel.ton_ref,
-                   ton_gt = cVessel.
-               WHERE cfr = cVessel.cfr;
-            END IF;
+           RAISE NOTICE 'CFR: %  ; ID: % ; ACTIVO: %', regVesselClean.cfr, 
+                                                       regVesselClean.id, 
+	                                               regVesselClean.active;
+          /* actualizar datos barco */
+          UPDATE ce_fisheries.vessel AS V 
+          SET
+               id = cVessel.id,
+               country_code = cVessel.country_code,
+               active = ( CASE 
+                          	WHEN regVessel.event_code != ALL (eventOut) THEN 'Y'
+                          	ELSE 'N'
+                          END), 
+               reg_num = cVessel.reg_num,
+               ext_marking = cVessel.ext_marking,
+               vessel_name = cVessel.vessel_name,
+               port_code = cVessel.port_code,
+               port_name = cVessel.port_name,
+               ircs_code = cVessel.ircs_code,
+               ircs = cVessel.ircs,
+               vms_code = cVessel.vms_code,
+               gear_main_code = cVessel.gear_main_code,
+               gear_sec_code = cVessel.gear_sec_code,
+               loa = cVessel.loar,
+               lbp = cVessel.lbp,
+               ton_ref = cVessel.ton_ref,
+               ton_gt = cVessel.ton_gt,
+	       ton_oth = regVessel.ton_oth, 
+   	       ton_gts = regVessel.ton_gts, 
+   	       power_main = regVessel.power_main,
+   	       power_aux = regVessel.power_aux, 
+   	       hull_material = regVessel.hull_material, 
+   	       com_year = regVessel.com_year, 
+   	       com_month = regVessel.com_month, 
+   	       com_day = regVessel.com_day, 
+   	       segment = regVessel.segment, 
+   	       construction_year = regVessel.construction_year, 
+   	       construction_place = regVessel.construction_place, 
+   	       import_date = regVessel.import_date
+            WHERE cfr = cVessel.cfr;
        END IF;
    END LOOP;
 END;
