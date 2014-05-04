@@ -1,0 +1,969 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXFileReference section */
+		E3C79D771913A88800D064A2 /* __init__.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = __init__.py; sourceTree = "<group>"; };
+		E3C79D781913A88800D064A2 /* ais.xsl */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = ais.xsl; sourceTree = "<group>"; };
+		E3C79D791913A88800D064A2 /* ais_msg_1.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = ais_msg_1.html; sourceTree = "<group>"; };
+		E3C79D7A1913A88800D064A2 /* ais_msg_1.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_msg_1.py; sourceTree = "<group>"; };
+		E3C79D7B1913A88800D064A2 /* ais_msg_1.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = ais_msg_1.xml; sourceTree = "<group>"; };
+		E3C79D7C1913A88800D064A2 /* ais_msg_10.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = ais_msg_10.html; sourceTree = "<group>"; };
+		E3C79D7D1913A88800D064A2 /* ais_msg_10.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_msg_10.py; sourceTree = "<group>"; };
+		E3C79D7E1913A88800D064A2 /* ais_msg_10.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = ais_msg_10.xml; sourceTree = "<group>"; };
+		E3C79D7F1913A88800D064A2 /* ais_msg_11.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = ais_msg_11.html; sourceTree = "<group>"; };
+		E3C79D801913A88800D064A2 /* ais_msg_11.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_msg_11.py; sourceTree = "<group>"; };
+		E3C79D811913A88800D064A2 /* ais_msg_11.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = ais_msg_11.xml; sourceTree = "<group>"; };
+		E3C79D821913A88800D064A2 /* ais_msg_12.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = ais_msg_12.html; sourceTree = "<group>"; };
+		E3C79D831913A88800D064A2 /* ais_msg_12.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_msg_12.py; sourceTree = "<group>"; };
+		E3C79D841913A88800D064A2 /* ais_msg_12.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = ais_msg_12.xml; sourceTree = "<group>"; };
+		E3C79D851913A88800D064A2 /* ais_msg_14.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = ais_msg_14.html; sourceTree = "<group>"; };
+		E3C79D861913A88800D064A2 /* ais_msg_14.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_msg_14.py; sourceTree = "<group>"; };
+		E3C79D871913A88800D064A2 /* ais_msg_14.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = ais_msg_14.xml; sourceTree = "<group>"; };
+		E3C79D881913A88800D064A2 /* ais_msg_15.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = ais_msg_15.html; sourceTree = "<group>"; };
+		E3C79D891913A88800D064A2 /* ais_msg_15.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_msg_15.py; sourceTree = "<group>"; };
+		E3C79D8A1913A88800D064A2 /* ais_msg_15.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = ais_msg_15.xml; sourceTree = "<group>"; };
+		E3C79D8B1913A88800D064A2 /* ais_msg_17.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = ais_msg_17.html; sourceTree = "<group>"; };
+		E3C79D8C1913A88800D064A2 /* ais_msg_17.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_msg_17.py; sourceTree = "<group>"; };
+		E3C79D8D1913A88800D064A2 /* ais_msg_17.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = ais_msg_17.xml; sourceTree = "<group>"; };
+		E3C79D8E1913A88800D064A2 /* ais_msg_18.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = ais_msg_18.html; sourceTree = "<group>"; };
+		E3C79D8F1913A88800D064A2 /* ais_msg_18.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_msg_18.py; sourceTree = "<group>"; };
+		E3C79D901913A88800D064A2 /* ais_msg_18.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = ais_msg_18.xml; sourceTree = "<group>"; };
+		E3C79D911913A88800D064A2 /* ais_msg_19.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = ais_msg_19.html; sourceTree = "<group>"; };
+		E3C79D921913A88800D064A2 /* ais_msg_19.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_msg_19.py; sourceTree = "<group>"; };
+		E3C79D931913A88800D064A2 /* ais_msg_19.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = ais_msg_19.xml; sourceTree = "<group>"; };
+		E3C79D941913A88800D064A2 /* ais_msg_1_handcoded.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_msg_1_handcoded.py; sourceTree = "<group>"; };
+		E3C79D951913A88800D064A2 /* ais_msg_2.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = ais_msg_2.html; sourceTree = "<group>"; };
+		E3C79D961913A88800D064A2 /* ais_msg_2.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_msg_2.py; sourceTree = "<group>"; };
+		E3C79D971913A88800D064A2 /* ais_msg_2.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = ais_msg_2.xml; sourceTree = "<group>"; };
+		E3C79D981913A88800D064A2 /* ais_msg_20.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = ais_msg_20.html; sourceTree = "<group>"; };
+		E3C79D991913A88800D064A2 /* ais_msg_20.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_msg_20.py; sourceTree = "<group>"; };
+		E3C79D9A1913A88800D064A2 /* ais_msg_20.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = ais_msg_20.xml; sourceTree = "<group>"; };
+		E3C79D9B1913A88800D064A2 /* ais_msg_21.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = ais_msg_21.html; sourceTree = "<group>"; };
+		E3C79D9C1913A88800D064A2 /* ais_msg_21.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_msg_21.py; sourceTree = "<group>"; };
+		E3C79D9D1913A88800D064A2 /* ais_msg_21.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = ais_msg_21.xml; sourceTree = "<group>"; };
+		E3C79D9E1913A88800D064A2 /* ais_msg_21_handcoded.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_msg_21_handcoded.py; sourceTree = "<group>"; };
+		E3C79D9F1913A88800D064A2 /* ais_msg_22.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = ais_msg_22.html; sourceTree = "<group>"; };
+		E3C79DA01913A88800D064A2 /* ais_msg_22.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_msg_22.py; sourceTree = "<group>"; };
+		E3C79DA11913A88800D064A2 /* ais_msg_22.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = ais_msg_22.xml; sourceTree = "<group>"; };
+		E3C79DA21913A88800D064A2 /* ais_msg_23.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = ais_msg_23.html; sourceTree = "<group>"; };
+		E3C79DA31913A88800D064A2 /* ais_msg_23.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_msg_23.py; sourceTree = "<group>"; };
+		E3C79DA41913A88800D064A2 /* ais_msg_23.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = ais_msg_23.xml; sourceTree = "<group>"; };
+		E3C79DA51913A88800D064A2 /* ais_msg_24_handcoded.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_msg_24_handcoded.py; sourceTree = "<group>"; };
+		E3C79DA61913A88800D064A2 /* ais_msg_2_handcoded.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_msg_2_handcoded.py; sourceTree = "<group>"; };
+		E3C79DA71913A88800D064A2 /* ais_msg_3.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = ais_msg_3.html; sourceTree = "<group>"; };
+		E3C79DA81913A88800D064A2 /* ais_msg_3.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_msg_3.py; sourceTree = "<group>"; };
+		E3C79DA91913A88800D064A2 /* ais_msg_3.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = ais_msg_3.xml; sourceTree = "<group>"; };
+		E3C79DAA1913A88800D064A2 /* ais_msg_3_handcoded.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_msg_3_handcoded.py; sourceTree = "<group>"; };
+		E3C79DAB1913A88800D064A2 /* ais_msg_4.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = ais_msg_4.html; sourceTree = "<group>"; };
+		E3C79DAC1913A88800D064A2 /* ais_msg_4.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_msg_4.py; sourceTree = "<group>"; };
+		E3C79DAD1913A88800D064A2 /* ais_msg_4.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = ais_msg_4.xml; sourceTree = "<group>"; };
+		E3C79DAE1913A88800D064A2 /* ais_msg_4_handcoded.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_msg_4_handcoded.py; sourceTree = "<group>"; };
+		E3C79DAF1913A88800D064A2 /* ais_msg_5.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = ais_msg_5.html; sourceTree = "<group>"; };
+		E3C79DB01913A88800D064A2 /* ais_msg_5.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_msg_5.py; sourceTree = "<group>"; };
+		E3C79DB11913A88800D064A2 /* ais_msg_5.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = ais_msg_5.xml; sourceTree = "<group>"; };
+		E3C79DB21913A88800D064A2 /* ais_msg_5_utils.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_msg_5_utils.py; sourceTree = "<group>"; };
+		E3C79DB31913A88800D064A2 /* ais_msg_6.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = ais_msg_6.html; sourceTree = "<group>"; };
+		E3C79DB41913A88800D064A2 /* ais_msg_6.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_msg_6.py; sourceTree = "<group>"; };
+		E3C79DB51913A88800D064A2 /* ais_msg_6.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = ais_msg_6.xml; sourceTree = "<group>"; };
+		E3C79DB61913A88800D064A2 /* ais_msg_7.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = ais_msg_7.html; sourceTree = "<group>"; };
+		E3C79DB71913A88800D064A2 /* ais_msg_7.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_msg_7.py; sourceTree = "<group>"; };
+		E3C79DB81913A88800D064A2 /* ais_msg_7.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = ais_msg_7.xml; sourceTree = "<group>"; };
+		E3C79DB91913A88800D064A2 /* ais_msg_7_handcoded.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_msg_7_handcoded.py; sourceTree = "<group>"; };
+		E3C79DBA1913A88800D064A2 /* ais_msg_8.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = ais_msg_8.html; sourceTree = "<group>"; };
+		E3C79DBB1913A88800D064A2 /* ais_msg_8.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_msg_8.py; sourceTree = "<group>"; };
+		E3C79DBC1913A88800D064A2 /* ais_msg_8.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = ais_msg_8.xml; sourceTree = "<group>"; };
+		E3C79DBD1913A88800D064A2 /* ais_msg_9.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = ais_msg_9.html; sourceTree = "<group>"; };
+		E3C79DBE1913A88800D064A2 /* ais_msg_9.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_msg_9.py; sourceTree = "<group>"; };
+		E3C79DBF1913A88800D064A2 /* ais_msg_9.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = ais_msg_9.xml; sourceTree = "<group>"; };
+		E3C79DC01913A88800D064A2 /* aisfield.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = aisfield.py; sourceTree = "<group>"; };
+		E3C79DC11913A88800D064A2 /* aisstring.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = aisstring.py; sourceTree = "<group>"; };
+		E3C79DC21913A88800D064A2 /* allaistypes.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = allaistypes.html; sourceTree = "<group>"; };
+		E3C79DC31913A88800D064A2 /* allaistypes.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = allaistypes.py; sourceTree = "<group>"; };
+		E3C79DC41913A88800D064A2 /* allaistypes.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = allaistypes.xml; sourceTree = "<group>"; };
+		E3C79DC51913A88800D064A2 /* binary.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = binary.py; sourceTree = "<group>"; };
+		E3C79DC61913A88800D064A2 /* BitVector.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = BitVector.py; sourceTree = "<group>"; };
+		E3C79DC71913A88800D064A2 /* commstate.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = commstate.py; sourceTree = "<group>"; };
+		E3C79DC81913A88800D064A2 /* exampleParser.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = exampleParser.py; sourceTree = "<group>"; };
+		E3C79DC91913A88800D064A2 /* expandais.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = expandais.py; sourceTree = "<group>"; };
+		E3C79DCA1913A88800D064A2 /* imo_001_11.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = imo_001_11.html; sourceTree = "<group>"; };
+		E3C79DCB1913A88800D064A2 /* imo_001_11.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = imo_001_11.py; sourceTree = "<group>"; };
+		E3C79DCC1913A88800D064A2 /* imo_001_11.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = imo_001_11.xml; sourceTree = "<group>"; };
+		E3C79DCD1913A88800D064A2 /* imo_001_11_handcoded.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = imo_001_11_handcoded.py; sourceTree = "<group>"; };
+		E3C79DCE1913A88800D064A2 /* imo_001_13.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = imo_001_13.html; sourceTree = "<group>"; };
+		E3C79DCF1913A88800D064A2 /* imo_001_13.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = imo_001_13.py; sourceTree = "<group>"; };
+		E3C79DD01913A88800D064A2 /* imo_001_13.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = imo_001_13.xml; sourceTree = "<group>"; };
+		E3C79DD11913A88800D064A2 /* imo_001_14.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = imo_001_14.html; sourceTree = "<group>"; };
+		E3C79DD21913A88800D064A2 /* imo_001_14.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = imo_001_14.py; sourceTree = "<group>"; };
+		E3C79DD31913A88800D064A2 /* imo_001_14.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = imo_001_14.xml; sourceTree = "<group>"; };
+		E3C79DD41913A88800D064A2 /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
+		E3C79DD51913A88800D064A2 /* nmea.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = nmea.py; sourceTree = "<group>"; };
+		E3C79DD71913A88800D064A2 /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
+		E3C79DD81913A88800D064A2 /* waterlevel.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = waterlevel.html; sourceTree = "<group>"; };
+		E3C79DD91913A88800D064A2 /* waterlevel.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = waterlevel.xml; sourceTree = "<group>"; };
+		E3C79DDB1913A88800D064A2 /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
+		E3C79DDC1913A88800D064A2 /* rtcm-20-zone.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "rtcm-20-zone.xml"; sourceTree = "<group>"; };
+		E3C79DDE1913A88800D064A2 /* estlocktimes.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = estlocktimes.html; sourceTree = "<group>"; };
+		E3C79DDF1913A88800D064A2 /* estlocktimes.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = estlocktimes.xml; sourceTree = "<group>"; };
+		E3C79DE01913A88800D064A2 /* header.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = header.xml; sourceTree = "<group>"; };
+		E3C79DE11913A88800D064A2 /* lockorder.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = lockorder.html; sourceTree = "<group>"; };
+		E3C79DE21913A88800D064A2 /* lockorder.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = lockorder.xml; sourceTree = "<group>"; };
+		E3C79DE31913A88800D064A2 /* lockschedule.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = lockschedule.html; sourceTree = "<group>"; };
+		E3C79DE41913A88800D064A2 /* lockschedule.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = lockschedule.xml; sourceTree = "<group>"; };
+		E3C79DE51913A88800D064A2 /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
+		E3C79DE61913A88800D064A2 /* structures.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = structures.xml; sourceTree = "<group>"; };
+		E3C79DE71913A88800D064A2 /* waterflow.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = waterflow.html; sourceTree = "<group>"; };
+		E3C79DE81913A88800D064A2 /* waterflow.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = waterflow.xml; sourceTree = "<group>"; };
+		E3C79DE91913A88800D064A2 /* waterlevel.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = waterlevel.html; sourceTree = "<group>"; };
+		E3C79DEA1913A88800D064A2 /* waterlevel.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = waterlevel.xml; sourceTree = "<group>"; };
+		E3C79DEB1913A88800D064A2 /* weatherreport.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = weatherreport.html; sourceTree = "<group>"; };
+		E3C79DEC1913A88800D064A2 /* weatherreport.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = weatherreport.xml; sourceTree = "<group>"; };
+		E3C79DED1913A88800D064A2 /* wind.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = wind.html; sourceTree = "<group>"; };
+		E3C79DEE1913A88800D064A2 /* wind.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = wind.xml; sourceTree = "<group>"; };
+		E3C79DEF1913A88800D064A2 /* sqlhelp.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = sqlhelp.py; sourceTree = "<group>"; };
+		E3C79DF01913A88800D064A2 /* structs-inc.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "structs-inc.xml"; sourceTree = "<group>"; };
+		E3C79DF21913A88800D064A2 /* ais_msg_1_1.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = ais_msg_1_1.xml; sourceTree = "<group>"; };
+		E3C79DF31913A88800D064A2 /* ais_msg_8_1.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = ais_msg_8_1.xml; sourceTree = "<group>"; };
+		E3C79DF41913A88800D064A2 /* sls_waterlevel_3_1.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = sls_waterlevel_3_1.xml; sourceTree = "<group>"; };
+		E3C79DF51913A88800D064A2 /* sls_waterlevel_3_2.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = sls_waterlevel_3_2.xml; sourceTree = "<group>"; };
+		E3C79DF61913A88800D064A2 /* sls_wind_2_1.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = sls_wind_2_1.xml; sourceTree = "<group>"; };
+		E3C79DF71913A88800D064A2 /* test.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = test.py; sourceTree = "<group>"; };
+		E3C79DF81913A88800D064A2 /* test_sls_waterlevel.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = test_sls_waterlevel.py; sourceTree = "<group>"; };
+		E3C79DF91913A88800D064A2 /* timed_circular_notice.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = timed_circular_notice.html; sourceTree = "<group>"; };
+		E3C79DFA1913A88800D064A2 /* timed_circular_notice.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = timed_circular_notice.py; sourceTree = "<group>"; };
+		E3C79DFB1913A88800D064A2 /* timed_circular_notice.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = timed_circular_notice.xml; sourceTree = "<group>"; };
+		E3C79DFC1913A88800D064A2 /* translators.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = translators.py; sourceTree = "<group>"; };
+		E3C79DFD1913A88800D064A2 /* waterlevel.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = waterlevel.html; sourceTree = "<group>"; };
+		E3C79DFE1913A88800D064A2 /* waterlevel.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = waterlevel.py; sourceTree = "<group>"; };
+		E3C79DFF1913A88800D064A2 /* waterlevel.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = waterlevel.xml; sourceTree = "<group>"; };
+		E3C79E001913A88800D064A2 /* waterlevel2.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = waterlevel2.html; sourceTree = "<group>"; };
+		E3C79E011913A88800D064A2 /* waterlevel2.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = waterlevel2.py; sourceTree = "<group>"; };
+		E3C79E021913A88800D064A2 /* waterlevel2.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = waterlevel2.xml; sourceTree = "<group>"; };
+		E3C79E031913A88800D064A2 /* whalenotice.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = whalenotice.html; sourceTree = "<group>"; };
+		E3C79E041913A88800D064A2 /* whalenotice.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = whalenotice.py; sourceTree = "<group>"; };
+		E3C79E051913A88800D064A2 /* whalenotice.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = whalenotice.xml; sourceTree = "<group>"; };
+		E3C79E061913A88800D064A2 /* whalenotice1.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = whalenotice1.html; sourceTree = "<group>"; };
+		E3C79E071913A88800D064A2 /* whalenotice1.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = whalenotice1.py; sourceTree = "<group>"; };
+		E3C79E081913A88800D064A2 /* whalenotice1.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = whalenotice1.xml; sourceTree = "<group>"; };
+		E3C79E091913A88800D064A2 /* whalenotice2.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = whalenotice2.html; sourceTree = "<group>"; };
+		E3C79E0A1913A88800D064A2 /* whalenotice2.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = whalenotice2.py; sourceTree = "<group>"; };
+		E3C79E0B1913A88800D064A2 /* whalenotice2.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = whalenotice2.xml; sourceTree = "<group>"; };
+		E3C79E0C1913A88800D064A2 /* aislib-tardis.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = "aislib-tardis.xcodeproj"; sourceTree = "<group>"; };
+		E3C79E111913A88900D064A2 /* __init__.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = __init__.py; sourceTree = "<group>"; };
+		E3C79E121913A88900D064A2 /* daemon.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = daemon.py; sourceTree = "<group>"; };
+		E3C79E131913A88900D064A2 /* database.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = database.py; sourceTree = "<group>"; };
+		E3C79E141913A88900D064A2 /* grid.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = grid.py; sourceTree = "<group>"; };
+		E3C79E151913A88900D064A2 /* nmea_ait.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = nmea_ait.py; sourceTree = "<group>"; };
+		E3C79E161913A88900D064A2 /* nmea_cnc.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = nmea_cnc.py; sourceTree = "<group>"; };
+		E3C79E171913A88900D064A2 /* normalize.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = normalize.py; sourceTree = "<group>"; };
+		E3C79E181913A88900D064A2 /* server.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = server.py; sourceTree = "<group>"; };
+		E3C79E191913A88900D064A2 /* uscg.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = uscg.py; sourceTree = "<group>"; };
+		E3C79E1A1913A88900D064A2 /* wkb.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = wkb.py; sourceTree = "<group>"; };
+		E3C79E1B1913A88900D064A2 /* ChangeLog.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = ChangeLog.html; sourceTree = "<group>"; };
+		E3C79E1C1913A88900D064A2 /* control.in */ = {isa = PBXFileReference; lastKnownFileType = text; path = control.in; sourceTree = "<group>"; };
+		E3C79E1D1913A88900D064A2 /* COPYING */ = {isa = PBXFileReference; lastKnownFileType = text; path = COPYING; sourceTree = "<group>"; };
+		E3C79E1F1913A88900D064A2 /* gsc.dat */ = {isa = PBXFileReference; lastKnownFileType = text; path = gsc.dat; sourceTree = "<group>"; };
+		E3C79E201913A88900D064A2 /* mmsi_prefix.sql */ = {isa = PBXFileReference; lastKnownFileType = text; path = mmsi_prefix.sql; sourceTree = "<group>"; };
+		E3C79E211913A88900D064A2 /* stellwagen.dat */ = {isa = PBXFileReference; lastKnownFileType = text; path = stellwagen.dat; sourceTree = "<group>"; };
+		E3C79E241913A88900D064A2 /* __init__.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = __init__.py; sourceTree = "<group>"; };
+		E3C79E261913A88900D064A2 /* __init__.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = __init__.py; sourceTree = "<group>"; };
+		E3C79E271913A88900D064A2 /* dac.sql */ = {isa = PBXFileReference; lastKnownFileType = text; path = dac.sql; sourceTree = "<group>"; };
+		E3C79E281913A88900D064A2 /* models.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = models.py; sourceTree = "<group>"; };
+		E3C79E291913A88900D064A2 /* preload.sql */ = {isa = PBXFileReference; lastKnownFileType = text; path = preload.sql; sourceTree = "<group>"; };
+		E3C79E2A1913A88900D064A2 /* README.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
+		E3C79E2B1913A88900D064A2 /* views.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = views.py; sourceTree = "<group>"; };
+		E3C79E2C1913A88900D064A2 /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
+		E3C79E2D1913A88900D064A2 /* manage.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = manage.py; sourceTree = "<group>"; };
+		E3C79E2F1913A88900D064A2 /* __init__.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = __init__.py; sourceTree = "<group>"; };
+		E3C79E301913A88900D064A2 /* models.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = models.py; sourceTree = "<group>"; };
+		E3C79E311913A88900D064A2 /* views.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = views.py; sourceTree = "<group>"; };
+		E3C79E321913A88900D064A2 /* settings.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = settings.py; sourceTree = "<group>"; };
+		E3C79E331913A88900D064A2 /* urls.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = urls.py; sourceTree = "<group>"; };
+		E3C79E341913A88900D064A2 /* README.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
+		E3C79E361913A88900D064A2 /* ais-messages-HEADER.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = "ais-messages-HEADER.html"; sourceTree = "<group>"; };
+		E3C79E371913A88900D064A2 /* ais.bib */ = {isa = PBXFileReference; lastKnownFileType = text; path = ais.bib; sourceTree = "<group>"; };
+		E3C79E381913A88900D064A2 /* configure-ais-logging.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "configure-ais-logging.txt"; sourceTree = "<group>"; };
+		E3C79E391913A88900D064A2 /* database-setup.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "database-setup.txt"; sourceTree = "<group>"; };
+		E3C79E3A1913A88900D064A2 /* esr-review.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "esr-review.txt"; sourceTree = "<group>"; };
+		E3C79E3B1913A88900D064A2 /* main-HEADER.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = "main-HEADER.html"; sourceTree = "<group>"; };
+		E3C79E3C1913A88900D064A2 /* README.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
+		E3C79E3F1913A88900D064A2 /* __init__.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = __init__.py; sourceTree = "<group>"; };
+		E3C79E411913A88900D064A2 /* __init__.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = __init__.py; sourceTree = "<group>"; };
+		E3C79E421913A88900D064A2 /* models.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = models.py; sourceTree = "<group>"; };
+		E3C79E431913A88900D064A2 /* urls.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = urls.py; sourceTree = "<group>"; };
+		E3C79E441913A88900D064A2 /* views.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = views.py; sourceTree = "<group>"; };
+		E3C79E461913A88900D064A2 /* __init__.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = __init__.py; sourceTree = "<group>"; };
+		E3C79E471913A88900D064A2 /* dac.sql */ = {isa = PBXFileReference; lastKnownFileType = text; path = dac.sql; sourceTree = "<group>"; };
+		E3C79E481913A88900D064A2 /* models.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = models.py; sourceTree = "<group>"; };
+		E3C79E491913A88900D064A2 /* preload.sql */ = {isa = PBXFileReference; lastKnownFileType = text; path = preload.sql; sourceTree = "<group>"; };
+		E3C79E4A1913A88900D064A2 /* README.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
+		E3C79E4B1913A88900D064A2 /* urls.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = urls.py; sourceTree = "<group>"; };
+		E3C79E4C1913A88900D064A2 /* views.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = views.py; sourceTree = "<group>"; };
+		E3C79E4D1913A88900D064A2 /* hello.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = hello.py; sourceTree = "<group>"; };
+		E3C79E4E1913A88900D064A2 /* hello_template.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = hello_template.py; sourceTree = "<group>"; };
+		E3C79E4F1913A88900D064A2 /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
+		E3C79E501913A88900D064A2 /* manage.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = manage.py; sourceTree = "<group>"; };
+		E3C79E511913A88900D064A2 /* settings.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = settings.py; sourceTree = "<group>"; };
+		E3C79E531913A88900D064A2 /* current_datetime.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = current_datetime.html; sourceTree = "<group>"; };
+		E3C79E541913A88900D064A2 /* urls.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = urls.py; sourceTree = "<group>"; };
+		E3C79E561913A88900D064A2 /* ais-forward */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "ais-forward"; sourceTree = "<group>"; };
+		E3C79E571913A88900D064A2 /* logais */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = logais; sourceTree = "<group>"; };
+		E3C79E581913A88900D064A2 /* logtide */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = logtide; sourceTree = "<group>"; };
+		E3C79E591913A88900D064A2 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		E3C79E5A1913A88900D064A2 /* make_waterlevel_ais.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = make_waterlevel_ais.py; sourceTree = "<group>"; };
+		E3C79E5B1913A88900D064A2 /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
+		E3C79E5C1913A88900D064A2 /* MANIFEST.in */ = {isa = PBXFileReference; lastKnownFileType = text; path = MANIFEST.in; sourceTree = "<group>"; };
+		E3C79E5E1913A88900D064A2 /* __init__.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = __init__.py; sourceTree = "<group>"; };
+		E3C79E5F1913A88900D064A2 /* checksum.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = checksum.py; sourceTree = "<group>"; };
+		E3C79E601913A88900D064A2 /* gga.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = gga.py; sourceTree = "<group>"; };
+		E3C79E611913A88900D064A2 /* nmea_error.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = nmea_error.py; sourceTree = "<group>"; };
+		E3C79E621913A88900D064A2 /* rmc.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = rmc.py; sourceTree = "<group>"; };
+		E3C79E631913A88900D064A2 /* zda.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = zda.py; sourceTree = "<group>"; };
+		E3C79E641913A88900D064A2 /* znt.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = znt.py; sourceTree = "<group>"; };
+		E3C79E651913A88900D064A2 /* noaa_waterlevel_ais.bash */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = noaa_waterlevel_ais.bash; sourceTree = "<group>"; };
+		E3C79E671913A88900D064A2 /* __init__.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = __init__.py; sourceTree = "<group>"; };
+		E3C79E681913A88900D064A2 /* dumpallwl.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = dumpallwl.py; sourceTree = "<group>"; };
+		E3C79E691913A88900D064A2 /* stations-soap.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "stations-soap.xml"; sourceTree = "<group>"; };
+		E3C79E6A1913A88900D064A2 /* stations.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = stations.py; sourceTree = "<group>"; };
+		E3C79E6B1913A88900D064A2 /* tideserver.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = tideserver.py; sourceTree = "<group>"; };
+		E3C79E6C1913A88900D064A2 /* waterlevel_dap.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = waterlevel_dap.py; sourceTree = "<group>"; };
+		E3C79E6D1913A88900D064A2 /* waterlevelraw.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = waterlevelraw.py; sourceTree = "<group>"; };
+		E3C79E6F1913A88900D064A2 /* dependency_links.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = dependency_links.txt; sourceTree = "<group>"; };
+		E3C79E701913A88900D064A2 /* PKG-INFO */ = {isa = PBXFileReference; lastKnownFileType = text; path = "PKG-INFO"; sourceTree = "<group>"; };
+		E3C79E711913A88900D064A2 /* SOURCES.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = SOURCES.txt; sourceTree = "<group>"; };
+		E3C79E721913A88900D064A2 /* top_level.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = top_level.txt; sourceTree = "<group>"; };
+		E3C79E731913A88900D064A2 /* noaadata-py.info.in */ = {isa = PBXFileReference; lastKnownFileType = text; path = "noaadata-py.info.in"; sourceTree = "<group>"; };
+		E3C79E741913A88900D064A2 /* PKG-INFO */ = {isa = PBXFileReference; lastKnownFileType = text; path = "PKG-INFO"; sourceTree = "<group>"; };
+		E3C79E751913A88900D064A2 /* README */ = {isa = PBXFileReference; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
+		E3C79E761913A88900D064A2 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		E3C79E781913A88900D064A2 /* adjust_time.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = adjust_time.py; sourceTree = "<group>"; };
+		E3C79E791913A88900D064A2 /* ais_filter_by_mmsi.cxx */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ais_filter_by_mmsi.cxx; sourceTree = "<group>"; };
+		E3C79E7A1913A88900D064A2 /* ais_pg_dailyvessels.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_pg_dailyvessels.py; sourceTree = "<group>"; };
+		E3C79E7B1913A88900D064A2 /* ais_pg_import2006spreadsheet.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_pg_import2006spreadsheet.py; sourceTree = "<group>"; };
+		E3C79E7C1913A88900D064A2 /* ais_pg_monthhistogram.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_pg_monthhistogram.py; sourceTree = "<group>"; };
+		E3C79E7D1913A88900D064A2 /* ais_pg_speedsummary.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_pg_speedsummary.py; sourceTree = "<group>"; };
+		E3C79E7E1913A88900D064A2 /* ais_pg_transitsummary.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_pg_transitsummary.py; sourceTree = "<group>"; };
+		E3C79E7F1913A88900D064A2 /* ais_pg_vesselsummary.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_pg_vesselsummary.py; sourceTree = "<group>"; };
+		E3C79E801913A88900D064A2 /* bbm.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = bbm.py; sourceTree = "<group>"; };
+		E3C79E811913A88900D064A2 /* bogus_unittest.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = bogus_unittest.py; sourceTree = "<group>"; };
+		E3C79E821913A88900D064A2 /* build-time-notice-test-data.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "build-time-notice-test-data.sh"; sourceTree = "<group>"; };
+		E3C79E831913A88900D064A2 /* buildais.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = buildais.py; sourceTree = "<group>"; };
+		E3C79E841913A88900D064A2 /* cptimestamp2front.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = cptimestamp2front.py; sourceTree = "<group>"; };
+		E3C79E851913A88900D064A2 /* gsc-and-tss.dat */ = {isa = PBXFileReference; lastKnownFileType = text; path = "gsc-and-tss.dat"; sourceTree = "<group>"; };
+		E3C79E861913A88900D064A2 /* gsc-and-tss.kml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "gsc-and-tss.kml"; sourceTree = "<group>"; };
+		E3C79E871913A88900D064A2 /* gsc-bbox.kml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "gsc-bbox.kml"; sourceTree = "<group>"; };
+		E3C79E881913A88900D064A2 /* gsc.dat */ = {isa = PBXFileReference; lastKnownFileType = text; path = gsc.dat; sourceTree = "<group>"; };
+		E3C79E891913A88900D064A2 /* gsc.kml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = gsc.kml; sourceTree = "<group>"; };
+		E3C79E8A1913A88900D064A2 /* gsc.tss.dat */ = {isa = PBXFileReference; lastKnownFileType = text; path = gsc.tss.dat; sourceTree = "<group>"; };
+		E3C79E8B1913A88900D064A2 /* gsc.tss.kml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = gsc.tss.kml; sourceTree = "<group>"; };
+		E3C79E8C1913A88900D064A2 /* kml_countdown_placemark.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = kml_countdown_placemark.py; sourceTree = "<group>"; };
+		E3C79E8D1913A88900D064A2 /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
+		E3C79E8E1913A88900D064A2 /* maru-xy.dat */ = {isa = PBXFileReference; lastKnownFileType = text; path = "maru-xy.dat"; sourceTree = "<group>"; };
+		E3C79E8F1913A88900D064A2 /* monthplots.gp */ = {isa = PBXFileReference; lastKnownFileType = text; path = monthplots.gp; sourceTree = "<group>"; };
+		E3C79E901913A88900D064A2 /* nmea.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = nmea.py; sourceTree = "<group>"; };
+		E3C79E911913A88900D064A2 /* nmeamessages.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = nmeamessages.py; sourceTree = "<group>"; };
+		E3C79E921913A88900D064A2 /* revelle2uscgold.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = revelle2uscgold.py; sourceTree = "<group>"; };
+		E3C79E931913A88900D064A2 /* sbnms-buoys-ab.xys */ = {isa = PBXFileReference; lastKnownFileType = text; path = "sbnms-buoys-ab.xys"; sourceTree = "<group>"; };
+		E3C79E941913A88900D064A2 /* sbnms-buoys-ab.xyt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "sbnms-buoys-ab.xyt"; sourceTree = "<group>"; };
+		E3C79E951913A88900D064A2 /* sbnms.grd.cmd */ = {isa = PBXFileReference; lastKnownFileType = text.script.csh; path = sbnms.grd.cmd; sourceTree = "<group>"; };
+		E3C79E961913A88900D064A2 /* six_min_avg.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = six_min_avg.m; sourceTree = "<group>"; };
+		E3C79E971913A88900D064A2 /* soapclient.pl */ = {isa = PBXFileReference; lastKnownFileType = text.script.perl; path = soapclient.pl; sourceTree = "<group>"; };
+		E3C79E981913A88900D064A2 /* stripfront.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = stripfront.py; sourceTree = "<group>"; };
+		E3C79E991913A88900D064A2 /* tideconvert.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = tideconvert.py; sourceTree = "<group>"; };
+		E3C79E9A1913A88900D064A2 /* timestamp.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = timestamp.py; sourceTree = "<group>"; };
+		E3C79E9B1913A88900D064A2 /* timetest.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = timetest.py; sourceTree = "<group>"; };
+		E3C79E9C1913A88900D064A2 /* whalemortality.dat */ = {isa = PBXFileReference; lastKnownFileType = text; path = whalemortality.dat; sourceTree = "<group>"; };
+		E3C79E9E1913A88900D064A2 /* ais-db */ = {isa = PBXFileReference; lastKnownFileType = text; path = "ais-db"; sourceTree = "<group>"; };
+		E3C79E9F1913A88900D064A2 /* ais-db-rebuild-cache-tables */ = {isa = PBXFileReference; lastKnownFileType = text; path = "ais-db-rebuild-cache-tables"; sourceTree = "<group>"; };
+		E3C79EA01913A88900D064A2 /* ais-net-to-postgis */ = {isa = PBXFileReference; lastKnownFileType = text; path = "ais-net-to-postgis"; sourceTree = "<group>"; };
+		E3C79EA11913A88900D064A2 /* ais-port-forward */ = {isa = PBXFileReference; lastKnownFileType = text; path = "ais-port-forward"; sourceTree = "<group>"; };
+		E3C79EA21913A88900D064A2 /* ais-process-day.bash */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "ais-process-day.bash"; sourceTree = "<group>"; };
+		E3C79EA31913A88900D064A2 /* ais-receive-bbox */ = {isa = PBXFileReference; lastKnownFileType = text; path = "ais-receive-bbox"; sourceTree = "<group>"; };
+		E3C79EA41913A88900D064A2 /* ais_5report.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_5report.py; sourceTree = "<group>"; };
+		E3C79EA51913A88900D064A2 /* ais_bin_msgs.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_bin_msgs.py; sourceTree = "<group>"; };
+		E3C79EA61913A88900D064A2 /* ais_build_postgis.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_build_postgis.py; sourceTree = "<group>"; };
+		E3C79EA71913A88900D064A2 /* ais_build_sqlite.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_build_sqlite.py; sourceTree = "<group>"; };
+		E3C79EA81913A88900D064A2 /* ais_build_sqlite3.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_build_sqlite3.py; sourceTree = "<group>"; };
+		E3C79EA91913A88900D064A2 /* ais_decimate_traffic.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_decimate_traffic.py; sourceTree = "<group>"; };
+		E3C79EAA1913A88900D064A2 /* ais_distance.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_distance.py; sourceTree = "<group>"; };
+		E3C79EAB1913A88900D064A2 /* ais_dump_mmsi.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_dump_mmsi.py; sourceTree = "<group>"; };
+		E3C79EAC1913A88900D064A2 /* ais_dumpnames.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_dumpnames.py; sourceTree = "<group>"; };
+		E3C79EAD1913A88900D064A2 /* ais_filter.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_filter.py; sourceTree = "<group>"; };
+		E3C79EAE1913A88900D064A2 /* ais_info.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_info.py; sourceTree = "<group>"; };
+		E3C79EAF1913A88900D064A2 /* ais_liststations.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_liststations.py; sourceTree = "<group>"; };
+		E3C79EB01913A88900D064A2 /* ais_names.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_names.py; sourceTree = "<group>"; };
+		E3C79EB11913A88900D064A2 /* ais_nmea_find_matches.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_nmea_find_matches.py; sourceTree = "<group>"; };
+		E3C79EB21913A88900D064A2 /* ais_nmea_info.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_nmea_info.py; sourceTree = "<group>"; };
+		E3C79EB31913A88900D064A2 /* ais_nmea_remove_dups.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_nmea_remove_dups.py; sourceTree = "<group>"; };
+		E3C79EB41913A88900D064A2 /* ais_nmea_uptime.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_nmea_uptime.py; sourceTree = "<group>"; };
+		E3C79EB51913A88900D064A2 /* ais_nmea_uptime2.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_nmea_uptime2.py; sourceTree = "<group>"; };
+		E3C79EB61913A88900D064A2 /* ais_nmea_uscg_timeshift.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_nmea_uscg_timeshift.py; sourceTree = "<group>"; };
+		E3C79EB71913A88900D064A2 /* ais_normalize.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_normalize.py; sourceTree = "<group>"; };
+		E3C79EB81913A88900D064A2 /* ais_oldlog2newlog.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_oldlog2newlog.py; sourceTree = "<group>"; };
+		E3C79EB91913A88900D064A2 /* ais_pg_create_transit_table.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_pg_create_transit_table.py; sourceTree = "<group>"; };
+		E3C79EBA1913A88900D064A2 /* ais_pg_grid.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_pg_grid.py; sourceTree = "<group>"; };
+		E3C79EBB1913A88900D064A2 /* ais_pg_grid_transits.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_pg_grid_transits.py; sourceTree = "<group>"; };
+		E3C79EBC1913A88900D064A2 /* ais_pg_transitlines.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_pg_transitlines.py; sourceTree = "<group>"; };
+		E3C79EBD1913A88900D064A2 /* ais_pg_transitlines_noMakeLine.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_pg_transitlines_noMakeLine.py; sourceTree = "<group>"; };
+		E3C79EBE1913A88900D064A2 /* ais_position_in_polygon.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_position_in_polygon.py; sourceTree = "<group>"; };
+		E3C79EBF1913A88900D064A2 /* ais_positions.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_positions.py; sourceTree = "<group>"; };
+		E3C79EC01913A88900D064A2 /* ais_sqlite_bsreport_analysis.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_sqlite_bsreport_analysis.py; sourceTree = "<group>"; };
+		E3C79EC11913A88900D064A2 /* ais_towersplit.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_towersplit.py; sourceTree = "<group>"; };
+		E3C79EC21913A88900D064A2 /* ais_traffic_analysis.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_traffic_analysis.py; sourceTree = "<group>"; };
+		E3C79EC31913A88900D064A2 /* ais_transits.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_transits.py; sourceTree = "<group>"; };
+		E3C79EC41913A88900D064A2 /* ais_uniq.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_uniq.py; sourceTree = "<group>"; };
+		E3C79EC51913A88900D064A2 /* ais_uscg_splitstations.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ais_uscg_splitstations.py; sourceTree = "<group>"; };
+		E3C79EC61913A88900D064A2 /* aisuser_monitor.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = aisuser_monitor.py; sourceTree = "<group>"; };
+		E3C79EC71913A88900D064A2 /* aisxml2wxpy.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = aisxml2wxpy.py; sourceTree = "<group>"; };
+		E3C79EC81913A88900D064A2 /* aisxmlbinmsg2py.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = aisxmlbinmsg2py.py; sourceTree = "<group>"; };
+		E3C79EC91913A88900D064A2 /* bbox-to-kml */ = {isa = PBXFileReference; lastKnownFileType = text; path = "bbox-to-kml"; sourceTree = "<group>"; };
+		E3C79ECA1913A88900D064A2 /* daily.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = daily.sh; sourceTree = "<group>"; };
+		E3C79ECB1913A88900D064A2 /* decimate */ = {isa = PBXFileReference; lastKnownFileType = text; path = decimate; sourceTree = "<group>"; };
+		E3C79ECC1913A88900D064A2 /* dump_wl.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = dump_wl.py; sourceTree = "<group>"; };
+		E3C79ECD1913A88900D064A2 /* find_missing_logs.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = find_missing_logs.py; sourceTree = "<group>"; };
+		E3C79ECE1913A88900D064A2 /* jpegexif2kml.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = jpegexif2kml.py; sourceTree = "<group>"; };
+		E3C79ECF1913A88900D064A2 /* log_udp.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = log_udp.py; sourceTree = "<group>"; };
+		E3C79ED01913A88900D064A2 /* logger_handlers.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = logger_handlers.py; sourceTree = "<group>"; };
+		E3C79ED11913A88900D064A2 /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
+		E3C79ED21913A88900D064A2 /* nais2postgis.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = nais2postgis.py; sourceTree = "<group>"; };
+		E3C79ED31913A88900D064A2 /* nais_pg_realtime_reaper.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = nais_pg_realtime_reaper.py; sourceTree = "<group>"; };
+		E3C79ED41913A88900D064A2 /* port_server.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = port_server.py; sourceTree = "<group>"; };
+		E3C79ED51913A88900D064A2 /* serial-logger */ = {isa = PBXFileReference; lastKnownFileType = text; path = "serial-logger"; sourceTree = "<group>"; };
+		E3C79ED61913A88900D064A2 /* serial-logger2.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = "serial-logger2.py"; sourceTree = "<group>"; };
+		E3C79ED71913A88900D064A2 /* serial_send.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = serial_send.py; sourceTree = "<group>"; };
+		E3C79ED81913A88900D064A2 /* serial_send2.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = serial_send2.py; sourceTree = "<group>"; };
+		E3C79ED91913A88900D064A2 /* socket_logger.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = socket_logger.py; sourceTree = "<group>"; };
+		E3C79EDA1913A88900D064A2 /* socket_send.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = socket_send.py; sourceTree = "<group>"; };
+		E3C79EDB1913A88900D064A2 /* stellwagen-crossings.bash */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "stellwagen-crossings.bash"; sourceTree = "<group>"; };
+		E3C79EDC1913A88900D064A2 /* stellwagen-shipreport.bash */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "stellwagen-shipreport.bash"; sourceTree = "<group>"; };
+		E3C79EDD1913A88900D064A2 /* test_ais_server.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = test_ais_server.py; sourceTree = "<group>"; };
+		E3C79EDE1913A88900D064A2 /* tide4_process_logs.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = tide4_process_logs.py; sourceTree = "<group>"; };
+		E3C79EDF1913A88900D064A2 /* xy2kml */ = {isa = PBXFileReference; lastKnownFileType = text; path = xy2kml; sourceTree = "<group>"; };
+		E3C79EE01913A88900D064A2 /* xy2kmlline */ = {isa = PBXFileReference; lastKnownFileType = text; path = xy2kmlline; sourceTree = "<group>"; };
+		E3C79EE11913A88900D064A2 /* xy_pos_filter */ = {isa = PBXFileReference; lastKnownFileType = text; path = xy_pos_filter; sourceTree = "<group>"; };
+		E3C79EE21913A88900D064A2 /* xymt2kml */ = {isa = PBXFileReference; lastKnownFileType = text; path = xymt2kml; sourceTree = "<group>"; };
+		E3C79EE31913A88900D064A2 /* setup.cfg */ = {isa = PBXFileReference; lastKnownFileType = text; path = setup.cfg; sourceTree = "<group>"; };
+		E3C79EE41913A88900D064A2 /* setup.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = setup.py; sourceTree = "<group>"; };
+		E3C79EE51913A88900D064A2 /* sonita */ = {isa = PBXFileReference; lastKnownFileType = text; path = sonita; sourceTree = "<group>"; };
+		E3C79EE71913A88900D064A2 /* grid_tests.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = grid_tests.py; sourceTree = "<group>"; };
+		E3C79EE81913A88900D064A2 /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
+		E3C79EE91913A88900D064A2 /* test.ais */ = {isa = PBXFileReference; lastKnownFileType = text; path = test.ais; sourceTree = "<group>"; };
+		E3C79EEA1913A88900D064A2 /* TODO */ = {isa = PBXFileReference; lastKnownFileType = text; path = TODO; sourceTree = "<group>"; };
+		E3C79EEB1913A88900D064A2 /* VERSION */ = {isa = PBXFileReference; lastKnownFileType = text; path = VERSION; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		E3383D101913A86400E0F8BA = {
+			isa = PBXGroup;
+			children = (
+				E3C79D761913A88800D064A2 /* ais */,
+				E3C79E0C1913A88800D064A2 /* aislib-tardis.xcodeproj */,
+				E3C79E101913A88900D064A2 /* aisutils */,
+				E3C79E1B1913A88900D064A2 /* ChangeLog.html */,
+				E3C79E1C1913A88900D064A2 /* control.in */,
+				E3C79E1D1913A88900D064A2 /* COPYING */,
+				E3C79E1E1913A88900D064A2 /* data */,
+				E3C79E221913A88900D064A2 /* django-ais */,
+				E3C79E351913A88900D064A2 /* doc */,
+				E3C79E3D1913A88900D064A2 /* geodjango */,
+				E3C79E551913A88900D064A2 /* init.d */,
+				E3C79E591913A88900D064A2 /* LICENSE */,
+				E3C79E5A1913A88900D064A2 /* make_waterlevel_ais.py */,
+				E3C79E5B1913A88900D064A2 /* Makefile */,
+				E3C79E5C1913A88900D064A2 /* MANIFEST.in */,
+				E3C79E5D1913A88900D064A2 /* nmea */,
+				E3C79E651913A88900D064A2 /* noaa_waterlevel_ais.bash */,
+				E3C79E661913A88900D064A2 /* noaadata */,
+				E3C79E6E1913A88900D064A2 /* noaadata_py.egg-info */,
+				E3C79E731913A88900D064A2 /* noaadata-py.info.in */,
+				E3C79E741913A88900D064A2 /* PKG-INFO */,
+				E3C79E751913A88900D064A2 /* README */,
+				E3C79E761913A88900D064A2 /* README.md */,
+				E3C79E771913A88900D064A2 /* scraps */,
+				E3C79E9D1913A88900D064A2 /* scripts */,
+				E3C79EE31913A88900D064A2 /* setup.cfg */,
+				E3C79EE41913A88900D064A2 /* setup.py */,
+				E3C79EE51913A88900D064A2 /* sonita */,
+				E3C79EE61913A88900D064A2 /* test */,
+				E3C79EEA1913A88900D064A2 /* TODO */,
+				E3C79EEB1913A88900D064A2 /* VERSION */,
+			);
+			sourceTree = "<group>";
+		};
+		E3C79D761913A88800D064A2 /* ais */ = {
+			isa = PBXGroup;
+			children = (
+				E3C79D771913A88800D064A2 /* __init__.py */,
+				E3C79D781913A88800D064A2 /* ais.xsl */,
+				E3C79D791913A88800D064A2 /* ais_msg_1.html */,
+				E3C79D7A1913A88800D064A2 /* ais_msg_1.py */,
+				E3C79D7B1913A88800D064A2 /* ais_msg_1.xml */,
+				E3C79D7C1913A88800D064A2 /* ais_msg_10.html */,
+				E3C79D7D1913A88800D064A2 /* ais_msg_10.py */,
+				E3C79D7E1913A88800D064A2 /* ais_msg_10.xml */,
+				E3C79D7F1913A88800D064A2 /* ais_msg_11.html */,
+				E3C79D801913A88800D064A2 /* ais_msg_11.py */,
+				E3C79D811913A88800D064A2 /* ais_msg_11.xml */,
+				E3C79D821913A88800D064A2 /* ais_msg_12.html */,
+				E3C79D831913A88800D064A2 /* ais_msg_12.py */,
+				E3C79D841913A88800D064A2 /* ais_msg_12.xml */,
+				E3C79D851913A88800D064A2 /* ais_msg_14.html */,
+				E3C79D861913A88800D064A2 /* ais_msg_14.py */,
+				E3C79D871913A88800D064A2 /* ais_msg_14.xml */,
+				E3C79D881913A88800D064A2 /* ais_msg_15.html */,
+				E3C79D891913A88800D064A2 /* ais_msg_15.py */,
+				E3C79D8A1913A88800D064A2 /* ais_msg_15.xml */,
+				E3C79D8B1913A88800D064A2 /* ais_msg_17.html */,
+				E3C79D8C1913A88800D064A2 /* ais_msg_17.py */,
+				E3C79D8D1913A88800D064A2 /* ais_msg_17.xml */,
+				E3C79D8E1913A88800D064A2 /* ais_msg_18.html */,
+				E3C79D8F1913A88800D064A2 /* ais_msg_18.py */,
+				E3C79D901913A88800D064A2 /* ais_msg_18.xml */,
+				E3C79D911913A88800D064A2 /* ais_msg_19.html */,
+				E3C79D921913A88800D064A2 /* ais_msg_19.py */,
+				E3C79D931913A88800D064A2 /* ais_msg_19.xml */,
+				E3C79D941913A88800D064A2 /* ais_msg_1_handcoded.py */,
+				E3C79D951913A88800D064A2 /* ais_msg_2.html */,
+				E3C79D961913A88800D064A2 /* ais_msg_2.py */,
+				E3C79D971913A88800D064A2 /* ais_msg_2.xml */,
+				E3C79D981913A88800D064A2 /* ais_msg_20.html */,
+				E3C79D991913A88800D064A2 /* ais_msg_20.py */,
+				E3C79D9A1913A88800D064A2 /* ais_msg_20.xml */,
+				E3C79D9B1913A88800D064A2 /* ais_msg_21.html */,
+				E3C79D9C1913A88800D064A2 /* ais_msg_21.py */,
+				E3C79D9D1913A88800D064A2 /* ais_msg_21.xml */,
+				E3C79D9E1913A88800D064A2 /* ais_msg_21_handcoded.py */,
+				E3C79D9F1913A88800D064A2 /* ais_msg_22.html */,
+				E3C79DA01913A88800D064A2 /* ais_msg_22.py */,
+				E3C79DA11913A88800D064A2 /* ais_msg_22.xml */,
+				E3C79DA21913A88800D064A2 /* ais_msg_23.html */,
+				E3C79DA31913A88800D064A2 /* ais_msg_23.py */,
+				E3C79DA41913A88800D064A2 /* ais_msg_23.xml */,
+				E3C79DA51913A88800D064A2 /* ais_msg_24_handcoded.py */,
+				E3C79DA61913A88800D064A2 /* ais_msg_2_handcoded.py */,
+				E3C79DA71913A88800D064A2 /* ais_msg_3.html */,
+				E3C79DA81913A88800D064A2 /* ais_msg_3.py */,
+				E3C79DA91913A88800D064A2 /* ais_msg_3.xml */,
+				E3C79DAA1913A88800D064A2 /* ais_msg_3_handcoded.py */,
+				E3C79DAB1913A88800D064A2 /* ais_msg_4.html */,
+				E3C79DAC1913A88800D064A2 /* ais_msg_4.py */,
+				E3C79DAD1913A88800D064A2 /* ais_msg_4.xml */,
+				E3C79DAE1913A88800D064A2 /* ais_msg_4_handcoded.py */,
+				E3C79DAF1913A88800D064A2 /* ais_msg_5.html */,
+				E3C79DB01913A88800D064A2 /* ais_msg_5.py */,
+				E3C79DB11913A88800D064A2 /* ais_msg_5.xml */,
+				E3C79DB21913A88800D064A2 /* ais_msg_5_utils.py */,
+				E3C79DB31913A88800D064A2 /* ais_msg_6.html */,
+				E3C79DB41913A88800D064A2 /* ais_msg_6.py */,
+				E3C79DB51913A88800D064A2 /* ais_msg_6.xml */,
+				E3C79DB61913A88800D064A2 /* ais_msg_7.html */,
+				E3C79DB71913A88800D064A2 /* ais_msg_7.py */,
+				E3C79DB81913A88800D064A2 /* ais_msg_7.xml */,
+				E3C79DB91913A88800D064A2 /* ais_msg_7_handcoded.py */,
+				E3C79DBA1913A88800D064A2 /* ais_msg_8.html */,
+				E3C79DBB1913A88800D064A2 /* ais_msg_8.py */,
+				E3C79DBC1913A88800D064A2 /* ais_msg_8.xml */,
+				E3C79DBD1913A88800D064A2 /* ais_msg_9.html */,
+				E3C79DBE1913A88800D064A2 /* ais_msg_9.py */,
+				E3C79DBF1913A88800D064A2 /* ais_msg_9.xml */,
+				E3C79DC01913A88800D064A2 /* aisfield.py */,
+				E3C79DC11913A88800D064A2 /* aisstring.py */,
+				E3C79DC21913A88800D064A2 /* allaistypes.html */,
+				E3C79DC31913A88800D064A2 /* allaistypes.py */,
+				E3C79DC41913A88800D064A2 /* allaistypes.xml */,
+				E3C79DC51913A88800D064A2 /* binary.py */,
+				E3C79DC61913A88800D064A2 /* BitVector.py */,
+				E3C79DC71913A88800D064A2 /* commstate.py */,
+				E3C79DC81913A88800D064A2 /* exampleParser.py */,
+				E3C79DC91913A88800D064A2 /* expandais.py */,
+				E3C79DCA1913A88800D064A2 /* imo_001_11.html */,
+				E3C79DCB1913A88800D064A2 /* imo_001_11.py */,
+				E3C79DCC1913A88800D064A2 /* imo_001_11.xml */,
+				E3C79DCD1913A88800D064A2 /* imo_001_11_handcoded.py */,
+				E3C79DCE1913A88800D064A2 /* imo_001_13.html */,
+				E3C79DCF1913A88800D064A2 /* imo_001_13.py */,
+				E3C79DD01913A88800D064A2 /* imo_001_13.xml */,
+				E3C79DD11913A88800D064A2 /* imo_001_14.html */,
+				E3C79DD21913A88800D064A2 /* imo_001_14.py */,
+				E3C79DD31913A88800D064A2 /* imo_001_14.xml */,
+				E3C79DD41913A88800D064A2 /* Makefile */,
+				E3C79DD51913A88800D064A2 /* nmea.py */,
+				E3C79DD61913A88800D064A2 /* ris */,
+				E3C79DDA1913A88800D064A2 /* rtcm */,
+				E3C79DDD1913A88800D064A2 /* sls */,
+				E3C79DEF1913A88800D064A2 /* sqlhelp.py */,
+				E3C79DF01913A88800D064A2 /* structs-inc.xml */,
+				E3C79DF11913A88800D064A2 /* test */,
+				E3C79DF71913A88800D064A2 /* test.py */,
+				E3C79DF81913A88800D064A2 /* test_sls_waterlevel.py */,
+				E3C79DF91913A88800D064A2 /* timed_circular_notice.html */,
+				E3C79DFA1913A88800D064A2 /* timed_circular_notice.py */,
+				E3C79DFB1913A88800D064A2 /* timed_circular_notice.xml */,
+				E3C79DFC1913A88800D064A2 /* translators.py */,
+				E3C79DFD1913A88800D064A2 /* waterlevel.html */,
+				E3C79DFE1913A88800D064A2 /* waterlevel.py */,
+				E3C79DFF1913A88800D064A2 /* waterlevel.xml */,
+				E3C79E001913A88800D064A2 /* waterlevel2.html */,
+				E3C79E011913A88800D064A2 /* waterlevel2.py */,
+				E3C79E021913A88800D064A2 /* waterlevel2.xml */,
+				E3C79E031913A88800D064A2 /* whalenotice.html */,
+				E3C79E041913A88800D064A2 /* whalenotice.py */,
+				E3C79E051913A88800D064A2 /* whalenotice.xml */,
+				E3C79E061913A88800D064A2 /* whalenotice1.html */,
+				E3C79E071913A88800D064A2 /* whalenotice1.py */,
+				E3C79E081913A88800D064A2 /* whalenotice1.xml */,
+				E3C79E091913A88800D064A2 /* whalenotice2.html */,
+				E3C79E0A1913A88800D064A2 /* whalenotice2.py */,
+				E3C79E0B1913A88800D064A2 /* whalenotice2.xml */,
+			);
+			path = ais;
+			sourceTree = "<group>";
+		};
+		E3C79DD61913A88800D064A2 /* ris */ = {
+			isa = PBXGroup;
+			children = (
+				E3C79DD71913A88800D064A2 /* Makefile */,
+				E3C79DD81913A88800D064A2 /* waterlevel.html */,
+				E3C79DD91913A88800D064A2 /* waterlevel.xml */,
+			);
+			path = ris;
+			sourceTree = "<group>";
+		};
+		E3C79DDA1913A88800D064A2 /* rtcm */ = {
+			isa = PBXGroup;
+			children = (
+				E3C79DDB1913A88800D064A2 /* Makefile */,
+				E3C79DDC1913A88800D064A2 /* rtcm-20-zone.xml */,
+			);
+			path = rtcm;
+			sourceTree = "<group>";
+		};
+		E3C79DDD1913A88800D064A2 /* sls */ = {
+			isa = PBXGroup;
+			children = (
+				E3C79DDE1913A88800D064A2 /* estlocktimes.html */,
+				E3C79DDF1913A88800D064A2 /* estlocktimes.xml */,
+				E3C79DE01913A88800D064A2 /* header.xml */,
+				E3C79DE11913A88800D064A2 /* lockorder.html */,
+				E3C79DE21913A88800D064A2 /* lockorder.xml */,
+				E3C79DE31913A88800D064A2 /* lockschedule.html */,
+				E3C79DE41913A88800D064A2 /* lockschedule.xml */,
+				E3C79DE51913A88800D064A2 /* Makefile */,
+				E3C79DE61913A88800D064A2 /* structures.xml */,
+				E3C79DE71913A88800D064A2 /* waterflow.html */,
+				E3C79DE81913A88800D064A2 /* waterflow.xml */,
+				E3C79DE91913A88800D064A2 /* waterlevel.html */,
+				E3C79DEA1913A88800D064A2 /* waterlevel.xml */,
+				E3C79DEB1913A88800D064A2 /* weatherreport.html */,
+				E3C79DEC1913A88800D064A2 /* weatherreport.xml */,
+				E3C79DED1913A88800D064A2 /* wind.html */,
+				E3C79DEE1913A88800D064A2 /* wind.xml */,
+			);
+			path = sls;
+			sourceTree = "<group>";
+		};
+		E3C79DF11913A88800D064A2 /* test */ = {
+			isa = PBXGroup;
+			children = (
+				E3C79DF21913A88800D064A2 /* ais_msg_1_1.xml */,
+				E3C79DF31913A88800D064A2 /* ais_msg_8_1.xml */,
+				E3C79DF41913A88800D064A2 /* sls_waterlevel_3_1.xml */,
+				E3C79DF51913A88800D064A2 /* sls_waterlevel_3_2.xml */,
+				E3C79DF61913A88800D064A2 /* sls_wind_2_1.xml */,
+			);
+			path = test;
+			sourceTree = "<group>";
+		};
+		E3C79E0D1913A88800D064A2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E3C79E101913A88900D064A2 /* aisutils */ = {
+			isa = PBXGroup;
+			children = (
+				E3C79E111913A88900D064A2 /* __init__.py */,
+				E3C79E121913A88900D064A2 /* daemon.py */,
+				E3C79E131913A88900D064A2 /* database.py */,
+				E3C79E141913A88900D064A2 /* grid.py */,
+				E3C79E151913A88900D064A2 /* nmea_ait.py */,
+				E3C79E161913A88900D064A2 /* nmea_cnc.py */,
+				E3C79E171913A88900D064A2 /* normalize.py */,
+				E3C79E181913A88900D064A2 /* server.py */,
+				E3C79E191913A88900D064A2 /* uscg.py */,
+				E3C79E1A1913A88900D064A2 /* wkb.py */,
+			);
+			path = aisutils;
+			sourceTree = "<group>";
+		};
+		E3C79E1E1913A88900D064A2 /* data */ = {
+			isa = PBXGroup;
+			children = (
+				E3C79E1F1913A88900D064A2 /* gsc.dat */,
+				E3C79E201913A88900D064A2 /* mmsi_prefix.sql */,
+				E3C79E211913A88900D064A2 /* stellwagen.dat */,
+			);
+			path = data;
+			sourceTree = "<group>";
+		};
+		E3C79E221913A88900D064A2 /* django-ais */ = {
+			isa = PBXGroup;
+			children = (
+				E3C79E231913A88900D064A2 /* ais_www */,
+				E3C79E341913A88900D064A2 /* README.txt */,
+			);
+			path = "django-ais";
+			sourceTree = "<group>";
+		};
+		E3C79E231913A88900D064A2 /* ais_www */ = {
+			isa = PBXGroup;
+			children = (
+				E3C79E241913A88900D064A2 /* __init__.py */,
+				E3C79E251913A88900D064A2 /* define_ais */,
+				E3C79E2C1913A88900D064A2 /* Makefile */,
+				E3C79E2D1913A88900D064A2 /* manage.py */,
+				E3C79E2E1913A88900D064A2 /* msgs */,
+				E3C79E321913A88900D064A2 /* settings.py */,
+				E3C79E331913A88900D064A2 /* urls.py */,
+			);
+			path = ais_www;
+			sourceTree = "<group>";
+		};
+		E3C79E251913A88900D064A2 /* define_ais */ = {
+			isa = PBXGroup;
+			children = (
+				E3C79E261913A88900D064A2 /* __init__.py */,
+				E3C79E271913A88900D064A2 /* dac.sql */,
+				E3C79E281913A88900D064A2 /* models.py */,
+				E3C79E291913A88900D064A2 /* preload.sql */,
+				E3C79E2A1913A88900D064A2 /* README.txt */,
+				E3C79E2B1913A88900D064A2 /* views.py */,
+			);
+			path = define_ais;
+			sourceTree = "<group>";
+		};
+		E3C79E2E1913A88900D064A2 /* msgs */ = {
+			isa = PBXGroup;
+			children = (
+				E3C79E2F1913A88900D064A2 /* __init__.py */,
+				E3C79E301913A88900D064A2 /* models.py */,
+				E3C79E311913A88900D064A2 /* views.py */,
+			);
+			path = msgs;
+			sourceTree = "<group>";
+		};
+		E3C79E351913A88900D064A2 /* doc */ = {
+			isa = PBXGroup;
+			children = (
+				E3C79E361913A88900D064A2 /* ais-messages-HEADER.html */,
+				E3C79E371913A88900D064A2 /* ais.bib */,
+				E3C79E381913A88900D064A2 /* configure-ais-logging.txt */,
+				E3C79E391913A88900D064A2 /* database-setup.txt */,
+				E3C79E3A1913A88900D064A2 /* esr-review.txt */,
+				E3C79E3B1913A88900D064A2 /* main-HEADER.html */,
+				E3C79E3C1913A88900D064A2 /* README.txt */,
+			);
+			path = doc;
+			sourceTree = "<group>";
+		};
+		E3C79E3D1913A88900D064A2 /* geodjango */ = {
+			isa = PBXGroup;
+			children = (
+				E3C79E3E1913A88900D064A2 /* ais_www */,
+			);
+			path = geodjango;
+			sourceTree = "<group>";
+		};
+		E3C79E3E1913A88900D064A2 /* ais_www */ = {
+			isa = PBXGroup;
+			children = (
+				E3C79E3F1913A88900D064A2 /* __init__.py */,
+				E3C79E401913A88900D064A2 /* ais_msgs */,
+				E3C79E451913A88900D064A2 /* define_ais */,
+				E3C79E4D1913A88900D064A2 /* hello.py */,
+				E3C79E4E1913A88900D064A2 /* hello_template.py */,
+				E3C79E4F1913A88900D064A2 /* Makefile */,
+				E3C79E501913A88900D064A2 /* manage.py */,
+				E3C79E511913A88900D064A2 /* settings.py */,
+				E3C79E521913A88900D064A2 /* templates */,
+				E3C79E541913A88900D064A2 /* urls.py */,
+			);
+			path = ais_www;
+			sourceTree = "<group>";
+		};
+		E3C79E401913A88900D064A2 /* ais_msgs */ = {
+			isa = PBXGroup;
+			children = (
+				E3C79E411913A88900D064A2 /* __init__.py */,
+				E3C79E421913A88900D064A2 /* models.py */,
+				E3C79E431913A88900D064A2 /* urls.py */,
+				E3C79E441913A88900D064A2 /* views.py */,
+			);
+			path = ais_msgs;
+			sourceTree = "<group>";
+		};
+		E3C79E451913A88900D064A2 /* define_ais */ = {
+			isa = PBXGroup;
+			children = (
+				E3C79E461913A88900D064A2 /* __init__.py */,
+				E3C79E471913A88900D064A2 /* dac.sql */,
+				E3C79E481913A88900D064A2 /* models.py */,
+				E3C79E491913A88900D064A2 /* preload.sql */,
+				E3C79E4A1913A88900D064A2 /* README.txt */,
+				E3C79E4B1913A88900D064A2 /* urls.py */,
+				E3C79E4C1913A88900D064A2 /* views.py */,
+			);
+			path = define_ais;
+			sourceTree = "<group>";
+		};
+		E3C79E521913A88900D064A2 /* templates */ = {
+			isa = PBXGroup;
+			children = (
+				E3C79E531913A88900D064A2 /* current_datetime.html */,
+			);
+			path = templates;
+			sourceTree = "<group>";
+		};
+		E3C79E551913A88900D064A2 /* init.d */ = {
+			isa = PBXGroup;
+			children = (
+				E3C79E561913A88900D064A2 /* ais-forward */,
+				E3C79E571913A88900D064A2 /* logais */,
+				E3C79E581913A88900D064A2 /* logtide */,
+			);
+			path = init.d;
+			sourceTree = "<group>";
+		};
+		E3C79E5D1913A88900D064A2 /* nmea */ = {
+			isa = PBXGroup;
+			children = (
+				E3C79E5E1913A88900D064A2 /* __init__.py */,
+				E3C79E5F1913A88900D064A2 /* checksum.py */,
+				E3C79E601913A88900D064A2 /* gga.py */,
+				E3C79E611913A88900D064A2 /* nmea_error.py */,
+				E3C79E621913A88900D064A2 /* rmc.py */,
+				E3C79E631913A88900D064A2 /* zda.py */,
+				E3C79E641913A88900D064A2 /* znt.py */,
+			);
+			path = nmea;
+			sourceTree = "<group>";
+		};
+		E3C79E661913A88900D064A2 /* noaadata */ = {
+			isa = PBXGroup;
+			children = (
+				E3C79E671913A88900D064A2 /* __init__.py */,
+				E3C79E681913A88900D064A2 /* dumpallwl.py */,
+				E3C79E691913A88900D064A2 /* stations-soap.xml */,
+				E3C79E6A1913A88900D064A2 /* stations.py */,
+				E3C79E6B1913A88900D064A2 /* tideserver.py */,
+				E3C79E6C1913A88900D064A2 /* waterlevel_dap.py */,
+				E3C79E6D1913A88900D064A2 /* waterlevelraw.py */,
+			);
+			path = noaadata;
+			sourceTree = "<group>";
+		};
+		E3C79E6E1913A88900D064A2 /* noaadata_py.egg-info */ = {
+			isa = PBXGroup;
+			children = (
+				E3C79E6F1913A88900D064A2 /* dependency_links.txt */,
+				E3C79E701913A88900D064A2 /* PKG-INFO */,
+				E3C79E711913A88900D064A2 /* SOURCES.txt */,
+				E3C79E721913A88900D064A2 /* top_level.txt */,
+			);
+			path = "noaadata_py.egg-info";
+			sourceTree = "<group>";
+		};
+		E3C79E771913A88900D064A2 /* scraps */ = {
+			isa = PBXGroup;
+			children = (
+				E3C79E781913A88900D064A2 /* adjust_time.py */,
+				E3C79E791913A88900D064A2 /* ais_filter_by_mmsi.cxx */,
+				E3C79E7A1913A88900D064A2 /* ais_pg_dailyvessels.py */,
+				E3C79E7B1913A88900D064A2 /* ais_pg_import2006spreadsheet.py */,
+				E3C79E7C1913A88900D064A2 /* ais_pg_monthhistogram.py */,
+				E3C79E7D1913A88900D064A2 /* ais_pg_speedsummary.py */,
+				E3C79E7E1913A88900D064A2 /* ais_pg_transitsummary.py */,
+				E3C79E7F1913A88900D064A2 /* ais_pg_vesselsummary.py */,
+				E3C79E801913A88900D064A2 /* bbm.py */,
+				E3C79E811913A88900D064A2 /* bogus_unittest.py */,
+				E3C79E821913A88900D064A2 /* build-time-notice-test-data.sh */,
+				E3C79E831913A88900D064A2 /* buildais.py */,
+				E3C79E841913A88900D064A2 /* cptimestamp2front.py */,
+				E3C79E851913A88900D064A2 /* gsc-and-tss.dat */,
+				E3C79E861913A88900D064A2 /* gsc-and-tss.kml */,
+				E3C79E871913A88900D064A2 /* gsc-bbox.kml */,
+				E3C79E881913A88900D064A2 /* gsc.dat */,
+				E3C79E891913A88900D064A2 /* gsc.kml */,
+				E3C79E8A1913A88900D064A2 /* gsc.tss.dat */,
+				E3C79E8B1913A88900D064A2 /* gsc.tss.kml */,
+				E3C79E8C1913A88900D064A2 /* kml_countdown_placemark.py */,
+				E3C79E8D1913A88900D064A2 /* Makefile */,
+				E3C79E8E1913A88900D064A2 /* maru-xy.dat */,
+				E3C79E8F1913A88900D064A2 /* monthplots.gp */,
+				E3C79E901913A88900D064A2 /* nmea.py */,
+				E3C79E911913A88900D064A2 /* nmeamessages.py */,
+				E3C79E921913A88900D064A2 /* revelle2uscgold.py */,
+				E3C79E931913A88900D064A2 /* sbnms-buoys-ab.xys */,
+				E3C79E941913A88900D064A2 /* sbnms-buoys-ab.xyt */,
+				E3C79E951913A88900D064A2 /* sbnms.grd.cmd */,
+				E3C79E961913A88900D064A2 /* six_min_avg.m */,
+				E3C79E971913A88900D064A2 /* soapclient.pl */,
+				E3C79E981913A88900D064A2 /* stripfront.py */,
+				E3C79E991913A88900D064A2 /* tideconvert.py */,
+				E3C79E9A1913A88900D064A2 /* timestamp.py */,
+				E3C79E9B1913A88900D064A2 /* timetest.py */,
+				E3C79E9C1913A88900D064A2 /* whalemortality.dat */,
+			);
+			path = scraps;
+			sourceTree = "<group>";
+		};
+		E3C79E9D1913A88900D064A2 /* scripts */ = {
+			isa = PBXGroup;
+			children = (
+				E3C79E9E1913A88900D064A2 /* ais-db */,
+				E3C79E9F1913A88900D064A2 /* ais-db-rebuild-cache-tables */,
+				E3C79EA01913A88900D064A2 /* ais-net-to-postgis */,
+				E3C79EA11913A88900D064A2 /* ais-port-forward */,
+				E3C79EA21913A88900D064A2 /* ais-process-day.bash */,
+				E3C79EA31913A88900D064A2 /* ais-receive-bbox */,
+				E3C79EA41913A88900D064A2 /* ais_5report.py */,
+				E3C79EA51913A88900D064A2 /* ais_bin_msgs.py */,
+				E3C79EA61913A88900D064A2 /* ais_build_postgis.py */,
+				E3C79EA71913A88900D064A2 /* ais_build_sqlite.py */,
+				E3C79EA81913A88900D064A2 /* ais_build_sqlite3.py */,
+				E3C79EA91913A88900D064A2 /* ais_decimate_traffic.py */,
+				E3C79EAA1913A88900D064A2 /* ais_distance.py */,
+				E3C79EAB1913A88900D064A2 /* ais_dump_mmsi.py */,
+				E3C79EAC1913A88900D064A2 /* ais_dumpnames.py */,
+				E3C79EAD1913A88900D064A2 /* ais_filter.py */,
+				E3C79EAE1913A88900D064A2 /* ais_info.py */,
+				E3C79EAF1913A88900D064A2 /* ais_liststations.py */,
+				E3C79EB01913A88900D064A2 /* ais_names.py */,
+				E3C79EB11913A88900D064A2 /* ais_nmea_find_matches.py */,
+				E3C79EB21913A88900D064A2 /* ais_nmea_info.py */,
+				E3C79EB31913A88900D064A2 /* ais_nmea_remove_dups.py */,
+				E3C79EB41913A88900D064A2 /* ais_nmea_uptime.py */,
+				E3C79EB51913A88900D064A2 /* ais_nmea_uptime2.py */,
+				E3C79EB61913A88900D064A2 /* ais_nmea_uscg_timeshift.py */,
+				E3C79EB71913A88900D064A2 /* ais_normalize.py */,
+				E3C79EB81913A88900D064A2 /* ais_oldlog2newlog.py */,
+				E3C79EB91913A88900D064A2 /* ais_pg_create_transit_table.py */,
+				E3C79EBA1913A88900D064A2 /* ais_pg_grid.py */,
+				E3C79EBB1913A88900D064A2 /* ais_pg_grid_transits.py */,
+				E3C79EBC1913A88900D064A2 /* ais_pg_transitlines.py */,
+				E3C79EBD1913A88900D064A2 /* ais_pg_transitlines_noMakeLine.py */,
+				E3C79EBE1913A88900D064A2 /* ais_position_in_polygon.py */,
+				E3C79EBF1913A88900D064A2 /* ais_positions.py */,
+				E3C79EC01913A88900D064A2 /* ais_sqlite_bsreport_analysis.py */,
+				E3C79EC11913A88900D064A2 /* ais_towersplit.py */,
+				E3C79EC21913A88900D064A2 /* ais_traffic_analysis.py */,
+				E3C79EC31913A88900D064A2 /* ais_transits.py */,
+				E3C79EC41913A88900D064A2 /* ais_uniq.py */,
+				E3C79EC51913A88900D064A2 /* ais_uscg_splitstations.py */,
+				E3C79EC61913A88900D064A2 /* aisuser_monitor.py */,
+				E3C79EC71913A88900D064A2 /* aisxml2wxpy.py */,
+				E3C79EC81913A88900D064A2 /* aisxmlbinmsg2py.py */,
+				E3C79EC91913A88900D064A2 /* bbox-to-kml */,
+				E3C79ECA1913A88900D064A2 /* daily.sh */,
+				E3C79ECB1913A88900D064A2 /* decimate */,
+				E3C79ECC1913A88900D064A2 /* dump_wl.py */,
+				E3C79ECD1913A88900D064A2 /* find_missing_logs.py */,
+				E3C79ECE1913A88900D064A2 /* jpegexif2kml.py */,
+				E3C79ECF1913A88900D064A2 /* log_udp.py */,
+				E3C79ED01913A88900D064A2 /* logger_handlers.py */,
+				E3C79ED11913A88900D064A2 /* Makefile */,
+				E3C79ED21913A88900D064A2 /* nais2postgis.py */,
+				E3C79ED31913A88900D064A2 /* nais_pg_realtime_reaper.py */,
+				E3C79ED41913A88900D064A2 /* port_server.py */,
+				E3C79ED51913A88900D064A2 /* serial-logger */,
+				E3C79ED61913A88900D064A2 /* serial-logger2.py */,
+				E3C79ED71913A88900D064A2 /* serial_send.py */,
+				E3C79ED81913A88900D064A2 /* serial_send2.py */,
+				E3C79ED91913A88900D064A2 /* socket_logger.py */,
+				E3C79EDA1913A88900D064A2 /* socket_send.py */,
+				E3C79EDB1913A88900D064A2 /* stellwagen-crossings.bash */,
+				E3C79EDC1913A88900D064A2 /* stellwagen-shipreport.bash */,
+				E3C79EDD1913A88900D064A2 /* test_ais_server.py */,
+				E3C79EDE1913A88900D064A2 /* tide4_process_logs.py */,
+				E3C79EDF1913A88900D064A2 /* xy2kml */,
+				E3C79EE01913A88900D064A2 /* xy2kmlline */,
+				E3C79EE11913A88900D064A2 /* xy_pos_filter */,
+				E3C79EE21913A88900D064A2 /* xymt2kml */,
+			);
+			path = scripts;
+			sourceTree = "<group>";
+		};
+		E3C79EE61913A88900D064A2 /* test */ = {
+			isa = PBXGroup;
+			children = (
+				E3C79EE71913A88900D064A2 /* grid_tests.py */,
+				E3C79EE81913A88900D064A2 /* Makefile */,
+				E3C79EE91913A88900D064A2 /* test.ais */,
+			);
+			path = test;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXProject section */
+		E3383D111913A86400E0F8BA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0510;
+			};
+			buildConfigurationList = E3383D141913A86400E0F8BA /* Build configuration list for PBXProject "aislib-artax" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = E3383D101913A86400E0F8BA;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = E3C79E0D1913A88800D064A2 /* Products */;
+					ProjectRef = E3C79E0C1913A88800D064A2 /* aislib-tardis.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+			);
+		};
+/* End PBXProject section */
+
+/* Begin XCBuildConfiguration section */
+		E3383D151913A86400E0F8BA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		E3383D161913A86400E0F8BA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E3383D141913A86400E0F8BA /* Build configuration list for PBXProject "aislib-artax" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E3383D151913A86400E0F8BA /* Debug */,
+				E3383D161913A86400E0F8BA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E3383D111913A86400E0F8BA /* Project object */;
+}
