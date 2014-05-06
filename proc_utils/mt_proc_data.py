@@ -9,6 +9,7 @@ import psycopg2
 import sys
 import errno
 
+
 # Variables de sistema
 APP_PATH = '/home/aisuser/aislib/proc_utils/'
 BASE_PATH = '/home/aisuser/mt_sync/'
@@ -43,11 +44,14 @@ opciones_db = " dbname=ais user=postgres password=+mngp0st+ port=5433 host=scb-d
 
 # Check if it is already running
 if os.path.isfile(LOCK):
+    print "lock existe"
     file_log.write("ERROR: lock file already exists\n")
 else:
+    print "lock no existe"
     file_lock = open(LOCK, 'w+')
     file_lock.write("$$ " + socket.gethostname())
 
+    file_log.write("ERROR: sonita entra en el else\n")
     # 1º abrir conexion ddbb
     file_log.write("Conectando a la base de datos ....\n")
     try: 
@@ -61,18 +65,19 @@ else:
     date_ayer = date - datetime.timedelta(days=1)
     fecha_ayer = date_ayer.strftime("%Y-%m-%d")
     year = date_ayer.year
-    month = date_ayer.month
+    #month = date_ayer.month - lo saca como un único dígito
+    month = date_ayer.strftime('%m')
     day = date_ayer.day
-
+    
     # Directorios de archivado
-    ARCHIVE_PATH_CSV = BASE_PATH_CSV + year + '/' + month + '/'
-    ARCHIVE_PATH_JSON = BASE_PATH_JSON + year + '/' + month + '/'
+    ARCHIVE_PATH_CSV = BASE_PATH_CSV + str(year) + '/' + str(month) + '/'
+    ARCHIVE_PATH_JSON = BASE_PATH_JSON + str(year) + '/' + str(month) + '/'
 
     # Crear estructura de archivado
     try:
-        os.makedirs(ARCHVIE_PATH_CSV)
+        os.makedirs(ARCHIVE_PATH_CSV)
     except OSError as exc:
-        if exc.errno == errno.EEXIST and os.path.isdir(path):
+        if exc.errno == errno.EEXIST and os.path.isdir(ARCHIVE_PATH_CSV):
             pass   # ya existe el directorio
         else:
             file_log.write("Error creación directorio " + ARCHIVE_PATH_CSV + " \n")
@@ -116,12 +121,12 @@ else:
 		       conexion.rollback()
 	           file_log.write("Integrity Error: "+str(type(Exception))+" \n")
                    continue
-               except Exception e: #resto de excepciones
+               except Exception, e: #resto de excepciones
                    if conexion:
 		       conexion.rollback()
 	           file_log.write("Excepcion: "+str(type(Exception))+" \n")
                    continue
-               else # se ejecuta si ha ido bien el try - arvhicar ficheros
+               else: # se ejecuta si ha ido bien el try - arvhicar ficheros
                    os.rename(root+"/"+filename,ARCHIVE_PATH_CSV+"/"+filename)
 	           file_log.write("Archivado fichero: "+ARCHIVE_PATH_CSV+"/"+filename+" \n")
                    
