@@ -6,6 +6,8 @@ import datetime
 import os.path
 import socket
 import psycopg2
+import sys
+import errno
 
 # Variables de sistema
 APP_PATH = '/home/aisuser/aislib/proc_utils/'
@@ -42,7 +44,6 @@ opciones_db = " dbname=ais user=postgres password=+mngp0st+ port=5433 host=scb-d
 # Check if it is already running
 if os.path.isfile(LOCK):
     file_log.write("ERROR: lock file already exists\n")
-    exit
 else:
     file_lock = open(LOCK, 'w+')
     file_lock.write("$$ " + socket.gethostname())
@@ -51,11 +52,34 @@ else:
     file_log.write("Conectando a la base de datos ....\n")
     try: 
         conexion = psycopg2.connect(opciones_db)
-    except psycopg.DatabaseError, e:
+    except e:
         file_log.write("Error conexión ddbb\n")
+	file_log.write("-+- END "+fecha+"-+-\n")
+        file_log.close()
+        sys.exit("DDBB ERROR")
 
     date_ayer = date - datetime.timedelta(days=1)
     fecha_ayer = date_ayer.strftime("%Y-%m-%d")
+    year = date_ayer.year
+    month = date_ayer.month
+    day = date_ayer.day
+
+    # Directorios de archivado
+    ARCHIVE_PATH_CSV = BASE_PATH_CSV + year + '/' + month + '/'
+    ARCHIVE_PATH_JSON = BASE_PATH_JSON + year + '/' + month + '/'
+
+    # Crear estructura de archivado
+    try:
+        os.makedirs(ARCHVIE_PATH_CSV)
+    except OSError as exc:
+        if exc.errno == errno.EEXIST and os.path.isdir(path):
+            pass   # ya existe el directorio
+        else:
+            file_log.write("Error creación directorio " + ARCHIVE_PATH_CSV + " \n")
+            file_log.write("-+- END "+fecha+"-+-\n")
+            file_log.close()
+            sys.exit("ARCHIVE FILE ERROR") 
+            
     
     print "date: {}".format(str(date))
     print "fecha: {}".format(str(fecha))
@@ -64,6 +88,8 @@ else:
     
     init_file = "ais_marinetraffic_" + fecha_ayer + "_"
     end_file = "_UTC.kml.csv" 
+
+
 
     # Recorrer el directorio base buscando los ficheros *.csv
     count_file = 0
@@ -75,29 +101,30 @@ else:
                sentencia="COPY "+tabla+" "+campos+" FROM '"+root+"/"+filename+"' WITH DELIMITER ';' CSV HEADER;"
                print sentencia
 	       file_log.write("sentencia: "+sentencia+" \n")
-	       conexion = psycopg2.connect(opciones_db)
                cursor_con = conexion.cursor()
 	       try:
-                   print "va a ejecutar"
+                   print "va a ejecutar ..."
                    cursor_con.execute(sentencia)
                    conexion.commit()
-                   print "a comiteado"
                except psycopg2.DatabaseError, e:
                    if conexion:
 		       conexion.rollback()
-	           #file_log.write("Database Error: "+str(e.NameError)+" \n")
-	           file_log.write("Database Error \n")
-                   break
+	           file_log.write("Database Error: "+str(type(Exception))+" \n")
+                   continue
                except psycopg2.IntegrityError, e:
                    if conexion:
 		       conexion.rollback()
-	           #file_log.write("Integrity Error: "+str(e.NameError)+" \n")
-	           file_log.write("Integrity Error \n")
-                   break
-               #except Exception as e:
-	           #file_log.write("Excepcion: "+str(e.NameError)+" \n")
-	        #   file_log.write("Excepcion \n")
-                 #  break
+	           file_log.write("Integrity Error: "+str(type(Exception))+" \n")
+                   continue
+               except Exception e: #resto de excepciones
+                   if conexion:
+		       conexion.rollback()
+	           file_log.write("Excepcion: "+str(type(Exception))+" \n")
+                   continue
+               else # se ejecuta si ha ido bien el try - arvhicar ficheros
+                   os.rename(root+"/"+filename,ARCHIVE_PATH_CSV+"/"+filename)
+	           file_log.write("Archivado fichero: "+ARCHIVE_PATH_CSV+"/"+filename+" \n")
+                   
         print "******numero total de ficheros: {}".format(count_file)
         if count_file > 0:
             cursor_con.close()
@@ -106,24 +133,7 @@ else:
 
     file_lock.close()
     os.remove(LOCK)
-
-
-
-
-'''
-
-   2. ARCHIVAR DATOS HISTORICOS: CSV
-
-'''
-year = date_ayer.year
-month = date_ayer.month
-day = date_ayer.day
-
-ARCHIVE_PATH = BASE_PATH_CSV + year + '/' + month + '/'
-
-#ais_marinetraffic_2014-01-21_16:10:01_UTC.kml.csv
-
-
+    #Hasta aquí ha terminado de procesar los ficheros
 
 file_log.write("-+- END "+fecha+"-+-\n")
 file_log.close()
