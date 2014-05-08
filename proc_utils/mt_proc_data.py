@@ -1,14 +1,14 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-#import time
 import datetime
 import os.path
 import socket
 import psycopg2
 import sys
 import errno
-
+import logging
+import traceback
 
 # Variables de sistema
 APP_PATH = '/home/aisuser/aislib/proc_utils/'
@@ -17,6 +17,21 @@ BASE_PATH_CSV = BASE_PATH + "csv/"
 BASE_PATH_JSON = BASE_PATH + 'json/'
 LOG = BASE_PATH + "logs/mt_proc_data.log"
 LOCK = BASE_PATH + "mt_proc_data.lock"
+LOG_ERROR_FILE = BASE_PATH + "logs/mt_proc_data.err" 
+
+# Configuración logging
+log_error = logging.getLogger('mt_proc_data')
+log_error.setLevel(logging.WARN)
+# Create the file handler
+log_error_hd = logging.FileHandler(LOG_ERROR_FILE)
+log_error_hd.setLevel(logging.ERROR)
+# Formateador asignado al handler
+log_error_format = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+log_error_hd.setFormatter(log_error_format)
+# Añadir el handler al logger
+log_error.addHandler(log_error_hd)
+#logging.warning('%s before you %s', 'Look', 'leap!')
+#LOG_ERROR.error('No fuel. Trying to glide.')
 
 # Fecha
 date = datetime.datetime.now()
@@ -29,7 +44,7 @@ file_log.write("-+- START " + fecha + "-+-\n")
 
 '''
 
-    1. PROCESAR DATOS: INTRODUCIR CSV EN DDBB
+    1. PROCESAR DATOS: INTRODUCIR CSV EN DDBB Y ARCHIVADO CSV
 
 '''
 
@@ -39,25 +54,24 @@ campos = "(name, mmsi, ship_cargo_name, sog, cog, latitude, longitude, status, d
 tabla = "marine_traffic.ais_raw"
 
 #Conexion ddbb
-#connectStr = "dbname='"+options.databaseName+"' user='"+options.databaseUser+"' host='"+options.databaseHost+"'"
 opciones_db = " dbname=ais user=postgres password=+mngp0st+ port=5433 host=scb-dattest"
+opciones_db = " dbname=ais2 user=postgres password=+mngp0st+ port=5433 host=scb-dattest"
 
 # Check if it is already running
 if os.path.isfile(LOCK):
     print "lock existe"
-    file_log.write("ERROR: lock file already exists\n")
+    log_error.error("ERROR: lock file already exists\n")
 else:
     print "lock no existe"
     file_lock = open(LOCK, 'w+')
     file_lock.write("$$ " + socket.gethostname())
 
-    file_log.write("ERROR: sonita entra en el else\n")
     # 1º abrir conexion ddbb
     file_log.write("Conectando a la base de datos ....\n")
     try: 
         conexion = psycopg2.connect(opciones_db)
     except e:
-        file_log.write("Error conexión ddbb\n")
+        log_error.error("Error conexión ddbb\n")
 	file_log.write("-+- END "+fecha+"-+-\n")
         file_log.close()
         sys.exit("DDBB ERROR")
@@ -80,7 +94,7 @@ else:
         if exc.errno == errno.EEXIST and os.path.isdir(ARCHIVE_PATH_CSV):
             pass   # ya existe el directorio
         else:
-            file_log.write("Error creación directorio " + ARCHIVE_PATH_CSV + " \n")
+            log_error.error("Error creación directorio %s", ARCHIVE_PATH_CSV)
             file_log.write("-+- END "+fecha+"-+-\n")
             file_log.close()
             sys.exit("ARCHIVE FILE ERROR") 
@@ -93,7 +107,6 @@ else:
     
     init_file = "ais_marinetraffic_" + fecha_ayer + "_"
     end_file = "_UTC.kml.csv" 
-
 
 
     # Recorrer el directorio base buscando los ficheros *.csv
@@ -114,17 +127,17 @@ else:
                except psycopg2.DatabaseError, e:
                    if conexion:
 		       conexion.rollback()
-	           file_log.write("Database Error: "+str(type(Exception))+" \n")
+	           log_error.error("Database Error: %s", str(type(Exception)))
                    continue
                except psycopg2.IntegrityError, e:
                    if conexion:
 		       conexion.rollback()
-	           file_log.write("Integrity Error: "+str(type(Exception))+" \n")
+	           log_error.error("Integrity Error: %s", str(type(Exception)))
                    continue
                except Exception, e: #resto de excepciones
                    if conexion:
 		       conexion.rollback()
-	           file_log.write("Excepcion: "+str(type(Exception))+" \n")
+	           log_error.error("Excepcion: %s", str(type(Exception)))
                    continue
                else: # se ejecuta si ha ido bien el try - arvhicar ficheros
                    os.rename(root+"/"+filename,ARCHIVE_PATH_CSV+"/"+filename)
