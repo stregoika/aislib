@@ -127,26 +127,24 @@ else:
                except psycopg2.DatabaseError, e:
                    if conexion:
 		       conexion.rollback()
-	           log_error.error("Database Error: tipo %s; código: %s; error: %s", str(type(e)), e.pgcode, e.pgerror)
-                   log_error.exception("%s", e)
+	           log_error.exception("Database Error: tipo %s; código: %s \n%s", str(type(e)), e.pgcode, e)
                    continue
                except psycopg2.IntegrityError, e:
                    if conexion:
 		       conexion.rollback()
-	           log_error.error("Integrity Error: tipo %s; código %s; error %s", str(type(e)), e.pgcode, e.pgerror)
+                   log_error.exception("Integrity Error: tipo %s; código: %s \n%s", str(type(e)), e.pgcode, e)
                    continue
                except Exception, e: #resto de excepciones
                    if conexion:
 		       conexion.rollback()
-	           #log_error.error("Excepcion: %s", str(type(Exceaption)))
-	           log_error.error("Excepcion: tipo %s; código %s; error %s", str(type(e)), e.pgcode, e.pgerror)
+                   log_error.exception("Excepcion: tipo %s; código: %s \n%s", str(type(e)), e.pgcode, e)
                    continue
                else: # se ejecuta si ha ido bien el try - arvhicar ficheros
 	 	   try:
                        os.rename(root+"/"+filename,ARCHIVE_PATH_CSV+"/"+filename)
 	               file_log.write("Archivado fichero: "+ARCHIVE_PATH_CSV+"/"+filename+" \n")
                    except Exception, e: 
-		       log_error.error("DDBB ok; ERROR archivado: %s", str(type(e)))
+                       log_error.exception("DDBB ok; ERROR archivado:  %s; código: %s \n%s", str(type(e)), e.pgcode, e)                  
                        continue
         print "******numero total de ficheros: {}".format(count_file)
         if count_file > 0:
@@ -189,7 +187,7 @@ else:
                    os.rename(root+"/"+filename,ARCHIVE_PATH_JSON+"/"+filename)
                    file_log.write("Archivado fichero: "+ARCHIVE_PATH_JSON+"/"+filename+" \n")
                except Exception, e:
-                   log_error.error("DDBB ok; ERROR archivado: %s", str(type(e)))
+                   log_error.exception("DDBB ok; ERROR archivado: tipo %s; código: %s \n%s", str(type(e)), e.pgcode, e)
                    continue
         print "******numero total de ficheros: {}".format(count_file)
         break # para evitar que profundice en los directorios
