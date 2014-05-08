@@ -128,6 +128,7 @@ else:
                    if conexion:
 		       conexion.rollback()
 	           log_error.error("Database Error: tipo %s; código: %s; error: %s", str(type(e)), e.pgcode, e.pgerror)
+                   log_error.exception("%s", e)
                    continue
                except psycopg2.IntegrityError, e:
                    if conexion:
