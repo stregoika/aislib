@@ -55,7 +55,6 @@ tabla = "marine_traffic.ais_raw"
 
 #Conexion ddbb
 opciones_db = " dbname=ais user=postgres password=+mngp0st+ port=5433 host=scb-dattest"
-opciones_db = " dbname=ais2 user=postgres password=+mngp0st+ port=5433 host=scb-dattest"
 
 # Check if it is already running
 if os.path.isfile(LOCK):
@@ -70,8 +69,8 @@ else:
     file_log.write("Conectando a la base de datos ....\n")
     try: 
         conexion = psycopg2.connect(opciones_db)
-    except e:
-        log_error.error("Error conexión ddbb\n")
+    except Exception, e:
+        log_error.error("Error conexión ddbb. Código: %s. Error: %s",e.pgcode, e.pgerror)
 	file_log.write("-+- END "+fecha+"-+-\n")
         file_log.close()
         sys.exit("DDBB ERROR")
@@ -100,10 +99,10 @@ else:
             sys.exit("ARCHIVE FILE ERROR") 
             
     
-    print "date: {}".format(str(date))
-    print "fecha: {}".format(str(fecha))
-    print "ayer: {}".format(str(date_ayer))
-    print "fecha2: {}".format(str(fecha_ayer))
+    #print "date: {}".format(str(date))
+    #print "fecha: {}".format(str(fecha))
+    #print "ayer: {}".format(str(date_ayer))
+    #print "fecha2: {}".format(str(fecha_ayer))
     
     init_file = "ais_marinetraffic_" + fecha_ayer + "_"
     end_file = "_UTC.kml.csv" 
@@ -117,41 +116,85 @@ else:
                count_file += 1
                print "({}) fichero: {}".format(count_file,str(filename))
                sentencia="COPY "+tabla+" "+campos+" FROM '"+root+"/"+filename+"' WITH DELIMITER ';' CSV HEADER;"
-               print sentencia
-	       file_log.write("sentencia: "+sentencia+" \n")
+               #print sentencia
+	       file_log.write("Sentencia: "+sentencia+" \n")
                cursor_con = conexion.cursor()
 	       try:
                    print "va a ejecutar ..."
+                   file_log.write("va a ejecutar ...\n")
                    cursor_con.execute(sentencia)
                    conexion.commit()
                except psycopg2.DatabaseError, e:
                    if conexion:
 		       conexion.rollback()
-	           log_error.error("Database Error: %s", str(type(Exception)))
+	           log_error.error("Database Error: tipo %s; código: %s; error: %s", str(type(e)), e.pgcode, e.pgerror)
                    continue
                except psycopg2.IntegrityError, e:
                    if conexion:
 		       conexion.rollback()
-	           log_error.error("Integrity Error: %s", str(type(Exception)))
+	           log_error.error("Integrity Error: tipo %s; código %s; error %s", str(type(e)), e.pgcode, e.pgerror)
                    continue
                except Exception, e: #resto de excepciones
                    if conexion:
 		       conexion.rollback()
-	           log_error.error("Excepcion: %s", str(type(Exception)))
+	           #log_error.error("Excepcion: %s", str(type(Exceaption)))
+	           log_error.error("Excepcion: tipo %s; código %s; error %s", str(type(e)), e.pgcode, e.pgerror)
                    continue
                else: # se ejecuta si ha ido bien el try - arvhicar ficheros
-                   os.rename(root+"/"+filename,ARCHIVE_PATH_CSV+"/"+filename)
-	           file_log.write("Archivado fichero: "+ARCHIVE_PATH_CSV+"/"+filename+" \n")
-                   
+	 	   try:
+                       os.rename(root+"/"+filename,ARCHIVE_PATH_CSV+"/"+filename)
+	               file_log.write("Archivado fichero: "+ARCHIVE_PATH_CSV+"/"+filename+" \n")
+                   except Exception, e: 
+		       log_error.error("DDBB ok; ERROR archivado: %s", str(type(e)))
+                       continue
         print "******numero total de ficheros: {}".format(count_file)
         if count_file > 0:
             cursor_con.close()
             conexion.close()          
 	break # para evitar que profundice en los directorios
 
+    #file_lock.close()
+    #os.remove(LOCK)
+    #Hasta aquí ha terminado de procesar los ficheros
+
+    '''
+ 
+        2. ARCHIVADO JSON
+
+    '''
+    # Crear estructura de archivado
+    try:
+        os.makedirs(ARCHIVE_PATH_JSON)
+    except OSError as exc:
+        if exc.errno == errno.EEXIST and os.path.isdir(ARCHIVE_PATH_JSON):
+            pass   # ya existe el directorio
+        else:
+            log_error.error("Error creación directorio %s", ARCHIVE_PATH_JSON)
+            file_log.write("-+- END "+fecha+"-+-\n")
+            file_log.close()
+            sys.exit("ARCHIVE FILE ERROR")
+
+    init_file = "ais_marinetraffic_" + fecha_ayer + "_"
+    end_file = "_UTC.kml.json"
+
+    # Recorrer el directorio base buscando los ficheros *.json
+    count_file = 0
+    for root, dirnames, filenames in os.walk(BASE_PATH_JSON):
+        for filename in filenames:
+            if filename.startswith(init_file) and filename.endswith(end_file):
+               count_file += 1
+               print "({}) fichero: {}".format(count_file,str(filename))
+               try:
+                   os.rename(root+"/"+filename,ARCHIVE_PATH_JSON+"/"+filename)
+                   file_log.write("Archivado fichero: "+ARCHIVE_PATH_JSON+"/"+filename+" \n")
+               except Exception, e:
+                   log_error.error("DDBB ok; ERROR archivado: %s", str(type(e)))
+                   continue
+        print "******numero total de ficheros: {}".format(count_file)
+        break # para evitar que profundice en los directorios
+
     file_lock.close()
     os.remove(LOCK)
-    #Hasta aquí ha terminado de procesar los ficheros
 
 file_log.write("-+- END "+fecha+"-+-\n")
 file_log.close()
