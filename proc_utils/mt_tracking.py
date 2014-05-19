@@ -84,7 +84,7 @@ else:
             conexion.rollback()
         log_error.exception("Excepcion: tipo %s; código: %s \n%s", str(type(e)), e.pgcode, e)
     else: # se ejecuta si ha ido bien el try - arvhicar ficheros
-	file_log.write("EJECUCION OK" \n")
+	file_log.write("EJECUCION OK \n")
         cursor_con.close()
         conexion.close()
     
