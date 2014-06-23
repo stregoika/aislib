@@ -1,0 +1,134 @@
+2014-06-20 10:30:47,082 - netcdf - ERROR - ERROR: lock file already exists
+
+2014-06-20 10:31:10,180 - netcdf - ERROR - Database Error: tipo <class 'psycopg2.ProgrammingError'>; código: 42601 
+error de sintaxis en o cerca de «)»
+LINE 1: ...time_shipcargo_daily WHERE date='2014-06-01'::date LIMIT 2);
+                                                                     ^
+Traceback (most recent call last):
+  File "netcdf.py", line 78, in <module>
+    cursor_con.execute(sentencia)
+ProgrammingError: error de sintaxis en o cerca de «)»
+LINE 1: ...time_shipcargo_daily WHERE date='2014-06-01'::date LIMIT 2);
+                                                                     ^
+
+2014-06-20 10:38:34,506 - netcdf - ERROR - Database Error: tipo <class 'psycopg2.ProgrammingError'>; código: 42601 
+error de sintaxis en o cerca de «)»
+LINE 1: ...time_shipcargo_daily WHERE date='2014-06-01'::date LIMIT 2);
+                                                                     ^
+Traceback (most recent call last):
+  File "netcdf.py", line 78, in <module>
+    cursor_con.execute(sentencia)
+ProgrammingError: error de sintaxis en o cerca de «)»
+LINE 1: ...time_shipcargo_daily WHERE date='2014-06-01'::date LIMIT 2);
+                                                                     ^
+
+2014-06-20 10:48:48,546 - netcdf - ERROR - ERROR: lock file already exists
+
+2014-06-20 10:53:55,385 - netcdf - ERROR - ERROR: lock file already exists
+
+2014-06-20 10:54:01,081 - netcdf - ERROR - Database Error: tipo <class 'psycopg2.ProgrammingError'>; código: 42601 
+error de sintaxis en o cerca de «)»
+LINE 1: ...time_shipcargo_daily WHERE date='2014-06-01'::date LIMIT 2);
+                                                                     ^
+Traceback (most recent call last):
+  File "netcdf.py", line 94, in <module>
+    cursor_con.execute(sentencia)
+ProgrammingError: error de sintaxis en o cerca de «)»
+LINE 1: ...time_shipcargo_daily WHERE date='2014-06-01'::date LIMIT 2);
+                                                                     ^
+
+2014-06-21 18:19:11,451 - netcdf - ERROR - Database Error: tipo <class 'psycopg2.ProgrammingError'>; código: 42601 
+error de sintaxis en o cerca de «)»
+LINE 1: ...time_shipcargo_daily WHERE date='2014-06-01'::date LIMIT 2);
+                                                                     ^
+Traceback (most recent call last):
+  File "netcdf.py", line 94, in <module>
+    cursor_con.execute(sentencia)
+ProgrammingError: error de sintaxis en o cerca de «)»
+LINE 1: ...time_shipcargo_daily WHERE date='2014-06-01'::date LIMIT 2);
+                                                                     ^
+
+2014-06-21 18:20:02,798 - netcdf - ERROR - Database Error: tipo <class 'psycopg2.ProgrammingError'>; código: 42601 
+error de sintaxis en o cerca de «)»
+LINE 1: ...time_shipcargo_daily WHERE date='2014-06-01'::date LIMIT 2);
+                                                                     ^
+Traceback (most recent call last):
+  File "netcdf.py", line 96, in <module>
+    cursor_con.execute(sentencia)
+ProgrammingError: error de sintaxis en o cerca de «)»
+LINE 1: ...time_shipcargo_daily WHERE date='2014-06-01'::date LIMIT 2);
+                                                                     ^
+
+2014-06-21 18:21:01,024 - netcdf - ERROR - Database Error: tipo <class 'psycopg2.ProgrammingError'>; código: 42601 
+error de sintaxis en o cerca de «)»
+LINE 1: ...time_shipcargo_daily WHERE date='2014-06-01'::date LIMIT 2);
+                                                                     ^
+Traceback (most recent call last):
+  File "netcdf.py", line 96, in <module>
+    cursor_con.execute(sentencia)
+ProgrammingError: error de sintaxis en o cerca de «)»
+LINE 1: ...time_shipcargo_daily WHERE date='2014-06-01'::date LIMIT 2);
+                                                                     ^
+
+2014-06-21 18:24:36,710 - netcdf - ERROR - Database Error: tipo <class 'psycopg2.ProgrammingError'>; código: 42P01 
+falta una entrada para la tabla «marine_traffic» en la cláusula FROM
+LINE 1: SELECT marine_traffic.marine_traffic.grid_time_shipcargo_dai...
+               ^
+Traceback (most recent call last):
+  File "netcdf.py", line 96, in <module>
+    cursor_con.execute(sentencia)
+ProgrammingError: falta una entrada para la tabla «marine_traffic» en la cláusula FROM
+LINE 1: SELECT marine_traffic.marine_traffic.grid_time_shipcargo_dai...
+               ^
+
+2014-06-21 18:25:29,986 - netcdf - ERROR - Database Error: tipo <class 'psycopg2.NotSupportedError'>; código: 0A000 
+no están implementadas las referencias entre bases de datos: «marine_traffic.marine_traffic.grid_time_shipcargo_daily»
+LINE 1: SELECT * FROM marine_traffic.marine_traffic.grid_time_shipca...
+                      ^
+Traceback (most recent call last):
+  File "netcdf.py", line 96, in <module>
+    cursor_con.execute(sentencia)
+NotSupportedError: no están implementadas las referencias entre bases de datos: «marine_traffic.marine_traffic.grid_time_shipcargo_daily»
+LINE 1: SELECT * FROM marine_traffic.marine_traffic.grid_time_shipca...
+                      ^
+
+2014-06-21 18:30:17,755 - netcdf - ERROR - ERROR: lock file already exists
+
+2014-06-21 18:40:35,096 - netcdf - ERROR - ERROR: lock file already exists
+
+2014-06-21 18:55:15,297 - netcdf - ERROR - ERROR: lock file already exists
+
+2014-06-21 19:12:55,419 - netcdf - ERROR - ERROR: lock file already exists
+
+2014-06-21 19:16:14,076 - netcdf - ERROR - ERROR: lock file already exists
+
+2014-06-21 19:23:49,310 - netcdf - ERROR - Excepcion: tipo <type 'exceptions.NameError'>; 
+name 'np' is not defined
+Traceback (most recent call last):
+  File "netcdf.py", line 97, in <module>
+    AA = np.asarray(cursor_con.fetchall())
+NameError: name 'np' is not defined
+2014-06-21 19:24:48,410 - netcdf - ERROR - Excepcion: tipo <type 'exceptions.NameError'>; 
+name 'asarray' is not defined
+Traceback (most recent call last):
+  File "netcdf.py", line 97, in <module>
+    AA = asarray(cursor_con.fetchall())
+NameError: name 'asarray' is not defined
+2014-06-21 19:26:01,295 - netcdf - ERROR - Excepcion: tipo <type 'exceptions.NameError'>; 
+name 'np' is not defined
+Traceback (most recent call last):
+  File "netcdf.py", line 116, in <module>
+    A = np.asarray(results)
+NameError: name 'np' is not defined
+2014-06-21 19:27:11,161 - netcdf - ERROR - Excepcion: tipo <type 'exceptions.NameError'>; 
+name 'np' is not defined
+Traceback (most recent call last):
+  File "netcdf.py", line 116, in <module>
+    A = np.asarray(results)
+NameError: name 'np' is not defined
+2014-06-21 19:28:00,311 - netcdf - ERROR - Excepcion: tipo <type 'exceptions.ValueError'>; 
+field named f0 not found.
+Traceback (most recent call last):
+  File "netcdf.py", line 118, in <module>
+    results_c1 = AA['f0']
+ValueError: field named f0 not found.
