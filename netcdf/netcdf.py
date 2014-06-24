@@ -85,38 +85,36 @@ else:
 
     fecha = '2014-06-01'
     #sentencia = "SELECT marine_traffic.tracking();"
-    sentencia = "SELECT * FROM marine_traffic.grid_time_shipcargo_daily WHERE date='"+fecha+"'::date LIMIT 2;"
+    sentencia = "SELECT date, ship_cargo, time_sec FROM marine_traffic.grid_time_shipcargo_daily WHERE date='"+fecha+"'::date LIMIT 2;"
     file_log.write("fecha consulta: "+fecha+"\n")
     file_log.write("Va a ejecutar .... "+sentencia+"\n")
-    cursor_con = conexion.cursor()
+    #cursor_con = conexion.cursor()
+    cur = conexion.cursor()
     cursor_cont = 0
     print "antes de execute"
     try:
         print "entra en el try para ejecutar"
-        numi = cursor_con.execute(sentencia)
-        AA = numpy.asarray(cursor_con.fetchall())
-        print "AA: {}".format(AA)
-        results = cursor_con.fetchall()
-        print "resultados: {}".format(results)
-	num_rows = int(cursor_con.rowcount)
-        print "num de filas: {}".format(num_rows)
-        print "numi: {}".format(numi)
-        # recast this nested tuple to a python list and flatten it so it's a proper iterable:
-        print "primer bloque!"
-        #x = map(list, list(results))              # change the type
-        #x = sum(x, [])                            # flatten
-        #print "antes del seugdo blqoe"
-        # D is a 1D NumPy array
-        #D = NP.fromiter(iterable=x, dtype=float, count=-6)  
-        #print "antes del tercer bloque"
-        # 'restore' the original dimensions of the result set:
-        #D = D.reshape(num_rows, -1)
-        #A = numpy.fromiter(cursos_con, dtype=('f8,f8,f8,f8,f8,f8'))
-        #A = numpy.fromiter(results, dtype=('f8,f8,f8,f8,f8,f8'))
-        #A = np.asarray(results)
+        #cursor_con.execute(sentencia)
+        #result = numpy.fromiter((tuple (row) for row in cursor_con), dtype=[('date',float), ('ship_cargo',int),('time_sec',float)])
+        ###result = numpy.fromiter((tuple (row) for row in cursor_con), dtype='f8,f8,f8')
+        #AA = numpy.asarray(cursor_con.fetchall())
+        #results = cursor_con.fetchall()
+	#num_rows = int(cursor_con.rowcount)
+        cur.execute(sentencia)
+        #resultis = cur.fetchall()
+        #resultis_as_list = [i[0] for i in resultis]
+        #arrayi = numpy.fromiter(resultis_as_list, dtype="f8,f8,f8")
+        #print arrayi
+	
+        data = numpy.array([tuple(row) for row in cur])
+        #data1 = numpy.array(data[:,0],dtype='f8')
+        data2 = numpy.array(data[:,1],dtype='f8')
+        #print "result: {}".format(data1)
+        print "result: {}".format(data2)
+        print "result: {}".format(data)
         print "voy a imprimir columnas"
-        results_c1 = AA['f0']
-        results_c2 = AA['f1']
+        results_c1 = result['f0']
+        results_c2 = result['f1']
         #print "D reshape: {}".format(D)
         print "results_c1: {}".format(results_c1)
         print "results_c2: {}".format(results_c2)

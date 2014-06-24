@@ -132,3 +132,153 @@ Traceback (most recent call last):
   File "netcdf.py", line 118, in <module>
     results_c1 = AA['f0']
 ValueError: field named f0 not found.
+2014-06-23 18:54:52,503 - netcdf - ERROR - Excepcion: tipo <type 'exceptions.TypeError'>; 
+float() argument must be a string or a number
+Traceback (most recent call last):
+  File "netcdf.py", line 97, in <module>
+    result = numpy.fromiter((tuple (row) for row in cursor_con), dtype=[('date',float), ('ship_cargo',int),('time_sec',float)])
+TypeError: float() argument must be a string or a number
+2014-06-23 18:58:32,934 - netcdf - ERROR - Excepcion: tipo <type 'exceptions.TypeError'>; 
+data type not understood
+Traceback (most recent call last):
+  File "netcdf.py", line 98, in <module>
+    result = numpy.fromiter((tuple (row) for row in cursor_con), dtype=('f8','f8','f8'))
+TypeError: data type not understood
+2014-06-23 19:00:13,628 - netcdf - ERROR - Excepcion: tipo <type 'exceptions.TypeError'>; 
+data type not understood
+Traceback (most recent call last):
+  File "netcdf.py", line 98, in <module>
+    result = numpy.fromiter((tuple (row) for row in cursor_con), dtype=(numpy.float,numpy.float,numpy.float))
+TypeError: data type not understood
+2014-06-23 19:01:10,849 - netcdf - ERROR - Excepcion: tipo <type 'exceptions.TypeError'>; 
+data type not understood
+Traceback (most recent call last):
+  File "netcdf.py", line 98, in <module>
+    result = numpy.fromiter((tuple (row) for row in cursor_con), dtype=(float,float,float))
+TypeError: data type not understood
+2014-06-23 19:01:48,183 - netcdf - ERROR - Excepcion: tipo <type 'exceptions.TypeError'>; 
+Required argument 'dtype' (pos 2) not found
+Traceback (most recent call last):
+  File "netcdf.py", line 98, in <module>
+    result = numpy.fromiter((tuple (row) for row in cursor_con))
+TypeError: Required argument 'dtype' (pos 2) not found
+2014-06-23 19:12:01,671 - netcdf - ERROR - Excepcion: tipo <type 'exceptions.TypeError'>; 
+float() argument must be a string or a number
+Traceback (most recent call last):
+  File "netcdf.py", line 98, in <module>
+    result = numpy.fromiter((tuple (row) for row in cursor_con), dtype='f8,f8,f8')
+TypeError: float() argument must be a string or a number
+2014-06-24 06:52:28,954 - netcdf - ERROR - Excepcion: tipo <type 'exceptions.TypeError'>; 
+float() argument must be a string or a number
+Traceback (most recent call last):
+  File "netcdf.py", line 98, in <module>
+    result = numpy.fromiter((tuple (row) for row in cursor_con), dtype='f8,f8,f8')
+TypeError: float() argument must be a string or a number
+2014-06-24 06:53:57,538 - netcdf - ERROR - Excepcion: tipo <type 'exceptions.TypeError'>; 
+float() argument must be a string or a number
+Traceback (most recent call last):
+  File "netcdf.py", line 99, in <module>
+    result = numpy.fromiter((tuple (row) for row in cursor_con), dtype='f8,f8,f8')
+TypeError: float() argument must be a string or a number
+2014-06-24 06:55:28,104 - netcdf - ERROR - Excepcion: tipo <type 'exceptions.TypeError'>; 
+long() argument must be a string or a number, not 'datetime.date'
+Traceback (most recent call last):
+  File "netcdf.py", line 106, in <module>
+    arrayi = numpy.fromiter(resultis_as_list, dtype=numpy.int32)
+TypeError: long() argument must be a string or a number, not 'datetime.date'
+2014-06-24 07:02:46,709 - netcdf - ERROR - Excepcion: tipo <type 'exceptions.TypeError'>; 
+data type not understood
+Traceback (most recent call last):
+  File "netcdf.py", line 106, in <module>
+    arrayi = numpy.fromiter(resultis_as_list, dtype=(numpy.long, numpy.int, numpy.float))
+TypeError: data type not understood
+2014-06-24 07:09:25,314 - netcdf - ERROR - Excepcion: tipo <type 'exceptions.TypeError'>; 
+data type not understood
+Traceback (most recent call last):
+  File "netcdf.py", line 106, in <module>
+    arrayi = numpy.fromiter(resultis_as_list, dtype=(numpy.float, numpy.float, numpy.float))
+TypeError: data type not understood
+2014-06-24 07:12:57,201 - netcdf - ERROR - Excepcion: tipo <type 'exceptions.NameError'>; 
+name 'float64' is not defined
+Traceback (most recent call last):
+  File "netcdf.py", line 106, in <module>
+    arrayi = numpy.fromiter(resultis_as_list, dtype=(float64, float64, float64))
+NameError: name 'float64' is not defined
+2014-06-24 07:15:36,334 - netcdf - ERROR - Excepcion: tipo <type 'exceptions.TypeError'>; 
+data type not understood
+Traceback (most recent call last):
+  File "netcdf.py", line 106, in <module>
+    arrayi = numpy.fromiter(resultis_as_list, dtype=(numpy.float64, numpy.float64, numpy.float64))
+TypeError: data type not understood
+2014-06-24 07:16:28,473 - netcdf - ERROR - Excepcion: tipo <type 'exceptions.TypeError'>; 
+data type not understood
+Traceback (most recent call last):
+  File "netcdf.py", line 106, in <module>
+    arrayi = numpy.fromiter(resultis_as_list, dtype='numpy.float64, numpy.float64, numpy.float64')
+TypeError: data type not understood
+2014-06-24 07:19:36,414 - netcdf - ERROR - Excepcion: tipo <type 'exceptions.TypeError'>; 
+expected a readable buffer object
+Traceback (most recent call last):
+  File "netcdf.py", line 106, in <module>
+    arrayi = numpy.fromiter(resultis_as_list, dtype="f8,f8,f8")
+TypeError: expected a readable buffer object
+2014-06-24 07:21:19,919 - netcdf - ERROR - Excepcion: tipo <type 'exceptions.TypeError'>; 
+expected a readable buffer object
+Traceback (most recent call last):
+  File "netcdf.py", line 106, in <module>
+    arrayi = numpy.fromiter(resultis_as_list, dtype="f8,f8,f8")
+TypeError: expected a readable buffer object
+2014-06-24 07:49:23,401 - netcdf - ERROR - Excepcion: tipo <type 'exceptions.NameError'>; 
+name 'result' is not defined
+Traceback (most recent call last):
+  File "netcdf.py", line 111, in <module>
+    print "result: {}".format(result)
+NameError: name 'result' is not defined
+2014-06-24 07:51:12,706 - netcdf - ERROR - Excepcion: tipo <type 'exceptions.NameError'>; 
+name 'result' is not defined
+Traceback (most recent call last):
+  File "netcdf.py", line 111, in <module>
+    print "result: {}".format(result)
+NameError: name 'result' is not defined
+2014-06-24 07:52:54,335 - netcdf - ERROR - Excepcion: tipo <type 'exceptions.TypeError'>; 
+float() argument must be a string or a number
+Traceback (most recent call last):
+  File "netcdf.py", line 110, in <module>
+    data1 = numpy.array(data[:,0],dtype="Float64")
+TypeError: float() argument must be a string or a number
+2014-06-24 07:54:01,815 - netcdf - ERROR - Excepcion: tipo <type 'exceptions.TypeError'>; 
+float() argument must be a string or a number
+Traceback (most recent call last):
+  File "netcdf.py", line 110, in <module>
+    data1 = numpy.array(data[:,0],dtype='f8')
+TypeError: float() argument must be a string or a number
+2014-06-24 07:55:03,281 - netcdf - ERROR - Excepcion: tipo <type 'exceptions.TypeError'>; 
+float() argument must be a string or a number
+Traceback (most recent call last):
+  File "netcdf.py", line 110, in <module>
+    data1 = numpy.array(data[0],dtype='f8')
+TypeError: float() argument must be a string or a number
+2014-06-24 08:38:45,825 - netcdf - ERROR - Excepcion: tipo <type 'exceptions.TypeError'>; 
+float() argument must be a string or a number
+Traceback (most recent call last):
+  File "netcdf.py", line 110, in <module>
+    data1 = numpy.array(data[0],dtype='f8')
+TypeError: float() argument must be a string or a number
+2014-06-24 08:40:40,946 - netcdf - ERROR - Excepcion: tipo <type 'exceptions.TypeError'>; 
+float() argument must be a string or a number
+Traceback (most recent call last):
+  File "netcdf.py", line 110, in <module>
+    data1 = numpy.array(data[:,0],dtype='f8')
+TypeError: float() argument must be a string or a number
+2014-06-24 08:41:23,766 - netcdf - ERROR - Excepcion: tipo <type 'exceptions.NameError'>; 
+name 'data1' is not defined
+Traceback (most recent call last):
+  File "netcdf.py", line 112, in <module>
+    print "result: {}".format(data1)
+NameError: name 'data1' is not defined
+2014-06-24 08:42:25,686 - netcdf - ERROR - Excepcion: tipo <type 'exceptions.NameError'>; 
+name 'result' is not defined
+Traceback (most recent call last):
+  File "netcdf.py", line 116, in <module>
+    results_c1 = result['f0']
+NameError: name 'result' is not defined
