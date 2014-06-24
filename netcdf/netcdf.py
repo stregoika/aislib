@@ -112,9 +112,9 @@ else:
         ndim_lon = numpy.size(unique_lon)
         print "dimensioens: tiempo: {} latitude: {}, longitud: {}".format(ndim_time, ndim_lat, ndim_lon)
         
-        time = ncfile.createDimension('time', ndim_time); 
-        lat = ncfile.createDimension('lat',ndim_lat);
-        lon = ncfile.createDimension('lon',ndim_lon);
+        time = ncfile.createDimension('time', ndim_time) 
+        lat = ncfile.createDimension('lat',ndim_lat)
+        lon = ncfile.createDimension('lon',ndim_lon)
         
 
          # Definir variables
@@ -126,18 +126,36 @@ else:
         vel_t00 = ncfile.createVariable('vel_t00','f8',('time','lat','lon'))
 
         # Inicializar dimensiones
-        times[:] = numpy.asarray(unique_time)
-        latitudes[:] = unique_lat
-        longitudes[:] = unique_lon
+        times = numpy.asarray(unique_time)
+        latitudes = numpy.asarray(unique_lat)
+        longitudes = numpy.asarray(unique_lon)
      
-        times2 = numpy.asarray(unique_time)
         print "times: {}".format(times[:])
-        print 'times =\n',times[:]
-        print "times: {}".format(times)
-        print "times = \n",times2[:]
-        print "latitudes: ".format(latitudes[:])
-        print "longitudes: ".format(longitudes[:])
+        #print 'times =\n',times[:]
+        print "latitudes: {}".format(latitudes[:])
+        print "longitudes: {}".format(longitudes[:])
  
+
+        # Empezar a escribir variables
+        row = data[0]
+        row_date = row[0]
+        print "primer fila: {}".format(row)
+        print "primera fila, primera columna: {}".format(row_date)
+        #indice_time = unique_time.index(row[0])[0]
+        indice_time = numpy.where(times[0] == row_date)
+        print "TIEMPO: {} índice {}".format(row[0],indice_time)        
+
+        row_lat = row[1]
+        print " primera fila, segunda columna {}".format(row_lat)
+        indice_lat = numpy.where(latitudes == row_lat)
+        print " indice lat: {}".format(indice_lat[0])
+        # Asignar variables
+ 
+        row5 = data[4]
+        row5_lat = row5[1]
+        indice_lat5 = numpy.where(latitudes == row5_lat)
+        print "fila 5: {}, índce lat: {}".format(row5,indice_lat5[0])
+       
         ncfile.close()
 
         print "he salido del cursor"

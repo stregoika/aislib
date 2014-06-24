@@ -498,3 +498,39 @@ Traceback (most recent call last):
   File "netcdf.py", line 129, in <module>
     times[:] = numpu.asarray(unique_time)
 NameError: name 'numpu' is not defined
+2014-06-24 11:35:03,342 - netcdf - ERROR - Excepcion: tipo <type 'exceptions.NameError'>; 
+name 'unique_long' is not defined
+Traceback (most recent call last):
+  File "netcdf.py", line 131, in <module>
+    longitudes = numpy.asarray(unique_long)
+NameError: name 'unique_long' is not defined
+2014-06-24 12:10:43,985 - netcdf - ERROR - Excepcion: tipo <type 'exceptions.AttributeError'>; 
+'numpy.ndarray' object has no attribute 'index'
+Traceback (most recent call last):
+  File "netcdf.py", line 142, in <module>
+    indice_time = times.index(row[0])
+AttributeError: 'numpy.ndarray' object has no attribute 'index'
+2014-06-24 12:18:27,913 - netcdf - ERROR - Excepcion: tipo <type 'exceptions.TypeError'>; 
+where() takes no keyword arguments
+Traceback (most recent call last):
+  File "netcdf.py", line 143, in <module>
+    indice_time = numpy.where(times = row[0])
+TypeError: where() takes no keyword arguments
+2014-06-24 12:22:53,184 - netcdf - ERROR - Excepcion: tipo <type 'exceptions.AttributeError'>; 
+'numpy.ndarray' object has no attribute 'index'
+Traceback (most recent call last):
+  File "netcdf.py", line 142, in <module>
+    indice_time = unique_time.index(row[0])
+AttributeError: 'numpy.ndarray' object has no attribute 'index'
+2014-06-24 12:25:34,088 - netcdf - ERROR - Excepcion: tipo <type 'exceptions.AttributeError'>; 
+'numpy.ndarray' object has no attribute 'index'
+Traceback (most recent call last):
+  File "netcdf.py", line 142, in <module>
+    indice_time = unique_time.index(row[0])[0]
+AttributeError: 'numpy.ndarray' object has no attribute 'index'
+2014-06-24 12:26:11,619 - netcdf - ERROR - Excepcion: tipo <type 'exceptions.IndexError'>; 
+tuple index out of range
+Traceback (most recent call last):
+  File "netcdf.py", line 143, in <module>
+    indice_time = numpy.where(times == row[0])[0]
+IndexError: tuple index out of range
