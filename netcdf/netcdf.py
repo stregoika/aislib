@@ -80,44 +80,40 @@ else:
     longitudes = ncfile.createVariable('longitude','f8',('lon',))
 
     # Variable 3D para almacenar los datos
- #   ais = ncfile.createVariable('ais','f8',('time','lat','lon'))
+    #ais = ncfile.createVariable('ais','f8',('time','lat','lon'))
 
 
     fecha = '2014-06-01'
-    #sentencia = "SELECT marine_traffic.tracking();"
-    sentencia = "SELECT date, ship_cargo, time_sec FROM marine_traffic.grid_time_shipcargo_daily WHERE date='"+fecha+"'::date LIMIT 2;"
+    sentencia = "SELECT date, ship_cargo, time_sec FROM marine_traffic.grid_time_shipcargo_daily WHERE date='"+fecha+"'::date LIMIT 10;"
     file_log.write("fecha consulta: "+fecha+"\n")
     file_log.write("Va a ejecutar .... "+sentencia+"\n")
-    #cursor_con = conexion.cursor()
-    cur = conexion.cursor()
+    cursor_con = conexion.cursor()
     cursor_cont = 0
     print "antes de execute"
     try:
         print "entra en el try para ejecutar"
-        #cursor_con.execute(sentencia)
-        #result = numpy.fromiter((tuple (row) for row in cursor_con), dtype=[('date',float), ('ship_cargo',int),('time_sec',float)])
-        ###result = numpy.fromiter((tuple (row) for row in cursor_con), dtype='f8,f8,f8')
-        #AA = numpy.asarray(cursor_con.fetchall())
-        #results = cursor_con.fetchall()
 	#num_rows = int(cursor_con.rowcount)
-        cur.execute(sentencia)
+        cursor_con.execute(sentencia)
         #resultis = cur.fetchall()
-        #resultis_as_list = [i[0] for i in resultis]
-        #arrayi = numpy.fromiter(resultis_as_list, dtype="f8,f8,f8")
-        #print arrayi
 	
-        data = numpy.array([tuple(row) for row in cur])
-        #data1 = numpy.array(data[:,0],dtype='f8')
-        data2 = numpy.array(data[:,1],dtype='f8')
-        #print "result: {}".format(data1)
-        print "result: {}".format(data2)
-        print "result: {}".format(data)
-        print "voy a imprimir columnas"
-        results_c1 = result['f0']
-        results_c2 = result['f1']
-        #print "D reshape: {}".format(D)
-        print "results_c1: {}".format(results_c1)
-        print "results_c2: {}".format(results_c2)
+        # resultados consulta = data
+        data = numpy.array([tuple(row) for row in cursor_con])
+        data_date = numpy.array(data[:,0],dtype='S10')
+        data_shipcargo = numpy.array(data[:,1],dtype='i4')
+        data_timesec = numpy.array(data[:,2],dtype='f8')
+        data_timesec2 = numpy.array(data[:,2],dtype='S15')
+        print "data_date: {}".format(data_date)
+        print "data_shipcargo: {}".format(data_shipcargo)
+        print "data_timesec: {}".format(data_timesec)
+        print "data_timesec2: {}".format(data_timesec2)
+        print "resultado array: {}".format(data)
+        
+        print "vamos a ordenar"
+        print "data_date: {}".format(numpy.unique(data_date))
+        print "data_shipcargo: {}".format(numpy.unique(data_shipcargo))
+        print "data_timesec: {}".format(numpy.unique(data_timesec))
+        print "data_timesec2: {}".format(numpy.unique(data_timesec2))
+        print "resultado array: {}".format(data)
         while True:
            reg = cursor_con.fetchone();
            print "Dentro del cursor: " % (cursor_cont)

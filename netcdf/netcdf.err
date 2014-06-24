@@ -282,3 +282,141 @@ Traceback (most recent call last):
   File "netcdf.py", line 116, in <module>
     results_c1 = result['f0']
 NameError: name 'result' is not defined
+2014-06-24 08:58:28,353 - netcdf - ERROR - Excepcion: tipo <type 'exceptions.NameError'>; 
+name 'result' is not defined
+Traceback (most recent call last):
+  File "netcdf.py", line 116, in <module>
+    results_c1 = result['f0']
+NameError: name 'result' is not defined
+2014-06-24 09:03:03,340 - netcdf - ERROR - Excepcion: tipo <type 'exceptions.NameError'>; 
+name 'cur' is not defined
+Traceback (most recent call last):
+  File "netcdf.py", line 100, in <module>
+    data = numpy.array([tuple(row) for row in cur])
+NameError: name 'cur' is not defined
+2014-06-24 09:04:12,728 - netcdf - ERROR - Excepcion: tipo <type 'exceptions.AttributeError'>; 
+'module' object has no attribute 'datetime64'
+Traceback (most recent call last):
+  File "netcdf.py", line 101, in <module>
+    data_date = numpy.array(data[:,0],dtype=numpy.datetime64)
+AttributeError: 'module' object has no attribute 'datetime64'
+2014-06-24 09:09:02,205 - netcdf - ERROR - Excepcion: tipo <type 'exceptions.AttributeError'>; 
+'module' object has no attribute 'string'
+Traceback (most recent call last):
+  File "netcdf.py", line 101, in <module>
+    data_date = numpy.array(data[:,0],dtype=numpy.string)
+AttributeError: 'module' object has no attribute 'string'
+2014-06-24 09:10:08,392 - netcdf - ERROR - Excepcion: tipo <type 'exceptions.NameError'>; 
+name 'string' is not defined
+Traceback (most recent call last):
+  File "netcdf.py", line 101, in <module>
+    data_date = numpy.array(data[:,0],dtype=string)
+NameError: name 'string' is not defined
+2014-06-24 09:10:49,380 - netcdf - ERROR - Excepcion: tipo <type 'exceptions.NameError'>; 
+name 'result' is not defined
+Traceback (most recent call last):
+  File "netcdf.py", line 107, in <module>
+    results_c1 = result['f0']
+NameError: name 'result' is not defined
+2014-06-24 09:11:52,265 - netcdf - ERROR - Excepcion: tipo <type 'exceptions.NameError'>; 
+name 'result' is not defined
+Traceback (most recent call last):
+  File "netcdf.py", line 107, in <module>
+    results_c1 = result['f0']
+NameError: name 'result' is not defined
+2014-06-24 09:13:16,541 - netcdf - ERROR - Excepcion: tipo <type 'exceptions.NameError'>; 
+name 'result' is not defined
+Traceback (most recent call last):
+  File "netcdf.py", line 107, in <module>
+    results_c1 = result['f0']
+NameError: name 'result' is not defined
+2014-06-24 09:16:10,500 - netcdf - ERROR - Excepcion: tipo <type 'exceptions.TypeError'>; 
+not all arguments converted during string formatting
+Traceback (most recent call last):
+  File "netcdf.py", line 110, in <module>
+    print "Dentro del cursor: " % (cursor_cont)
+TypeError: not all arguments converted during string formatting
+2014-06-24 09:17:42,540 - netcdf - ERROR - Excepcion: tipo <type 'exceptions.TypeError'>; 
+not all arguments converted during string formatting
+Traceback (most recent call last):
+  File "netcdf.py", line 110, in <module>
+    print "Dentro del cursor: " % (cursor_cont)
+TypeError: not all arguments converted during string formatting
+2014-06-24 09:18:35,619 - netcdf - ERROR - Excepcion: tipo <type 'exceptions.TypeError'>; 
+data type not understood
+Traceback (most recent call last):
+  File "netcdf.py", line 103, in <module>
+    data_timesec = numpy.array(data[:,2],dtype='f32')
+TypeError: data type not understood
+2014-06-24 09:20:15,789 - netcdf - ERROR - Excepcion: tipo <type 'exceptions.TypeError'>; 
+not all arguments converted during string formatting
+Traceback (most recent call last):
+  File "netcdf.py", line 110, in <module>
+    print "Dentro del cursor: " % (cursor_cont)
+TypeError: not all arguments converted during string formatting
+2014-06-24 09:21:46,160 - netcdf - ERROR - Excepcion: tipo <type 'exceptions.TypeError'>; 
+not all arguments converted during string formatting
+Traceback (most recent call last):
+  File "netcdf.py", line 110, in <module>
+    print "Dentro del cursor: " % (cursor_cont)
+TypeError: not all arguments converted during string formatting
+2014-06-24 09:22:38,409 - netcdf - ERROR - Excepcion: tipo <type 'exceptions.TypeError'>; 
+not all arguments converted during string formatting
+Traceback (most recent call last):
+  File "netcdf.py", line 110, in <module>
+    print "Dentro del cursor: " % (cursor_cont)
+TypeError: not all arguments converted during string formatting
+2014-06-24 09:25:29,336 - netcdf - ERROR - Excepcion: tipo <type 'exceptions.TypeError'>; 
+data type not understood
+Traceback (most recent call last):
+  File "netcdf.py", line 103, in <module>
+    data_timesec = numpy.array(data[:,2],dtype='float256')
+TypeError: data type not understood
+2014-06-24 09:27:05,268 - netcdf - ERROR - Excepcion: tipo <type 'exceptions.TypeError'>; 
+data type not understood
+Traceback (most recent call last):
+  File "netcdf.py", line 103, in <module>
+    data_timesec = numpy.array(data[:,2],dtype='float256')
+TypeError: data type not understood
+2014-06-24 09:27:46,928 - netcdf - ERROR - Excepcion: tipo <type 'exceptions.AttributeError'>; 
+'module' object has no attribute 'float256'
+Traceback (most recent call last):
+  File "netcdf.py", line 103, in <module>
+    data_timesec = numpy.array(data[:,2],dtype=numpy.float256)
+AttributeError: 'module' object has no attribute 'float256'
+2014-06-24 09:28:49,998 - netcdf - ERROR - Excepcion: tipo <type 'exceptions.TypeError'>; 
+data type not understood
+Traceback (most recent call last):
+  File "netcdf.py", line 103, in <module>
+    data_timesec = numpy.array(data[:,2],dtype='f256')
+TypeError: data type not understood
+2014-06-24 09:30:00,375 - netcdf - ERROR - Excepcion: tipo <type 'exceptions.NameError'>; 
+name 'float128' is not defined
+Traceback (most recent call last):
+  File "netcdf.py", line 103, in <module>
+    data_timesec = numpy.array(data[:,2],dtype=float128)
+NameError: name 'float128' is not defined
+2014-06-24 09:30:24,591 - netcdf - ERROR - Excepcion: tipo <type 'exceptions.TypeError'>; 
+not all arguments converted during string formatting
+Traceback (most recent call last):
+  File "netcdf.py", line 110, in <module>
+    print "Dentro del cursor: " % (cursor_cont)
+TypeError: not all arguments converted during string formatting
+2014-06-24 09:32:56,190 - netcdf - ERROR - Excepcion: tipo <type 'exceptions.TypeError'>; 
+not all arguments converted during string formatting
+Traceback (most recent call last):
+  File "netcdf.py", line 112, in <module>
+    print "Dentro del cursor: " % (cursor_cont)
+TypeError: not all arguments converted during string formatting
+2014-06-24 09:36:19,245 - netcdf - ERROR - Excepcion: tipo <type 'exceptions.TypeError'>; 
+not all arguments converted during string formatting
+Traceback (most recent call last):
+  File "netcdf.py", line 119, in <module>
+    print "Dentro del cursor: " % (cursor_cont)
+TypeError: not all arguments converted during string formatting
+2014-06-24 09:37:48,791 - netcdf - ERROR - Excepcion: tipo <type 'exceptions.TypeError'>; 
+not all arguments converted during string formatting
+Traceback (most recent call last):
+  File "netcdf.py", line 119, in <module>
+    print "Dentro del cursor: " % (cursor_cont)
+TypeError: not all arguments converted during string formatting
