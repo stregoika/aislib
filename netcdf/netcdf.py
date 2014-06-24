@@ -11,7 +11,7 @@ import logging
 import traceback
 from netCDF4 import Dataset
 import numpy
-
+import urllib2 as urllib
 
 # Variables de sistema
 APP_PATH = '/home/aisuser/netcdf/'
@@ -82,6 +82,7 @@ else:
         # resultados consulta = data
         data = numpy.array([tuple(row) for row in cursor_con])
         data_date = numpy.array(data[:,0],dtype='S10')
+        #data_date = numpy.array(data[:,0],dtype='numpy.datetime64')
         data_lat = numpy.array(data[:,1],dtype='i4')
         data_lon = numpy.array(data[:,2],dtype='i4')
         data_shipcargo = numpy.array(data[:,3],dtype='i4')
@@ -141,10 +142,16 @@ else:
         row_date = row[0]
         print "primer fila: {}".format(row)
         print "primera fila, primera columna: {}".format(row_date)
-        #indice_time = unique_time.index(row[0])[0]
-        indice_time = numpy.where(times[0] == repr(row_date))
-        print "TIEMPO: {} índice {}".format(repr(row[0]),indice_time)        
-
+        print "valor a buscar {}".format("'{}'".format(row_date))
+        indice_time = numpy.where(times[0] == format("'{}'".format(row_date)))
+        print "times: {}".format(times[:])
+        print "times[0] {}".format(times[0])
+        print "TIEMPO: {} índice {}".format(row[0],indice_time)        
+        print "TIEMPO: {} índice {}".format(row[0],indice_time)        
+        
+        indice_time = numpy.where(times == format("'{}'".format(row_date)))
+        print "TIEMPO: {} índice {}".format(row[0],indice_time)        
+        
         row_lat = row[1]
         print " primera fila, segunda columna {}".format(row_lat)
         indice_lat = numpy.where(latitudes == row_lat)

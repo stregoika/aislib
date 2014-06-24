@@ -540,3 +540,69 @@ Traceback (most recent call last):
   File "netcdf.py", line 145, in <module>
     indice_time = numpy.where(times[0] == row_date.astype('|S10'))
 AttributeError: 'datetime.date' object has no attribute 'astype'
+2014-06-24 22:14:26,443 - netcdf - ERROR - Excepcion: tipo <type 'exceptions.AttributeError'>; 
+'module' object has no attribute 'datetime64'
+Traceback (most recent call last):
+  File "netcdf.py", line 85, in <module>
+    data_date = numpy.array(data[:,0],dtype=numpy.datetime64)
+AttributeError: 'module' object has no attribute 'datetime64'
+2014-06-24 22:15:46,067 - netcdf - ERROR - Excepcion: tipo <type 'exceptions.AttributeError'>; 
+'module' object has no attribute 'datetime'
+Traceback (most recent call last):
+  File "netcdf.py", line 85, in <module>
+    data_date = numpy.array(data[:,0],dtype=numpy.datetime)
+AttributeError: 'module' object has no attribute 'datetime'
+2014-06-24 22:17:00,535 - netcdf - ERROR - Excepcion: tipo <type 'exceptions.TypeError'>; 
+data type not understood
+Traceback (most recent call last):
+  File "netcdf.py", line 85, in <module>
+    data_date = numpy.array(data[:,0],dtype='datetime64')
+TypeError: data type not understood
+2014-06-24 22:18:20,088 - netcdf - ERROR - Excepcion: tipo <type 'exceptions.TypeError'>; 
+data type not understood
+Traceback (most recent call last):
+  File "netcdf.py", line 85, in <module>
+    data_date = numpy.array(data[:,0],dtype='datetime')
+TypeError: data type not understood
+2014-06-24 22:31:47,270 - netcdf - ERROR - Excepcion: tipo <type 'exceptions.TypeError'>; 
+data type not understood
+Traceback (most recent call last):
+  File "netcdf.py", line 85, in <module>
+    data_date = numpy.array(data[:,0],dtype='numpy.datetime64')
+TypeError: data type not understood
+2014-06-24 22:54:41,922 - netcdf - ERROR - Excepcion: tipo <type 'exceptions.NameError'>; 
+name 'urllib' is not defined
+Traceback (most recent call last):
+  File "netcdf.py", line 149, in <module>
+    indice_time = numpy.where(times == urllib.quote("'{}'".format(row_date)))
+NameError: name 'urllib' is not defined
+2014-06-24 23:11:04,142 - netcdf - ERROR - Excepcion: tipo <type 'exceptions.IndexError'>; 
+tuple index out of range
+Traceback (most recent call last):
+  File "netcdf.py", line 147, in <module>
+    print "TIEMPO: {} índice {}".format(row[0],indice_time[0])
+IndexError: tuple index out of range
+2014-06-24 23:11:33,423 - netcdf - ERROR - Excepcion: tipo <type 'exceptions.IndexError'>; 
+tuple index out of range
+Traceback (most recent call last):
+  File "netcdf.py", line 147, in <module>
+    print "TIEMPO: {} índice {}".format(row[0],indice_time[0])
+IndexError: tuple index out of range
+2014-06-24 23:13:38,400 - netcdf - ERROR - Excepcion: tipo <type 'exceptions.IndexError'>; 
+tuple index out of range
+Traceback (most recent call last):
+  File "netcdf.py", line 148, in <module>
+    print "TIEMPO: {} índice {}".format(row[0],indice_time[0])
+IndexError: tuple index out of range
+2014-06-24 23:14:48,051 - netcdf - ERROR - Excepcion: tipo <type 'exceptions.IndexError'>; 
+tuple index out of range
+Traceback (most recent call last):
+  File "netcdf.py", line 149, in <module>
+    print "TIEMPO: {} índice {}".format(row[0],indice_time[0])
+IndexError: tuple index out of range
+2014-06-24 23:17:27,036 - netcdf - ERROR - Excepcion: tipo <type 'exceptions.IndexError'>; 
+tuple index out of range
+Traceback (most recent call last):
+  File "netcdf.py", line 149, in <module>
+    print "TIEMPO: {} índice {}".format(row[0],indice_time[0])
+IndexError: tuple index out of range
