@@ -64,8 +64,9 @@ else:
     
     #print "fecha2: {}".format(str(fecha_ayer))
  
+    fecha = '2014-06-09'
     #sentencia = "SELECT marine_traffic.tracking();"   
-    sentencia = "SELECT marine_traffic.tracking2();"   
+    sentencia = "SELECT marine_traffic.tracking2_date('"+fecha+"'::date);"   
     file_log.write("fecha ayer tracking: "+fecha_ayer+"\n")
     file_log.write("Va a ejecutar .... "+sentencia+"\n")
     cursor_con = conexion.cursor()

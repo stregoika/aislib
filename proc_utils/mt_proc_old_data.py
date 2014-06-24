@@ -75,7 +75,7 @@ else:
         file_log.close()
         sys.exit("DDBB ERROR")
 
-    date_ayer = date - datetime.timedelta(days=1)
+    date_ayer = date - datetime.timedelta(days=2)
     fecha_ayer = date_ayer.strftime("%Y-%m-%d")
     year = date_ayer.year
     #month = date_ayer.month - lo saca como un único dígito
