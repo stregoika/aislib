@@ -142,8 +142,8 @@ else:
         print "primer fila: {}".format(row)
         print "primera fila, primera columna: {}".format(row_date)
         #indice_time = unique_time.index(row[0])[0]
-        indice_time = numpy.where(times[0] == row_date)
-        print "TIEMPO: {} índice {}".format(row[0],indice_time)        
+        indice_time = numpy.where(times[0] == repr(row_date))
+        print "TIEMPO: {} índice {}".format(repr(row[0]),indice_time)        
 
         row_lat = row[1]
         print " primera fila, segunda columna {}".format(row_lat)
@@ -155,9 +155,15 @@ else:
         row5_lat = row5[1]
         indice_lat5 = numpy.where(latitudes == row5_lat)
         print "fila 5: {}, índce lat: {}".format(row5,indice_lat5[0])
-       
-        ncfile.close()
+ 
 
+        indice_time5 = numpy.where(numpy.asarray(data_timesec) == row5[4])
+        print "indice time5 {}".format(indice_time5[0])      
+        indice_time5 = numpy.where(numpy.asarray(numpy.unique(data_timesec)) == row5[4])
+        print "indice ordenado time5 {}".format(indice_time5[0])      
+
+
+        ncfile.close()
         print "he salido del cursor"
 
     except psycopg2.DatabaseError, e:

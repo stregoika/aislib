@@ -534,3 +534,9 @@ Traceback (most recent call last):
   File "netcdf.py", line 143, in <module>
     indice_time = numpy.where(times == row[0])[0]
 IndexError: tuple index out of range
+2014-06-24 13:00:50,579 - netcdf - ERROR - Excepcion: tipo <type 'exceptions.AttributeError'>; 
+'datetime.date' object has no attribute 'astype'
+Traceback (most recent call last):
+  File "netcdf.py", line 145, in <module>
+    indice_time = numpy.where(times[0] == row_date.astype('|S10'))
+AttributeError: 'datetime.date' object has no attribute 'astype'
