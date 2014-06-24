@@ -1,5 +1,6 @@
--+- START 2014-06-24_09:37:42-+-
+-+- START 2014-06-24_11:31:46-+-
 Conectando a la base de datos ....
 fecha consulta: 2014-06-01
-Va a ejecutar .... SELECT date, ship_cargo, time_sec FROM marine_traffic.grid_time_shipcargo_daily WHERE date='2014-06-01'::date LIMIT 10;
+Va a ejecutar .... SELECT date, gid, grid, ship_cargo, time_sec FROM marine_traffic.grid_time_shipcargo_daily WHERE date='2014-06-01'::date LIMIT 10;
+EJECUCION OK 
 -+- END 2014-06-01-+-

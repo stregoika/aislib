@@ -65,26 +65,9 @@ else:
         file_log.write("-+- END "+fecha+"-+-\n")
         file_log.close()
         sys.exit("DDBB ERROR")
-
-
-    # Definir netcdf
-    # Definir dimensiones
-    time = ncfile.createDimension('time', None); # None
-    lat = ncfile.createDimension('lat',2);
-    lon = ncfile.createDimension('lon',2);
-
-
-    # Definir variables
-    times = ncfile.createVariable('time','f8',('time',))
-    latitudes = ncfile.createVariable('latitude','f8',('lat',))
-    longitudes = ncfile.createVariable('longitude','f8',('lon',))
-
-    # Variable 3D para almacenar los datos
-    #ais = ncfile.createVariable('ais','f8',('time','lat','lon'))
-
-
+    
     fecha = '2014-06-01'
-    sentencia = "SELECT date, ship_cargo, time_sec FROM marine_traffic.grid_time_shipcargo_daily WHERE date='"+fecha+"'::date LIMIT 10;"
+    sentencia = "SELECT date, gid, grid, ship_cargo, time_sec FROM marine_traffic.grid_time_shipcargo_daily WHERE date='"+fecha+"'::date LIMIT 10;"
     file_log.write("fecha consulta: "+fecha+"\n")
     file_log.write("Va a ejecutar .... "+sentencia+"\n")
     cursor_con = conexion.cursor()
@@ -99,29 +82,63 @@ else:
         # resultados consulta = data
         data = numpy.array([tuple(row) for row in cursor_con])
         data_date = numpy.array(data[:,0],dtype='S10')
-        data_shipcargo = numpy.array(data[:,1],dtype='i4')
-        data_timesec = numpy.array(data[:,2],dtype='f8')
-        data_timesec2 = numpy.array(data[:,2],dtype='S15')
+        data_lat = numpy.array(data[:,1],dtype='i4')
+        data_lon = numpy.array(data[:,2],dtype='i4')
+        data_shipcargo = numpy.array(data[:,3],dtype='i4')
+        data_timesec = numpy.array(data[:,4],dtype='f8')
+        #data_timesec2 = numpy.array(data[:,3],dtype='S15')
         print "data_date: {}".format(data_date)
+        print "data_lat: {}".format(data_lat)
+        print "data_lon: {}".format(data_lon)
         print "data_shipcargo: {}".format(data_shipcargo)
         print "data_timesec: {}".format(data_timesec)
-        print "data_timesec2: {}".format(data_timesec2)
+        #print "data_timesec2: {}".format(data_timesec2)
         print "resultado array: {}".format(data)
         
+        unique_time = numpy.unique(data_date)
+        unique_lat = numpy.unique(data_lat)
+        unique_lon = numpy.unique(data_lon)
+
         print "vamos a ordenar"
-        print "data_date: {}".format(numpy.unique(data_date))
+        print "data_date: {}".format(unique_time)
+        print "data_lat: {}".format(unique_lat)
+        print "data_lon: {}".format(unique_lon)
         print "data_shipcargo: {}".format(numpy.unique(data_shipcargo))
         print "data_timesec: {}".format(numpy.unique(data_timesec))
-        print "data_timesec2: {}".format(numpy.unique(data_timesec2))
-        print "resultado array: {}".format(data)
-        while True:
-           reg = cursor_con.fetchone();
-           print "Dentro del cursor: " % (cursor_cont)
+        
+        # Definir dimensiones
+        ndim_time = numpy.size(unique_time)
+        ndim_lat = numpy.size(unique_lat)
+        ndim_lon = numpy.size(unique_lon)
+        print "dimensioens: tiempo: {} latitude: {}, longitud: {}".format(ndim_time, ndim_lat, ndim_lon)
+        
+        time = ncfile.createDimension('time', ndim_time); 
+        lat = ncfile.createDimension('lat',ndim_lat);
+        lon = ncfile.createDimension('lon',ndim_lon);
+        
 
-           if reg == None:
-               # escribir netcdf
-               ncfile.close()
-               break
+         # Definir variables
+        times = ncfile.createVariable('time','S1',('time',))
+        latitudes = ncfile.createVariable('latitude','f8',('lat',))
+        longitudes = ncfile.createVariable('longitude','f8',('lon',))
+
+        # Variable 3D para almacenar los datos
+        vel_t00 = ncfile.createVariable('vel_t00','f8',('time','lat','lon'))
+
+        # Inicializar dimensiones
+        times[:] = numpy.asarray(unique_time)
+        latitudes[:] = unique_lat
+        longitudes[:] = unique_lon
+     
+        times2 = numpy.asarray(unique_time)
+        print "times: {}".format(times[:])
+        print 'times =\n',times[:]
+        print "times: {}".format(times)
+        print "times = \n",times2[:]
+        print "latitudes: ".format(latitudes[:])
+        print "longitudes: ".format(longitudes[:])
+ 
+        ncfile.close()
 
         print "he salido del cursor"
 

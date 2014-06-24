@@ -420,3 +420,81 @@ Traceback (most recent call last):
   File "netcdf.py", line 119, in <module>
     print "Dentro del cursor: " % (cursor_cont)
 TypeError: not all arguments converted during string formatting
+2014-06-24 09:50:19,349 - netcdf - ERROR - Excepcion: tipo <type 'exceptions.TypeError'>; 
+not all arguments converted during string formatting
+Traceback (most recent call last):
+  File "netcdf.py", line 122, in <module>
+    print "Dentro del cursor: " % (cursor_cont)
+TypeError: not all arguments converted during string formatting
+2014-06-24 09:56:14,059 - netcdf - ERROR - Excepcion: tipo <type 'exceptions.RuntimeError'>; 
+NetCDF: String match to name in use
+Traceback (most recent call last):
+  File "netcdf.py", line 126, in <module>
+    time = ncfile.createDimension('time', None); # None
+  File "netCDF4.pyx", line 1549, in netCDF4.Dataset.createDimension (netCDF4.c:21457)
+  File "netCDF4.pyx", line 2015, in netCDF4.Dimension.__init__ (netCDF4.c:25972)
+RuntimeError: NetCDF: String match to name in use
+2014-06-24 09:59:56,237 - netcdf - ERROR - Excepcion: tipo <type 'exceptions.NameError'>; 
+name 'unique_lon' is not defined
+Traceback (most recent call last):
+  File "netcdf.py", line 128, in <module>
+    ndim_lon = numpy.size(unique_lon)
+NameError: name 'unique_lon' is not defined
+2014-06-24 10:04:42,197 - netcdf - ERROR - Excepcion: tipo <type 'exceptions.NameError'>; 
+name 'numpy_lon' is not defined
+Traceback (most recent call last):
+  File "netcdf.py", line 122, in <module>
+    print "data_lon: {}".format(numpy_lon)
+NameError: name 'numpy_lon' is not defined
+2014-06-24 10:06:52,831 - netcdf - ERROR - Excepcion: tipo <type 'exceptions.RuntimeError'>; 
+NetCDF: String match to name in use
+Traceback (most recent call last):
+  File "netcdf.py", line 132, in <module>
+    time = ncfile.createDimension('time', ndim_time);
+  File "netCDF4.pyx", line 1549, in netCDF4.Dataset.createDimension (netCDF4.c:21457)
+  File "netCDF4.pyx", line 2015, in netCDF4.Dimension.__init__ (netCDF4.c:25972)
+RuntimeError: NetCDF: String match to name in use
+2014-06-24 10:49:37,540 - netcdf - ERROR - Excepcion: tipo <type 'exceptions.RuntimeError'>; 
+NetCDF: String match to name in use
+Traceback (most recent call last):
+  File "netcdf.py", line 132, in <module>
+    time = ncfile.createDimension('time', ndim_time);
+  File "netCDF4.pyx", line 1549, in netCDF4.Dataset.createDimension (netCDF4.c:21457)
+  File "netCDF4.pyx", line 2015, in netCDF4.Dimension.__init__ (netCDF4.c:25972)
+RuntimeError: NetCDF: String match to name in use
+2014-06-24 11:07:13,132 - netcdf - ERROR - Excepcion: tipo <type 'exceptions.RuntimeError'>; 
+NetCDF: String match to name in use
+Traceback (most recent call last):
+  File "netcdf.py", line 132, in <module>
+    time = ncfile.createDimension('time', ndim_time);
+  File "netCDF4.pyx", line 1549, in netCDF4.Dataset.createDimension (netCDF4.c:21457)
+  File "netCDF4.pyx", line 2015, in netCDF4.Dimension.__init__ (netCDF4.c:25972)
+RuntimeError: NetCDF: String match to name in use
+2014-06-24 11:09:39,218 - netcdf - ERROR - Excepcion: tipo <type 'exceptions.TypeError'>; 
+not all arguments converted during string formatting
+Traceback (most recent call last):
+  File "netcdf.py", line 130, in <module>
+    print "Dentro del cursor: " % (cursor_cont)
+TypeError: not all arguments converted during string formatting
+2014-06-24 11:20:02,644 - netcdf - ERROR - Excepcion: tipo <type 'exceptions.ValueError'>; 
+invalid literal for float(): 2014-06-01
+Traceback (most recent call last):
+  File "netcdf.py", line 129, in <module>
+    times[:] = unique_time
+  File "netCDF4.pyx", line 3066, in netCDF4.Variable.__setitem__ (netCDF4.c:38763)
+  File "netCDF4.pyx", line 3186, in netCDF4.Variable._put (netCDF4.c:39652)
+ValueError: invalid literal for float(): 2014-06-01
+2014-06-24 11:21:53,805 - netcdf - ERROR - Excepcion: tipo <type 'exceptions.TypeError'>; 
+illegal primitive data type, must be one of ['i8', 'f4', 'u8', 'i1', 'U1', 'S1', 'i2', 'u1', 'i4', 'u2', 'f8', 'u4'], got |S10
+Traceback (most recent call last):
+  File "netcdf.py", line 121, in <module>
+    times = ncfile.createVariable('time','S10',('time',))
+  File "netCDF4.pyx", line 1721, in netCDF4.Dataset.createVariable (netCDF4.c:22375)
+  File "netCDF4.pyx", line 2268, in netCDF4.Variable.__init__ (netCDF4.c:28060)
+TypeError: illegal primitive data type, must be one of ['i8', 'f4', 'u8', 'i1', 'U1', 'S1', 'i2', 'u1', 'i4', 'u2', 'f8', 'u4'], got |S10
+2014-06-24 11:26:56,949 - netcdf - ERROR - Excepcion: tipo <type 'exceptions.NameError'>; 
+name 'numpu' is not defined
+Traceback (most recent call last):
+  File "netcdf.py", line 129, in <module>
+    times[:] = numpu.asarray(unique_time)
+NameError: name 'numpu' is not defined
