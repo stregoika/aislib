@@ -111,7 +111,7 @@ else:
         ndim_time = numpy.size(unique_time)
         ndim_lat = numpy.size(unique_lat)
         ndim_lon = numpy.size(unique_lon)
-        print "dimensioens: tiempo: {} latitude: {}, longitud: {}".format(ndim_time, ndim_lat, ndim_lon)
+        print "***dimensioens: tiempo: {} latitude: {}, longitud: {}".format(ndim_time, ndim_lat, ndim_lon)
         
         time = ncfile.createDimension('time', ndim_time) 
         lat = ncfile.createDimension('lat',ndim_lat)
@@ -156,29 +156,28 @@ else:
         print " indice lon: {}".format(indice_lon[0])
         # Asignar variables
  
-        row5 = data[4]
-        row5_lat = row5[1]
-        indice_lat5 = numpy.where(latitudes == row5_lat)
-        print "fila 5: {}, índce lat: {}".format(row5,indice_lat5[0])
- 
+        nrow = 0;
+        for row in data:
+            row_date = row[0]
+            row_lat = row[1]
+            row_lon = row[2]
+            row_shipcargo = row[3]
+            row_time = row[4]
+     
+            indice_time = numpy.where(times == row_date.isoformat())[0]
+            indice_lat = numpy.where(latitudes == row_lat)[0]
+            indice_lon = numpy.where(longitudes == row_lon)[0]
+  
+            print "fila ({}) [{}] - idate {}, ilat {}, ilon {}".format(nrow, row, indice_time, indice_lat, indice_lon)
+            vel_t00[indice_time, indice_lat, indice_lon] = row_time            
 
-        indice_time5 = numpy.where(numpy.asarray(data_timesec) == row5[4])
-        print "indice time5 {}".format(indice_time5[0])      
-        indice_time5 = numpy.where(numpy.asarray(numpy.unique(data_timesec)) == row5[4])
-        print "indice ordenado time5 {}".format(indice_time5[0])      
+            nrow += nrow
 
 
-        print "sigo con mi rollo de las fechas"
-        print "data_date {}".format(times)
-        print "elmeneto array tiempos únicos {} elemento rox {}".format(times[0],row[0])
-        print "tipo del elemento array {}".format(type(times[0]))
-        print "tpo del row {}".format(type(row[0]))
-        print "tpo del row {}".format(type(row[0].isoformat()))
-        print "índice: {}".format(numpy.where(times==row_date.isoformat()))
-        print "índice: {}".format(numpy.where(times== row_date))
-        print "índice: {}".format(numpy.where(times== '2014-06-01')[0])
         ncfile.close()
+
         print "he salido del cursor"
+        
 
     except psycopg2.DatabaseError, e:
         if conexion:

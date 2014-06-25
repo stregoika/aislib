@@ -623,3 +623,21 @@ Traceback (most recent call last):
   File "netcdf.py", line 176, in <module>
     print "índice: {}".format(numpy.where(times== row_date)[0])
 IndexError: tuple index out of range
+2014-06-25 17:50:49,452 - netcdf - ERROR - Excepcion: tipo <type 'exceptions.NameError'>; 
+name 'indcie_lon' is not defined
+Traceback (most recent call last):
+  File "netcdf.py", line 172, in <module>
+    vel_t00[indice_time, indice_lat, indcie_lon] = row_time
+NameError: name 'indcie_lon' is not defined
+2014-06-25 17:52:21,815 - netcdf - ERROR - Excepcion: tipo <type 'exceptions.NameError'>; 
+name 'indcie_lon' is not defined
+Traceback (most recent call last):
+  File "netcdf.py", line 172, in <module>
+    vel_t00[indice_time, indice_lat, indcie_lon] = row_time
+NameError: name 'indcie_lon' is not defined
+2014-06-25 17:53:16,771 - netcdf - ERROR - Excepcion: tipo <type 'exceptions.NameError'>; 
+name 'indcie_lon' is not defined
+Traceback (most recent call last):
+  File "netcdf.py", line 172, in <module>
+    vel_t00[indice_time, indice_lat, indcie_lon] = row_time
+NameError: name 'indcie_lon' is not defined
