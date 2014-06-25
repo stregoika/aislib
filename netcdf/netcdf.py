@@ -83,8 +83,8 @@ else:
         data = numpy.array([tuple(row) for row in cursor_con])
         data_date = numpy.array(data[:,0],dtype='S10')
         #data_date = numpy.array(data[:,0],dtype='numpy.datetime64')
-        data_lat = numpy.array(data[:,1],dtype='i4')
-        data_lon = numpy.array(data[:,2],dtype='i4')
+        data_lat = numpy.array(data[:,1],dtype='f8')
+        data_lon = numpy.array(data[:,2],dtype='f8')
         data_shipcargo = numpy.array(data[:,3],dtype='i4')
         data_timesec = numpy.array(data[:,4],dtype='f8')
         #data_timesec2 = numpy.array(data[:,3],dtype='S15')
@@ -141,21 +141,19 @@ else:
         row = data[0]
         row_date = row[0]
         print "primer fila: {}".format(row)
-        print "primera fila, primera columna: {}".format(row_date)
-        print "valor a buscar {}".format("'{}'".format(row_date))
-        indice_time = numpy.where(times[0] == format("'{}'".format(row_date)))
-        print "times: {}".format(times[:])
-        print "times[0] {}".format(times[0])
-        print "TIEMPO: {} índice {}".format(row[0],indice_time)        
-        print "TIEMPO: {} índice {}".format(row[0],indice_time)        
-        
-        indice_time = numpy.where(times == format("'{}'".format(row_date)))
-        print "TIEMPO: {} índice {}".format(row[0],indice_time)        
+        print "primera fila, primera columna (time): {}".format(row_date)
+        indice_time = numpy.where(times == row_date.isoformat())
+        print "indice times: {}".format(indice_time[0])
         
         row_lat = row[1]
-        print " primera fila, segunda columna {}".format(row_lat)
+        print " primera fila, segunda columna (latitude): {}".format(row_lat)
         indice_lat = numpy.where(latitudes == row_lat)
         print " indice lat: {}".format(indice_lat[0])
+        
+        row_lon = row[2]
+        print " primera fila, tercera columna (longitude): {}".format(row_lon)
+        indice_lon = numpy.where(longitudes == row_lon)
+        print " indice lon: {}".format(indice_lon[0])
         # Asignar variables
  
         row5 = data[4]
