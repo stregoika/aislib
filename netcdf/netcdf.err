@@ -606,3 +606,20 @@ Traceback (most recent call last):
   File "netcdf.py", line 149, in <module>
     print "TIEMPO: {} índice {}".format(row[0],indice_time[0])
 IndexError: tuple index out of range
+2014-06-25 16:39:06,788 - netcdf - ERROR - Database Error: tipo <class 'psycopg2.ProgrammingError'>; código: 42703 
+no existe la columna «latitude»
+LINE 1: SELECT date, latitude, longitude, ship_cargo, time_sec FROM ...
+                     ^
+Traceback (most recent call last):
+  File "netcdf.py", line 79, in <module>
+    cursor_con.execute(sentencia)
+ProgrammingError: no existe la columna «latitude»
+LINE 1: SELECT date, latitude, longitude, ship_cargo, time_sec FROM ...
+                     ^
+
+2014-06-25 17:08:51,274 - netcdf - ERROR - Excepcion: tipo <type 'exceptions.IndexError'>; 
+tuple index out of range
+Traceback (most recent call last):
+  File "netcdf.py", line 176, in <module>
+    print "índice: {}".format(numpy.where(times== row_date)[0])
+IndexError: tuple index out of range

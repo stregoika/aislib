@@ -67,7 +67,7 @@ else:
         sys.exit("DDBB ERROR")
     
     fecha = '2014-06-01'
-    sentencia = "SELECT date, gid, grid, ship_cargo, time_sec FROM marine_traffic.grid_time_shipcargo_daily WHERE date='"+fecha+"'::date LIMIT 10;"
+    sentencia = "SELECT date, latitude, longitude, ship_cargo, time_sec FROM marine_traffic.grid_time_shipcargo_daily WHERE date='"+fecha+"'::date LIMIT 10;"
     file_log.write("fecha consulta: "+fecha+"\n")
     file_log.write("Va a ejecutar .... "+sentencia+"\n")
     cursor_con = conexion.cursor()
@@ -170,6 +170,15 @@ else:
         print "indice ordenado time5 {}".format(indice_time5[0])      
 
 
+        print "sigo con mi rollo de las fechas"
+        print "data_date {}".format(times)
+        print "elmeneto array tiempos únicos {} elemento rox {}".format(times[0],row[0])
+        print "tipo del elemento array {}".format(type(times[0]))
+        print "tpo del row {}".format(type(row[0]))
+        print "tpo del row {}".format(type(row[0].isoformat()))
+        print "índice: {}".format(numpy.where(times==row_date.isoformat()))
+        print "índice: {}".format(numpy.where(times== row_date))
+        print "índice: {}".format(numpy.where(times== '2014-06-01')[0])
         ncfile.close()
         print "he salido del cursor"
 
