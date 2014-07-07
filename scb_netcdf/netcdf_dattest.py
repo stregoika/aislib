@@ -14,11 +14,12 @@ import numpy
 import urllib2 as urllib
 
 # Variables de sistema
-APP_PATH = '/home/aisuser/netcdf/'
-BASE_PATH = '/home/aisuser/netcdf/'
-LOG = BASE_PATH + "netcdf.log"
-LOCK = BASE_PATH + "netcdf.lock"
-LOG_ERROR_FILE = BASE_PATH + "netcdf.err"
+HOME_PATH = '/home/aisuser/'
+APP_PATH = HOME_PATH + 'netcdf/'
+BASE_PATH = HOME_PATH + 'netcdf/'
+LOG = HOME_PATH + "logs/netcdf.log"
+LOCK = APP_PATH + "netcdf.lock"
+LOG_ERROR_FILE = HOME_PATH + "logs/netcdf.err"
 
 # Configuración logging
 log_error = logging.getLogger('netcdf')
@@ -66,8 +67,8 @@ else:
         file_log.close()
         sys.exit("DDBB ERROR")
     
-    fecha = '2014-06-01'
-    sentencia = "SELECT date, latitude, longitude, ship_cargo, time_sec FROM marine_traffic.grid_time_shipcargo_daily WHERE date='"+fecha+"'::date LIMIT 10;"
+    fecha = '2014-06-25'
+    sentencia = "SELECT date, latitude, longitude, ship_cargo, time_sec FROM marine_traffic.grid_time_shipcargo_daily WHERE date='"+fecha+"'::date AND ship_cargo = 30"
     file_log.write("fecha consulta: "+fecha+"\n")
     file_log.write("Va a ejecutar .... "+sentencia+"\n")
     cursor_con = conexion.cursor()
