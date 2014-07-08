@@ -80,7 +80,7 @@ else:
     #fecha = '2014-06-25'
     # Nota: ahora mismo la dimensión de tiempo es solo 1 ya que se obtienen los datos para todo un día. 
     # TODO: datos horarios a lo largo de un día
-    sentencia = "SELECT date, latitude, longitude, ship_cargo, time_sec FROM marine_traffic.grid_time_shipcargo_daily WHERE date='"+fecha_ayer+"'::date AND ship_cargo = 30"
+    #sentencia = "SELECT date, latitude, longitude, ship_cargo, time_sec FROM marine_traffic.grid_time_shipcargo_daily WHERE date='"+fecha_ayer+"'::date AND ship_cargo = 30"
     sentencia = "SELECT date, latitude, longitude, ship_cargo, time_sec FROM marine_traffic.grid_time_shipcargo_daily WHERE date='"+fecha_ayer+"'::date AND ship_cargo is not null"
     file_log.write("fecha consulta: "+fecha+"\n")
     file_log.write("Va a ejecutar .... "+sentencia+"\n")
@@ -131,8 +131,8 @@ else:
 
          # Definir variables
         times = ncfile.createVariable('time','S1',('time',))
-        latitudes = ncfile.createVariable('latitude','f8',('lat',))
-        longitudes = ncfile.createVariable('longitude','f8',('lon',))
+        latitudes = ncfile.createVariable('lat','f8',('lat',))
+        longitudes = ncfile.createVariable('lon','f8',('lon',))
 
         # Variables 3Dimensiones para almacenar los datos.
         # Una variable por cada tipos valido: sc0, sc30, sc37, sc40, sc50, sc53, sc60, sc70, sc80
@@ -146,6 +146,8 @@ else:
         sc70 = ncfile.createVariable('sc70_cargo','f8',('time','lat','lon'))
         sc80 = ncfile.createVariable('sc80_tanker','f8',('time','lat','lon'))
 
+        #data = cf1.create_array([220, 288], float("NaN")) 
+
         # Inicializar dimensiones
         times = numpy.asarray(unique_time)
         latitudes = numpy.asarray(unique_lat)
@@ -157,6 +159,10 @@ else:
         print "longitudes: {}".format(longitudes[:])
  
 
+
+	# Inicializar con NaN las variables
+        sc30 = numpy.empty([ndim_time, ndim_lat, ndim_lon],float)
+        sc30[:] = numpy.nan
         # Empezar a escribir variables
         #row = data[0]
         #row_date = row[0]

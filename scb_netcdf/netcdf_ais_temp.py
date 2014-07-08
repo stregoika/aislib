@@ -20,7 +20,7 @@ BASE_PATH = HOME_PATH + 'netcdf/'
 LOG = HOME_PATH + "logs/netcdf_ais.log"
 LOCK = APP_PATH + "netcdf_ais.lock"
 LOG_ERROR_FILE = HOME_PATH + "logs/netcdf_ais.err"
-NC_PATH = HOME_PATH ¡ 'created_netcdf/'
+NC_PATH = HOME_PATH + 'created_netcdf/'
 
 # Configuración logging
 log_error = logging.getLogger('netcdf_ais')
@@ -43,7 +43,7 @@ file_log = open(LOG,'w+')
 file_log.write("-+- START " + fecha + "-+-\n")
 
 # Fichero netcdf salida
-nc_name_file = NC_PATH + "mt.nc"
+nc_name_file = NC_PATH + fecha + "_mt.nc"
 ncfile = Dataset(nc_name_file, 'w');
 
 #Conexion ddbb
@@ -131,8 +131,8 @@ else:
 
          # Definir variables
         times = ncfile.createVariable('time','S1',('time',))
-        latitudes = ncfile.createVariable('latitude','f8',('lat',))
-        longitudes = ncfile.createVariable('longitude','f8',('lon',))
+        latitudes = ncfile.createVariable('lat','f8',('lat',))
+        longitudes = ncfile.createVariable('lon','f8',('lon',))
 
         # Variables 3Dimensiones para almacenar los datos.
         # Una variable por cada tipos valido: sc0, sc30, sc37, sc40, sc50, sc53, sc60, sc70, sc80
@@ -156,6 +156,10 @@ else:
         print "latitudes: {}".format(latitudes[:])
         print "longitudes: {}".format(longitudes[:])
  
+
+        #Inicializar arrays variables con NaN
+        sc30 = numpy.empty([ndim_time, ndim_lat, ndim_lon], float)
+        sc30[:] = numpy.nan
 
         # Empezar a escribir variables
         #row = data[0]
@@ -210,7 +214,7 @@ else:
             else: #row_shipcargo == 30: 
                 sc80[indice_time, indice_lat, indice_lon] = row_value        
 
-            nrow += nrow
+            nrow = nrow + 1
 
 
         ncfile.close()

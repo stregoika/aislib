@@ -86,7 +86,7 @@ else:
     except Exception, e: #resto de excepciones
         if conexion:
             conexion.rollback()
-        log_error.exception("Excepcion: tipo %s; código: %s \n%s", str(type(e)), e.pgcode, e)
+        log_error.exception("Excepcion: tipo %s; código: %s \n%s", str(type(e)), e)
     else: # se ejecuta si ha ido bien el try - arvhicar ficheros
 	file_log.write("EJECUCION OK \n")
         cursor_con.close()
