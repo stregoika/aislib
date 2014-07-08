@@ -20,6 +20,7 @@ BASE_PATH = HOME_PATH + 'netcdf/'
 LOG = HOME_PATH + "logs/netcdf_ais.log"
 LOCK = APP_PATH + "netcdf_ais.lock"
 LOG_ERROR_FILE = HOME_PATH + "logs/netcdf_ais.err"
+NC_PATH = HOME_PATH + 'created_netcdf/'
 
 # Configuración logging
 log_error = logging.getLogger('netcdf_ais')
@@ -42,7 +43,7 @@ file_log = open(LOG,'w+')
 file_log.write("-+- START " + fecha + "-+-\n")
 
 # Fichero netcdf salida
-nc_name_file = BASE_PATH + "mt.nc"
+nc_name_file = NC_PATH + fecha + "_mt.nc"
 ncfile = Dataset(nc_name_file, 'w');
 
 #Conexion ddbb
