@@ -78,7 +78,7 @@ else:
  
     # Nota: ahora mismo la dimensión de tiempo es solo 1 ya que se obtienen los datos para todo un día. 
     # TODO: datos horarios a lo largo de un día
-    sentencia = "SELECT date, latitude, longitude, ship_cargo, time_sec FROM marine_traffic.grid_time_shipcargo_daily WHERE date='"+fecha_ayer+"'::date AND ship_cargo = 30"
+    sentencia = "SELECT date, latitude, longitude, ship_cargo, time_sec FROM marine_traffic.grid_time_shipcargo_daily WHERE date='"+fecha_ayer+"'::date AND ship_cargo = 30 limit 10"
     #sentencia = "SELECT date, latitude, longitude, ship_cargo, time_sec FROM marine_traffic.grid_time_shipcargo_daily WHERE date='"+fecha_ayer+"'::date AND ship_cargo = 130"
     #sentencia = "SELECT date, latitude, longitude, ship_cargo, time_sec FROM marine_traffic.grid_time_shipcargo_daily WHERE date='"+fecha_ayer+"'::date AND ship_cargo is not null"
     file_log.write("fecha consulta: "+fecha+"\n")
@@ -153,13 +153,17 @@ else:
 
         sc30.units = 's' 
         # Inicializar dimensiones
-        times = numpy.asarray(unique_time)
-        latitudes = numpy.asarray(unique_lat)
-        longitudes = numpy.asarray(unique_lon)
-     
+        tims = numpy.asarray(unique_time)
+        times[:] = tims 
+        lats = numpy.asarray(unique_lat)
+        latitudes[:] = lats
+        lons = numpy.asarray(unique_lon)
+        longitudes[:] = lons     
+
         print "times: {}".format(times[:])
         #print 'times =\n',times[:]
-        print "latitudes: {}".format(latitudes[:])
+        #print "latitudes: {}".format(latitudes[:])
+        print 'latitudes =\n',latitudes[:]
         print "longitudes: {}".format(longitudes[:])
  
 
@@ -228,8 +232,28 @@ else:
 
             nrow = nrow + 1
 
-        sc30[0,0,0] = 1.
+        #Asignar valores a mano en la variable
+        sc30[0,:,:] = '1.'
+        print "segunda imprsion "
+        print "sc30: {}".format(sc30[:]) 
+        # Imprimir netcdfa
+        print "Imprimir dimensiones"
+        print ncfile.dimensions
 
+        ncfile.sync()
+
+        var30 = ncfile.variables['sc30_fisher']
+        var30.assignValue(sc30)
+        print "imrpimir variables"
+        print ncfile.variables
+        print " ** ImpRIMIR vairiables sc30:"
+        print ncfile.variables['sc30_fisher'][:]
+
+        print "imrpimir dimensiones. latitudes"
+        print ncfile.variables['latitude'][:]
+        print "imrpimir dimensiones"
+        for dimobj in ncfile.dimensions.values():
+	    print dimobj
         ncfile.close()
 
         print "he salido del cursor"
