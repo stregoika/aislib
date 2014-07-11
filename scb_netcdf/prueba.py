@@ -12,6 +12,8 @@ import traceback
 from netCDF4 import Dataset
 import numpy
 import urllib2 as urllib
+import calendar
+import time as tt
 
 # Variables de sistema
 HOME_PATH = '/home/aisuser/'
@@ -128,11 +130,11 @@ else:
         lon = ncfile.createDimension('lon',ndim_lon)
         
          # Definir variables
-        times = ncfile.createVariable('time','S1',('time',))
+        times = ncfile.createVariable('time','f8',('time',))
         latitudes = ncfile.createVariable('latitude','f8',('lat',))
         longitudes = ncfile.createVariable('longitude','f8',('lon',))
 
-        times.units = 'datetime'
+        times.units = 'seconds since 1970-01-01 00:00:00'
         latitudes.units = 'degrees_north'
         longitudes.units = 'degrees_east'
         
@@ -148,24 +150,20 @@ else:
         #sc70 = ncfile.createVariable('sc70_cargo','f8',('time','lat','lon'))
         #sc80 = ncfile.createVariable('sc80_tanker','f8',('time','lat','lon'))
 
-
         sc30.units = 's' 
         # Inicializar dimensiones
-        tims = numpy.asarray(unique_time)
-        #times[:] = tims
-        times = unique_time
-        times[0] = unique_time[0]
-        print "timito.shape: {}, times.shape: {}".format(tims.shape, times.shape)
-        #times.assignValue(tims[:])
+        # times: lo tengo en YYYY-MM-DD tengo qeu convertilo en segundos desde epoch
+        # calendar.timegm(time.strptime('2014-07-11',"%Y-%m-%d"))
+        tims = []
+        for t in unique_time:
+            tims.append(calendar.timegm(tt.strptime(t,"%Y-%m-%d")))
+        tims_temp = numpy.asarray(tims)
+        times[:] = tims_temp
         lats = numpy.asarray(unique_lat)
         latitudes[:] = lats
-        print "latitudes.shape: {}, lats.shape: {}".format(latitudes.shape, lats.shape)
-        #latitudes.assignValue(lats[0])
         lons = numpy.asarray(unique_lon)
         longitudes[:] = lons     
-        #longitudes.assignValue(lons[0])
 
-        print "timito: {}".format(tims[:])
         print "times: {}".format(times[:])
         #print 'times =\n',times[:]
         #print "latitudes: {}".format(latitudes[:])
@@ -182,24 +180,6 @@ else:
 
         # Atributos
         #ncfile.description = 'Fichero netCDF con el tiempo en segundos pasado por los barcos en cada celda de la grid'
-
-        # Empezar a escribir variables
-        #row = data[0]
-        #row_date = row[0]
-        #print "primer fila: {}".format(row)
-        #print "primera fila, primera columna (time): {}".format(row_date)
-        #indice_time = numpy.where(times == row_date.isoformat())
-        #print "indice times: {}".format(indice_time[0])
-        
-        #row_lat = row[1]
-        #print " primera fila, segunda columna (latitude): {}".format(row_lat)
-        #indice_lat = numpy.where(latitudes == row_lat)
-        #print " indice lat: {}".format(indice_lat[0])
-        
-        #row_lon = row[2]
-        #print " primera fila, tercera columna (longitude): {}".format(row_lon)
-        #indice_lon = numpy.where(longitudes == row_lon)
-        #print " indice lon: {}".format(indice_lon[0])
         
         # Asignar variables
         nrow = 0;
@@ -211,7 +191,8 @@ else:
             row_value = row[4]
      
             # Encontrar índices
-            indice_time = numpy.where(times == row_date.isoformat())[0]
+            #indice_time = numpy.where(times == row_date.isoformat())[0]
+            indice_time = numpy.where(times == row__date)[0]
             indice_lat = numpy.where(latitudes == row_lat)[0]
             indice_lon = numpy.where(longitudes == row_lon)[0]
   
