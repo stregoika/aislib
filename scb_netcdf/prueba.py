@@ -127,7 +127,6 @@ else:
         lat = ncfile.createDimension('lat',ndim_lat)
         lon = ncfile.createDimension('lon',ndim_lon)
         
-
          # Definir variables
         times = ncfile.createVariable('time','S1',('time',))
         latitudes = ncfile.createVariable('latitude','f8',('lat',))
@@ -137,7 +136,6 @@ else:
         latitudes.units = 'degrees_north'
         longitudes.units = 'degrees_east'
         
-
         # Variables 3Dimensiones para almacenar los datos.
         # Una variable por cada tipos valido: sc0, sc30, sc37, sc40, sc50, sc53, sc60, sc70, sc80
         #sc0 = ncfile.createVariable('sc0_unspecified','f8',('time','lat','lon'))
@@ -154,12 +152,20 @@ else:
         sc30.units = 's' 
         # Inicializar dimensiones
         tims = numpy.asarray(unique_time)
-        times[:] = tims 
+        #times[:] = tims
+        times = unique_time
+        times[0] = unique_time[0]
+        print "timito.shape: {}, times.shape: {}".format(tims.shape, times.shape)
+        #times.assignValue(tims[:])
         lats = numpy.asarray(unique_lat)
         latitudes[:] = lats
+        print "latitudes.shape: {}, lats.shape: {}".format(latitudes.shape, lats.shape)
+        #latitudes.assignValue(lats[0])
         lons = numpy.asarray(unique_lon)
         longitudes[:] = lons     
+        #longitudes.assignValue(lons[0])
 
+        print "timito: {}".format(tims[:])
         print "times: {}".format(times[:])
         #print 'times =\n',times[:]
         #print "latitudes: {}".format(latitudes[:])
@@ -233,17 +239,18 @@ else:
             nrow = nrow + 1
 
         #Asignar valores a mano en la variable
-        sc30[0,:,:] = '1.'
+        var_sc30 = numpy.asarray(1,10,10)
+        var_sc30[:,:,:] = '1.'
         print "segunda imprsion "
-        print "sc30: {}".format(sc30[:]) 
+        print "sc30: {}".format(var_sc30[:]) 
         # Imprimir netcdfa
         print "Imprimir dimensiones"
         print ncfile.dimensions
 
         ncfile.sync()
-
+        sc30[:,:,:] = var_sc30
         var30 = ncfile.variables['sc30_fisher']
-        var30.assignValue(sc30)
+ #       var30.assignValue(sc30)
         print "imrpimir variables"
         print ncfile.variables
         print " ** ImpRIMIR vairiables sc30:"
