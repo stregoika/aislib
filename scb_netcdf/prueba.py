@@ -80,7 +80,7 @@ else:
  
     # Nota: ahora mismo la dimensión de tiempo es solo 1 ya que se obtienen los datos para todo un día. 
     # TODO: datos horarios a lo largo de un día
-    sentencia = "SELECT date, latitude, longitude, ship_cargo, time_sec FROM marine_traffic.grid_time_shipcargo_daily WHERE date='"+fecha_ayer+"'::date AND ship_cargo = 30 limit 10"
+    sentencia = "SELECT extract(epoch from date) date, latitude, longitude, ship_cargo, time_sec FROM marine_traffic.grid_time_shipcargo_daily WHERE date='"+fecha_ayer+"'::date AND ship_cargo = 30 limit 10"
     #sentencia = "SELECT date, latitude, longitude, ship_cargo, time_sec FROM marine_traffic.grid_time_shipcargo_daily WHERE date='"+fecha_ayer+"'::date AND ship_cargo = 130"
     #sentencia = "SELECT date, latitude, longitude, ship_cargo, time_sec FROM marine_traffic.grid_time_shipcargo_daily WHERE date='"+fecha_ayer+"'::date AND ship_cargo is not null"
     file_log.write("fecha consulta: "+fecha+"\n")
@@ -94,7 +94,7 @@ else:
 	
         # resultados consulta = data
         data = numpy.array([tuple(row) for row in cursor_con])
-        data_date = numpy.array(data[:,0],dtype='S10') # numpy array con todos los valores del campo date
+        data_date = numpy.array(data[:,0],dtype='f8') # numpy array con todos los valores del campo date
         data_lat = numpy.array(data[:,1],dtype='f8')
         data_lon = numpy.array(data[:,2],dtype='f8')
         data_shipcargo = numpy.array(data[:,3],dtype='i4')
@@ -106,7 +106,7 @@ else:
         print "data_shipcargo: {}".format(data_shipcargo)
         print "data_timesec: {}".format(data_timesec)
         print "resultado array entero (data): {}".format(data)
-        
+
         # Calcular valores únicos para los índices de las dimensiones
         unique_time = numpy.unique(data_date)
         unique_lat = numpy.unique(data_lat)
@@ -154,11 +154,13 @@ else:
         # Inicializar dimensiones
         # times: lo tengo en YYYY-MM-DD tengo qeu convertilo en segundos desde epoch
         # calendar.timegm(time.strptime('2014-07-11',"%Y-%m-%d"))
-        tims = []
-        for t in unique_time:
-            tims.append(calendar.timegm(tt.strptime(t,"%Y-%m-%d")))
-        tims_temp = numpy.asarray(tims)
-        times[:] = tims_temp
+        #tims = []
+        #for t in unique_time:
+        #    tims.append(calendar.timegm(tt.strptime(t,"%Y-%m-%d")))
+        #tims_temp = numpy.asarray(tims)
+        #times[:] = tims_temp
+        tims = numpy.asarray(unique_time)
+        times[:] = tims
         lats = numpy.asarray(unique_lat)
         latitudes[:] = lats
         lons = numpy.asarray(unique_lon)
@@ -172,15 +174,20 @@ else:
  
 
         #Inicializar arrays variables con NaN
-        sc30 = numpy.empty((ndim_time, ndim_lat, ndim_lon))
+        #sc30 = numpy.empty((ndim_time, ndim_lat, ndim_lon),dtype='f8')
         #sc30[:] = float(numpy.nan)
-        sc30.fill(float(numpy.NAN))
+        #sc30.fill(float(numpy.NAN))
         #sc30.fill(float(0.))
         print "sc30: {}".format(sc30[:]) 
 
+        #print "prueba sc30 cambio"
+        #sc30[0,:,0] = 1.0
+        #print "sc30: {}".format(sc30[:]) 
         # Atributos
         #ncfile.description = 'Fichero netCDF con el tiempo en segundos pasado por los barcos en cada celda de la grid'
-        
+        var_sc30 = numpy.zeros((ndim_time, ndim_lat, ndim_lon),dtype='f8')
+        var_sc30[:,:,:] = '1.'
+        print "var_sc30: {}".format(var_sc30[:])
         # Asignar variables
         nrow = 0;
         for row in data:
@@ -192,16 +199,17 @@ else:
      
             # Encontrar índices
             #indice_time = numpy.where(times == row_date.isoformat())[0]
-            indice_time = numpy.where(times == row__date)[0]
+            indice_time = numpy.where(times == row_date)[0]
             indice_lat = numpy.where(latitudes == row_lat)[0]
             indice_lon = numpy.where(longitudes == row_lon)[0]
   
-            #print "fila ({}) [{}] - idate {}, ilat {}, ilon {}".format(nrow, row, indice_time, indice_lat, indice_lon)
+            print "fila ({}) [{}] - idate {}, ilat {}, ilon {}".format(nrow, row, indice_time, indice_lat, indice_lon)
             #vel_t00[indice_time, indice_lat, indice_lon] = row_time            
             if row_shipcargo == 0: 
                 sc0[indice_time, indice_lat, indice_lon] = row_value  
             elif row_shipcargo == 30: 
-                sc30[indice_time, indice_lat, indice_lon] = row_value         
+                #sc30[indice_time, indice_lat, indice_lon] = row_value         
+                var_sc30[indice_time, indice_lat, indice_lon] = row_value         
             elif row_shipcargo == 37: 
                 sc37[indice_time, indice_lat, indice_lon] = row_value        
             elif row_shipcargo == 40: 
@@ -220,18 +228,23 @@ else:
             nrow = nrow + 1
 
         #Asignar valores a mano en la variable
-        var_sc30 = numpy.asarray(1,10,10)
-        var_sc30[:,:,:] = '1.'
+        #var_sc30 = numpy.asarray(1,10,10)
+        #var_sc30 = numpy.zeros((1,10,10),dtype='f8')
+        #var_sc30[:,:,:] = '1.'
         print "segunda imprsion "
-        print "sc30: {}".format(var_sc30[:]) 
+        print "sc30: {}".format(sc30[:]) 
+        print "var_sc30: {}".format(var_sc30[:]) 
         # Imprimir netcdfa
         print "Imprimir dimensiones"
         print ncfile.dimensions
 
-        ncfile.sync()
-        sc30[:,:,:] = var_sc30
-        var30 = ncfile.variables['sc30_fisher']
- #       var30.assignValue(sc30)
+        #ncfile.sync()
+        #sc30[:,:,:] = var_sc30[:,:,:]
+        #sc30[0,0,0] = var_sc30[0,0,0]
+        sc30[0,:,:] = var_sc30[0,:,:]
+        #var30 = ncfile.variables['sc30_fisher']
+        #var30.assignValue(var_sc30)
+        #print " **** SHAPES: var_sc30 {}; sc30 {}; var30{}".format(var_sc30.shape, sc30.shape, var30.shape)
         print "imrpimir variables"
         print ncfile.variables
         print " ** ImpRIMIR vairiables sc30:"
@@ -242,6 +255,8 @@ else:
         print "imrpimir dimensiones"
         for dimobj in ncfile.dimensions.values():
 	    print dimobj
+        
+        
         ncfile.close()
 
         print "he salido del cursor"
