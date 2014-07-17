@@ -81,6 +81,7 @@ else:
     # Nota: ahora mismo la dimensión de tiempo es solo 1 ya que se obtienen los datos para todo un día. 
     # TODO: datos horarios a lo largo de un día
     sentencia = "SELECT extract(epoch from date) date, latitude, longitude, ship_cargo, time_sec FROM marine_traffic.grid_time_shipcargo_daily WHERE date='"+fecha_ayer+"'::date AND ship_cargo = 30 limit 10"
+    sentencia = "SELECT extract(epoch from date) date, latitude, longitude, ship_cargo, time_sec FROM marine_traffic.grid_time_shipcargo_daily WHERE date='"+fecha_ayer+"'::date AND ship_cargo = 30"
     #sentencia = "SELECT date, latitude, longitude, ship_cargo, time_sec FROM marine_traffic.grid_time_shipcargo_daily WHERE date='"+fecha_ayer+"'::date AND ship_cargo = 130"
     #sentencia = "SELECT date, latitude, longitude, ship_cargo, time_sec FROM marine_traffic.grid_time_shipcargo_daily WHERE date='"+fecha_ayer+"'::date AND ship_cargo is not null"
     file_log.write("fecha consulta: "+fecha+"\n")
@@ -140,15 +141,15 @@ else:
         
         # Variables 3Dimensiones para almacenar los datos.
         # Una variable por cada tipos valido: sc0, sc30, sc37, sc40, sc50, sc53, sc60, sc70, sc80
-        #sc0 = ncfile.createVariable('sc0_unspecified','f8',('time','lat','lon'))
+        sc0 = ncfile.createVariable('sc0_unspecified','f8',('time','lat','lon'))
         sc30 = ncfile.createVariable('sc30_fisher','f8',('time','lat','lon'))
-        #sc37 = ncfile.createVariable('sc37_yachts','f8',('time','lat','lon'))
-        #sc40 = ncfile.createVariable('sc40_hsc','f8',('time','lat','lon'))
-        #sc50 = ncfile.createVariable('sc50_tug','f8',('time','lat','lon'))
-        #sc53 = ncfile.createVariable('sc53_aid','f8',('time','lat','lon'))
-        #sc60 = ncfile.createVariable('sc60_passenger','f8',('time','lat','lon'))
-        #sc70 = ncfile.createVariable('sc70_cargo','f8',('time','lat','lon'))
-        #sc80 = ncfile.createVariable('sc80_tanker','f8',('time','lat','lon'))
+        sc37 = ncfile.createVariable('sc37_yachts','f8',('time','lat','lon'))
+        sc40 = ncfile.createVariable('sc40_hsc','f8',('time','lat','lon'))
+        sc50 = ncfile.createVariable('sc50_tug','f8',('time','lat','lon'))
+        sc53 = ncfile.createVariable('sc53_aid','f8',('time','lat','lon'))
+        sc60 = ncfile.createVariable('sc60_passenger','f8',('time','lat','lon'))
+        sc70 = ncfile.createVariable('sc70_cargo','f8',('time','lat','lon'))
+        sc80 = ncfile.createVariable('sc80_tanker','f8',('time','lat','lon'))
 
         sc30.units = 's' 
         # Inicializar dimensiones
@@ -174,20 +175,36 @@ else:
  
 
         #Inicializar arrays variables con NaN
-        #sc30 = numpy.empty((ndim_time, ndim_lat, ndim_lon),dtype='f8')
+        vsc00 = numpy.empty((ndim_time, ndim_lat, ndim_lon),dtype='f8')
+        vsc30 = numpy.empty((ndim_time, ndim_lat, ndim_lon),dtype='f8')
+        vsc37 = numpy.empty((ndim_time, ndim_lat, ndim_lon),dtype='f8')
+        vsc40 = numpy.empty((ndim_time, ndim_lat, ndim_lon),dtype='f8')
+        vsc50 = numpy.empty((ndim_time, ndim_lat, ndim_lon),dtype='f8')
+        vsc53 = numpy.empty((ndim_time, ndim_lat, ndim_lon),dtype='f8')
+        vsc60 = numpy.empty((ndim_time, ndim_lat, ndim_lon),dtype='f8')
+        vsc70 = numpy.empty((ndim_time, ndim_lat, ndim_lon),dtype='f8')
+        vsc80 = numpy.empty((ndim_time, ndim_lat, ndim_lon),dtype='f8')
         #sc30[:] = float(numpy.nan)
-        #sc30.fill(float(numpy.NAN))
+        vsc00.fill(float(numpy.NAN))
+        vsc30.fill(float(numpy.NAN))
+        vsc37.fill(float(numpy.NAN))
+        vsc40.fill(float(numpy.NAN))
+        vsc50.fill(float(numpy.NAN))
+        vsc53.fill(float(numpy.NAN))
+        vsc60.fill(float(numpy.NAN))
+        vsc70.fill(float(numpy.NAN))
+        vsc80.fill(float(numpy.NAN))
         #sc30.fill(float(0.))
-        print "sc30: {}".format(sc30[:]) 
+        print "sc30: {}".format(vsc30[:]) 
 
         #print "prueba sc30 cambio"
         #sc30[0,:,0] = 1.0
         #print "sc30: {}".format(sc30[:]) 
         # Atributos
         #ncfile.description = 'Fichero netCDF con el tiempo en segundos pasado por los barcos en cada celda de la grid'
-        var_sc30 = numpy.zeros((ndim_time, ndim_lat, ndim_lon),dtype='f8')
-        var_sc30[:,:,:] = '1.'
-        print "var_sc30: {}".format(var_sc30[:])
+        #var_sc30 = numpy.zeros((ndim_time, ndim_lat, ndim_lon),dtype='f8')
+        #var_sc30[:,:,:] = float(numpy.NAN)
+        #print "var_sc30: {}".format(var_sc30[:])
         # Asignar variables
         nrow = 0;
         for row in data:
@@ -208,8 +225,8 @@ else:
             if row_shipcargo == 0: 
                 sc0[indice_time, indice_lat, indice_lon] = row_value  
             elif row_shipcargo == 30: 
-                #sc30[indice_time, indice_lat, indice_lon] = row_value         
-                var_sc30[indice_time, indice_lat, indice_lon] = row_value         
+                vsc30[indice_time, indice_lat, indice_lon] = row_value         
+                #var_sc30[indice_time, indice_lat, indice_lon] = row_value         
             elif row_shipcargo == 37: 
                 sc37[indice_time, indice_lat, indice_lon] = row_value        
             elif row_shipcargo == 40: 
@@ -231,17 +248,18 @@ else:
         #var_sc30 = numpy.asarray(1,10,10)
         #var_sc30 = numpy.zeros((1,10,10),dtype='f8')
         #var_sc30[:,:,:] = '1.'
-        print "segunda imprsion "
-        print "sc30: {}".format(sc30[:]) 
-        print "var_sc30: {}".format(var_sc30[:]) 
+        #print "segunda imprsion "
+        #print "sc30: {}".format(sc30[:]) 
+        #print "var_sc30: {}".format(var_sc30[:]) 
         # Imprimir netcdfa
         print "Imprimir dimensiones"
         print ncfile.dimensions
 
         #ncfile.sync()
-        #sc30[:,:,:] = var_sc30[:,:,:]
+        sc30[:,:,:] = vsc30[:,:,:]
+        sc30[:] = vsc30;
         #sc30[0,0,0] = var_sc30[0,0,0]
-        sc30[0,:,:] = var_sc30[0,:,:]
+        #sc30[0,:,:] = var_sc30[0,:,:]
         #var30 = ncfile.variables['sc30_fisher']
         #var30.assignValue(var_sc30)
         #print " **** SHAPES: var_sc30 {}; sc30 {}; var30{}".format(var_sc30.shape, sc30.shape, var30.shape)
