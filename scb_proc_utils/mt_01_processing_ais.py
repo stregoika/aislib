@@ -196,5 +196,9 @@ else:
     file_lock.close()
     os.remove(LOCK)
 
-file_log.write("-+- END "+fecha+"-+-\n")
+# Fecha
+date_fin = datetime.datetime.now()
+fecha_fin = date_fin.strftime("%Y-%m-%d_%H:%M:%S")
+
+file_log.write("-+- END "+fecha_fin+"-+-\n")
 file_log.close()
