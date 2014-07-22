@@ -13,12 +13,12 @@ import traceback
 # Variables de sistema
 HOME_PATH = '/home/aisuser/'
 APP_PATH = HOME_PATH + 'aislib/scb_proc_utils/'
-LOG = HOME_PATH + "logs/mt_tracking_ais.log"
-LOCK = APP_PATH + "mt_tracking_ais.lock"
-LOG_ERROR_FILE = HOME_PATH + "logs/mt_tracking_ais.err" 
+LOG = HOME_PATH + "logs/mt_segmenting_ais.log"
+LOCK = APP_PATH + "mt_segmenting_ais.lock"
+LOG_ERROR_FILE = HOME_PATH + "logs/mt_segmenting_ais.err" 
 
 # Configuración logging
-log_error = logging.getLogger('mt_tracking_ais')
+log_error = logging.getLogger('mt_segmenting_ais')
 log_error.setLevel(logging.WARN)
 # Create the file handler
 log_error_hd = logging.FileHandler(LOG_ERROR_FILE)
@@ -65,8 +65,8 @@ else:
     #print "fecha2: {}".format(str(fecha_ayer))
  
     #sentencia = "SELECT marine_traffic.tracking();"   
-    sentencia = "SELECT marine_traffic.tracking2();"   
-    file_log.write("fecha ayer tracking: "+fecha_ayer+"\n")
+    sentencia = "SELECT marine_traffic.segmenting();"   
+    file_log.write("fecha ayer segmenting: "+fecha_ayer+"\n")
     file_log.write("Va a ejecutar .... "+sentencia+"\n")
     cursor_con = conexion.cursor()
     try:
