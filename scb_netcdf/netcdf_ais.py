@@ -81,9 +81,9 @@ else:
  
     # Nota: ahora mismo la dimensión de tiempo es solo 1 ya que se obtienen los datos para todo un día. 
     # TODO: datos horarios a lo largo de un día
-    sentencia = "SELECT extract(epoch from date) date, latitude, longitude, ship_cargo, time_sec FROM marine_traffic.grid_time_shipcargo_daily WHERE date='"+fecha_ayer+"'::date AND ship_cargo = 30 limit 10"
-    sentencia = "SELECT extract(epoch from date) date, latitude, longitude, ship_cargo, time_sec FROM marine_traffic.grid_time_shipcargo_daily WHERE date='"+fecha_ayer+"'::date AND (ship_cargo = 30 or ship_cargo = 0) limit 10"
-    #sentencia = "SELECT extract(epoch from date) date, latitude, longitude, ship_cargo, time_sec FROM marine_traffic.grid_time_shipcargo_daily WHERE date='"+fecha_ayer+"'::date AND ship_cargo = 30"
+    sentencia = "SELECT extract(epoch from date) date, latitude, longitude, ship_cargo, time_sec FROM marine_traffic.grid_time_shipcargo_daily WHERE date='"+fecha_ayer+"'::date AND (ship_cargo >= 30 OR ship_cargo <= 30)"
+    sentencia = "SELECT extract(epoch from date) date, latitude, longitude, ship_cargo, time_sec FROM marine_traffic.grid_time_shipcargo_daily WHERE date='"+fecha_ayer+"'::date limit 200000"
+ #   sentencia = "SELECT extract(epoch from date) date, latitude, longitude, ship_cargo, time_sec FROM marine_traffic.grid_time_shipcargo_daily WHERE date='"+fecha_ayer+"'::date"
     file_log.write("fecha consulta: "+fecha+"\n")
     file_log.write("Va a ejecutar .... "+sentencia+"\n")
     cursor_con = conexion.cursor()
@@ -99,24 +99,24 @@ else:
         data_shipcargo = numpy.array(data[:,3],dtype='i4')
         data_timesec = numpy.array(data[:,4],dtype='f8')
         # Comrpobación: imprimir arrays numpy para las dimensiones y variable ship_cargo
-        print "data_date: {}".format(data_date)
-        print "data_lat: {}".format(data_lat)
-        print "data_lon: {}".format(data_lon)
-        print "data_shipcargo: {}".format(data_shipcargo)
-        print "data_timesec: {}".format(data_timesec)
-        print "resultado array entero (data): {}".format(data)
+        #print "data_date: {}".format(data_date)
+        #print "data_lat: {}".format(data_lat)
+        #print "data_lon: {}".format(data_lon)
+        #print "data_shipcargo: {}".format(data_shipcargo)
+        #print "data_timesec: {}".format(data_timesec)
+        #print "resultado array entero (data): {}".format(data)
 
         # Calcular valores únicos para los índices de las dimensiones
         unique_time = numpy.unique(data_date)
         unique_lat = numpy.unique(data_lat)
         unique_lon = numpy.unique(data_lon)
 
-        print "Valores índices dimensiones y variables"
-        print "data_date: {}".format(unique_time)
-        print "data_lat: {}".format(unique_lat)
-        print "data_lon: {}".format(unique_lon)
-        print "data_shipcargo: {}".format(numpy.unique(data_shipcargo))
-        print "data_timesec: {}".format(numpy.unique(data_timesec))
+        #print "Valores índices dimensiones y variables"
+        #print "data_date: {}".format(unique_time)
+        #print "data_lat: {}".format(unique_lat)
+        #print "data_lon: {}".format(unique_lon)
+        #print "data_shipcargo: {}".format(numpy.unique(data_shipcargo))
+        #print "data_timesec: {}".format(numpy.unique(data_timesec))
         
         # Definir dimensiones (número de valores únicos)
         ndim_time = numpy.size(unique_time)
@@ -169,10 +169,10 @@ else:
         lons = numpy.asarray(unique_lon)
         longitudes[:] = lons     
 
-        print "times: {}".format(times[:])
+        #print "times: {}".format(times[:])
         #print 'times =\n',times[:]
-        print "latitudes: {}".format(latitudes[:])
-        print "longitudes: {}".format(longitudes[:])
+        #print "latitudes: {}".format(latitudes[:])
+        #print "longitudes: {}".format(longitudes[:])
  
 
         #Inicializar arrays variables con NaN
@@ -211,7 +211,7 @@ else:
             indice_lat = numpy.where(latitudes == row_lat)[0]
             indice_lon = numpy.where(longitudes == row_lon)[0]
   
-            print "fila ({}) [{}] - idate {}, ilat {}, ilon {}".format(nrow, row, indice_time, indice_lat, indice_lon)
+            #print "fila ({}) [{}] - idate {}, ilat {}, ilon {}".format(nrow, row, indice_time, indice_lat, indice_lon)
             if row_shipcargo == 0: 
                 vsc0[indice_time, indice_lat, indice_lon] = row_value  
             elif row_shipcargo == 30: 
@@ -233,6 +233,8 @@ else:
                 vsc80[indice_time, indice_lat, indice_lon] = row_value        
 
             nrow = nrow + 1
+            #if (nrow%1000 == 0):
+            #   print "nrow: {}".format(nrow)
 
         # Imprimir netcdf
         print "Imprimir dimensiones"
@@ -257,13 +259,13 @@ else:
         sc70[:] = vsc70;
         sc80[:,:,:] = vsc80[:,:,:]
         sc80[:] = vsc80;
-        print "imrpimir variables"
-        print ncfile.variables
-        print " ** ImpRIMIR vairiables sc30:"
-        print ncfile.variables['sc30_fisher'][:]
+        #print "imrpimir variables"
+        #print ncfile.variables
+        #print " ** ImpRIMIR vairiables sc30:"
+        #print ncfile.variables['sc30_fisher'][:]
 
-        print "imrpimir dimensiones. latitudes"
-        print ncfile.variables['latitude'][:]
+        #print "imrpimir dimensiones. latitudes"
+        #print ncfile.variables['latitude'][:]
         print "imrpimir dimensiones"
         for dimobj in ncfile.dimensions.values():
 	    print dimobj
